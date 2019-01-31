@@ -14,8 +14,9 @@ CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o: dependencies/glfw/
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/Quad.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/RenderObject.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/TrianglePrimitive.h
-CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/OrthographicProjectionRenderer.h
-CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/PerspectiveProjectionRenderer.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/BaseCamera.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/OrtographicCamera.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/PerspectiveCamera.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Shader.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/TextureLoader.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Window.h

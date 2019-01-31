@@ -16,21 +16,9 @@ TrianglePrimitive.h
 RenderObject.h
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
 
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrthographicProjectionRenderer.h
-glm/glm.hpp
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
+iostream
 -
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
-functional
--
-../Window.h
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
-../Primitives/RenderObject.h
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
-
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveProjectionRenderer.h
 glm/glm.hpp
 -
 glm/gtc/matrix_transform.hpp
@@ -45,6 +33,14 @@ functional
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
 ../Shader.h
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrtographicCamera.h
+BaseCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveCamera.h
+BaseCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
 
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
 glad/glad.h
@@ -95,10 +91,10 @@ Engine/Primitives/Quad.h
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
 Engine/Window.h
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
-Engine/Renderers/OrthographicProjectionRenderer.h
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrthographicProjectionRenderer.h
-Engine/Renderers/PerspectiveProjectionRenderer.h
-/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveProjectionRenderer.h
+Engine/Renderers/OrtographicCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrtographicCamera.h
+Engine/Renderers/PerspectiveCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveCamera.h
 iostream
 -
 memory

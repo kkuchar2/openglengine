@@ -66,7 +66,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES})
+set(SOURCE_FILES ${SRC_FILES} src/Engine/Renderers/BaseCamera.h src/Engine/Primitives/Transform.h src/Engine/Primitives/Mesh.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

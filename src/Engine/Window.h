@@ -15,6 +15,9 @@ class Window {
         int height;
         float aspectRatio;
 
+        float lastTime = 0.0f;
+        float totalTime = 0.0f;
+
         Window(const int resX, const int resY, GLFWkeyfun keyCallback, GLFWmousebuttonfun mouse_button_callback, GLFWcursorposfun mouse_position_callback) {
             createWindow(resX, resY);
             glfwMakeContextCurrent(window);
@@ -86,6 +89,13 @@ class Window {
 
         bool shouldBeOpened() {
             return !glfwWindowShouldClose(window);
+        }
+
+        void UpdateTime() {
+            auto currentTime = static_cast<float>(glfwGetTime());
+            float timeDiff = currentTime - lastTime;
+            totalTime += timeDiff;
+            lastTime = currentTime;
         }
 
         ~Window() {

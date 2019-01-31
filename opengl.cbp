@@ -8083,6 +8083,15 @@
 			<Option target="glm_shared"/>
 			<Option target="glm_static"/>
 		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Mesh.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h">
+			<Option target="opengl"/>
+		</Unit>
 		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp">
 			<Option target="opengl"/>
 		</Unit>

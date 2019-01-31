@@ -15,8 +15,9 @@ CMakeFiles/opengl.dir/src/main.cpp.o
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
- /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrthographicProjectionRenderer.h
- /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveProjectionRenderer.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrtographicCamera.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveCamera.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h

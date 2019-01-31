@@ -19,14 +19,14 @@ static float uvs[] {
     0.0f, 0.0f, // bottom left
     0.0f, 1.0f, // top left
     1.0f, 1.0f, // top right
-    1.0f, 0.0f // bottom right
+    1.0f, 0.0f  // bottom right
 };
 
 static int count = 6;
 
 class Quad : public TrianglePrimitive {
     public:
-        Quad(Shader * shader) : TrianglePrimitive(shader) {
+        explicit Quad(Shader * shader) : TrianglePrimitive(shader) {
             prepare(vertices, indices, uvs, sizeof(vertices), sizeof(indices), sizeof(uvs));
         }
 

@@ -1,19 +1,19 @@
 #ifndef OPENGL_RENDEROBJECT_H
 #define OPENGL_RENDEROBJECT_H
 
+#include "Transform.h"
+
 class RenderObject {
     public:
 
         Shader * shader;
 
-        GLuint vao;
-        GLuint vbo;
-        GLuint uvbo;
-        GLuint ibo;
+        GLuint vao{};
+        GLuint vbo{};
+        GLuint uvbo{};
+        GLuint ibo{};
 
-        glm::vec3 position = glm::vec3(0.0f);
-        glm::vec3 scale = glm::vec3(1.0f);
-        glm::vec3 rotation = glm::vec3(0.0f);
+        Transform transform;
 
         RenderObject(Shader * shader) {
             this->shader = shader;

@@ -7,8 +7,8 @@
 #include "Engine/TextureLoader.h"
 #include "Engine/Primitives/Quad.h"
 #include "Engine/Window.h"
-#include "Engine/Renderers/OrthographicProjectionRenderer.h"
-#include "Engine/Renderers/PerspectiveProjectionRenderer.h"
+#include "Engine/Renderers/OrtographicCamera.h"
+#include "Engine/Renderers/PerspectiveCamera.h"
 
 #include <iostream>
 #include <memory>
@@ -23,7 +23,7 @@ void scroll_callback(GLFWwindow * window, double xoffset, double yoffset) {
 
     int state = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
     if (state == GLFW_PRESS) {
-        scale = glm::vec3(scale.x + (float) yoffset / 100.0f, scale.y + (float) yoffset / 100.0f, 1.0f);
+        scale = glm::vec3(scale.x + (float) yoffset / 100.0f, scale.y + (float) yoffset / 100.0f, scale.z + (float) yoffset / 100.0f);
         return;
     }
 
@@ -75,8 +75,6 @@ int Init() {
     return 0;
 }
 
-float lastTime = 0.0f;
-float totalTime = 0.0f;
 
 int main() {
     int initResult = Init();
@@ -85,8 +83,8 @@ int main() {
         return initResult;
     }
 
-    OrtographicProjectionRenderer orthoRenderer(window);
-    PerspectiveProjectionRenderer perspectiveProjectionRenderer(window);
+    OrtographicCamera orthographicCamera(window);
+    PerspectiveCamera perspectiveCamera(window);
 
     TextureLoader::load("resources/textures/texture_white.bmp");
 
@@ -96,33 +94,26 @@ int main() {
 
     //quad.position = glm::vec3(2.0f, 1.0f, 0.0f);
     //quad.scale = glm::vec3(0.5f, 0.5f, 0.5f);
-    quad.rotation = glm::vec3(20.0f, 0.0f, 0.0f);
+    //quad.transform.rotation = glm::vec3(20.0f, 0.0f, 0.0f);
 
     while (window->shouldBeOpened()) {
 
-        float currentTime = static_cast<float>(glfwGetTime());
-        float timeDiff = currentTime - lastTime;
-        totalTime += timeDiff;
-        lastTime = currentTime;
+        window->UpdateTime();
 
-        quad.position = position;
-        quad.scale = scale;
+        quad.transform.position = position;
+        quad.transform.scale = scale;
 
         window->Update();
 
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //orthoRenderer.Render(quad, [](const Shader * shader) {
-        //shader->setVec2("resolution", window->getResolution());
-        //    shader->setInt("iterations", iterations);
-        //    shader->setFloat("time", totalTime);
-        //});
-
-        perspectiveProjectionRenderer.Render(quad, [](const Shader * shader) {
-            shader->setVec2("resolution", window->getResolution());
+        orthographicCamera.Render(quad, [](const Shader * shader) {
             shader->setInt("iterations", iterations);
-            shader->setFloat("time", totalTime);
+        });
+
+        perspectiveCamera.Render(quad, [](const Shader * shader) {
+            shader->setInt("iterations", iterations);
         });
 
         window->swapBuffers();
