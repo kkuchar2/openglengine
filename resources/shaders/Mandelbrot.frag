@@ -54,10 +54,10 @@ void main()
     vec2 normPos = f_uv;
 
     // [(-0.5, -0.5) -> (0.5, 0.5)] from bottom left
-    normPos = (normPos - vec2(0.5, 0.5)) ;
+    normPos = normPos - vec2(0.5, 0.5);
 
     // [(-1, -1) -> (1, 1)] from bottom left
-    normPos = normPos * 2.0 - vec2(f_translation);
+    normPos = normPos * 2.0;
 
     // [(-2, -1) -> (2, 1)] from bottom left
     normPos = vec2(normPos.x * 2.0 - 0.5, normPos.y * 1.2);

@@ -96,7 +96,7 @@ int main() {
 
     //quad.position = glm::vec3(2.0f, 1.0f, 0.0f);
     //quad.scale = glm::vec3(0.5f, 0.5f, 0.5f);
-    //quad.rotation = glm::vec3(-20.0f, 0.0f, 0.0f);
+    quad.rotation = glm::vec3(20.0f, 0.0f, 0.0f);
 
     while (window->shouldBeOpened()) {
 
@@ -113,18 +113,17 @@ int main() {
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        orthoRenderer.Render(quad, [](const Shader * shader) {
+        //orthoRenderer.Render(quad, [](const Shader * shader) {
+        //shader->setVec2("resolution", window->getResolution());
+        //    shader->setInt("iterations", iterations);
+        //    shader->setFloat("time", totalTime);
+        //});
+
+        perspectiveProjectionRenderer.Render(quad, [](const Shader * shader) {
             shader->setVec2("resolution", window->getResolution());
             shader->setInt("iterations", iterations);
             shader->setFloat("time", totalTime);
         });
-
-        //perspectiveProjectionRenderer.Render(quad, [](const Shader * shader) {
-        //    shader->setVec2("resolution", window->getResolution());
-        //    shader->setInt("iterations", iterations);
-        //});
-
-        std::cout << "Total time: " << totalTime << std::endl;
 
         window->swapBuffers();
         window->pollEvents();
