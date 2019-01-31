@@ -14,6 +14,7 @@ CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o
 CMakeFiles/opengl.dir/src/main.cpp.o
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrtographicCamera.h

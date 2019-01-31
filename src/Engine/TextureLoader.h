@@ -70,6 +70,8 @@ class TextureLoader {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
 
             std::cout << "Sucessfully created texture!" << std::endl;
+
+            return textureID;
         }
 };
 

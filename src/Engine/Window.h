@@ -11,9 +11,9 @@ class Window {
 
     public:
         GLFWwindow * window { nullptr };
-        int width;
-        int height;
-        float aspectRatio;
+        int width = 600;
+        int height = 600;
+        float aspectRatio{};
 
         float lastTime = 0.0f;
         float totalTime = 0.0f;
@@ -23,7 +23,6 @@ class Window {
             glfwMakeContextCurrent(window);
             setKeyCallback(keyCallback);
             setMouseButtonCallback(mouse_button_callback);
-            setMousePositionCallback(mouse_position_callback);
         }
 
         Window(const int resX, const int resY) {
@@ -55,7 +54,7 @@ class Window {
             glfwSetScrollCallback(window, callback);
         }
 
-        void setMousePositionCallback(GLFWcursorposfun callback) {
+        void setCursorPositionCallback(GLFWcursorposfun callback) {
             glfwSetCursorPosCallback(window, callback);
         }
 

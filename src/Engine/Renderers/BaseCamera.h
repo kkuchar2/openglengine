@@ -31,9 +31,9 @@ class BaseCamera {
             shader->setFloat("time", window->totalTime);
             shader->setVec2("resolution", window->getResolution());
 
-            shader->setVec3("translation", renderObject.position);
-            shader->setVec3("scale", renderObject.scale);
-            shader->setVec3("rotation", renderObject.rotation);
+            shader->setVec3("translation", renderObject.transform.position);
+            shader->setVec3("scale", renderObject.transform.scale);
+            shader->setVec3("rotation", renderObject.transform.rotation);
 
             shader->setMat4("projection", getProjectionMatrix());
             shader->setMat4("view", getViewMatrix());

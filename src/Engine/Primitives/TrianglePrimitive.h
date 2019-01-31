@@ -7,11 +7,9 @@ class TrianglePrimitive : public RenderObject {
 
     public:
 
-        TrianglePrimitive(Shader * shader) : RenderObject(shader) {}
+        explicit TrianglePrimitive(Shader * shader) : RenderObject(shader) {}
 
-        void Render() {
-
-        }
+        void Render() override {}
 
         void Render(int count) {
             RenderObject::Render(GL_TRIANGLES, count);

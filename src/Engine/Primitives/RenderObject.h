@@ -15,7 +15,7 @@ class RenderObject {
 
         Transform transform;
 
-        RenderObject(Shader * shader) {
+        explicit RenderObject(Shader * shader) {
             this->shader = shader;
         }
 

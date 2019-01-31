@@ -11,6 +11,12 @@ TrianglePrimitive.h
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
 
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
+Transform.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
+glm/vec3.hpp
+-
 
 /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
 RenderObject.h

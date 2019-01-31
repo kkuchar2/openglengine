@@ -30,7 +30,7 @@ class Quad : public TrianglePrimitive {
             prepare(vertices, indices, uvs, sizeof(vertices), sizeof(indices), sizeof(uvs));
         }
 
-        void Render() {
+        void Render() override {
             TrianglePrimitive::Render(count);
         }
 };

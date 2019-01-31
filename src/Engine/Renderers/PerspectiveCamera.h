@@ -4,15 +4,20 @@
 #include "BaseCamera.h"
 
 class PerspectiveCamera : public BaseCamera {
+
     public:
-        explicit PerspectiveCamera(Window * window) : BaseCamera(window) {}
+        glm::vec3 position = glm::vec3(0.0);
+
+        explicit PerspectiveCamera(Window * window, const glm::vec3 position) : BaseCamera(window) {
+            this->position = position;
+        }
 
         glm::mat4x4 getModelMatrix() override {
             return glm::mat4(1.0);
         }
 
         glm::mat4x4 getViewMatrix() override {
-            return glm::lookAt(glm::vec3(0,0,3), glm::vec3(0,0,0), glm::vec3(0,1,0));
+            return glm::lookAt(position, glm::vec3(0,0,0), glm::vec3(0,1,0));
         }
 
         glm::mat4x4 getProjectionMatrix() override {
