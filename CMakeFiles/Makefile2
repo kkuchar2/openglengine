@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /home/k.kucharski/Desktop/OpenGLSandbox
 CMakeFiles/opengl.dir/all: dependencies/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f CMakeFiles/opengl.dir/build.make CMakeFiles/opengl.dir/depend
 	$(MAKE) -f CMakeFiles/opengl.dir/build.make CMakeFiles/opengl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=7 "Built target opengl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=7,8 "Built target opengl"
 .PHONY : CMakeFiles/opengl.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/opengl.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/opengl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/opengl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : CMakeFiles/opengl.dir/rule
@@ -255,7 +255,7 @@ dependencies/glm/glm/preinstall:
 dependencies/glm/glm/CMakeFiles/glm_shared.dir/all:
 	$(MAKE) -f dependencies/glm/glm/CMakeFiles/glm_shared.dir/build.make dependencies/glm/glm/CMakeFiles/glm_shared.dir/depend
 	$(MAKE) -f dependencies/glm/glm/CMakeFiles/glm_shared.dir/build.make dependencies/glm/glm/CMakeFiles/glm_shared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target glm_shared"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=6 "Built target glm_shared"
 .PHONY : dependencies/glm/glm/CMakeFiles/glm_shared.dir/all
 
 # Include target in all.
@@ -265,7 +265,7 @@ all: dependencies/glm/glm/CMakeFiles/glm_shared.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/glm/CMakeFiles/glm_shared.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/glm/CMakeFiles/glm_shared.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/glm/CMakeFiles/glm_shared.dir/rule
@@ -292,7 +292,7 @@ clean: dependencies/glm/glm/CMakeFiles/glm_shared.dir/clean
 dependencies/glm/glm/CMakeFiles/glm_static.dir/all:
 	$(MAKE) -f dependencies/glm/glm/CMakeFiles/glm_static.dir/build.make dependencies/glm/glm/CMakeFiles/glm_static.dir/depend
 	$(MAKE) -f dependencies/glm/glm/CMakeFiles/glm_static.dir/build.make dependencies/glm/glm/CMakeFiles/glm_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=6 "Built target glm_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target glm_static"
 .PHONY : dependencies/glm/glm/CMakeFiles/glm_static.dir/all
 
 # Include target in all.
@@ -302,7 +302,7 @@ all: dependencies/glm/glm/CMakeFiles/glm_static.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/glm/CMakeFiles/glm_static.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/glm/CMakeFiles/glm_static.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/glm/CMakeFiles/glm_static.dir/rule
@@ -380,7 +380,7 @@ dependencies/glm/test/bug/preinstall:
 dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/all:
 	$(MAKE) -f dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/build.make dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/depend
 	$(MAKE) -f dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/build.make dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=8 "Built target test-bug_ms_vec_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=9 "Built target test-bug_ms_vec_static"
 .PHONY : dependencies/glm/test/bug/CMakeFiles/test-bug_ms_vec_static.dir/all
 
 # Include target in all.
@@ -523,7 +523,7 @@ dependencies/glm/test/core/preinstall:
 dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_setup_message"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=24 "Built target test-core_setup_message"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/all
 
 # Include target in all.
@@ -533,7 +533,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_message.dir/rule
@@ -597,7 +597,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_setup_force_size_t_length
 dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=22 "Built target test-core_setup_force_cxx98"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_setup_force_cxx98"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/all
 
 # Include target in all.
@@ -607,7 +607,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/rule
@@ -634,7 +634,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_setup_force_cxx98.dir/cle
 dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_swizzle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=21 "Built target test-core_func_swizzle"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/all
 
 # Include target in all.
@@ -644,7 +644,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/rule
@@ -671,7 +671,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_swizzle.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_vector_relational"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=22 "Built target test-core_func_vector_relational"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/all
 
 # Include target in all.
@@ -681,7 +681,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.dir/rule
@@ -708,7 +708,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_vector_relational.di
 dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=21 "Built target test-core_func_trigonometric"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_trigonometric"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/all
 
 # Include target in all.
@@ -718,7 +718,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_trigonometric.dir/rule
@@ -819,7 +819,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x3.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_ctor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=27 "Built target test-core_type_ctor"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/all
 
 # Include target in all.
@@ -829,7 +829,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/rule
@@ -856,7 +856,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_ctor.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=13 "Built target test-core_force_unrestricted_gentype"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_unrestricted_gentype"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/all
 
 # Include target in all.
@@ -866,7 +866,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentype.dir/rule
@@ -893,7 +893,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_unrestricted_gentyp
 dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_pure"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=13 "Built target test-core_force_pure"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/all
 
 # Include target in all.
@@ -903,7 +903,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/rule
@@ -930,7 +930,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_pure.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=12 "Built target test-core_force_inline"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_inline"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/all
 
 # Include target in all.
@@ -940,7 +940,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/rule
@@ -967,7 +967,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_inline.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=16 "Built target test-core_func_integer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_integer"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/all
 
 # Include target in all.
@@ -977,7 +977,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/rule
@@ -1004,7 +1004,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_integer.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_xyzw_only"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=14 "Built target test-core_force_xyzw_only"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/all
 
 # Include target in all.
@@ -1014,7 +1014,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/rule
@@ -1041,7 +1041,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_xyzw_only.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=15 "Built target test-core_func_exponential"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_exponential"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/all
 
 # Include target in all.
@@ -1051,7 +1051,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/rule
@@ -1078,7 +1078,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_exponential.dir/clea
 dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_cpp_defaulted_ctor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=10 "Built target test-core_cpp_defaulted_ctor"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/all
 
 # Include target in all.
@@ -1088,7 +1088,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/rule
@@ -1115,7 +1115,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_cpp_defaulted_ctor.dir/cl
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat2x4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=30 "Built target test-core_type_mat2x4"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/all
 
 # Include target in all.
@@ -1125,7 +1125,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/rule
@@ -1152,7 +1152,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x4.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_setup_precision"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=25 "Built target test-core_setup_precision"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/all
 
 # Include target in all.
@@ -1162,7 +1162,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/rule
@@ -1189,7 +1189,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_setup_precision.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=27 "Built target test-core_type_int"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_int"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/all
 
 # Include target in all.
@@ -1199,7 +1199,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/rule
@@ -1226,7 +1226,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_int.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=9 "Built target test-core_cpp_constexpr"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_cpp_constexpr"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/all
 
 # Include target in all.
@@ -1236,7 +1236,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/rule
@@ -1263,7 +1263,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_cpp_constexpr.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=25 "Built target test-core_type_aligned"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_aligned"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/all
 
 # Include target in all.
@@ -1273,7 +1273,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/rule
@@ -1300,7 +1300,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_aligned.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=10 "Built target test-core_force_aligned_gentypes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_aligned_gentypes"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/all
 
 # Include target in all.
@@ -1310,7 +1310,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.dir/rule
@@ -1337,7 +1337,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_aligned_gentypes.di
 dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_length"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=28 "Built target test-core_type_length"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/all
 
 # Include target in all.
@@ -1347,7 +1347,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_length.dir/rule
@@ -1411,7 +1411,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x2.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=30 "Built target test-core_type_mat3x2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat3x2"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/all
 
 # Include target in all.
@@ -1421,7 +1421,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/rule
@@ -1448,7 +1448,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x2.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_force_ctor_init"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=11 "Built target test-core_force_ctor_init"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/all
 
 # Include target in all.
@@ -1458,7 +1458,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/rule
@@ -1485,7 +1485,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_ctor_init.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=19 "Built target test-core_func_noise"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_noise"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/all
 
 # Include target in all.
@@ -1495,7 +1495,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_noise.dir/rule
@@ -1559,7 +1559,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_cast.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=33 "Built target test-core_type_mat4x4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat4x4"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/all
 
 # Include target in all.
@@ -1569,7 +1569,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/rule
@@ -1596,7 +1596,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x4.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_integer_bit_count"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=17 "Built target test-core_func_integer_bit_count"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/all
 
 # Include target in all.
@@ -1606,7 +1606,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.dir/rule
@@ -1633,7 +1633,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_integer_bit_count.di
 dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=11 "Built target test-core_force_explicit_ctor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=12 "Built target test-core_force_explicit_ctor"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/all
 
 # Include target in all.
@@ -1670,7 +1670,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_force_explicit_ctor.dir/c
 dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=24 "Built target test-core_setup_platform_unknown"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_setup_platform_unknown"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/all
 
 # Include target in all.
@@ -1680,7 +1680,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_setup_platform_unknown.dir/rule
@@ -1744,7 +1744,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_vec3.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=31 "Built target test-core_type_mat3x4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat3x4"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/all
 
 # Include target in all.
@@ -1754,7 +1754,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/rule
@@ -1781,7 +1781,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x4.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat4x3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=33 "Built target test-core_type_mat4x3"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/all
 
 # Include target in all.
@@ -1791,7 +1791,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/rule
@@ -1818,7 +1818,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat4x3.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=18 "Built target test-core_func_integer_find_msb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_integer_find_msb"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/all
 
 # Include target in all.
@@ -1828,7 +1828,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/a
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir/rule
@@ -1855,7 +1855,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_msb.dir
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_vec1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=34 "Built target test-core_type_vec1"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/all
 
 # Include target in all.
@@ -1865,7 +1865,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/rule
@@ -1892,7 +1892,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_vec1.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_geometric"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=16 "Built target test-core_func_geometric"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/all
 
 # Include target in all.
@@ -1902,7 +1902,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/rule
@@ -1929,7 +1929,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_geometric.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=34 "Built target test-core_type_vec2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_vec2"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/all
 
 # Include target in all.
@@ -1939,7 +1939,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/rule
@@ -1966,7 +1966,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_vec2.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_vec4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=36 "Built target test-core_type_vec4"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/all
 
 # Include target in all.
@@ -1976,7 +1976,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/rule
@@ -2003,7 +2003,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_vec4.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=14 "Built target test-core_func_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=15 "Built target test-core_func_common"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/all
 
 # Include target in all.
@@ -2040,7 +2040,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_common.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=17 "Built target test-core_func_integer_find_lsb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=18 "Built target test-core_func_integer_find_lsb"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir/all
 
 # Include target in all.
@@ -2077,7 +2077,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_func_integer_find_lsb.dir
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat3x3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=31 "Built target test-core_type_mat3x3"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/all
 
 # Include target in all.
@@ -2087,7 +2087,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/rule
@@ -2114,7 +2114,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat3x3.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=28 "Built target test-core_type_mat2x2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_type_mat2x2"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/all
 
 # Include target in all.
@@ -2124,7 +2124,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/rule
@@ -2151,7 +2151,7 @@ clean: dependencies/glm/test/core/CMakeFiles/test-core_type_mat2x2.dir/clean
 dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/all:
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/depend
 	$(MAKE) -f dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/build.make dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-core_func_matrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=19 "Built target test-core_func_matrix"
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/all
 
 # Include target in all.
@@ -2161,7 +2161,7 @@ all: dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/core/CMakeFiles/test-core_func_matrix.dir/rule
@@ -2285,7 +2285,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_vector_ulp.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_vector_integer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=48 "Built target test-ext_vector_integer"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/all
 
 # Include target in all.
@@ -2295,7 +2295,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/rule
@@ -2322,7 +2322,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_vector_integer.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=48 "Built target test-ext_vector_relational"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_vector_relational"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/all
 
 # Include target in all.
@@ -2332,7 +2332,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vector_relational.dir/rule
@@ -2507,7 +2507,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_trigonometric.di
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=39 "Built target test-ext_quaternion_relational"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_quaternion_relational"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/all
 
 # Include target in all.
@@ -2517,7 +2517,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_relational.dir/rule
@@ -2655,7 +2655,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_relational.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=37 "Built target test-ext_quaternion_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_quaternion_common"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/all
 
 # Include target in all.
@@ -2665,7 +2665,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_common.dir/rule
@@ -2729,7 +2729,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_type.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=36 "Built target test-ext_matrix_relational"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_matrix_relational"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/all
 
 # Include target in all.
@@ -2739,7 +2739,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_relational.dir/rule
@@ -2803,7 +2803,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_int_sized.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_scalar_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=42 "Built target test-ext_scalar_common"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/all
 
 # Include target in all.
@@ -2813,7 +2813,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/rule
@@ -2840,7 +2840,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_common.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_quaternion_geometric"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=39 "Built target test-ext_quaternion_geometric"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/all
 
 # Include target in all.
@@ -2850,7 +2850,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/rule
@@ -2877,7 +2877,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_quaternion_geometric.dir/cl
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=42 "Built target test-ext_scalar_constants"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_scalar_constants"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/all
 
 # Include target in all.
@@ -2887,7 +2887,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/rule
@@ -2914,7 +2914,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_constants.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_matrix_transform"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=37 "Built target test-ext_matrix_transform"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/all
 
 # Include target in all.
@@ -2924,7 +2924,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/rule
@@ -2951,7 +2951,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_matrix_transform.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_scalar_ulp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=45 "Built target test-ext_scalar_ulp"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/all
 
 # Include target in all.
@@ -2961,7 +2961,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_ulp.dir/rule
@@ -3025,7 +3025,7 @@ clean: dependencies/glm/test/ext/CMakeFiles/test-ext_scalar_uint_sized.dir/clean
 dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/all:
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/depend
 	$(MAKE) -f dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/build.make dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=45 "Built target test-ext_vec1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-ext_vec1"
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/all
 
 # Include target in all.
@@ -3035,7 +3035,7 @@ all: dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/ext/CMakeFiles/test-ext_vec1.dir/rule
@@ -3229,7 +3229,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_vec1.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_matrix_access"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=53 "Built target test-gtc_matrix_access"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/all
 
 # Include target in all.
@@ -3239,7 +3239,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/rule
@@ -3266,7 +3266,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_access.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_packing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=56 "Built target test-gtc_packing"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/all
 
 # Include target in all.
@@ -3276,7 +3276,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_packing.dir/rule
@@ -3340,7 +3340,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_integer.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=59 "Built target test-gtc_type_precision"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_type_precision"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/all
 
 # Include target in all.
@@ -3350,7 +3350,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/rule
@@ -3377,7 +3377,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_precision.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_constants"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=51 "Built target test-gtc_constants"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/all
 
 # Include target in all.
@@ -3387,7 +3387,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/rule
@@ -3414,7 +3414,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_constants.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_type_aligned"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=59 "Built target test-gtc_type_aligned"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/all
 
 # Include target in all.
@@ -3424,7 +3424,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/rule
@@ -3451,7 +3451,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_type_aligned.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_bitfield"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=50 "Built target test-gtc_bitfield"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/all
 
 # Include target in all.
@@ -3461,7 +3461,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/rule
@@ -3488,7 +3488,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_bitfield.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=57 "Built target test-gtc_reciprocal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_reciprocal"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/all
 
 # Include target in all.
@@ -3498,7 +3498,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/rule
@@ -3525,7 +3525,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_reciprocal.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=50 "Built target test-gtc_color_space"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_color_space"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/all
 
 # Include target in all.
@@ -3535,7 +3535,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/rule
@@ -3562,7 +3562,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_color_space.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=54 "Built target test-gtc_matrix_transform"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_matrix_transform"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/all
 
 # Include target in all.
@@ -3572,7 +3572,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/rule
@@ -3599,7 +3599,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_transform.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=56 "Built target test-gtc_quaternion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_quaternion"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/all
 
 # Include target in all.
@@ -3609,7 +3609,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/rule
@@ -3636,7 +3636,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_quaternion.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=51 "Built target test-gtc_epsilon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_epsilon"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/all
 
 # Include target in all.
@@ -3646,7 +3646,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/rule
@@ -3673,7 +3673,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_epsilon.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=53 "Built target test-gtc_matrix_integer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_matrix_integer"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/all
 
 # Include target in all.
@@ -3683,7 +3683,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/rule
@@ -3710,7 +3710,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_integer.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_matrix_inverse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=54 "Built target test-gtc_matrix_inverse"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/all
 
 # Include target in all.
@@ -3720,7 +3720,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/rule
@@ -3747,7 +3747,7 @@ clean: dependencies/glm/test/gtc/CMakeFiles/test-gtc_matrix_inverse.dir/clean
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/build.make dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtc_random"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=57 "Built target test-gtc_random"
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/all
 
 # Include target in all.
@@ -3757,7 +3757,7 @@ all: dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtc/CMakeFiles/test-gtc_random.dir/rule
@@ -4582,7 +4582,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_exterior_product.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_log_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=77 "Built target test-gtx_log_base"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/all
 
 # Include target in all.
@@ -4592,7 +4592,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_log_base.dir/rule
@@ -4656,7 +4656,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_extended_min_max.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=77 "Built target test-gtx_matrix_cross_product"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_matrix_cross_product"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/all
 
 # Include target in all.
@@ -4666,7 +4666,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/rule
@@ -4693,7 +4693,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_cross_product.dir/cl
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=71 "Built target test-gtx_fast_square_root"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_fast_square_root"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/all
 
 # Include target in all.
@@ -4703,7 +4703,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_square_root.dir/rule
@@ -4878,7 +4878,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_extend.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=68 "Built target test-gtx_euler_angle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_euler_angle"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/all
 
 # Include target in all.
@@ -4888,7 +4888,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_euler_angle.dir/rule
@@ -4952,7 +4952,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_normalize_dot.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=62 "Built target test-gtx_associated_min_max"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_associated_min_max"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/all
 
 # Include target in all.
@@ -4962,7 +4962,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_associated_min_max.dir/rule
@@ -5063,7 +5063,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_compatibility.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=65 "Built target test-gtx_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_common"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/all
 
 # Include target in all.
@@ -5073,7 +5073,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_common.dir/rule
@@ -5174,7 +5174,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_component_wise.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_fast_exponential"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=71 "Built target test-gtx_fast_exponential"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/all
 
 # Include target in all.
@@ -5184,7 +5184,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/rule
@@ -5211,7 +5211,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_fast_exponential.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=62 "Built target test-gtx"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/all
 
 # Include target in all.
@@ -5221,7 +5221,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx.dir/rule
@@ -5285,7 +5285,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_decompose.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_color_space_YCoCg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=65 "Built target test-gtx_color_space_YCoCg"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/all
 
 # Include target in all.
@@ -5295,7 +5295,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_color_space_YCoCg.dir/rule
@@ -5396,7 +5396,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_polar_coordinates.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_handed_coordinate_space"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=74 "Built target test-gtx_handed_coordinate_space"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/all
 
 # Include target in all.
@@ -5406,7 +5406,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/a
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_handed_coordinate_space.dir/rule
@@ -5766,7 +5766,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_intersect.dir/clean
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=74 "Built target test-gtx_integer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_integer"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/all
 
 # Include target in all.
@@ -5776,7 +5776,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_integer.dir/rule
@@ -6062,7 +6062,7 @@ clean: dependencies/glm/test/gtx/CMakeFiles/test-gtx_matrix_transform_2d.dir/cle
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/all:
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/depend
 	$(MAKE) -f dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/build.make dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target test-gtx_easing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num=68 "Built target test-gtx_easing"
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/all
 
 # Include target in all.
@@ -6072,7 +6072,7 @@ all: dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/all
 
 # Build rule for subdir invocation for target.
 dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
 .PHONY : dependencies/glm/test/gtx/CMakeFiles/test-gtx_easing.dir/rule
@@ -6376,6 +6376,61 @@ dependencies/glm/test/perf/CMakeFiles/test-perf_vector_mul_matrix.dir/clean:
 
 # clean rule for target.
 clean: dependencies/glm/test/perf/CMakeFiles/test-perf_vector_mul_matrix.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory dependencies/Rose/RoseCpp
+
+# Convenience name for "all" pass in the directory.
+dependencies/Rose/RoseCpp/all: dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/all
+
+.PHONY : dependencies/Rose/RoseCpp/all
+
+# Convenience name for "clean" pass in the directory.
+dependencies/Rose/RoseCpp/clean: dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/clean
+
+.PHONY : dependencies/Rose/RoseCpp/clean
+
+# Convenience name for "preinstall" pass in the directory.
+dependencies/Rose/RoseCpp/preinstall:
+
+.PHONY : dependencies/Rose/RoseCpp/preinstall
+
+#=============================================================================
+# Target rules for target dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir
+
+# All Build rule for target.
+dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/all:
+	$(MAKE) -f dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build.make dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/depend
+	$(MAKE) -f dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build.make dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles --progress-num= "Built target Rose"
+.PHONY : dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/all
+
+# Include target in all.
+all: dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles 0
+.PHONY : dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/rule
+
+# Convenience name for target.
+Rose: dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/rule
+
+.PHONY : Rose
+
+# clean rule for target.
+dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/clean:
+	$(MAKE) -f dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build.make dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/clean
+.PHONY : dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/clean
+
+# clean rule for target.
+clean: dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/clean
 
 .PHONY : clean
 

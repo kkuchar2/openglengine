@@ -1,23 +1,30 @@
-#ifndef OPENGL_MSG_H
-#define OPENGL_MSG_H
+#ifndef OPENGL_MESSAGE_H
+#define OPENGL_MESSAGE_H
 
 #include <string>
+
+enum MessageType {
+    MOUSE_MOVE,
+    MOUSE_BUTTON,
+    MOUSE_SCROLL,
+    KEYBOARD_BUTTON,
+};
 
 class Message
 {
     private:
-        std::string messageEvent;
+        MessageType messageType;
 
     public:
-        Message(const std::string event)
+        explicit Message(const MessageType messageType)
         {
-            messageEvent = event;
+            this->messageType = messageType;
         }
 
-        std::string getEvent()
+        MessageType getMessageType()
         {
-            return messageEvent;
+            return messageType;
         }
 };
 
-#endif //OPENGL_MSG_H
+#endif //OPENGL_MESSAGE_H

@@ -2,6 +2,7 @@
 #define OPENGL_BASECAMERA_H
 
 #include <iostream>
+#include <memory>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -15,33 +16,30 @@
 class BaseCamera {
 
     protected:
-        Window * window;
+        std::shared_ptr<Window> window;
 
     public:
-        explicit BaseCamera(Window * window) {
-            std::cout << "Assigning window" << std::endl;
+        explicit BaseCamera(std::shared_ptr<Window> & window)   {
             this->window = window;
         }
 
-        void Render(RenderObject & renderObject, const std::function<void(const Shader *)> & postShaderSetupFunc) {
-            Shader * shader = renderObject.shader;
+        void Render(std::shared_ptr<RenderObject> & renderObject) {
+            std::shared_ptr<Shader> shader = renderObject->shader;
 
             shader->use();
 
             shader->setFloat("time", window->totalTime);
             shader->setVec2("resolution", window->getResolution());
 
-            shader->setVec3("translation", renderObject.transform.position);
-            shader->setVec3("scale", renderObject.transform.scale);
-            shader->setVec3("rotation", renderObject.transform.rotation);
+            shader->setVec3("translation", renderObject->transform.position);
+            shader->setVec3("scale", renderObject->transform.scale);
+            shader->setVec3("rotation", renderObject->transform.rotation);
 
             shader->setMat4("projection", getProjectionMatrix());
             shader->setMat4("view", getViewMatrix());
             shader->setMat4("model", getModelMatrix());
 
-            postShaderSetupFunc(shader);
-
-            renderObject.Render();
+            renderObject->Render();
         }
 
         virtual glm::mat4x4 getModelMatrix() = 0;

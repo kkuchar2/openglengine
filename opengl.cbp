@@ -5,7 +5,7 @@
 		<Option title="opengl"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\dependencies\;CMake Files\dependencies\glfw\;CMake Files\dependencies\glfw\CMake\;CMake Files\dependencies\glfw\CMake\modules\;CMake Files\dependencies\glfw\src\;CMake Files\dependencies\glm\;CMake Files\dependencies\glm\cmake\;CMake Files\dependencies\glm\glm\;CMake Files\dependencies\glm\test\;CMake Files\dependencies\glm\test\bug\;CMake Files\dependencies\glm\test\core\;CMake Files\dependencies\glm\test\ext\;CMake Files\dependencies\glm\test\gtc\;CMake Files\dependencies\glm\test\gtx\;CMake Files\dependencies\glm\test\perf\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\dependencies\;CMake Files\dependencies\glfw\;CMake Files\dependencies\glfw\CMake\;CMake Files\dependencies\glfw\CMake\modules\;CMake Files\dependencies\glfw\src\;CMake Files\dependencies\Rose\;CMake Files\dependencies\Rose\RoseCpp\;CMake Files\dependencies\glm\;CMake Files\dependencies\glm\cmake\;CMake Files\dependencies\glm\glm\;CMake Files\dependencies\glm\test\;CMake Files\dependencies\glm\test\bug\;CMake Files\dependencies\glm\test\core\;CMake Files\dependencies\glm\test\ext\;CMake Files\dependencies\glm\test\gtc\;CMake Files\dependencies\glm\test\gtx\;CMake Files\dependencies\glm\test\perf\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/k.kucharski/Desktop/OpenGLSandbox"/>
@@ -48,6 +48,7 @@
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
+					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/Makefile&quot;  VERBOSE=1 opengl"/>
@@ -67,6 +68,7 @@
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
+					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/Makefile&quot;  VERBOSE=1 opengl/fast"/>
@@ -168,9 +170,6 @@
 				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/glm/.."/>
 				</Compiler>
@@ -188,9 +187,6 @@
 				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/glm/.."/>
 				</Compiler>
@@ -208,9 +204,6 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/glm/.."/>
 				</Compiler>
@@ -228,9 +221,6 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/glm/.."/>
 				</Compiler>
@@ -248,9 +238,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -267,9 +254,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -286,9 +270,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -305,9 +286,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -324,9 +302,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -343,9 +318,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -362,9 +334,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -381,9 +350,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -400,9 +366,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -419,9 +382,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -438,9 +398,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -457,9 +414,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -476,9 +430,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -495,9 +446,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -514,9 +462,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -533,9 +478,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -552,9 +494,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -571,9 +510,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -590,9 +526,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -609,9 +542,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -628,9 +558,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -647,9 +574,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -666,9 +590,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -685,9 +606,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -704,9 +622,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -723,9 +638,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -742,9 +654,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -761,9 +670,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -780,9 +686,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -799,9 +702,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -818,9 +718,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -837,9 +734,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -856,9 +750,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -875,9 +766,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -894,9 +782,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -913,9 +798,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -932,9 +814,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -951,9 +830,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -970,9 +846,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -989,9 +862,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1008,9 +878,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1027,9 +894,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1046,9 +910,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1065,9 +926,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1084,9 +942,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1103,9 +958,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1122,9 +974,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1141,9 +990,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1160,9 +1006,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1179,9 +1022,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1198,9 +1038,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1217,9 +1054,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1236,9 +1070,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1255,9 +1086,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1274,9 +1102,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1293,9 +1118,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1312,9 +1134,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1331,9 +1150,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1350,9 +1166,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1369,9 +1182,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1388,9 +1198,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1407,9 +1214,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1426,9 +1230,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1445,9 +1246,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1464,9 +1262,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1483,9 +1278,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1502,9 +1294,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1521,9 +1310,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1540,9 +1326,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1559,9 +1342,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1578,9 +1358,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1597,9 +1374,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1616,9 +1390,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1635,9 +1406,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1654,9 +1422,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1673,9 +1438,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1692,9 +1454,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1711,9 +1470,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1730,9 +1486,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1749,9 +1502,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1768,9 +1518,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1787,9 +1534,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1806,9 +1550,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1825,9 +1566,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1844,9 +1582,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1863,9 +1598,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1882,9 +1614,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1901,9 +1630,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1920,9 +1646,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1939,9 +1662,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1958,9 +1678,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1977,9 +1694,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -1996,9 +1710,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2015,9 +1726,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2034,9 +1742,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2053,9 +1758,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2072,9 +1774,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2091,9 +1790,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2110,9 +1806,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2129,9 +1822,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2148,9 +1838,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2167,9 +1854,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2186,9 +1870,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2205,9 +1886,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2224,9 +1902,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2243,9 +1918,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2262,9 +1934,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2281,9 +1950,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2300,9 +1966,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2319,9 +1982,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2338,9 +1998,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2357,9 +2014,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2376,9 +2030,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2395,9 +2046,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2414,9 +2062,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2433,9 +2078,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2452,9 +2094,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2471,9 +2110,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2490,9 +2126,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2509,9 +2142,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2528,9 +2158,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2547,9 +2174,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2566,9 +2190,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2585,9 +2206,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2604,9 +2222,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2623,9 +2238,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2642,9 +2254,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2661,9 +2270,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2680,9 +2286,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2699,9 +2302,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2718,9 +2318,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2737,9 +2334,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2756,9 +2350,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2775,9 +2366,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2794,9 +2382,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2813,9 +2398,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2832,9 +2414,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2851,9 +2430,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2870,9 +2446,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2889,9 +2462,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2908,9 +2478,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2927,9 +2494,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2946,9 +2510,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2965,9 +2526,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -2984,9 +2542,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3003,9 +2558,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3022,9 +2574,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3041,9 +2590,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3060,9 +2606,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3079,9 +2622,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3098,9 +2638,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3117,9 +2654,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3136,9 +2670,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3155,9 +2686,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3174,9 +2702,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3193,9 +2718,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3212,9 +2734,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3231,9 +2750,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3250,9 +2766,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3269,9 +2782,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3288,9 +2798,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3307,9 +2814,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3326,9 +2830,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3345,9 +2846,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3364,9 +2862,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3383,9 +2878,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3402,9 +2894,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3421,9 +2910,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3440,9 +2926,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3459,9 +2942,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3478,9 +2958,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3497,9 +2974,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3516,9 +2990,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3535,9 +3006,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3554,9 +3022,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3573,9 +3038,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3592,9 +3054,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3611,9 +3070,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3630,9 +3086,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3649,9 +3102,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3668,9 +3118,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3687,9 +3134,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3706,9 +3150,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3725,9 +3166,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3744,9 +3182,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3763,9 +3198,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3782,9 +3214,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3801,9 +3230,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3820,9 +3246,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3839,9 +3262,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3858,9 +3278,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3877,9 +3294,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3896,9 +3310,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3915,9 +3326,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3934,9 +3342,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3953,9 +3358,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3972,9 +3374,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -3991,9 +3390,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4010,9 +3406,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4029,9 +3422,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4048,9 +3438,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4067,9 +3454,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4086,9 +3470,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4105,9 +3486,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4124,9 +3502,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4143,9 +3518,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4162,9 +3534,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4181,9 +3550,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4200,9 +3566,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4219,9 +3582,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4238,9 +3598,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4257,9 +3614,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4276,9 +3630,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4295,9 +3646,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4314,9 +3662,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4333,9 +3678,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4352,9 +3694,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4371,9 +3710,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4390,9 +3726,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4409,9 +3742,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4428,9 +3758,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4447,9 +3774,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4466,9 +3790,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4485,9 +3806,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4504,9 +3822,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4523,9 +3838,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4542,9 +3854,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4561,9 +3870,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4580,9 +3886,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4599,9 +3902,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4618,9 +3918,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4637,9 +3934,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4656,9 +3950,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4675,9 +3966,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4694,9 +3982,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4713,9 +3998,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4732,9 +4014,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4751,9 +4030,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4770,9 +4046,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4789,9 +4062,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4808,9 +4078,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4827,9 +4094,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4846,9 +4110,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4865,9 +4126,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4884,9 +4142,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4903,9 +4158,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4922,9 +4174,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4941,9 +4190,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4960,9 +4206,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4979,9 +4222,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -4998,9 +4238,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5017,9 +4254,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5036,9 +4270,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5055,9 +4286,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5074,9 +4302,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5093,9 +4318,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5112,9 +4334,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5131,9 +4350,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5150,9 +4366,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5169,9 +4382,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5188,9 +4398,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5207,9 +4414,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5226,9 +4430,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5245,9 +4446,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5264,9 +4462,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5283,9 +4478,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5302,9 +4494,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5321,9 +4510,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5340,9 +4526,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5359,9 +4542,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5378,9 +4558,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5397,9 +4574,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5416,9 +4590,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5435,9 +4606,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5454,9 +4622,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5473,9 +4638,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5492,9 +4654,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5511,9 +4670,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5530,9 +4686,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5549,9 +4702,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5568,9 +4718,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5587,9 +4734,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5606,9 +4750,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5625,9 +4766,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5644,9 +4782,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5663,9 +4798,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5682,9 +4814,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5701,9 +4830,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5720,9 +4846,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5739,9 +4862,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5758,9 +4878,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5777,9 +4894,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5796,9 +4910,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5815,9 +4926,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5834,9 +4942,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5853,9 +4958,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5872,9 +4974,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5891,9 +4990,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5910,9 +5006,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5929,9 +5022,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5948,9 +5038,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5967,9 +5054,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -5986,9 +5070,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -6005,9 +5086,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps"/>
-					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include"/>
 					<Add directory="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm"/>
 				</Compiler>
 				<MakeCommands>
@@ -6017,7 +5095,71 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/test/perf/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="Rose">
+				<Option output="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Rose" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 Rose"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Rose/fast">
+				<Option output="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Rose" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 Rose/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/ObservableBase.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Properties.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/BooleanProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/DoubleProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/FloatProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/IntegerProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/LongProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/ShortProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Property/StringProperty.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Subscription.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/Tools.h">
+			<Option target="Rose"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src/main.cpp">
+			<Option target="Rose"/>
+		</Unit>
 		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/getopt.c">
 			<Option target="opengl"/>
 		</Unit>
@@ -8083,13 +7225,25 @@
 			<Option target="glm_shared"/>
 			<Option target="glm_static"/>
 		</Unit>
-		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Mesh.h">
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Engine.h">
 			<Option target="opengl"/>
 		</Unit>
-		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h">
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/EngineException.h">
 			<Option target="opengl"/>
 		</Unit>
-		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h">
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/InputSystem.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/CursorPositionMessage.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/Message.h">
+			<Option target="opengl"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h">
 			<Option target="opengl"/>
 		</Unit>
 		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp">
@@ -8118,6 +7272,9 @@
 		</Unit>
 		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/src/glfw_config.h.in">
 			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\Rose\RoseCpp\"/>
 		</Unit>
 		<Unit filename="/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\dependencies\glm\"/>

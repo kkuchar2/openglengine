@@ -10,19 +10,21 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-add_subdirectory(dependencies/glfw)
-include_directories(dependencies/glfw)
-include_directories(dependencies/glfw/deps)
-include_directories(dependencies/glfw/include)
-
 set(ZLIB_LIBRARIES zlibstatic)
 set(ENABLE_BOOST_WORKAROUND ON)
 set(BUILD_STATIC_LIB ON)
 set(BUILD_ASSIMP_TOOLS  ON)
 set(ASSIMP_BUILD_STATIC_LIB ON)
 
+add_subdirectory(dependencies/glfw)
 add_subdirectory(dependencies/glm)
+add_subdirectory(dependencies/Rose/RoseCpp)
+
+include_directories(dependencies/glfw)
+include_directories(dependencies/glfw/deps)
+include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
+include_directories(dependencies/Rose/RoseCpp/src)
 
 set(GLAD "${GLFW_SOURCE_DIR}/deps/glad/glad.h" "${GLFW_SOURCE_DIR}/deps/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
@@ -33,9 +35,6 @@ set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps
 #############################################################################################################
 
 file(GLOB_RECURSE SRC_FILES src/*.cpp)
-
-
-# Scan through resource folder for updated files and copy if none existing or changed
 file (GLOB_RECURSE RESOURCE_FILES "resources/*.*")
 
 foreach(resource ${resources})
@@ -66,7 +65,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/Engine/Renderers/BaseCamera.h src/Engine/Primitives/Transform.h)
+set(SOURCE_FILES ${SRC_FILES} src/MessageSystem/BusNode.h src/MessageSystem/Message.h src/MessageSystem/MessageBus.h src/InputSystem.h src/MessageSystem/CursorPositionMessage.h src/Engine/Engine.h src/Engine/EngineException.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

@@ -4,42 +4,64 @@
 #include <functional>
 #include <queue>
 #include <vector>
+#include <memory>
 #include "Message.h"
 
 class MessageBus
 {
+
     private:
-        std::vector<std::function<void (Message)>> receivers;
-        std::queue<Message> messages;
+        std::vector<std::function<void (Message *)>> receivers;
+        std::queue<Message*> messages;
+
+        MessageBus() {}
 
     public:
-        MessageBus() {};
+        MessageBus(MessageBus const&) = delete;
+        MessageBus& operator=(MessageBus const&) = delete;
 
-        // Add receiver for message bus messages
-        void addReceiver(std::function<void (Message)> messageReceiver)
+        static std::shared_ptr<MessageBus> instance()
+        {
+            static std::shared_ptr<MessageBus> s {new MessageBus};
+            return s;
+        }
+
+        void addReceiver(std::function<void (Message *)> messageReceiver)
         {
             receivers.push_back(messageReceiver);
         }
 
-        // Send message through message bus (queue it)
-        void sendMessage(Message message)
+        void sendMessageImpl(Message * message)
         {
             messages.push(message);
         }
 
-        // Iterate through all messages in message queue and send them to all registered receivers
+        static void sendMessage(Message * message) {
+            MessageBus::instance()->sendMessageImpl(message);
+        }
+
         void notify()
         {
             while(!messages.empty()) {
-                for (auto iter = receivers.begin(); iter != receivers.end(); iter++) {
-                    (*iter)(messages.front());
+                for (auto & receiver : receivers) {
+                    // Get reference to pointer and notify current receiver
+                    receiver(messages.front());
                 }
 
+                // Delete only pointer
                 messages.pop();
             }
         }
 
-        ~MessageBus() {};
-};
+        ~MessageBus() {
+            while(!messages.empty()) {
+                // Get reference to pointer and delete data associated to it
+                delete messages.front();
 
+                // Delete only pointer
+                messages.pop();
+            }
+        }
+
+};
 #endif //OPENGL_MESSAGEBUS_H

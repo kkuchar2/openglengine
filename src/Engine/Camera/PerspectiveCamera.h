@@ -8,7 +8,7 @@ class PerspectiveCamera : public BaseCamera {
     public:
         glm::vec3 position = glm::vec3(0.0);
 
-        explicit PerspectiveCamera(Window * window, const glm::vec3 position) : BaseCamera(window) {
+        explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
         }
 

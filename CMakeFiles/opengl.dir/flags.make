@@ -7,11 +7,11 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm 
+C_INCLUDES = -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src 
 
 CXX_FLAGS =   -std=gnu++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm 
+CXX_INCLUDES = -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/include -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm -I/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/src 
 

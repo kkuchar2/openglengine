@@ -7,8 +7,8 @@
       <config projectName="opengl" targetName="test-gtx_normal" />
       <config projectName="opengl" targetName="test-gtc_matrix_integer" />
       <config projectName="opengl" targetName="test-gtx_norm" />
-      <config projectName="opengl" targetName="test-core_force_inline" />
       <config projectName="opengl" targetName="test-ext_scalar_ulp" />
+      <config projectName="opengl" targetName="test-core_force_inline" />
       <config projectName="opengl" targetName="test-gtc_random" />
       <config projectName="opengl" targetName="test-gtc_type_ptr" />
       <config projectName="opengl" targetName="test-gtx_vector_angle" />
@@ -22,19 +22,19 @@
       <config projectName="opengl" targetName="test-gtx_rotate_normalized_axis" />
       <config projectName="opengl" targetName="test-core_type_int" />
       <config projectName="opengl" targetName="test-gtx_color_space_YCoCg" />
-      <config projectName="opengl" targetName="test-gtx_gradient_paint" />
-      <config projectName="opengl" targetName="test-gtx_type_aligned" />
       <config projectName="opengl" targetName="test-gtx_vector_query" />
+      <config projectName="opengl" targetName="test-gtx_type_aligned" />
+      <config projectName="opengl" targetName="test-gtx_gradient_paint" />
       <config projectName="opengl" targetName="test-perf_matrix_inverse" />
       <config projectName="opengl" targetName="test-gtx_quaternion" />
       <config projectName="opengl" targetName="test-gtc_matrix_inverse" />
       <config projectName="opengl" targetName="test-gtc_integer" />
-      <config projectName="opengl" targetName="test-gtx_exterior_product" />
       <config projectName="opengl" targetName="test-gtx_intersect" />
+      <config projectName="opengl" targetName="test-gtx_exterior_product" />
       <config projectName="opengl" targetName="test-gtx_common" />
+      <config projectName="opengl" targetName="test-gtx_log_base" />
       <config projectName="opengl" targetName="test-gtc_ulp" />
       <config projectName="opengl" targetName="test-gtc_vec1" />
-      <config projectName="opengl" targetName="test-gtx_log_base" />
       <config projectName="opengl" targetName="test-gtc_bitfield" />
       <config projectName="opengl" targetName="test-gtx_normalize_dot" />
       <config projectName="opengl" targetName="test-ext_scalar_int_sized" />
@@ -47,16 +47,16 @@
       <config projectName="opengl" targetName="test-gtx_rotate_vector" />
       <config projectName="opengl" targetName="test-core_func_geometric" />
       <config projectName="opengl" targetName="test-gtc_noise" />
-      <config projectName="opengl" targetName="test-gtc_type_aligned" />
       <config projectName="opengl" targetName="test-gtx_polar_coordinates" />
+      <config projectName="opengl" targetName="test-gtc_type_aligned" />
       <config projectName="opengl" targetName="test-ext_vector_common" />
       <config projectName="opengl" targetName="test-core_func_vector_relational" />
       <config projectName="opengl" targetName="test-core_setup_precision" />
       <config projectName="opengl" targetName="test-ext_quaternion_trigonometric" />
       <config projectName="opengl" targetName="test-gtx_fast_trigonometry" />
       <config projectName="opengl" targetName="test-ext_scalar_constants" />
-      <config projectName="opengl" targetName="test-ext_vector_relational" />
       <config projectName="opengl" targetName="test-gtx_io" />
+      <config projectName="opengl" targetName="test-ext_vector_relational" />
       <config projectName="opengl" targetName="test-gtx_euler_angle" />
       <config projectName="opengl" targetName="test-gtx_projection" />
       <config projectName="opengl" targetName="test-core_func_integer_bit_count" />
@@ -65,14 +65,15 @@
       <config projectName="opengl" targetName="test-core_setup_force_size_t_length" />
       <config projectName="opengl" targetName="test-gtx_orthonormalize" />
       <config projectName="opengl" targetName="test-gtc_quaternion" />
-      <config projectName="opengl" targetName="test-core_type_aligned" />
       <config projectName="opengl" targetName="test-gtx_fast_square_root" />
-      <config projectName="opengl" targetName="uninstall" />
+      <config projectName="opengl" targetName="test-core_type_aligned" />
       <config projectName="opengl" targetName="test-core_type_mat2x4" />
       <config projectName="opengl" targetName="test-gtx_perpendicular" />
+      <config projectName="opengl" targetName="uninstall" />
       <config projectName="opengl" targetName="test-core_type_mat2x3" />
       <config projectName="opengl" targetName="test-core_type_mat2x2" />
       <config projectName="opengl" targetName="test-gtx_texture" />
+      <config projectName="opengl" targetName="Rose" />
       <config projectName="opengl" targetName="test-core_func_matrix" />
       <config projectName="opengl" targetName="test-core_force_xyzw_only" />
       <config projectName="opengl" targetName="test-perf_matrix_div" />
@@ -84,41 +85,41 @@
       <config projectName="opengl" targetName="test-gtx_scalar_multiplication" />
       <config projectName="opengl" targetName="test-ext_quaternion_geometric" />
       <config projectName="opengl" targetName="test-gtx_matrix_interpolation" />
-      <config projectName="opengl" targetName="test-ext_scalar_relational" />
       <config projectName="opengl" targetName="test-gtx_component_wise" />
-      <config projectName="opengl" targetName="test-core_setup_message" />
+      <config projectName="opengl" targetName="test-ext_scalar_relational" />
       <config projectName="opengl" targetName="test-gtx_range" />
-      <config projectName="opengl" targetName="test-core_force_aligned_gentypes" />
+      <config projectName="opengl" targetName="test-core_setup_message" />
       <config projectName="opengl" targetName="test-gtx_matrix_factorisation" />
+      <config projectName="opengl" targetName="test-core_force_aligned_gentypes" />
       <config projectName="opengl" targetName="opengl" />
       <config projectName="opengl" targetName="test-gtx_vec_swizzle" />
       <config projectName="opengl" targetName="test-core_func_integer_find_lsb" />
       <config projectName="opengl" targetName="test-gtx_integer" />
       <config projectName="opengl" targetName="test-ext_quaternion_type" />
       <config projectName="opengl" targetName="test-gtc_matrix_access" />
-      <config projectName="opengl" targetName="test-core_cpp_defaulted_ctor" />
       <config projectName="opengl" targetName="test-gtx_color_encoding" />
+      <config projectName="opengl" targetName="test-core_cpp_defaulted_ctor" />
       <config projectName="opengl" targetName="test-core_type_vec3" />
-      <config projectName="opengl" targetName="test-core_force_pure" />
       <config projectName="opengl" targetName="test-core_type_vec4" />
       <config projectName="opengl" targetName="test-ext_matrix_transform" />
+      <config projectName="opengl" targetName="test-core_force_pure" />
       <config projectName="opengl" targetName="test-gtc_packing" />
-      <config projectName="opengl" targetName="glm_static" />
       <config projectName="opengl" targetName="test-gtx_fast_exponential" />
+      <config projectName="opengl" targetName="glm_static" />
       <config projectName="opengl" targetName="test-gtx_easing" />
       <config projectName="opengl" targetName="test-perf_matrix_mul_vector" />
       <config projectName="opengl" targetName="test-core_force_unrestricted_gentype" />
       <config projectName="opengl" targetName="test-core_type_ctor" />
-      <config projectName="opengl" targetName="test-gtx_functions" />
       <config projectName="opengl" targetName="test-gtx_matrix_operation" />
+      <config projectName="opengl" targetName="test-gtx_functions" />
       <config projectName="opengl" targetName="test-ext_vector_bool1" />
       <config projectName="opengl" targetName="test-gtx_wrap" />
       <config projectName="opengl" targetName="test-gtc_round" />
       <config projectName="opengl" targetName="test-core_cpp_constexpr" />
       <config projectName="opengl" targetName="test-core_type_mat3x3" />
       <config projectName="opengl" targetName="test-core_type_mat3x2" />
-      <config projectName="opengl" targetName="test-core_setup_platform_unknown" />
       <config projectName="opengl" targetName="test-gtx_extended_min_max" />
+      <config projectName="opengl" targetName="test-core_setup_platform_unknown" />
       <config projectName="opengl" targetName="test-core_type_vec1" />
       <config projectName="opengl" targetName="test-core_type_vec2" />
       <config projectName="opengl" targetName="test-ext_vector_ulp" />
@@ -131,17 +132,17 @@
       <config projectName="opengl" targetName="test-gtx_dual_quaternion" />
       <config projectName="opengl" targetName="test-gtx_scalar_relational" />
       <config projectName="opengl" targetName="test-ext_quaternion_common" />
-      <config projectName="opengl" targetName="test-gtc_color_space" />
       <config projectName="opengl" targetName="test-perf_vector_mul_matrix" />
+      <config projectName="opengl" targetName="test-gtc_color_space" />
       <config projectName="opengl" targetName="test-perf_matrix_mul" />
       <config projectName="opengl" targetName="test-gtx_handed_coordinate_space" />
       <config projectName="opengl" targetName="test-ext_scalar_common" />
-      <config projectName="opengl" targetName="test-core_setup_force_cxx98" />
-      <config projectName="opengl" targetName="test-gtc_epsilon" />
       <config projectName="opengl" targetName="test-gtx_load" />
+      <config projectName="opengl" targetName="test-gtc_epsilon" />
+      <config projectName="opengl" targetName="test-core_setup_force_cxx98" />
       <config projectName="opengl" targetName="test-ext_vector_iec559" />
-      <config projectName="opengl" targetName="test-core_type_cast" />
       <config projectName="opengl" targetName="test-gtx_matrix_cross_product" />
+      <config projectName="opengl" targetName="test-core_type_cast" />
       <config projectName="opengl" targetName="test-ext_vec1" />
       <config projectName="opengl" targetName="test-core_func_integer_find_msb" />
       <config projectName="opengl" targetName="test-core_func_trigonometric" />
@@ -150,9 +151,9 @@
       <config projectName="opengl" targetName="test-core_func_exponential" />
       <config projectName="opengl" targetName="test-gtc_matrix_transform" />
       <config projectName="opengl" targetName="test-gtx_spline" />
-      <config projectName="opengl" targetName="test-ext_quaternion_exponential" />
-      <config projectName="opengl" targetName="test-gtx" />
       <config projectName="opengl" targetName="test-gtx_matrix_transform_2d" />
+      <config projectName="opengl" targetName="test-gtx" />
+      <config projectName="opengl" targetName="test-ext_quaternion_exponential" />
       <config projectName="opengl" targetName="test-ext_quaternion_transform" />
       <config projectName="opengl" targetName="test-ext_scalar_uint_sized" />
       <config projectName="opengl" targetName="test-gtx_type_trait" />
@@ -168,23 +169,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63443695-55e4-4121-8778-ecc9b645b60f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dependencies/Rose" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/src/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opengl" beforeDir="false" afterPath="$PROJECT_DIR$/opengl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/Mesh.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opengl.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/opengl.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/shaders/.Mandelbrot.frag.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/shaders/Mandelbrot.frag" beforeDir="false" afterPath="$PROJECT_DIR$/resources/shaders/Mandelbrot.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Engine/Renderers/OrtographicCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Camera/OrtographicCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Engine/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Shader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/TextureLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/TextureLoader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MessageSystem/BusNode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MessageSystem/Message.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MessageSystem/MessageBus.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -199,6 +217,7 @@
     <ignored path="$PROJECT_DIR$/dependencies/glm/test/gtc/CMakeFiles/" />
     <ignored path="$PROJECT_DIR$/dependencies/glm/test/CMakeFiles/" />
     <ignored path="$PROJECT_DIR$/dependencies/glfw/CMakeFiles/" />
+    <ignored path="$PROJECT_DIR$/dependencies/Rose/RoseCpp/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,12 +226,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+            <state relative-caret-position="697">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -221,79 +240,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/Window.h">
+        <entry file="file://$PROJECT_DIR$/src/Engine/Shader.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-              <folding>
-                <element signature="e#63#94#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#57#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/TextureLoader.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="62" column="39" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/shaders/Grid.frag">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/shaders/Grid.vert">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Quad.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+            <state relative-caret-position="-780">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -301,13 +251,91 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="222">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#61#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Quad.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.frag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="32" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.vert">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Engine/TextureLoader.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Engine/Engine.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+              <folding>
+                <element signature="e#49#77#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#57#76#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Sending</find>
+      <find>Window:</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -315,20 +343,31 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/shaders/Mandelbrot.frag" />
         <option value="$PROJECT_DIR$/src/Engine/Renderers/OrthographicProjectionRenderer.h" />
-        <option value="$PROJECT_DIR$/src/Engine/Renderers/OrtographicCamera.h" />
         <option value="$PROJECT_DIR$/src/Engine/Primitives/Transform.h" />
         <option value="$PROJECT_DIR$/src/Engine/Primitives/Mesh.h" />
-        <option value="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" />
-        <option value="$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h" />
-        <option value="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" />
-        <option value="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" />
-        <option value="$PROJECT_DIR$/src/Engine/TextureLoader.h" />
         <option value="$PROJECT_DIR$/resources/shaders/Grid.vert" />
         <option value="$PROJECT_DIR$/resources/shaders/Grid.frag" />
+        <option value="$PROJECT_DIR$/src/MessageSystem/SimpleSingleton.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Shader.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/MessageSystem/BusNode.h" />
+        <option value="$PROJECT_DIR$/src/MessageSystem/Message.h" />
+        <option value="$PROJECT_DIR$/src/MessageSystem/CursorPositionMessage.h" />
+        <option value="$PROJECT_DIR$/src/InputSystem.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Renderers/OrtographicCamera.h" />
         <option value="$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h" />
+        <option value="$PROJECT_DIR$/src/Engine/EngineException.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h" />
+        <option value="$PROJECT_DIR$/src/MessageSystem/MessageBus.h" />
         <option value="$PROJECT_DIR$/src/Engine/Window.h" />
+        <option value="$PROJECT_DIR$/resources/shaders/Mandelbrot.frag" />
+        <option value="$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h" />
+        <option value="$PROJECT_DIR$/src/Engine/TextureLoader.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Engine.h" />
+        <option value="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
       </list>
     </option>
@@ -340,19 +379,25 @@
     <option name="width" value="1717" />
     <option name="height" value="893" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="opengl" type="b2602c69:ProjectViewProjectNode" />
               <item name="OpenGLSandbox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opengl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenGLSandbox" type="462c0819:PsiDirectoryNode" />
+              <item name="dependencies" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="opengl" type="b2602c69:ProjectViewProjectNode" />
@@ -381,19 +426,26 @@
               <item name="OpenGLSandbox" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="Primitives" type="462c0819:PsiDirectoryNode" />
+              <item name="Camera" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="opengl" type="b2602c69:ProjectViewProjectNode" />
               <item name="OpenGLSandbox" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="Renderers" type="462c0819:PsiDirectoryNode" />
+              <item name="Primitives" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opengl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenGLSandbox" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="MessageSystem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,7 +453,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -416,6 +468,11 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.opengl">
+    <configuration name="Rose" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opengl" TARGET_NAME="Rose" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="opengl" RUN_TARGET_NAME="Rose">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opengl" TARGET_NAME="glfw" CONFIG_NAME="Default">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -1359,6 +1416,7 @@
       <item itemvalue="Application.test-perf_matrix_mul_vector" />
       <item itemvalue="Application.test-perf_matrix_transpose" />
       <item itemvalue="Application.test-perf_vector_mul_matrix" />
+      <item itemvalue="Application.Rose" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -1372,60 +1430,62 @@
       <option name="presentableId" value="Default" />
       <updated>1548926493624</updated>
       <workItem from="1548926494760" duration="5292000" />
+      <workItem from="1549011316642" duration="11701000" />
+      <workItem from="1549023872923" duration="12196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19832000" />
+    <option name="totallyTimeSpent" value="43773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="1920" height="996" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19637139" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Messages" weight="0.32911393" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="CMake" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32911393" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39930955" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="LuaJ" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32911393" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="LuaJ" order="3" weight="0.32977587" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19637139" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="CMake" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.32911393" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.32911393" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="LuaJ" order="0" />
-      <window_info anchor="right" id="Database" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39930955" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32911393" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="LuaJ" order="3" weight="0.32977587" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1438,28 +1498,7 @@
     <entry file="file://$PROJECT_DIR$/resources/textures/texture2.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Engine/GameObject.h" />
-    <entry file="file://$PROJECT_DIR$/src/Engine/Renderers/OrtographicCamera.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Transform.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1467,44 +1506,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Shader.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Mesh.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Quad.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/TextureLoader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Mesh.h" />
     <entry file="file://$PROJECT_DIR$/dependencies/glm/glm/ext/matrix_transform.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -1512,19 +1514,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/shaders/Grid.vert">
+    <entry file="file://$PROJECT_DIR$/src/MessageSystem/SimpleSingleton.h" />
+    <entry file="file://$PROJECT_DIR$/CMakeCache.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/Rose/RoseCpp/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Renderers/BaseCamera.h">
+    <entry file="file://$PROJECT_DIR$/dependencies/glfw/include/GLFW/glfw3.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="296">
+          <caret line="1362" column="32" selection-start-line="1362" selection-start-column="16" selection-end-line="1362" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessageSystem/BusNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
-            <element signature="e#57#76#0" expanded="true" />
+            <element signature="e#52#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stl_queue.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="286" column="9" selection-start-line="286" selection-start-column="9" selection-end-line="286" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessageSystem/CursorPositionMessage.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessageSystem/Message.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InputSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/EngineException.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#67#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Camera/OrtographicCamera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessageSystem/MessageBus.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <folding>
+            <element signature="e#57#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1532,31 +1607,117 @@
     <entry file="file://$PROJECT_DIR$/resources/shaders/Grid.frag">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Engine/Renderers/PerspectiveCamera.h">
+    <entry file="file://$PROJECT_DIR$/resources/shaders/Grid.vert">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="77">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Engine/Window.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        <state relative-caret-position="517">
+          <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
           <folding>
             <element signature="e#63#94#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/shaders/Mandelbrot.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="32" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#57#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/shared_ptr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="106" column="10" selection-start-line="106" selection-start-column="10" selection-end-line="106" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Shader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-780">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/TextureLoader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/Quad.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Engine.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+          <folding>
+            <element signature="e#49#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#61#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+        <state relative-caret-position="697">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

@@ -70,8 +70,8 @@ install/strip/fast: preinstall/fast
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/home/k.kucharski/software/clion-2018.3.2/bin/cmake/linux/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/k.kucharski/software/clion-2018.3.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -2197,6 +2197,19 @@ test-perf_vector_mul_matrix/fast:
 	$(MAKE) -f dependencies/glm/test/perf/CMakeFiles/test-perf_vector_mul_matrix.dir/build.make dependencies/glm/test/perf/CMakeFiles/test-perf_vector_mul_matrix.dir/build
 .PHONY : test-perf_vector_mul_matrix/fast
 
+#=============================================================================
+# Target rules for targets named Rose
+
+# Build rule for target.
+Rose: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Rose
+.PHONY : Rose
+
+# fast build rule for target.
+Rose/fast:
+	$(MAKE) -f dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build.make dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/build
+.PHONY : Rose/fast
+
 dependencies/glfw/deps/getopt.o: dependencies/glfw/deps/getopt.c.o
 
 .PHONY : dependencies/glfw/deps/getopt.o
@@ -2474,6 +2487,7 @@ help:
 	@echo "... test-perf_matrix_mul"
 	@echo "... test-perf_matrix_mul_vector"
 	@echo "... test-perf_vector_mul_matrix"
+	@echo "... Rose"
 	@echo "... dependencies/glfw/deps/getopt.o"
 	@echo "... dependencies/glfw/deps/getopt.i"
 	@echo "... dependencies/glfw/deps/getopt.s"

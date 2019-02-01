@@ -17,6 +17,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "dependencies/glfw/deps"
   "dependencies/glfw/include"
   "dependencies/glm"
+  "dependencies/Rose/RoseCpp/src"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp" "/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/src/main.cpp.o"
@@ -29,6 +30,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "dependencies/glfw/deps"
   "dependencies/glfw/include"
   "dependencies/glm"
+  "dependencies/Rose/RoseCpp/src"
   )
 
 # Targets to which this target links.

@@ -11,16 +11,23 @@ CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.o: dependencies/glfw/deps/gl
 CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o: dependencies/glfw/deps/tinycthread.c
 CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o: dependencies/glfw/deps/tinycthread.h
 
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Camera/BaseCamera.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Camera/OrtographicCamera.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Camera/PerspectiveCamera.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Engine.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/EngineException.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/Quad.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/RenderObject.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/Transform.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Primitives/TrianglePrimitive.h
-CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/BaseCamera.h
-CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/OrtographicCamera.h
-CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Renderers/PerspectiveCamera.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Shader.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/TextureLoader.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/Engine/Window.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/InputSystem.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/MessageSystem/BusNode.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/MessageSystem/CursorPositionMessage.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/MessageSystem/Message.h
+CMakeFiles/opengl.dir/src/main.cpp.o: src/MessageSystem/MessageBus.h
 CMakeFiles/opengl.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/opengl.dir/src/main.cpp.o: dependencies/glfw/deps/KHR/khrplatform.h
 CMakeFiles/opengl.dir/src/main.cpp.o: dependencies/glfw/deps/glad/glad.h

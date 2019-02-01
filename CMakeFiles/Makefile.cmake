@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.13.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.13.2/CMakeSystem.cmake"
   "CMakeLists.txt"
+  "dependencies/Rose/RoseCpp/CMakeLists.txt"
   "dependencies/glfw/CMake/modules/FindVulkan.cmake"
   "dependencies/glfw/CMakeLists.txt"
   "dependencies/glfw/cmake_uninstall.cmake.in"
@@ -85,6 +86,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "dependencies/glm/test/gtc/CMakeFiles/CMakeDirectoryInformation.cmake"
   "dependencies/glm/test/gtx/CMakeFiles/CMakeDirectoryInformation.cmake"
   "dependencies/glm/test/perf/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "dependencies/Rose/RoseCpp/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -246,4 +248,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "dependencies/glm/test/perf/CMakeFiles/test-perf_matrix_mul.dir/DependInfo.cmake"
   "dependencies/glm/test/perf/CMakeFiles/test-perf_matrix_mul_vector.dir/DependInfo.cmake"
   "dependencies/glm/test/perf/CMakeFiles/test-perf_vector_mul_matrix.dir/DependInfo.cmake"
+  "dependencies/Rose/RoseCpp/CMakeFiles/Rose.dir/DependInfo.cmake"
   )

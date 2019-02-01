@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/cmake_install.cmake")
   include("/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glm/cmake_install.cmake")
+  include("/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/Rose/RoseCpp/cmake_install.cmake")
 
 endif()
 

@@ -32,7 +32,6 @@ class TextureLoader {
                 return 0;
             }
 
-            dataPos    = *(int*)&(header[0x0A]);
             imageSize  = *(int*)&(header[0x22]);
             width      = *(int*)&(header[0x12]);
             height     = *(int*)&(header[0x16]);
@@ -45,9 +44,6 @@ class TextureLoader {
                 imageSize = width * height * 3;
             }
 
-            if (dataPos == 0) {
-                dataPos = 54;
-            }
 
             data = new unsigned char [imageSize];
 
@@ -55,21 +51,12 @@ class TextureLoader {
 
             fclose(file);
 
-            // Create one OpenGL texture
             GLuint textureID;
             glGenTextures(1, &textureID);
-
-            // "Bind" the newly created texture : all future texture functions will modify this texture
             glBindTexture(GL_TEXTURE_2D, textureID);
-
-            // Set parameters
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-            // Give the image to OpenGL
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
-
-            std::cout << "Sucessfully created texture!" << std::endl;
 
             return textureID;
         }

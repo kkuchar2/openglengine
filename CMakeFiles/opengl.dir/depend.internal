@@ -12,16 +12,23 @@ CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o
  /home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/tinycthread.c
  /home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/tinycthread.h
 CMakeFiles/opengl.dir/src/main.cpp.o
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/OrtographicCamera.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/PerspectiveCamera.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Engine.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/EngineException.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
- /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/BaseCamera.h
- /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/OrtographicCamera.h
- /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Renderers/PerspectiveCamera.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/InputSystem.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/CursorPositionMessage.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/Message.h
+ /home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
  /home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp
  dependencies/glfw/deps/KHR/khrplatform.h
  dependencies/glfw/deps/glad/glad.h

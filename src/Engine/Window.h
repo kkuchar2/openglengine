@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 
 #include <cstdlib>
+#include <functional>
 
 class Window {
 
@@ -76,6 +77,7 @@ class Window {
             glfwGetFramebufferSize(window, &width, &height);
             aspectRatio = (float) width / (float) height;
             glViewport(0, 0, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
+            UpdateTime();
         }
 
         void swapBuffers() {

@@ -65,11 +65,11 @@ void main()
     // Complex number
     vec2 c = vec2(normPos.x, normPos.y);
 
-    float a = madelbrot(c, iterations) / iterations;
+    float a = madelbrot(c, 80) / 80;
 
     vec3 one = vec3(1.0, 1.0, 1.0);
 
     vec3 rgb = texture(tex, f_uv).rgb;
 
-    FragColor = vec4(rgb * (1.0 - a), 1.0);
+    FragColor = vec4(rgb * a, 1.0);
 }

@@ -1,12 +1,22 @@
 #ifndef OPENGL_RENDEROBJECT_H
 #define OPENGL_RENDEROBJECT_H
 
+#include <memory>
+
 #include "Transform.h"
+#include "../TextureLoader.h"
+
+enum RenderFlag {
+    ORTHOGRAPHIC,
+    PERSPECTIVE
+};
 
 class RenderObject {
     public:
+        RenderFlag renderFlag;
+        GLuint textureId = 0;
 
-        Shader * shader;
+        std::shared_ptr<Shader> shader;
 
         GLuint vao{};
         GLuint vbo{};
@@ -15,7 +25,15 @@ class RenderObject {
 
         Transform transform;
 
-        explicit RenderObject(Shader * shader) {
+        void loadTexture(const char * path) {
+            textureId = TextureLoader::load(path);
+        }
+
+        void useRendering(RenderFlag renderFlag) {
+            this->renderFlag = renderFlag;
+        }
+
+        void useShader(std::shared_ptr<Shader> & shader) {
             this->shader = shader;
         }
 

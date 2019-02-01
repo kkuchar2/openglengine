@@ -5,7 +5,7 @@
 
 class OrtographicCamera : public BaseCamera {
     public:
-        explicit OrtographicCamera(Window * window) : BaseCamera(window) {}
+        explicit OrtographicCamera(std::shared_ptr<Window> & window) : BaseCamera(window) {}
 
         glm::mat4x4 getModelMatrix() override {
             return glm::scale(glm::mat4(1.0), glm::vec3(window->width - 1, window->height - 1, 1.0f));
