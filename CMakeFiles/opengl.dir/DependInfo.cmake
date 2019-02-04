@@ -5,11 +5,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/getopt.c" "/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.o"
-  "/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/glad.c" "/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.o"
-  "/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/deps/tinycthread.c" "/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o"
+  "C:/Users/krzys/Desktop/OpenGLSandbox/dependencies/glfw/deps/getopt.c" "C:/Users/krzys/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.obj"
+  "C:/Users/krzys/Desktop/OpenGLSandbox/dependencies/glfw/deps/glad.c" "C:/Users/krzys/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.obj"
+  "C:/Users/krzys/Desktop/OpenGLSandbox/dependencies/glfw/deps/tinycthread.c" "C:/Users/krzys/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
@@ -20,9 +20,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "dependencies/Rose/RoseCpp/src"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp" "/home/k.kucharski/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/src/main.cpp.o"
+  "C:/Users/krzys/Desktop/OpenGLSandbox/src/main.cpp" "C:/Users/krzys/Desktop/OpenGLSandbox/CMakeFiles/opengl.dir/src/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
@@ -35,7 +35,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/k.kucharski/Desktop/OpenGLSandbox/dependencies/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "C:/Users/krzys/Desktop/OpenGLSandbox/dependencies/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

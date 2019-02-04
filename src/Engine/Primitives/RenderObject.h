@@ -5,6 +5,7 @@
 
 #include "Transform.h"
 #include "../TextureLoader.h"
+#include "../Shader.h"
 
 enum RenderFlag {
     ORTHOGRAPHIC,

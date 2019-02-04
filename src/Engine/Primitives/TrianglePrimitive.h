@@ -6,6 +6,9 @@
 class TrianglePrimitive : public RenderObject {
 
     public:
+
+        TrianglePrimitive() : RenderObject() { }
+
         void Render(int count) {
             RenderObject::Render(GL_TRIANGLES, count);
         }

@@ -1,39 +1,55 @@
 #ifndef OPENGL_INPUTSYSTEM_H
 #define OPENGL_INPUTSYSTEM_H
 
-#include <include/GLFW/glfw3.h>
-#include "MessageSystem/BusNode.h"
-#include "Engine/Window.h"
-#include "MessageSystem/CursorPositionMessage.h"
+#include <glm/glm.hpp>
+#include "MessageSystem/MessageBus.h"
 
 class InputSystem {
 
     private:
-        static void cursor_position_callback(GLFWwindow * window, double xpos, double ypos)
-        {
-            MessageBus::sendMessage(new CursorPositionMessage(xpos, ypos));
-        }
+        glm::vec2 oldMousePosition = glm::vec2(0.0, 0.0);
+        glm::vec2 currentMousePosition = glm::vec2(0.0, 0.0);
+        glm::vec2 mousePositionDelta = glm::vec2(0.0, 0.0);
 
-        static void mouse_button_callback(GLFWwindow * window, int button, int action, int mods)
-        {
-            MessageBus::sendMessage(new CursorButtonMessage(button, action, mods));
-        }
-
-        static void scroll_callback(GLFWwindow * window, double xoffset, double yoffset) {
-            MessageBus::sendMessage(new ScrollMessage(xoffset, yoffset));
-        }
-
-        static void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
-        {
-            MessageBus::sendMessage(new KeyMessage(key, scancode, action, mods));
-        }
-
+        std::vector<bool> pressed;
     public:
-        static void init(std::shared_ptr<Window> & window) {
-            window->setCursorPositionCallback(InputSystem::cursor_position_callback);
-            window->setScrollCallback(InputSystem::scroll_callback);
-            window->setKeyCallback(InputSystem::key_callback);
-            window->setMouseButtonCallback(InputSystem::mouse_button_callback);
+
+        InputSystem() : pressed(349, false) {
+        }
+
+        void onCursorPositionChanged(double xpos, double ypos) {
+            currentMousePosition = glm::vec2(xpos, ypos);
+            mousePositionDelta = currentMousePosition - oldMousePosition;
+            oldMousePosition = currentMousePosition;
+            MessageBus::sendMessage(std::make_shared<CursorPositionMessage>(xpos, ypos));
+            MessageBus::sendMessage(std::make_shared<CursorDeltaMessage>(mousePositionDelta));
+        }
+
+        void onMouseButtonPressed(int button, int action, int mods) {
+            MessageBus::sendMessage(std::make_shared<CursorButtonMessage>(button, action, mods));
+        }
+
+        void onMouseButtonScroll(double xoffset, double yoffset) {
+            MessageBus::sendMessage(std::make_shared<ScrollMessage>(xoffset, yoffset));
+        }
+
+        void onKeyboardKeyPressed(int key, int scancode, int action, int mods) {
+            if(action == GLFW_PRESS) {
+                pressed[key] = true;
+            }
+            else if(action == GLFW_RELEASE) {
+                pressed[key] = false;
+            }
+
+            for (int i = 0; i < pressed.size(); i++) {
+                if (pressed[i]) {
+                    std::cout << i << " ";
+                }
+            }
+
+            std::cout << std::endl;
+
+            MessageBus::sendMessage(std::make_shared<KeyMessage>(pressed));
         }
 };
 

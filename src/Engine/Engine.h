@@ -1,10 +1,13 @@
 #ifndef OPENGL_ENGINE_H
 #define OPENGL_ENGINE_H
 
-#include "EngineException.h"
-
+#include <deps/glad/glad.h>
 #include "Camera/OrtographicCamera.h"
 #include "Camera/PerspectiveCamera.h"
+
+#include "Engine/Primitives/Quad.h"
+#include "EngineException.h"
+#include "../InputDispatcher.h"
 
 class Engine {
     public:
@@ -23,7 +26,7 @@ class Engine {
 
             window = std::make_shared<Window>(600, 600);
 
-            InputSystem::init(window);
+            InputDispatcher::init(window);
 
             orthographicCamera = std::make_shared<OrtographicCamera>(window);
             perspectiveCamera = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));

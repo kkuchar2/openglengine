@@ -1,10 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/opengl.dir/src/main.cpp.o"
-  "CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o"
-  "CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.o"
-  "CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.o"
+  "CMakeFiles/opengl.dir/src/main.cpp.obj"
+  "CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.obj"
+  "CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.obj"
+  "CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.obj"
   "opengl.pdb"
-  "opengl"
+  "opengl.exe"
+  "opengl.exe.manifest"
+  "opengl.lib"
 )
 
 # Per-language clean rules from dependency scanning.

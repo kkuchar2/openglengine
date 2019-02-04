@@ -26,7 +26,7 @@ static int count = 6;
 
 class Quad : public TrianglePrimitive {
     public:
-        explicit Quad() {
+        explicit Quad() : TrianglePrimitive() {
             prepare(vertices, indices, uvs, sizeof(vertices), sizeof(indices), sizeof(uvs));
         }
 

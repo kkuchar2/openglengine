@@ -1,7 +1,6 @@
 #ifndef OPENGL_TRANSFORM_H
 #define OPENGL_TRANSFORM_H
 
-
 #include <glm/vec3.hpp>
 
 struct Transform {

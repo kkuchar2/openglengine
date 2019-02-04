@@ -1,7 +1,6 @@
 #ifndef OPENGL_SHADER_H
 #define OPENGL_SHADER_H
 
-#include <glad/glad.h>
 #include <glm/glm.hpp>
 
 #include <string>

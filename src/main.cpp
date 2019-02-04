@@ -1,25 +1,9 @@
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include "Engine/Shader.h"
-#include "Engine/Primitives/RenderObject.h"
-#include "Engine/TextureLoader.h"
-#include "Engine/Primitives/Quad.h"
-#include "Engine/Window.h"
-#include "Engine/Camera/OrtographicCamera.h"
-#include "Engine/Camera/PerspectiveCamera.h"
-#include "MessageSystem/BusNode.h"
-#include "InputSystem.h"
 #include "Engine/Engine.h"
 
-#include <iostream>
-#include <memory>
-#include <functional>
-
-std::shared_ptr<Engine> engine;
-
 int main() {
+
+    std::shared_ptr<Engine> engine;
+
     try {
         engine = std::make_shared<Engine>();
     }
@@ -40,7 +24,7 @@ int main() {
     quad->transform.scale = glm::vec3(3.0f);
 
     gridQuad->useRendering(RenderFlag::PERSPECTIVE);
-    gridQuad->useShader(gridShader);
+    gridQuad->useShader(mandelbrotShader);
     gridQuad->loadTexture("resources/textures/texture_white.bmp");
     gridQuad->transform.scale = glm::vec3(20.0f, 20.0f, 20.0f);
     gridQuad->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);

@@ -1,10 +1,7 @@
 #ifndef OPENGL_WINDOWMANAGER_H
 #define OPENGL_WINDOWMANAGER_H
 
-#include <include/GLFW/glfw3.h>
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
 #include <cstdlib>
 #include <functional>
 

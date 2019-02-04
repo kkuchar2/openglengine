@@ -11,12 +11,11 @@ class MessageBus
 {
 
     private:
-        std::vector<std::function<void (Message *)>> receivers;
-        std::queue<Message*> messages;
+        std::vector<std::function<void (std::shared_ptr<Message>&)>> receivers;
+        std::queue<std::shared_ptr<Message>> messages;
+        MessageBus() = default;
 
-        MessageBus() {}
-
-    public:
+public:
         MessageBus(MessageBus const&) = delete;
         MessageBus& operator=(MessageBus const&) = delete;
 
@@ -26,17 +25,18 @@ class MessageBus
             return s;
         }
 
-        void addReceiver(std::function<void (Message *)> messageReceiver)
+        void addReceiver(std::function<void (std::shared_ptr<Message>&)> messageReceiver)
         {
             receivers.push_back(messageReceiver);
         }
 
-        void sendMessageImpl(Message * message)
+        void sendMessageImpl(std::shared_ptr<Message> & message)
         {
             messages.push(message);
+            notify();
         }
 
-        static void sendMessage(Message * message) {
+        static void sendMessage(std::shared_ptr<Message> message) {
             MessageBus::instance()->sendMessageImpl(message);
         }
 
@@ -55,10 +55,6 @@ class MessageBus
 
         ~MessageBus() {
             while(!messages.empty()) {
-                // Get reference to pointer and delete data associated to it
-                delete messages.front();
-
-                // Delete only pointer
                 messages.pop();
             }
         }

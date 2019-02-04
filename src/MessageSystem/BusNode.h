@@ -11,27 +11,27 @@ class BusNode {
 
 
     protected:
-        MessageBus * messageBus;
+        std::shared_ptr<MessageBus> messageBus;
 
-        std::function<void(Message *)> getNotifyFunc() {
-            std::function<void(Message *)> messageListener = [this](Message * message) -> void {
+        std::function<void(std::shared_ptr<Message>&)> getNotifyFunc() {
+            std::function<void(std::shared_ptr<Message>&)> messageListener = [this](std::shared_ptr<Message> & message) -> void {
                 this->onNotify(message);
             };
             return messageListener;
         }
 
-        void send(Message * message) {
+        void send(std::shared_ptr<Message> & message) {
             messageBus->sendMessage(message);
         }
 
-        virtual void onNotify(Message * message) {
+        virtual void onNotify(std::shared_ptr<Message> & message) {
             // Do something here. Your choice. You could do something like this.
             // std::cout << "Siopao! Siopao! Siopao! (Someone forgot to implement onNotify().)" << std::endl;
         }
 
     public:
-        explicit BusNode(MessageBus * messageBus) {
-            this->messageBus = messageBus;
+        explicit BusNode() {
+            this->messageBus = MessageBus::instance();
             this->messageBus->addReceiver(this->getNotifyFunc());
         }
 
