@@ -20,6 +20,8 @@ class PerspectiveCamera : public BaseCamera {
         float pitch = 0.0f;
         bool rightMousePressed = false;
 
+        bool first = true;
+
         explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
         }
@@ -29,8 +31,16 @@ class PerspectiveCamera : public BaseCamera {
                 return;
             }
 
-            yaw += delta.x / 20.0;
-            pitch += delta.y / 20.0;
+            if (first) {
+                std::cout << "Ignoring first" << std::endl;
+                first = false;
+                return;
+            }
+
+            float sensitivity = 0.05;
+
+            yaw += (delta.x  * sensitivity);
+            pitch += (delta.y * sensitivity);
 
             if(pitch > 89.0f) {
                 pitch = 89.0f;
@@ -40,12 +50,16 @@ class PerspectiveCamera : public BaseCamera {
                 pitch = -89.0f;
             }
 
+            std::cout << "Yaw: " << yaw << "Pitch: " << pitch << std::endl;
+
             glm::vec3 f;
-            f.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
+            f.x = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
             f.y = -sin(glm::radians(pitch));
-            f.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+            f.z = -cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 
             front = glm::normalize(f);
+
+            //std::cout << "Front: " << front << std::endl;
         }
 
         void onMouseButtonPressed(int button, int action) override {

@@ -170,66 +170,9 @@
   <component name="ChangeListManager">
     <list default="true" id="63443695-55e4-4121-8778-ecc9b645b60f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.13.2/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeError.log" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeError.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.c" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.cxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/src/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_and_run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build_and_run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl" beforeDir="false" afterPath="$PROJECT_DIR$/opengl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/opengl.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Camera/BaseCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/opengl.dir/src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/opengl.dir/src/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opengl.exe" beforeDir="false" afterPath="$PROJECT_DIR$/opengl.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Engine.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Engine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/Quad.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/RenderObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/Transform.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/Transform.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Primitives/TrianglePrimitive.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Shader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/TextureLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/TextureLoader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Engine/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Engine/Window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputDispatcher.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageSystem/BusNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageSystem/BusNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageSystem/CursorPositionMessage.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageSystem/Message.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageSystem/Message.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageSystem/MessageBus.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageSystem/MessageBus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <ignored path="$PROJECT_DIR$/dependencies/glm/test/core/CMakeFiles/" />
@@ -274,8 +217,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InputSystem.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+            <state relative-caret-position="143">
+              <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
               <folding>
                 <element signature="e#59#81#0" expanded="true" />
               </folding>
@@ -319,8 +262,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+            <state relative-caret-position="366">
+              <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -1405,12 +1348,12 @@
       <workItem from="1549232275579" duration="17000" />
       <workItem from="1549232318912" duration="3070000" />
       <workItem from="1549255593354" duration="4225000" />
-      <workItem from="1549272456993" duration="10341000" />
+      <workItem from="1549272456993" duration="12174000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62446000" />
+    <option name="totallyTimeSpent" value="64279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1421,7 +1364,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289166" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32501948" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39930955" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1673,16 +1616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InputSystem.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding>
-            <element signature="e#59#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/InputDispatcher.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1704,10 +1637,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/InputSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="e#59#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Engine/Camera/PerspectiveCamera.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+        <state relative-caret-position="366">
+          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
         </state>
       </provider>
     </entry>
