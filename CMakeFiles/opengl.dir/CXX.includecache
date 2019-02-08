@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
 iostream
 -
 memory
@@ -22,57 +22,71 @@ functional
 GLFW/glfw3.h
 -
 ../Window.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Window.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
 ../Primitives/RenderObject.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
 ../Shader.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Shader.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
 ../../MessageSystem/BusNode.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+../Component.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Component.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/OrtographicCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/OrtographicCamera.h
 BaseCamera.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/PerspectiveCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/PerspectiveCamera.h
 BaseCamera.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/BaseCamera.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Engine.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Component.h
+../MessageSystem/BusNode.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Engine.h
 deps/glad/glad.h
 -
 Camera/OrtographicCamera.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/OrtographicCamera.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/OrtographicCamera.h
 Camera/PerspectiveCamera.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Camera/PerspectiveCamera.h
-Engine/Primitives/Quad.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Engine/Primitives/Quad.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Camera/PerspectiveCamera.h
+Primitives/Quad.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
 EngineException.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/EngineException.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/EngineException.h
 ../InputDispatcher.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/InputDispatcher.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/InputDispatcher.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/EngineException.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/EngineException.h
 exception
 -
 string
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Quad.h
+TrianglePrimitive.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
 memory
 -
 Transform.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
 ../TextureLoader.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
 ../Shader.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Shader.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/Transform.h
 glm/vec3.hpp
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Shader.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/TrianglePrimitive.h
+RenderObject.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Primitives/RenderObject.h
+
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Shader.h
 glm/glm.hpp
 -
 string
@@ -84,13 +98,13 @@ sstream
 iostream
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/TextureLoader.h
 cstdio
 -
 iostream
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Window.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
 GLFW/glfw3.h
 -
 cstdlib
@@ -98,33 +112,33 @@ cstdlib
 functional
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/InputDispatcher.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/InputDispatcher.h
 MessageSystem/BusNode.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
 Engine/Window.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Window.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Window.h
 InputSystem.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/InputSystem.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/InputSystem.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/InputSystem.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/InputSystem.h
 glm/glm.hpp
 -
 MessageSystem/MessageBus.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/BusNode.h
 iostream
 -
 functional
 -
 MessageBus.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/Message.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/Message.h
 string
 -
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/MessageBus.h
 functional
 -
 queue
@@ -134,11 +148,11 @@ vector
 memory
 -
 Message.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/MessageSystem/Message.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/MessageSystem/Message.h
 
-C:/Users/krzys/Desktop/OpenGLSandbox/src/main.cpp
+/home/k.kucharski/Desktop/OpenGLSandbox/src/main.cpp
 Engine/Engine.h
-C:/Users/krzys/Desktop/OpenGLSandbox/src/Engine/Engine.h
+/home/k.kucharski/Desktop/OpenGLSandbox/src/Engine/Engine.h
 
 dependencies/glfw/deps/KHR/khrplatform.h
 stdint.h

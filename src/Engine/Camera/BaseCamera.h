@@ -16,9 +16,10 @@
 #include "../Primitives/RenderObject.h"
 #include "../Shader.h"
 #include "../../MessageSystem/BusNode.h"
+#include "../Component.h"
 
 
-class BaseCamera : BusNode {
+class BaseCamera : public Component {
 
     protected:
         std::shared_ptr<Window> window;

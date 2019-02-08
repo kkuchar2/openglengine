@@ -16,11 +16,11 @@ class PerspectiveCamera : public BaseCamera {
         glm::vec3 front = glm::vec3(0.0, 0.0, -1.0);
         glm::vec3 up = glm::vec3(0.0, 1.0, 0.0);
 
+        glm::vec3 velocity = glm::vec3(0.0);
+
         float yaw = 0.0f;
         float pitch = 0.0f;
         bool rightMousePressed = false;
-
-        bool first = true;
 
         explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
@@ -28,12 +28,6 @@ class PerspectiveCamera : public BaseCamera {
 
         void onPointerDeltaChanged(glm::vec2 & delta) override {
             if( !rightMousePressed) {
-                return;
-            }
-
-            if (first) {
-                std::cout << "Ignoring first" << std::endl;
-                first = false;
                 return;
             }
 
@@ -50,12 +44,10 @@ class PerspectiveCamera : public BaseCamera {
                 pitch = -89.0f;
             }
 
-            std::cout << "Yaw: " << yaw << "Pitch: " << pitch << std::endl;
-
             glm::vec3 f;
-            f.x = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-            f.y = -sin(glm::radians(pitch));
-            f.z = -cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+            f.x = static_cast<float>(sin(glm::radians(yaw)) * cos(glm::radians(pitch)));
+            f.y = static_cast<float>(-sin(glm::radians(pitch)));
+            f.z = static_cast<float>(-cos(glm::radians(yaw)) * cos(glm::radians(pitch)));
 
             front = glm::normalize(f);
 
@@ -74,33 +66,35 @@ class PerspectiveCamera : public BaseCamera {
         }
 
         void onKeysPressedStateReceived(std::vector<bool> & pressed_keys) override {
-            float speed = 0.1f;
+            float speed = 0.5f;
 
-            if (pressed_keys[GLFW_KEY_LEFT_ALT]) {
+            if (pressed_keys[GLFW_KEY_LEFT_CONTROL]) {
                 speed *= 0.1f;
             }
 
             if (pressed_keys[GLFW_KEY_LEFT_SHIFT]) {
-                speed *= 2.0f;
+                speed *= 10.0f;
             }
 
-            if (pressed_keys[GLFW_KEY_A]) {
-                glm::vec3 cross_p = glm::normalize(glm::cross(up, front));
-                position += cross_p * speed;
-            }
+            auto velocitySum = glm::vec3(0.0);
 
-            if (pressed_keys[GLFW_KEY_W]) {
-                position += front * speed;
-            }
+            velocitySum += float(pressed_keys[GLFW_KEY_W]) * front * speed;
+            velocitySum -= float(pressed_keys[GLFW_KEY_S]) * front * speed;
+            velocitySum += float(pressed_keys[GLFW_KEY_A]) * glm::normalize(glm::cross(up, front)) * speed;
+            velocitySum -= float(pressed_keys[GLFW_KEY_D]) * glm::normalize(glm::cross(up, front)) * speed;
 
-            if (pressed_keys[GLFW_KEY_S]) {
-                position -= front *speed;
-            }
+            velocity = velocitySum;
+        }
 
-            if (pressed_keys[GLFW_KEY_D]) {
-                glm::vec3 cross_p = glm::normalize(glm::cross(up, front));
-                position -= cross_p * speed;
-            }
+        float currentFrame = 0.0f;
+        float deltaTime = 0.0f;
+        float lastFrame = 0.0f;
+
+        void Update() override {
+            currentFrame = static_cast<float>(glfwGetTime());
+            deltaTime = currentFrame - lastFrame;
+            lastFrame = currentFrame;
+            position += velocity * deltaTime;
         }
 
         glm::mat4x4 getModelMatrix() override {

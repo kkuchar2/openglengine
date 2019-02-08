@@ -8,8 +8,6 @@
 #include "MessageBus.h"
 
 class BusNode {
-
-
     protected:
         std::shared_ptr<MessageBus> messageBus;
 

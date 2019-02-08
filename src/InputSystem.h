@@ -41,14 +41,6 @@ class InputSystem {
                 pressed[key] = false;
             }
 
-            for (int i = 0; i < pressed.size(); i++) {
-                if (pressed[i]) {
-                    std::cout << i << " ";
-                }
-            }
-
-            std::cout << std::endl;
-
             MessageBus::sendMessage(std::make_shared<KeyMessage>(pressed));
         }
 };

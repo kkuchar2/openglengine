@@ -5,7 +5,7 @@
 #include "Camera/OrtographicCamera.h"
 #include "Camera/PerspectiveCamera.h"
 
-#include "Engine/Primitives/Quad.h"
+#include "Primitives/Quad.h"
 #include "EngineException.h"
 #include "../InputDispatcher.h"
 
@@ -66,6 +66,8 @@ class Engine {
         void Update() {
             window->UpdateTime();
             window->Update();
+            perspectiveCamera->Update();
+            orthographicCamera->Update();
             glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
