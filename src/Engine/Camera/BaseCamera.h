@@ -29,7 +29,7 @@ class BaseCamera : public Component {
             this->window = window;
         }
 
-        void Render(std::shared_ptr<RenderObject> &renderObject) {
+        void Render(std::shared_ptr<RenderObject> & renderObject) {
             std::shared_ptr<Shader> shader = renderObject->shader;
 
             shader->use();
@@ -37,15 +37,47 @@ class BaseCamera : public Component {
             shader->setFloat("time", window->totalTime);
             shader->setVec2("resolution", window->getResolution());
 
-            shader->setVec3("translation", renderObject->transform.position);
-            shader->setVec3("scale", renderObject->transform.scale);
-            shader->setVec3("rotation", renderObject->transform.rotation);
+            glm::mat4 m = glm::translate(getModelMatrix(), renderObject->transform.position);
+            m *= rotMat(renderObject->transform.rotation);
+            m *= scaleMatrix(renderObject->transform.scale);
 
-            shader->setMat4("projection", getProjectionMatrix());
-            shader->setMat4("view", getViewMatrix());
-            shader->setMat4("model", getModelMatrix());
+            glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
+
+            shader->setMat4("mvp", mvp);
+            shader->setMat4("m", m);
+            shader->setMat4("v", getViewMatrix());
+            renderObject->shaderFunc(shader);
 
             renderObject->Render();
+        }
+
+        glm::mat4 rotMat(glm::vec3 axis, float angle)
+        {
+            axis = normalize(axis);
+
+            float s = static_cast<float>(sin(angle));
+            float c = static_cast<float>(cos(angle));
+            float oc = static_cast<float>(1.0 - c);
+
+            return glm::mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
+                        oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
+                        oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+                        0.0,                                0.0,                                0.0,                                1.0);
+        }
+
+        glm::mat4 rotMat(glm::vec3 rotation) {
+            glm::mat4 rotMatX = rotMat(glm::vec3(1.0, 0.0, 0.0), rotation.x);
+            glm::mat4 rotMatY = rotMat(glm::vec3(0.0, 1.0, 0.0), rotation.y);
+            glm::mat4 rotMatZ = rotMat(glm::vec3(0.0, 0.0, 1.0), rotation.z);
+            return rotMatX * rotMatY * rotMatZ;
+        }
+
+        glm::mat4 scaleMatrix(glm::vec3 scale)
+        {
+            return glm::mat4(scale.x, 0.0,     0.0,     0.0,
+                        0.0,     scale.y, 0.0,     0.0,
+                        0.0,     0.0,     scale.z, 0.0,
+                        0.0,     0.0,     0.0,     1.0);
         }
 
         void onNotify(std::shared_ptr<Message> &message) override {

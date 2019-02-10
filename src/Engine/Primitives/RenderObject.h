@@ -6,11 +6,15 @@
 #include "Transform.h"
 #include "../TextureLoader.h"
 #include "../Shader.h"
+#include <functional>
 
 enum RenderFlag {
     ORTHOGRAPHIC,
     PERSPECTIVE
 };
+
+typedef std::shared_ptr<Shader>& ShaderPtrRef;
+typedef std::function<void(ShaderPtrRef)> ShaderFunc;
 
 class RenderObject {
     public:
@@ -22,9 +26,12 @@ class RenderObject {
         GLuint vao{};
         GLuint vbo{};
         GLuint uvbo{};
+        GLuint nbo{};
         GLuint ibo{};
 
         Transform transform;
+
+        ShaderFunc shaderFunc = [](std::shared_ptr<Shader> & shader) { };
 
         void loadTexture(const char * path) {
             textureId = TextureLoader::load(path);
@@ -38,7 +45,7 @@ class RenderObject {
             this->shader = shader;
         }
 
-        void prepare(float * vertices, unsigned int * indices, float * uvs, int vSize, int iSize, int uvSize) {
+        void prepare(float * vertices, unsigned int * indices, float * uvs, float * normals, int vSize, int iSize, int uvSize, int nSize) {
             prepare_common(vertices, indices, vSize, iSize);
 
             // Create UV buffer
@@ -49,6 +56,16 @@ class RenderObject {
             // Enable uv attribute array and set uv attribute pointers
             glEnableVertexAttribArray(1);
             glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+
+            // Create normals buffer
+            glGenBuffers(1, &nbo);
+            glBindBuffer(GL_ARRAY_BUFFER, nbo);
+            glBufferData(GL_ARRAY_BUFFER, nSize, normals, GL_DYNAMIC_DRAW);
+
+            // Enable normals attribute array and set normals attribute pointers
+            glEnableVertexAttribArray(2);
+            glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
             glBindVertexArray(0);
         }

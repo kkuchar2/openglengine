@@ -4,19 +4,18 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-uniform float time;
-uniform vec3 translation;
+uniform vec3 position;
 uniform vec3 rotation;
 uniform vec3 scale;
+uniform float time;
+
+uniform vec2 resolution;
+uniform int iterations;
 
 layout (location = 0) in vec3 vCoord;
 layout (location = 1) in vec2 uvCoord;
 
-out vec2 f_uv;
-out vec3 f_translation;
-out vec3 f_rotation;
-out vec3 f_scale;
-out float f_time;
+out vec2 uv;
 
 mat4 rotMat(vec3 axis, float angle)
 {
@@ -49,11 +48,6 @@ mat4 scaleMatrix(vec3 scale)
 
 void main()
 {
-    gl_Position = projection * view * model * (scaleMatrix(scale) * rotMat(rotation)) * vec4(vCoord, 1.0) + vec4(translation, 0.0);
-
-    f_uv = uvCoord;
-    f_translation = translation;
-    f_rotation = rotation;
-    f_scale = scale;
-    f_time = time;
+    gl_Position = projection * view * model * (scaleMatrix(scale) * rotMat(rotation)) * vec4(vCoord + position, 1.0);
+    uv = uvCoord;
 }

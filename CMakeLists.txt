@@ -65,7 +65,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/MessageSystem/BusNode.h src/MessageSystem/Message.h src/MessageSystem/MessageBus.h src/InputDispatcher.h src/Engine/Engine.h src/Engine/EngineException.h src/InputSystem.h src/Engine/Component.h)
+set(SOURCE_FILES ${SRC_FILES} src/MessageSystem/BusNode.h src/MessageSystem/Message.h src/MessageSystem/MessageBus.h src/InputDispatcher.h src/Engine/Engine.h src/Engine/EngineException.h src/InputSystem.h src/Engine/Component.h src/Engine/Primitives/Cube.h src/Engine/Primitives/Line.h src/Engine/OBJ_Loader.h src/Engine/Primitives/RenderMesh.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

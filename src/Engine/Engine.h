@@ -6,6 +6,10 @@
 #include "Camera/PerspectiveCamera.h"
 
 #include "Primitives/Quad.h"
+#include "Primitives/Cube.h"
+#include "Primitives/Line.h"
+#include "Primitives/RenderMesh.h"
+
 #include "EngineException.h"
 #include "../InputDispatcher.h"
 
@@ -18,11 +22,14 @@ class Engine {
         std::shared_ptr<OrtographicCamera> orthographicCamera;
         std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
+        std::function<void(float)> onUpdate = [](float elapsedTime){};
+
         Engine() {
             glfwInit();
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            glfwWindowHint(GLFW_SAMPLES, 4);
 
             window = std::make_shared<Window>(600, 600);
 
@@ -35,13 +42,14 @@ class Engine {
                 throw EngineException("Failed to initialize GLAD");
             }
 
-            glEnable(GL_DEPTH_TEST);
+            glEnable(GL_MULTISAMPLE);
             glEnable(GL_BLEND);
-            glEnable(GL_LINE_SMOOTH);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glEnable(GL_DEPTH_TEST);
         }
 
-        void addObject(std::shared_ptr<RenderObject> & obj) {
+        template<typename T, typename std::enable_if<std::is_base_of<RenderObject, T>::value>::type* = nullptr>
+        void addObject(std::shared_ptr<T> & obj) {
             objectsToRender.push_back(obj);
         }
 
@@ -51,39 +59,26 @@ class Engine {
         }
 
         void renderingLoop() {
-            while (isRunning()) {
-                Update();
+            while (window->shouldBeOpened()) {
 
-                for (auto & obj : objectsToRender) {
-                    renderObj(obj);
+                window->UpdateTime();
+                window->Update();
+                perspectiveCamera->Update();
+                orthographicCamera->Update();
+
+                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+                onUpdate(window->totalTime);
+
+                for (auto & i : objectsToRender) {
+                    renderObj(i);
                 }
 
-                SwapBuffers();
-                PollEvents();
+                window->swapBuffers();
+                window->pollEvents();
             }
         }
-
-        void Update() {
-            window->UpdateTime();
-            window->Update();
-            perspectiveCamera->Update();
-            orthographicCamera->Update();
-            glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        }
-
-        void SwapBuffers() {
-            window->swapBuffers();
-        }
-
-        void PollEvents() {
-            window->pollEvents();
-        }
-
-        bool isRunning() {
-            return window->shouldBeOpened();
-        }
-
 };
 
 #endif //OPENGL_ENGINE_H

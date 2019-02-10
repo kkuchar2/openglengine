@@ -14,6 +14,7 @@ class PerspectiveCamera : public BaseCamera {
     public:
         glm::vec3 position = glm::vec3(0.0, 0.0, 0.0);
         glm::vec3 front = glm::vec3(0.0, 0.0, -1.0);
+        glm::vec3 targetFront = glm::vec3(0.0, 0.0, 0.0);
         glm::vec3 up = glm::vec3(0.0, 1.0, 0.0);
 
         glm::vec3 velocity = glm::vec3(0.0);
@@ -24,6 +25,7 @@ class PerspectiveCamera : public BaseCamera {
 
         explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
+            targetFront = glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - position);
         }
 
         void onPointerDeltaChanged(glm::vec2 & delta) override {
@@ -45,13 +47,14 @@ class PerspectiveCamera : public BaseCamera {
             }
 
             glm::vec3 f;
-            f.x = static_cast<float>(sin(glm::radians(yaw)) * cos(glm::radians(pitch)));
-            f.y = static_cast<float>(-sin(glm::radians(pitch)));
-            f.z = static_cast<float>(-cos(glm::radians(yaw)) * cos(glm::radians(pitch)));
+            f.x = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+            f.y = -sin(glm::radians(pitch));
+            f.z = -cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 
-            front = glm::normalize(f);
+            glm::vec3 df = glm::normalize(f) - front;
+            front =  glm::normalize(f);
 
-            //std::cout << "Front: " << front << std::endl;
+            targetFront += df;
         }
 
         void onMouseButtonPressed(int button, int action) override {
@@ -73,15 +76,15 @@ class PerspectiveCamera : public BaseCamera {
             }
 
             if (pressed_keys[GLFW_KEY_LEFT_SHIFT]) {
-                speed *= 10.0f;
+                speed *= 20.0f;
             }
 
             auto velocitySum = glm::vec3(0.0);
 
-            velocitySum += float(pressed_keys[GLFW_KEY_W]) * front * speed;
-            velocitySum -= float(pressed_keys[GLFW_KEY_S]) * front * speed;
-            velocitySum += float(pressed_keys[GLFW_KEY_A]) * glm::normalize(glm::cross(up, front)) * speed;
-            velocitySum -= float(pressed_keys[GLFW_KEY_D]) * glm::normalize(glm::cross(up, front)) * speed;
+            velocitySum += float(pressed_keys[GLFW_KEY_W]) * targetFront * speed;
+            velocitySum -= float(pressed_keys[GLFW_KEY_S]) * targetFront * speed;
+            velocitySum += float(pressed_keys[GLFW_KEY_A]) * glm::normalize(glm::cross(up, targetFront)) * speed;
+            velocitySum -= float(pressed_keys[GLFW_KEY_D]) * glm::normalize(glm::cross(up, targetFront)) * speed;
 
             velocity = velocitySum;
         }
@@ -102,7 +105,7 @@ class PerspectiveCamera : public BaseCamera {
         }
 
         glm::mat4x4 getViewMatrix() override {
-            return glm::lookAt(position, position + front, up);
+            return glm::lookAt(position, position + targetFront, up);
         }
 
         glm::mat4x4 getProjectionMatrix() override {

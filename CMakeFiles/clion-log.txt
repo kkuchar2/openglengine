@@ -1,7 +1,0 @@
-/home/k.kucharski/software/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/k.kucharski/Desktop/OpenGLSandbox
--- Could NOT find Vulkan (missing: VULKAN_LIBRARY VULKAN_INCLUDE_DIR) 
--- Using X11 for window creation
-GLM: GCC - GNU compiler
--- Configuring done
--- Generating done
--- Build files have been written to: /home/k.kucharski/Desktop/OpenGLSandbox

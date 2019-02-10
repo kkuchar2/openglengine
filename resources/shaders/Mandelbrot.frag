@@ -1,14 +1,10 @@
 #version 330 core
 
-in vec2 f_uv;
-in vec3 f_translation;
-in float f_time;
+uniform sampler2D tex;
+
+in vec2 uv;
 
 out vec4 FragColor;
-
-uniform vec2 resolution;
-uniform int iterations;
-uniform sampler2D tex;
 
 vec2 cmpxcjg(in vec2 c) {
 	return vec2(c.x, -c.y);
@@ -51,7 +47,7 @@ float madelbrot(in vec2 c, in int iterations) {
 void main()
 {
     // [(0, 0) -> (1, 1)] from bottom left
-    vec2 normPos = f_uv;
+    vec2 normPos = uv;
 
     // [(-0.5, -0.5) -> (0.5, 0.5)] from bottom left
     normPos = normPos - vec2(0.5, 0.5);
@@ -69,7 +65,7 @@ void main()
 
     vec3 one = vec3(1.0, 1.0, 1.0);
 
-    vec3 rgb = texture(tex, f_uv).rgb;
+    vec3 rgb = texture(tex, uv).rgb;
 
-    FragColor = vec4(rgb * a, 1.0);
+    FragColor = vec4(rgb * a, 0.5);
 }

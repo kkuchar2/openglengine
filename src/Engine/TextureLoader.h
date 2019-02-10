@@ -35,10 +35,6 @@ class TextureLoader {
             width      = *(int*)&(header[0x12]);
             height     = *(int*)&(header[0x16]);
 
-            std::cout << "Image size: " << imageSize << std::endl;
-            std::cout << "Image width: " << width << std::endl;
-            std::cout << "Image height: " << height << std::endl;
-
             if (imageSize == 0) {
                 imageSize = width * height * 3;
             }

@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g  -rdynamic CMakeFiles/test-gtx_color_space_YCoCg.dir/gtx_color_space_YCoCg.cpp.o  -o test-gtx_color_space_YCoCg 

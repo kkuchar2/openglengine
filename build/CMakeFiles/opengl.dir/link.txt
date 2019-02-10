@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g   CMakeFiles/opengl.dir/src/main.cpp.o CMakeFiles/opengl.dir/dependencies/glfw/deps/tinycthread.c.o CMakeFiles/opengl.dir/dependencies/glfw/deps/getopt.c.o CMakeFiles/opengl.dir/dependencies/glfw/deps/glad.c.o  -o opengl dependencies/glfw/src/libglfw3.a /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so -lpthread 

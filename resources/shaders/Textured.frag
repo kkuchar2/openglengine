@@ -1,11 +1,12 @@
 #version 330 core
+
+uniform sampler2D tex;
+
+in vec2 uv;
+
 out vec4 FragColor;
-
-in vec2 TexCoords;
-
-uniform sampler2D textureDiffuse;
 
 void main()
 {
-    FragColor = texture(textureDiffuse, TexCoords);
+    FragColor = vec4(texture(tex, uv).rgb, 0.5);
 }

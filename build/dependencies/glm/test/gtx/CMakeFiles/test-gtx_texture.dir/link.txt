@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g  -rdynamic CMakeFiles/test-gtx_texture.dir/gtx_texture.cpp.o  -o test-gtx_texture 

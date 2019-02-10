@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g  -rdynamic CMakeFiles/test-gtx_matrix_cross_product.dir/gtx_matrix_cross_product.cpp.o  -o test-gtx_matrix_cross_product 
