@@ -1,66 +1,19 @@
 #include "Engine/Engine.h"
-#include "Engine/OBJ_Loader.h"
 
-glm::vec3 lightPos = glm::vec3(-1.2f, 1.0f, 2.0f);
-
-void addAxes(std::shared_ptr<Engine> &engine, std::shared_ptr<Shader> &shader);
-
-// OBJ_Loader is copied from https://github.com/Bly7/OBJ-Loader
-// It creates more vertices, than necessary, TODO: Investigate
-void addOBJ(const char * path, std::shared_ptr<Engine> & engine, std::shared_ptr<Shader> & diffuseShader, std::shared_ptr<Shader> & colorShader);
+std::shared_ptr<Scene> createMainScene();
+std::shared_ptr<Scene> createTestScene();
 
 int main() {
-
     std::shared_ptr<Engine> engine;
 
     try {
         engine = std::make_shared<Engine>();
     }
-    catch (EngineException & e) {
-        std::cout << e.what() << std::endl;
+    catch (EngineException e) {
         return -1;
     }
 
-    auto mandelbrotShader = std::make_shared<Shader>("resources/shaders/Mandelbrot.vert", "resources/shaders/Mandelbrot.frag");
-    auto gridShader = std::make_shared<Shader>("resources/shaders/Grid.vert", "resources/shaders/Grid.frag");
-    auto diffuseShader = std::make_shared<Shader>("resources/shaders/Diffuse.vert", "resources/shaders/Diffuse.frag");
-    auto colorShader = std::make_shared<Shader>("resources/shaders/Color.vert", "resources/shaders/Color.frag");
-    auto texturedShader = std::make_shared<Shader>("resources/shaders/Textured.vert", "resources/shaders/Textured.frag");
-
-    std::shared_ptr<RenderObject> gridQuad = std::make_shared<Quad>();
-    gridQuad->useRendering(RenderFlag::PERSPECTIVE);
-    gridQuad->useShader(gridShader);
-    gridQuad->loadTexture("resources/textures/texture_white.bmp");
-    gridQuad->transform.scale = glm::vec3(100.0f, 100.0f, 100.0f);
-    gridQuad->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);
-
-    std::shared_ptr<Cube> lamp = std::make_shared<Cube>();
-    lamp->useRendering(RenderFlag::PERSPECTIVE);
-    lamp->useShader(colorShader);
-    lamp->transform.scale = glm::vec3(0.1f);
-    lamp->transform.position = lightPos;
-    lamp ->shaderFunc = [](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-    };
-
-    //std::shared_ptr<Cube> cube = std::make_shared<Cube>();
-    //cube->useRendering(RenderFlag::PERSPECTIVE);
-    //cube->useShader(diffuseShader);
-    //cube->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
-    //cube->shaderFunc = [](ShaderPtrRef shader) {
-    //    shader->setVec4("color", glm::vec4(1.0f, 0.5f, 0.31f, 1.0f));
-    //    shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-    //    shader->setVec3("lightPos", lightPos);
-    //};
-
-    ////////// Add objects to render //////////
-    addOBJ("resources/models/sphere.obj", engine, diffuseShader, colorShader);
-    addAxes(engine, colorShader);
-    //engine->addObject(cube);
-    engine->addObject(lamp);
-    engine->addObject(gridQuad);
-    ///////////////////////////////////////////
-
+    engine->scene = createMainScene();
     engine->renderingLoop();
 
     glfwTerminate();
@@ -68,109 +21,218 @@ int main() {
     return 0;
 }
 
-void addAxes(std::shared_ptr<Engine> &engine, std::shared_ptr<Shader> &shader) {
-    float sizeSmall = 0.01f;
-    float sizeBig = 20.0f;
+std::shared_ptr<Scene> createMainScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
-    std::shared_ptr<RenderObject> axisX = std::make_shared<Cube>();
-    std::shared_ptr<RenderObject> axisY = std::make_shared<Cube>();
-    std::shared_ptr<RenderObject> axisZ = std::make_shared<Cube>();
+    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 1.0f, 2.0f);
 
-    axisX->useRendering(RenderFlag::PERSPECTIVE);
-    axisX->useShader(shader);
-    axisX->transform.scale = glm::vec3(sizeBig, sizeSmall, sizeSmall);
-    axisX ->shaderFunc = [](ShaderPtrRef shader) {
+    auto mandelbrotShader = std::make_shared<Shader>("resources/shaders/Mandelbrot.vert", "resources/shaders/Mandelbrot.frag");
+    auto gridShader = std::make_shared<Shader>("resources/shaders/Grid.vert", "resources/shaders/Grid.frag");
+    auto diffuseShader = std::make_shared<Shader>("resources/shaders/Diffuse.vert", "resources/shaders/Diffuse.frag");
+    auto colorShader = std::make_shared<Shader>("resources/shaders/Color.vert", "resources/shaders/Color.frag");
+    auto texturedShader = std::make_shared<Shader>("resources/shaders/Textured.vert", "resources/shaders/Textured.frag");
+
+    std::shared_ptr<Quad> gridQuad = std::make_shared<Quad>();
+    gridQuad->shader = gridShader;
+    gridQuad->loadTexture("resources/textures/texture_white.bmp");
+    gridQuad->transform.scale = glm::vec3(100.0f, 100.0f, 100.0f);
+    gridQuad->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);
+
+    std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>();
+    lampMesh->loadMesh("resources/models/sphere.obj");
+    lampMesh->shader = colorShader;
+    lampMesh->transform.scale = glm::vec3(0.1f);
+    lampMesh->transform.position = *lightPos.get();
+    lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    };
+
+    std::shared_ptr<Cube> cube = std::make_shared<Cube>();
+    cube->loadMesh("resources/models/cube.obj");
+    cube->shader = diffuseShader;
+    cube->transform.position = glm::vec3(2.0f, 0.5f, 0.0f);
+    cube->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(0.4f, 0.4f, 0.9f, 1.0f));
+        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightPos", *lightPos.get());
+    };
+
+    std::shared_ptr<Mesh> bunnyMesh = std::make_shared<Mesh>();
+    bunnyMesh->loadMesh("resources/models/bunny.obj");
+    bunnyMesh->shader = diffuseShader;
+    bunnyMesh->transform.scale = glm::vec3(10.0f);
+    bunnyMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightPos", *lightPos.get());
+    };
+
+    std::shared_ptr<Mesh> suzanneMesh = std::make_shared<Mesh>();
+    suzanneMesh->loadMesh("resources/models/suzanne.obj");
+    suzanneMesh->shader = diffuseShader;
+    suzanneMesh->transform.position = glm::vec3(0.0f, 3.0f, 0.0f);
+    suzanneMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightPos", *lightPos.get());
+    };
+
+    std::shared_ptr<Mesh> teapotMesh = std::make_shared<Mesh>();
+    teapotMesh->loadMesh("resources/models/teapot.obj");
+    teapotMesh->shader = diffuseShader;
+    teapotMesh->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
+    teapotMesh->transform.scale = glm::vec3(0.5f);
+    teapotMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightPos", *lightPos.get());
+    };
+
+    std::shared_ptr<Line> axisX = std::make_shared<Line>();
+    axisX->shader = colorShader;
+    axisX->setCoords(glm::vec3(-20.0f, 0.0f, 0.0f), glm::vec3(20.0f, 0.0f, 0.0f));
+    axisX->shaderInit = [](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(0.0f, 1.0, 0.0, 1.0));
     };
 
-    axisY->useRendering(RenderFlag::PERSPECTIVE);
-    axisY->useShader(shader);
-    axisY->transform.scale = glm::vec3(sizeSmall, sizeBig, sizeSmall);
-    axisY ->shaderFunc = [](ShaderPtrRef shader) {
+    std::shared_ptr<Line> axisY = std::make_shared<Line>();
+    axisY->shader = colorShader;
+    axisY->setCoords(glm::vec3(0.0f, -20.0f, 0.0f), glm::vec3(0.0f, 20.0f, 0.0f));
+    axisY->shaderInit = [](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 0.0, 0.0, 1.0));
     };
 
-    axisZ->useRendering(RenderFlag::PERSPECTIVE);
-    axisZ->useShader(shader);
-    axisZ->transform.scale = glm::vec3(sizeSmall, sizeSmall, sizeBig);
-    axisZ ->shaderFunc = [](ShaderPtrRef shader) {
+    std::shared_ptr<Line> axisZ = std::make_shared<Line>();
+    axisZ->shader = colorShader;
+    axisZ->setCoords(glm::vec3(0.0f, 0.0f, -20.0f), glm::vec3(0.0f, 0.0f, 20.0f));
+    axisZ->shaderInit = [](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(0.0f, 0.0, 1.0, 1.0));
     };
 
-    engine->addObject(axisX);
-    engine->addObject(axisY);
-    engine->addObject(axisZ);
+    auto gridObject = std::make_shared<GameObject>();
+    gridObject->addComponent(gridQuad);
+
+    auto lampMeshObject = std::make_shared<GameObject>();
+    lampMeshObject->addComponent(lampMesh);
+
+    auto cubeObject = std::make_shared<GameObject>();
+    cubeObject->addComponent(cube);
+
+    auto bunnyObject = std::make_shared<GameObject>();
+    bunnyObject->addComponent(bunnyMesh);
+
+    auto suzanneMeshObject = std::make_shared<GameObject>();
+    suzanneMeshObject->addComponent(suzanneMesh);
+
+    auto teapotMeshObject = std::make_shared<GameObject>();
+    teapotMeshObject->addComponent(teapotMesh);
+
+    auto axisXObject = std::make_shared<GameObject>();
+    axisXObject->addComponent(axisX);
+
+    auto axisYObject = std::make_shared<GameObject>();
+    axisYObject->addComponent(axisY);
+
+    auto axisZObject = std::make_shared<GameObject>();
+    axisZObject->addComponent(axisZ);
+
+    scene->addObject(axisXObject);
+    scene->addObject(axisYObject);
+    scene->addObject(axisZObject);
+    scene->addObject(lampMeshObject);
+    scene->addObject(teapotMeshObject);
+    scene->addObject(suzanneMeshObject);
+    scene->addObject(bunnyObject);
+    scene->addObject(cubeObject);
+    scene->addObject(lampMeshObject);
+    scene->addObject(gridObject);
+
+    return scene;
 }
 
-void addOBJ(const char * path, std::shared_ptr<Engine> & engine, std::shared_ptr<Shader> & diffuseShader, std::shared_ptr<Shader> & colorShader) {
+std::shared_ptr<Scene> createTestScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
-    objl::Loader loader;
+    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 1.0f, 2.0f);
 
-    bool loadout = loader.LoadFile(path);
+    auto mandelbrotShader = std::make_shared<Shader>("resources/shaders/Mandelbrot.vert", "resources/shaders/Mandelbrot.frag");
+    auto gridShader = std::make_shared<Shader>("resources/shaders/Grid.vert", "resources/shaders/Grid.frag");
+    auto diffuseShader = std::make_shared<Shader>("resources/shaders/Diffuse.vert", "resources/shaders/Diffuse.frag");
+    auto colorShader = std::make_shared<Shader>("resources/shaders/Color.vert", "resources/shaders/Color.frag");
+    auto texturedShader = std::make_shared<Shader>("resources/shaders/Textured.vert", "resources/shaders/Textured.frag");
 
-    std::vector<float> vertices;
-    std::vector<unsigned int> indices;
-    std::vector<float> uvs;
-    std::vector<float> normals;
+    std::shared_ptr<Quad> gridQuad = std::make_shared<Quad>();
+    gridQuad->shader = gridShader;
+    gridQuad->loadTexture("resources/textures/texture_white.bmp");
+    gridQuad->transform.scale = glm::vec3(100.0f, 100.0f, 100.0f);
+    gridQuad->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);
 
-    if (loadout) {
-        for (const auto & mesh : loader.LoadedMeshes) {
+    std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>();
+    lampMesh->loadMesh("resources/models/sphere.obj");
+    lampMesh->shader = colorShader;
+    lampMesh->transform.scale = glm::vec3(0.1f);
+    lampMesh->transform.position = *lightPos.get();
+    lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    };
 
-            std::cout << "Vertices count: " << mesh.Vertices.size() << std::endl;
+    std::shared_ptr<Cube> cube = std::make_shared<Cube>();
+    cube->loadMesh("resources/models/cube.obj");
+    cube->shader = diffuseShader;
+    cube->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
+    cube->shaderInit = [lightPos](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        shader->setVec3("lightPos", *lightPos.get());
+    };
 
-            for (auto & vertexInfo : mesh.Vertices) {
-                vertices.push_back(vertexInfo.Position.X);
-                vertices.push_back(vertexInfo.Position.Y);
-                vertices.push_back(vertexInfo.Position.Z);
+    std::shared_ptr<Line> axisX = std::make_shared<Line>();
+    axisX->shader = colorShader;
+    axisX->setCoords(glm::vec3(-20.0f, 0.0f, 0.0f), glm::vec3(20.0f, 0.0f, 0.0f));
+    axisX->shaderInit = [](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(0.0f, 1.0, 0.0, 1.0));
+    };
 
-                //std::cout << "(VX: " << vertexInfo.Position.X  << " " << vertexInfo.Position.Y << " " << vertexInfo.Position.Z << std::endl;
+    std::shared_ptr<Line> axisY = std::make_shared<Line>();
+    axisY->shader = colorShader;
+    axisY->setCoords(glm::vec3(0.0f, -20.0f, 0.0f), glm::vec3(0.0f, 20.0f, 0.0f));
+    axisY->shaderInit = [](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(1.0f, 0.0, 0.0, 1.0));
+    };
 
-                uvs.push_back(vertexInfo.TextureCoordinate.X);
-                uvs.push_back(vertexInfo.TextureCoordinate.Y);
+    std::shared_ptr<Line> axisZ = std::make_shared<Line>();
+    axisZ->shader = colorShader;
+    axisZ->setCoords(glm::vec3(0.0f, 0.0f, -20.0f), glm::vec3(0.0f, 0.0f, 20.0f));
+    axisZ->shaderInit = [](ShaderPtrRef shader) {
+        shader->setVec4("color", glm::vec4(0.0f, 0.0, 1.0, 1.0));
+    };
 
-                normals.push_back(vertexInfo.Normal.X);
-                normals.push_back(vertexInfo.Normal.Y);
-                normals.push_back(vertexInfo.Normal.Z);
-            }
+    auto gridObject = std::make_shared<GameObject>();
+    gridObject->addComponent(gridQuad);
 
-            for (auto & vertexIndex : mesh.Indices) {
-                indices.push_back(vertexIndex);
-            }
+    auto lampMeshObject = std::make_shared<GameObject>();
+    lampMeshObject->addComponent(lampMesh);
 
-            std::shared_ptr<RenderMesh> renderMesh = std::make_shared<RenderMesh>(vertices, indices, uvs, normals);
+    auto cubeObject = std::make_shared<GameObject>();
+    cubeObject->addComponent(cube);
 
-            renderMesh->useRendering(RenderFlag::PERSPECTIVE);
-            renderMesh->useShader(diffuseShader);
-            renderMesh->transform.scale = glm::vec3(0.1f);
-            renderMesh->shaderFunc = [](ShaderPtrRef shader) {
-                shader->setVec4("color", glm::vec4(1.0f, 0.5f, 0.31f, 1.0f));
-                shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-                shader->setVec3("lightPos", lightPos);
-            };
+    auto axisXObject = std::make_shared<GameObject>();
+    axisXObject->addComponent(axisX);
 
-            std::cout << "Vertices size: " << vertices.size() << std::endl;
-            std::cout << "Normals size: " << normals.size() << std::endl;
+    auto axisYObject = std::make_shared<GameObject>();
+    axisYObject->addComponent(axisY);
 
-            engine->addObject(renderMesh);
+    auto axisZObject = std::make_shared<GameObject>();
+    axisZObject->addComponent(axisZ);
 
+    scene->addObject(axisXObject);
+    scene->addObject(axisYObject);
+    scene->addObject(axisZObject);
+    scene->addObject(lampMeshObject);
 
-            for (int i = 0; i < normals.size(); i+=3) {
+    scene->addObject(cubeObject);
+    scene->addObject(lampMeshObject);
+    scene->addObject(gridObject);
 
-                glm::vec3 normal = glm::vec3(normals[i], normals[i + 1], normals[i + 2]);
-                glm::vec3 vertex = glm::vec3(vertices[i], vertices[i + 1], vertices[i + 2]);
-
-                glm::vec3 start = renderMesh->transform.scale * (glm::vec3(vertex) + renderMesh->transform.position);
-                glm::vec3 end = start + normal;
-                std::shared_ptr<Line> line = std::make_shared<Line>();
-
-                line->useRendering(RenderFlag::PERSPECTIVE);
-                line->setCoords(start, end);
-                line->useShader(colorShader);
-                line->shaderFunc = [](ShaderPtrRef shader) {
-                    shader->setVec4("color", glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-                };
-                engine->addObject(line);
-            }
-        }
-    }
+    return scene;
 }

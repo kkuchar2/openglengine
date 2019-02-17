@@ -2,22 +2,27 @@
 #define OPENGL_ENGINE_H
 
 #include <deps/glad/glad.h>
+
+#include "SceneScripts/GameObject.h"
+#include "SceneScripts/Scene.h"
+
+#include "tiny_obj_loader.h"
+
 #include "Camera/OrtographicCamera.h"
 #include "Camera/PerspectiveCamera.h"
 
 #include "Primitives/Quad.h"
 #include "Primitives/Cube.h"
 #include "Primitives/Line.h"
-#include "Primitives/RenderMesh.h"
 
 #include "EngineException.h"
-#include "../InputDispatcher.h"
+#include "InputDispatcher.h"
 
 class Engine {
     public:
 
         std::shared_ptr<Window> window;
-        std::vector<std::shared_ptr<RenderObject>> objectsToRender;
+        std::shared_ptr<Scene> scene;
 
         std::shared_ptr<OrtographicCamera> orthographicCamera;
         std::shared_ptr<PerspectiveCamera> perspectiveCamera;
@@ -29,7 +34,6 @@ class Engine {
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-            glfwWindowHint(GLFW_SAMPLES, 4);
 
             window = std::make_shared<Window>(600, 600);
 
@@ -42,20 +46,50 @@ class Engine {
                 throw EngineException("Failed to initialize GLAD");
             }
 
-            glEnable(GL_MULTISAMPLE);
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glEnable(GL_DEPTH_TEST);
         }
 
-        template<typename T, typename std::enable_if<std::is_base_of<RenderObject, T>::value>::type* = nullptr>
-        void addObject(std::shared_ptr<T> & obj) {
-            objectsToRender.push_back(obj);
-        }
+        template<typename T, typename std::enable_if<std::is_base_of<Mesh, T>::value>::type* = nullptr>
+        void drawObjectNormals(std::shared_ptr<T> & renderObject, std::shared_ptr<Shader> & colorShader) {
 
-        void renderObj(std::shared_ptr<RenderObject> & obj) {
-            glBindTexture(GL_TEXTURE_2D, obj->textureId);
-            perspectiveCamera->Render(obj);
+            std::shared_ptr<GameObject> normalsGroup = std::make_shared<GameObject>();
+
+            std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+
+            for (int i = 0; i < renderObject->normals.size(); i += 3) {
+
+                glm::vec3 normal = glm::vec3(renderObject->normals[i], renderObject->normals[i + 1], renderObject->normals[i + 2]);
+                glm::vec3 vertex = glm::vec3(renderObject->vertices[i], renderObject->vertices[i + 1], renderObject->vertices[i + 2]);
+
+                glm::vec3 start = renderObject->transform.scale * glm::vec3(vertex) + renderObject->transform.position;
+                glm::vec3 end = start + glm::normalize(normal) / 10.0f;
+
+                mesh->vertices.push_back(start.x);
+                mesh->vertices.push_back(start.y);
+                mesh->vertices.push_back(start.z);
+
+                mesh->vertices.push_back(end.x);
+                mesh->vertices.push_back(end.y);
+                mesh->vertices.push_back(end.z);
+            }
+
+            for (unsigned int i = 0; i < mesh->vertices.size() / 3; i++) {
+                mesh->indices.push_back(i);
+            }
+
+            mesh->disableNormals = true;
+            mesh->renderFlag = RenderFlag::PERSPECTIVE;
+            mesh->mode = GL_LINES;
+            mesh->shader = colorShader;
+            mesh->shaderInit = [](ShaderPtrRef shader) {
+                shader->setVec4("color", glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+            };
+
+            mesh->prepare();
+            normalsGroup->addComponent(mesh);
+            addObject(normalsGroup);
         }
 
         void renderingLoop() {
@@ -66,14 +100,12 @@ class Engine {
                 perspectiveCamera->Update();
                 orthographicCamera->Update();
 
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                 onUpdate(window->totalTime);
 
-                for (auto & i : objectsToRender) {
-                    renderObj(i);
-                }
+                scene->render(perspectiveCamera);
 
                 window->swapBuffers();
                 window->pollEvents();

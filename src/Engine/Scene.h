@@ -1,0 +1,4 @@
+#ifndef OPENGL_SCENE_H
+#define OPENGL_SCENE_H
+
+#endif //OPENGL_SCENE_H

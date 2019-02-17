@@ -1,7 +1,7 @@
 #ifndef OPENGL_TRIANGLEPRIMITIVE_H
 #define OPENGL_TRIANGLEPRIMITIVE_H
 
-#include "RenderObject.h"
+#include "Mesh.h"
 
 class TrianglePrimitive : public RenderObject {
 

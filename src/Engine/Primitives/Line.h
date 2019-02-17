@@ -2,27 +2,19 @@
 #define OPENGL_LINE_H
 
 #include <deps/glad/glad.h>
-#include "RenderObject.h"
+#include "Mesh.h"
 
-class Line : public RenderObject {
+class Line : public Mesh {
     public:
-        float vertices[6] = {
-                0.0f, 0.0f, 0.0, // line start
-                1.0f, 0.0f, 0.0, // line end
-        };
 
-        unsigned int indices[2] = { 0, 1 };
-
-        float uvs[8]{};
-
-        float normals[2]{};
-
-        explicit Line() : RenderObject() {
-            prepare(vertices, indices, uvs, normals, sizeof(vertices), sizeof(indices), sizeof(uvs), sizeof(normals));
+        explicit Line() : Mesh() {
+            vertices = { 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0 };
+            indices = { 0, 1 };
+            prepare();
         }
 
         void Render() override {
-            RenderObject::Render(GL_LINES, 2);
+            Mesh::Render(GL_LINES, 2);
         }
 
         void setCoords(glm::vec3 start, glm::vec3 end) {
@@ -32,7 +24,7 @@ class Line : public RenderObject {
             vertices[3] = end.x;
             vertices[4] = end.y;
             vertices[5] = end.z;
-            UpdateVertexBuffer(vertices, sizeof(vertices));
+            UpdateVertexBuffer();
         }
 };
 

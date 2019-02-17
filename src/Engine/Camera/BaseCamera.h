@@ -13,10 +13,9 @@
 #include <GLFW/glfw3.h>
 
 #include "../Window.h"
-#include "../Primitives/RenderObject.h"
+#include "../Primitives/Mesh.h"
 #include "../Shader.h"
-#include "../../MessageSystem/BusNode.h"
-#include "../Component.h"
+#include "../Base/Component.h"
 
 
 class BaseCamera : public Component {
@@ -29,7 +28,7 @@ class BaseCamera : public Component {
             this->window = window;
         }
 
-        void Render(std::shared_ptr<RenderObject> & renderObject) {
+        void Render(std::shared_ptr<Mesh> & renderObject) {
             std::shared_ptr<Shader> shader = renderObject->shader;
 
             shader->use();
@@ -46,7 +45,7 @@ class BaseCamera : public Component {
             shader->setMat4("mvp", mvp);
             shader->setMat4("m", m);
             shader->setMat4("v", getViewMatrix());
-            renderObject->shaderFunc(shader);
+            renderObject->shaderInit(shader);
 
             renderObject->Render();
         }

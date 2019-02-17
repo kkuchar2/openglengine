@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 project(opengl)
 
+SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 set(CMAKE_CXX_STANDARD 17)
+
 
 #############################################################################################################
 #############################################################################################################
@@ -65,7 +67,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/MessageSystem/BusNode.h src/MessageSystem/Message.h src/MessageSystem/MessageBus.h src/InputDispatcher.h src/Engine/Engine.h src/Engine/EngineException.h src/InputSystem.h src/Engine/Component.h src/Engine/Primitives/Cube.h src/Engine/Primitives/Line.h src/Engine/OBJ_Loader.h src/Engine/Primitives/RenderMesh.h)
+set(SOURCE_FILES ${SRC_FILES} src/Engine/MessageSystem/BusNode.h src/Engine/MessageSystem/Message.h src/Engine/MessageSystem/MessageBus.h src/Engine/InputDispatcher.h src/Engine/Engine.h src/Engine/EngineException.h src/Engine/InputSystem.h src/Engine/Base/Component.h src/Engine/Primitives/Cube.h src/Engine/Primitives/Line.h src/Engine/tiny_obj_loader.h src/Engine/tiny_obj_loader.cpp src/Engine/Scene.h src/Engine/SceneScripts/GameObject.h src/LightPositionUpdater.h src/Engine/SceneScripts/Scene.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 
