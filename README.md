@@ -1,5 +1,3 @@
-# OpenGLSandbox
-
 Project to learn rendering pipeline from scratch. Simple rendering engine. 
 Current output:
 
