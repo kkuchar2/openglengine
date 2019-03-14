@@ -4,7 +4,7 @@
 class Quad : public Mesh {
     public:
 
-        explicit Quad() : Mesh() {
+        Quad() : Mesh() {
             vertices =  {
                     -1.0f, -1.0f,  0.0, // 0 - bottom left
                     -1.0f,  1.0f,  0.0, // 1 - top left
@@ -23,7 +23,6 @@ class Quad : public Mesh {
                     1.0f, 1.0f, // top right
                     1.0f, 0.0f  // bottom right
             };
-            prepare();
         }
 };
 

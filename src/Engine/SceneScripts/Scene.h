@@ -6,6 +6,9 @@
 
 class Scene {
     public:
+
+        Projection projection = PERSPECTIVE;
+
         std::vector<std::shared_ptr<GameObject>> objectsToRender;
 
         Scene() = default;
@@ -14,33 +17,30 @@ class Scene {
             objectsToRender.push_back(obj);
         }
 
-        void renderObj(std::shared_ptr<GameObject> & obj, std::shared_ptr<PerspectiveCamera> & camera) {
-            std::vector<std::shared_ptr<Component>> components = obj->components;
+        void prepare() {
+            for (auto & o : objectsToRender) {
+                for (auto & componentPtr : o->components) {
 
-            for (auto & componentPtr : components) {
+                    std::shared_ptr<Mesh> mesh =  std::dynamic_pointer_cast<Mesh>(componentPtr);
 
-                std::shared_ptr<Mesh> mesh =  std::dynamic_pointer_cast<Mesh>(componentPtr);
-
-                if (!mesh) {
-                    continue;
-                }
-
-                if (mesh->dataReady && !mesh->prepared) {
-
-                    mesh->prepare();
-                }
-
-                if (mesh->prepared) {
-                    glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-                    camera->Render(mesh);
-                    break;
+                    if (mesh) {
+                        mesh->prepare();
+                    }
                 }
             }
         }
 
-        void render(std::shared_ptr<PerspectiveCamera> & camera) {
-            for (auto & i : objectsToRender) {
-                renderObj(i, camera);
+        template<typename T, typename std::enable_if<std::is_base_of<Component, BaseCamera>::value>::type* = nullptr>
+        void render(std::shared_ptr<T> & camera) {
+            for (auto & o : objectsToRender) {
+                for (auto & componentPtr : o->components) {
+
+                    std::shared_ptr<Mesh> mesh =  std::dynamic_pointer_cast<Mesh>(componentPtr);
+
+                    if (mesh) {
+                        camera->Render(mesh);
+                    }
+                }
             }
         }
 };

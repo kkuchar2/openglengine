@@ -4,11 +4,6 @@
 
 #include "BaseCamera.h"
 
-std::ostream& operator<<(std::ostream & out, const glm::vec3 & v)
-{
-    return out << "(" << v.x << ", " << v.y << ", " << v.z << ")";
-}
-
 class PerspectiveCamera : public BaseCamera {
 
     public:
@@ -16,19 +11,25 @@ class PerspectiveCamera : public BaseCamera {
         glm::vec3 front = glm::vec3(0.0, 0.0, -1.0);
         glm::vec3 targetFront = glm::vec3(0.0, 0.0, 0.0);
         glm::vec3 up = glm::vec3(0.0, 1.0, 0.0);
-
         glm::vec3 velocity = glm::vec3(0.0);
 
         float yaw = 0.0f;
         float pitch = 0.0f;
         bool rightMousePressed = false;
+        bool disableMovement = false;
 
         explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
+            projection = PERSPECTIVE;
             targetFront = glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - position);
         }
 
         void onPointerDeltaChanged(glm::vec2 & delta) override {
+
+            if (disableMovement) {
+                return;
+            }
+
             if( !rightMousePressed) {
                 return;
             }
@@ -98,6 +99,10 @@ class PerspectiveCamera : public BaseCamera {
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
             position += velocity * deltaTime;
+        }
+
+        glm::vec3 getPosition() override {
+            return position;
         }
 
         glm::mat4x4 getModelMatrix() override {

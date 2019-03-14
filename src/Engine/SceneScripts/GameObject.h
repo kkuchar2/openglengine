@@ -3,7 +3,7 @@
 
 #include <memory>
 #include <vector>
-#include "../Base/Component.h"
+#include "../MessageSystem/Component.h"
 
 class GameObject {
 
@@ -12,6 +12,12 @@ class GameObject {
         std::vector<std::shared_ptr<Component>> components;
 
         GameObject() = default;
+
+        template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr>
+        GameObject(std::shared_ptr<T> component) {
+            addComponent(component);
+        }
+
 
         template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr>
         void addComponent(std::shared_ptr<T> component) {

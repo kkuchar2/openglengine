@@ -1,115 +1,93 @@
 #ifndef OPENGL_ENGINE_H
 #define OPENGL_ENGINE_H
 
-#include <deps/glad/glad.h>
+#include "Rendering/GameObject.h"
+#include "Rendering/RenderScene.h"
 
-#include "SceneScripts/GameObject.h"
-#include "SceneScripts/Scene.h"
+#include "Rendering/Camera/OrtographicCamera.h"
+#include "Rendering/Camera/PerspectiveCamera.h"
 
-#include "tiny_obj_loader.h"
+#include "Rendering/Primitives/Primitives.h"
 
-#include "Camera/OrtographicCamera.h"
-#include "Camera/PerspectiveCamera.h"
+#include "Exceptions/EngineException.h"
+#include "Window/Input/InputDispatcher.h"
 
-#include "Primitives/Quad.h"
-#include "Primitives/Cube.h"
-#include "Primitives/Line.h"
+#include "Scene/Scenes.h"
+#include "Utils/Utils.h"
 
-#include "EngineException.h"
-#include "InputDispatcher.h"
+#include "Editor/Editor.h"
+
+#include "Rendering/TextureRenderer.h"
 
 class Engine {
     public:
 
         std::shared_ptr<Window> window;
-        std::shared_ptr<Scene> scene;
 
-        std::shared_ptr<OrtographicCamera> orthographicCamera;
-        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
+        std::shared_ptr<TextureRenderer> renderer;
+        std::shared_ptr<Editor> editor;
 
-        std::function<void(float)> onUpdate = [](float elapsedTime){};
+        std::shared_ptr<OrtographicCamera> oc;
+        std::shared_ptr<PerspectiveCamera> pc;
+
+        Observer<glm::vec2> * observer;
 
         Engine() {
-            glfwInit();
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            window = std::make_shared<Window>(1000, 800);
 
-            window = std::make_shared<Window>(600, 600);
+            renderer = std::make_shared<TextureRenderer>(window);
 
             InputDispatcher::init(window);
 
-            orthographicCamera = std::make_shared<OrtographicCamera>(window);
-            perspectiveCamera = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
+            oc = std::make_shared<OrtographicCamera>(window);
+            pc = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
 
-            if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-                throw EngineException("Failed to initialize GLAD");
-            }
+            renderer->addCamera(oc);
+            renderer->addCamera(pc);
 
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glEnable(GL_DEPTH_TEST);
+
+            editor = std::make_shared<Editor>(window);
+
+            observer = new Observer<glm::vec2>([&](glm::vec2 v) {
+                renderer->updateSize(v);
+            });
+
+
+            // TODO: Handle subscription
+            //       For now subscription is created as temporary object in Subscribe
+            //       We should create subscription as dynamic object
+            //       After that clean that subscription in disposal of engine
+
+            editor->sceneWindowSizeProperty->Subscribe(observer);
         }
 
-        template<typename T, typename std::enable_if<std::is_base_of<Mesh, T>::value>::type* = nullptr>
-        void drawObjectNormals(std::shared_ptr<T> & renderObject, std::shared_ptr<Shader> & colorShader) {
+        void addScene(std::shared_ptr<RenderScene> & scene) {
+            renderer->addScene(scene);
+        }
 
-            std::shared_ptr<GameObject> normalsGroup = std::make_shared<GameObject>();
-
-            std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
-
-            for (int i = 0; i < renderObject->normals.size(); i += 3) {
-
-                glm::vec3 normal = glm::vec3(renderObject->normals[i], renderObject->normals[i + 1], renderObject->normals[i + 2]);
-                glm::vec3 vertex = glm::vec3(renderObject->vertices[i], renderObject->vertices[i + 1], renderObject->vertices[i + 2]);
-
-                glm::vec3 start = renderObject->transform.scale * glm::vec3(vertex) + renderObject->transform.position;
-                glm::vec3 end = start + glm::normalize(normal) / 10.0f;
-
-                mesh->vertices.push_back(start.x);
-                mesh->vertices.push_back(start.y);
-                mesh->vertices.push_back(start.z);
-
-                mesh->vertices.push_back(end.x);
-                mesh->vertices.push_back(end.y);
-                mesh->vertices.push_back(end.z);
-            }
-
-            for (unsigned int i = 0; i < mesh->vertices.size() / 3; i++) {
-                mesh->indices.push_back(i);
-            }
-
-            mesh->disableNormals = true;
-            mesh->renderFlag = RenderFlag::PERSPECTIVE;
-            mesh->mode = GL_LINES;
-            mesh->shader = colorShader;
-            mesh->shaderInit = [](ShaderPtrRef shader) {
-                shader->setVec4("color", glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-            };
-
-            mesh->prepare();
-            normalsGroup->addComponent(mesh);
-            addObject(normalsGroup);
+        void prepareScenes() {
+            renderer->prepareScenes();
         }
 
         void renderingLoop() {
+            prepareScenes();
+
             while (window->shouldBeOpened()) {
-
-                window->UpdateTime();
-                window->Update();
-                perspectiveCamera->Update();
-                orthographicCamera->Update();
-
-                glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-                onUpdate(window->totalTime);
-
-                scene->render(perspectiveCamera);
-
-                window->swapBuffers();
-                window->pollEvents();
+                renderer->renderToTexture();
+                editor->renderFrame(window, static_cast<int>(renderer->texWidth), static_cast<int>(renderer->texHeight), renderer->renderedTexture);
+                glfwGetFramebufferSize(window->window, &window->width, &window->height);
+                glfwSwapBuffers(window->window);
+                glfwPollEvents();
             }
+
+            editor->terminate();
+
+            glfwTerminate();
+
+            delete observer;
         }
 };
 

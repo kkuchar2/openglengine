@@ -1,7 +1,7 @@
 #ifndef OPENGL_LINE_H
 #define OPENGL_LINE_H
 
-#include <deps/glad/glad.h>
+#include <glad/glad.h>
 #include "Mesh.h"
 
 class Line : public Mesh {
@@ -10,11 +10,6 @@ class Line : public Mesh {
         explicit Line() : Mesh() {
             vertices = { 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0 };
             indices = { 0, 1 };
-            prepare();
-        }
-
-        void Render() override {
-            Mesh::Render(GL_LINES, 2);
         }
 
         void setCoords(glm::vec3 start, glm::vec3 end) {
@@ -24,7 +19,10 @@ class Line : public Mesh {
             vertices[3] = end.x;
             vertices[4] = end.y;
             vertices[5] = end.z;
-            UpdateVertexBuffer();
+        }
+
+        void Render() override {
+            Mesh::Render(GL_LINES, 2);
         }
 };
 

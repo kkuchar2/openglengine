@@ -15,8 +15,13 @@
 #include "../Window.h"
 #include "../Primitives/Mesh.h"
 #include "../Shader.h"
-#include "../Base/Component.h"
+#include "../MessageSystem/Component.h"
 
+enum Projection {
+    PERSPECTIVE,
+    ORTOGRAPHIC,
+    UNDEFINED
+};
 
 class BaseCamera : public Component {
 
@@ -24,30 +29,47 @@ class BaseCamera : public Component {
         std::shared_ptr<Window> window;
 
     public:
-        explicit BaseCamera(std::shared_ptr<Window> &window) {
+
+        Projection projection;
+
+        explicit BaseCamera(std::shared_ptr<Window> & window) {
             this->window = window;
         }
 
-        void Render(std::shared_ptr<Mesh> & renderObject) {
-            std::shared_ptr<Shader> shader = renderObject->shader;
+        void Render(const std::shared_ptr<Mesh> & mesh) {
+            std::shared_ptr<Shader> shader = mesh->shader;
 
             shader->use();
 
+            shader->setVec3("viewPos", getPosition());
             shader->setFloat("time", window->totalTime);
             shader->setVec2("resolution", window->getResolution());
 
-            glm::mat4 m = glm::translate(getModelMatrix(), renderObject->transform.position);
-            m *= rotMat(renderObject->transform.rotation);
-            m *= scaleMatrix(renderObject->transform.scale);
+            glm::mat4 m = glm::translate(getModelMatrix(), mesh->transform.position);
+            m *= scaleMatrix(getScaleCorrection());
+            m *= rotMat(mesh->transform.rotation);
+            m *= scaleMatrix(mesh->transform.scale);
 
             glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
 
             shader->setMat4("mvp", mvp);
             shader->setMat4("m", m);
             shader->setMat4("v", getViewMatrix());
-            renderObject->shaderInit(shader);
+            mesh->shaderInit(shader);
 
-            renderObject->Render();
+            if ( mesh->textureId != 0) {
+                glBindTexture(GL_TEXTURE_2D, mesh->textureId);
+            }
+
+            mesh->Render();
+        }
+
+        virtual glm::vec3 getScaleCorrection() {
+            return glm::vec3(1.0f);
+        }
+
+        virtual glm::vec3 getPosition() {
+            return glm::vec3(0.0f, 0.0f, 0.0f);
         }
 
         glm::mat4 rotMat(glm::vec3 axis, float angle)

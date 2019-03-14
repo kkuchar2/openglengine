@@ -7,3 +7,9 @@
 [submodule "dependencies/Rose"]
 	path = dependencies/Rose
 	url = https://github.com/kkuchar2/Rose
+[submodule "dependencies/freetype2"]
+	path = dependencies/freetype2
+	url = https://github.com/aseprite/freetype2
+[submodule "dependencies/nanogui"]
+	path = dependencies/nanogui
+	url = https://github.com/wjakob/nanogui

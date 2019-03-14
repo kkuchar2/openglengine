@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INCLUDE_NONE OFF CACHE BOOL "" FORCE)
 
 set(ZLIB_LIBRARIES zlibstatic)
 set(ENABLE_BOOST_WORKAROUND ON)
@@ -21,12 +22,15 @@ set(ASSIMP_BUILD_STATIC_LIB ON)
 add_subdirectory(dependencies/glfw)
 add_subdirectory(dependencies/glm)
 add_subdirectory(dependencies/Rose/RoseCpp)
+add_subdirectory(dependencies/freetype2)
+
 
 include_directories(dependencies/glfw)
 include_directories(dependencies/glfw/deps)
 include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
 include_directories(dependencies/Rose/RoseCpp/src)
+include_directories(dependencies/freetype2/include)
 
 set(GLAD "${GLFW_SOURCE_DIR}/deps/glad/glad.h" "${GLFW_SOURCE_DIR}/deps/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
@@ -67,8 +71,8 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/Engine/MessageSystem/BusNode.h src/Engine/MessageSystem/Message.h src/Engine/MessageSystem/MessageBus.h src/Engine/InputDispatcher.h src/Engine/Engine.h src/Engine/EngineException.h src/Engine/InputSystem.h src/Engine/Base/Component.h src/Engine/Primitives/Cube.h src/Engine/Primitives/Line.h src/Engine/tiny_obj_loader.h src/Engine/tiny_obj_loader.cpp src/Engine/Scene.h src/Engine/SceneScripts/GameObject.h src/LightPositionUpdater.h src/Engine/SceneScripts/Scene.h)
+set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/Editor.h src/Engine/Editor/EditorStyle.h src/Engine/Rendering/TextureRenderer.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 
-target_link_libraries(opengl glfw)
+target_link_libraries(opengl glfw freetype)
