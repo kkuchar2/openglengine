@@ -30,7 +30,9 @@ class Engine {
         std::shared_ptr<OrtographicCamera> oc;
         std::shared_ptr<PerspectiveCamera> pc;
 
-        Observer<glm::vec2> * observer;
+        ObserverPtr<glm::vec2> observer;
+
+        SubscriptionPtr subscription;
 
         Engine() {
             window = std::make_shared<Window>(1000, 800);
@@ -51,17 +53,9 @@ class Engine {
 
             editor = std::make_shared<Editor>(window);
 
-            observer = new Observer<glm::vec2>([&](glm::vec2 v) {
-                renderer->updateSize(v);
-            });
+            observer = std::make_shared<Observer<glm::vec2>>([&](glm::vec2 v) { renderer->updateSize(v); });
 
-
-            // TODO: Handle subscription
-            //       For now subscription is created as temporary object in Subscribe
-            //       We should create subscription as dynamic object
-            //       After that clean that subscription in disposal of engine
-
-            editor->sceneWindowSizeProperty->Subscribe(observer);
+            subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
         }
 
         void addScene(std::shared_ptr<RenderScene> & scene) {
@@ -87,7 +81,7 @@ class Engine {
 
             glfwTerminate();
 
-            delete observer;
+            subscription->Unsubscribe();
         }
 };
 

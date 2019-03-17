@@ -133,7 +133,7 @@ class Editor {
                 ImGui::Begin("Scene");
 
                 ImGui::GetWindowDrawList()->AddImage(
-                        (void *)renderedTexture,
+                        reinterpret_cast<ImTextureID>(renderedTexture),
                         ImVec2(ImGui::GetCursorScreenPos()),
                         ImVec2(ImGui::GetCursorScreenPos().x + texWidth,
                                ImGui::GetCursorScreenPos().y + texHeight), ImVec2(0, 1), ImVec2(1, 0));
