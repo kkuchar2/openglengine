@@ -46,6 +46,7 @@ std::shared_ptr<RenderScene> mainScene() {
     };
 
     std::shared_ptr<Mesh> teapotMesh = std::make_shared<Mesh>("../resources/models/teapot.obj");
+    teapotMesh->drawWireframe = true;
     teapotMesh->shader = shaderPool.diffuseShader;
     teapotMesh->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMesh->transform.scale = glm::vec3(0.5f);

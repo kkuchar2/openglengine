@@ -44,6 +44,7 @@ class Mesh : public MessageListener {
 
         bool disableNormals = false;
         bool prepared = false;
+        bool drawWireframe = false;
 
         GLuint textureId = 0;
 
@@ -169,11 +170,13 @@ class Mesh : public MessageListener {
         }
 
         virtual void Render() {
+
             Render(mode, static_cast<int>(indices.size()));
         }
 
         void Render(GLenum mode, int count) {
             glBindVertexArray(vao);
+            glPolygonMode(GL_FRONT_AND_BACK, drawWireframe ? GL_LINE : GL_FILL);
             glDrawElements(mode, count, GL_UNSIGNED_INT, nullptr);
         }
 
