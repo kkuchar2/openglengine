@@ -6,7 +6,7 @@
 #include <functional>
 #include <map>
 #include <thread>
-
+#include <limits>
 
 #include "Shading/Shader.h"
 #include "../Utils/Logging/Logger.h"
@@ -27,6 +27,11 @@ struct Transform {
 struct TriangleInfo {
     float angle;
     glm::vec3 normal;
+};
+
+struct BoundingBox {
+    glm::vec3 size;
+    glm::vec3 center;
 };
 
 typedef std::shared_ptr<Shader>& ShaderPtrRef;
@@ -182,6 +187,57 @@ class Mesh : public MessageListener {
 
         void loadTexture(const char * path) {
             textureId = TextureLoader::load(path);
+        }
+
+        BoundingBox calculateBoundingBox() {
+            float minFloat = std::numeric_limits<float>::min();
+            float maxFloat = std::numeric_limits<float>::max();
+
+            float minX = maxFloat;
+            float minY = maxFloat;
+            float minZ = maxFloat;
+
+            float maxX = minFloat;
+            float maxY = minFloat;
+            float maxZ = minFloat;
+
+            for (unsigned int vertexId = 0; vertexId < vertices.size() / 3; vertexId++) {
+                glm::vec3 coords =  glm::vec3(vertices[vertexId * 3], vertices[vertexId * 3 + 1], vertices[vertexId * 3 + 2]);
+
+                if (coords.x > maxX) {
+                    maxX = coords.x;
+                }
+
+                if (coords.y > maxY) {
+                    maxY = coords.y;
+                }
+
+                if (coords.z > maxZ) {
+                    maxZ = coords.z;
+                }
+
+                if (coords.x < minX) {
+                    minX = coords.x;
+                }
+
+                if (coords.y < minY) {
+                    minY = coords.y;
+                }
+
+                if (coords.z < minZ) {
+                    minZ = coords.z;
+                }
+            }
+
+            glm::vec3 size = glm::vec3(std::abs(maxX - minX), std::abs(maxY - minY), std::abs(maxZ - minZ));
+            glm::vec3 center = glm::vec3(minX + (maxX - minX) / 2.0f, minY + (maxY - minY) / 2.0f, minZ + (maxZ - minZ) / 2.0f);
+
+            BoundingBox boundingBox {
+                .size = transform.scale * size,
+                .center = center + transform.position,
+            };
+
+            return boundingBox;
         }
 
         void calculateNormals() {
