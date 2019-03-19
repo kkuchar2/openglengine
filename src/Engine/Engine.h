@@ -2,7 +2,7 @@
 #define OPENGL_ENGINE_H
 
 #include "Rendering/GameObject.h"
-#include "Rendering/RenderScene.h"
+#include "Rendering/UserScene.h"
 
 #include "Rendering/Camera/OrtographicCamera.h"
 #include "Rendering/Camera/PerspectiveCamera.h"
@@ -18,6 +18,8 @@
 #include "Editor/Editor.h"
 
 #include "Rendering/TextureRenderer.h"
+
+#include "Rendering/SceneMapper.h"
 
 class Engine {
     public:
@@ -58,8 +60,9 @@ class Engine {
             subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
         }
 
-        void addScene(std::shared_ptr<RenderScene> & scene) {
-            renderer->addScene(scene);
+        void addScene(std::shared_ptr<UserScene> & scene) {
+            std::shared_ptr<EngineScene> engineScene = SceneMapper::mapToEngine(scene);
+            renderer->addScene(engineScene);
         }
 
         void prepareScenes() {

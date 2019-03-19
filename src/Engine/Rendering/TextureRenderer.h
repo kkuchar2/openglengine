@@ -4,8 +4,9 @@
 #include <deps/glad/glad.h>
 
 #include "Camera/BaseCamera.h"
-#include "RenderScene.h"
+#include "UserScene.h"
 #include "Camera/PerspectiveCamera.h"
+#include "EngineScene.h"
 
 class TextureRenderer {
 
@@ -18,7 +19,7 @@ class TextureRenderer {
         GLuint FramebufferName = 0;
 
 
-        std::map<Projection, std::vector<std::shared_ptr<RenderScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
+        std::map<Projection, std::vector<std::shared_ptr<EngineScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
 
         std::vector<std::shared_ptr<BaseCamera>> cameras;
 
@@ -31,7 +32,7 @@ class TextureRenderer {
             cameras.push_back(camera);
         }
 
-        void addScene(std::shared_ptr<RenderScene> & scene) {
+        void addScene(std::shared_ptr<EngineScene> & scene) {
             scenes.at(scene->projection).push_back(scene);
         }
 

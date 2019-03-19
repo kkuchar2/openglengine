@@ -12,6 +12,7 @@
 #include "../Utils/Logging/Logger.h"
 #include "../Utils/OBJ/tiny_obj_loader.h"
 #include "../Utils/TextureLoader.h"
+#include "../Window/Input/MessageListener.h"
 
 std::ostream& operator<<(std::ostream & out, const glm::vec3 & v)
 {
@@ -32,6 +33,7 @@ struct TriangleInfo {
 struct BoundingBox {
     glm::vec3 size;
     glm::vec3 center;
+    glm::vec3 rotation;
 };
 
 typedef std::shared_ptr<Shader>& ShaderPtrRef;
@@ -231,13 +233,14 @@ class Mesh : public MessageListener {
 
             glm::vec3 size = glm::vec3(std::abs(maxX - minX), std::abs(maxY - minY), std::abs(maxZ - minZ));
             glm::vec3 center = glm::vec3(minX + (maxX - minX) / 2.0f, minY + (maxY - minY) / 2.0f, minZ + (maxZ - minZ) / 2.0f);
+            glm::vec3 max = glm::vec3(maxX, maxY, maxZ);
+            glm::vec3 min = glm::vec3(minX, minY, minZ);
 
-            BoundingBox boundingBox {
-                .size = transform.scale * size,
-                .center = center + transform.position,
-            };
-
-            return boundingBox;
+            BoundingBox bbBox {};
+            bbBox.size = transform.scale * size;
+            bbBox.center = center * transform.scale + transform.position;
+            bbBox.rotation = transform.rotation;
+            return bbBox;
         }
 
         void calculateNormals() {

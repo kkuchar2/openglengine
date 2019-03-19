@@ -4,8 +4,8 @@
 #include "../Engine.h"
 #include "../Utils/NormalsGenerator.h"
 
-std::shared_ptr<RenderScene> cubeScene() {
-    std::shared_ptr<RenderScene> scene = std::make_shared<RenderScene>();
+std::shared_ptr<UserScene> cubeScene() {
+    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-2.0f, 2.0f, 2.0f);
 

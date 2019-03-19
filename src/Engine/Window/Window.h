@@ -19,7 +19,7 @@ class Window {
         float lastTime = 0.0f;
         float totalTime = 0.0f;
 
-        bool vSyncEnabled = false;
+        bool vSyncDisabled = false;
 
         Window(const int resX, const int resY) {
 
@@ -28,8 +28,8 @@ class Window {
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-            if (vSyncEnabled) {
-                glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE );
+            if (vSyncDisabled) {
+                glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
             }
 
             createWindow(resX, resY);
@@ -84,7 +84,7 @@ class Window {
             glfwGetFramebufferSize(window, &width, &height);
             aspectRatio = (float) width / (float) height;
             UpdateTime();
-            if (vSyncEnabled) {
+            if (vSyncDisabled) {
 
                 glFinish();
             }

@@ -11,9 +11,9 @@ int main() {
         return -1;
     }
 
-    std::shared_ptr<RenderScene> bs = baseScene();
-    std::shared_ptr<RenderScene> ms = mainScene();
-    std::shared_ptr<RenderScene> os = orthographicScene();
+    std::shared_ptr<UserScene> bs = baseScene();
+    std::shared_ptr<UserScene> ms = mainScene();
+    std::shared_ptr<UserScene> os = orthographicScene();
 
     engine->addScene(bs);
     engine->addScene(ms);

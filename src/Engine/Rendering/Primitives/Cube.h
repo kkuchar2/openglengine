@@ -13,8 +13,6 @@ class Cube : public Mesh {
                     -0.5f, -0.5f, -0.5f, // 0
 
 
-
-
                     // back top  - ok
                     -0.5f, -0.5f, -0.5f, // 5
                     -0.5f,  0.5f, -0.5f,

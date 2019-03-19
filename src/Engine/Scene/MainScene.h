@@ -3,8 +3,8 @@
 
 #include "../Engine.h"
 
-std::shared_ptr<RenderScene> mainScene() {
-    std::shared_ptr<RenderScene> scene = std::make_shared<RenderScene>();
+std::shared_ptr<UserScene> mainScene() {
+    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(1.2f, 1.0f, 2.0f);
 
@@ -36,29 +36,17 @@ std::shared_ptr<RenderScene> mainScene() {
         shader->setVec3("lightPos", *lightPos.get());
     };
 
-
     std::shared_ptr<Mesh> suzanneMesh = std::make_shared<Mesh>("../resources/models/suzanne.obj");
     suzanneMesh->shader = shaderPool.diffuseShader;
-    suzanneMesh->transform.position = glm::vec3(0.0f, 3.0f, 0.0f);
+    suzanneMesh->transform.position = glm::vec3(0.0f, 7.0f, 0.0f);
+    suzanneMesh->transform.rotation = glm::vec3(0.0f, 30.0f, -10.0f);
     suzanneMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };
 
-    BoundingBox boundingBox = suzanneMesh->calculateBoundingBox();
-
-    std::shared_ptr<Cube> bbBoxCube = std::make_shared<Cube>();
-    bbBoxCube->shader = shaderPool.colorShader;
-    bbBoxCube->drawWireframe = true;
-    bbBoxCube->transform.position = boundingBox.center;
-    bbBoxCube->transform.scale = boundingBox.size;
-    bbBoxCube->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-    };
-
     std::shared_ptr<Mesh> teapotMesh = std::make_shared<Mesh>("../resources/models/teapot.obj");
-    teapotMesh->drawWireframe = true;
     teapotMesh->shader = shaderPool.diffuseShader;
     teapotMesh->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMesh->transform.scale = glm::vec3(0.5f);
@@ -80,7 +68,6 @@ std::shared_ptr<RenderScene> mainScene() {
     auto lampMeshObject = std::make_shared<GameObject>(lampMesh);
     auto cubeObject = std::make_shared<GameObject>(cube);
     auto bunnyObject = std::make_shared<GameObject>(bunnyMesh);
-    auto bunnyBoundingBoxObject = std::make_shared<GameObject>(bbBoxCube);
     auto suzanneMeshObject = std::make_shared<GameObject>(suzanneMesh);
     auto teapotMeshObject = std::make_shared<GameObject>(teapotMesh);
     auto surfaceObject = std::make_shared<GameObject>(surface);
@@ -90,7 +77,6 @@ std::shared_ptr<RenderScene> mainScene() {
     scene->addObject(teapotMeshObject);
     scene->addObject(suzanneMeshObject);
     scene->addObject(bunnyObject);
-    scene->addObject(bunnyBoundingBoxObject);
     scene->addObject(cubeObject);
     scene->addObject(lampMeshObject);
 

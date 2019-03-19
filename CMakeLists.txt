@@ -71,7 +71,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/Editor.h src/Engine/Editor/EditorStyle.h src/Engine/Rendering/TextureRenderer.h)
+set(SOURCE_FILES ${SRC_FILES})
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

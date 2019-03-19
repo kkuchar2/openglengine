@@ -4,8 +4,8 @@
 #include "../Engine.h"
 #include "../Utils/CharacterTextureGenerator.h"
 
-std::shared_ptr<RenderScene> orthographicScene() {
-    std::shared_ptr<RenderScene> scene = std::make_shared<RenderScene>();
+std::shared_ptr<UserScene> orthographicScene() {
+    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
     scene->projection = ORTOGRAPHIC;
 

@@ -4,8 +4,8 @@
 #include "../Engine.h"
 #include "../Rendering/Shading/ShaderPool.h"
 
-std::shared_ptr<RenderScene> baseScene() {
-    std::shared_ptr<RenderScene> scene = std::make_shared<RenderScene>();
+std::shared_ptr<UserScene> baseScene() {
+    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 1.0f, 2.0f);
 
