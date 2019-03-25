@@ -1,5 +1,4 @@
-#ifndef OPENGL_TESTSCENE_H
-#define OPENGL_TESTSCENE_H
+#pragma once
 
 #include "../Engine.h"
 #include "../Utils/NormalsGenerator.h"
@@ -51,6 +50,3 @@ std::shared_ptr<UserScene> testScene() {
 
     return scene;
 }
-
-
-#endif //OPENGL_TESTSCENE_H

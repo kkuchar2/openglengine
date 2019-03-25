@@ -1,5 +1,4 @@
-#ifndef OPENGL_TEXTRENDERER_H
-#define OPENGL_TEXTRENDERER_H
+#pragma once
 
 #include <ft2build.h>
 #include "freetype/freetype.h"
@@ -9,9 +8,7 @@ struct Character {
     glm::ivec2 Size;       // Size of glyph
     glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph
     GLuint     Advance;    // Offset to advance to next glyph
-};
-
-class CharacterTextureGenerator {
+};class CharacterTextureGenerator {
 
     public:
         std::map<GLchar, Character> Characters;
@@ -86,5 +83,3 @@ class CharacterTextureGenerator {
             }
         }
 };
-
-#endif //OPENGL_TEXTRENDERER_H

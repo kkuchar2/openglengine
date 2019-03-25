@@ -1,5 +1,4 @@
-#ifndef OPENGL_ENGINE_H
-#define OPENGL_ENGINE_H
+#pragma once
 
 #include "Rendering/GameObject.h"
 #include "Rendering/UserScene.h"
@@ -87,5 +86,3 @@ class Engine {
             subscription->Unsubscribe();
         }
 };
-
-#endif //OPENGL_ENGINE_H

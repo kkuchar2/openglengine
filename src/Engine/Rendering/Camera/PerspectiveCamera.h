@@ -1,5 +1,4 @@
-#ifndef OPENGL_PERSPECTIVEPROJECTIONRENDERER_H
-#define OPENGL_PERSPECTIVEPROJECTIONRENDERER_H
+#pragma once
 
 
 #include "BaseCamera.h"
@@ -121,5 +120,3 @@ class PerspectiveCamera : public BaseCamera {
             return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 1000.0f);
         }
 };
-
-#endif //OPENGL_PERSPECTIVEPROJECTIONRENDERER_H

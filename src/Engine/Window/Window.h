@@ -1,5 +1,4 @@
-#ifndef OPENGL_WINDOWMANAGER_H
-#define OPENGL_WINDOWMANAGER_H
+#pragma once
 
 #define GLFW_INCLUDE_NONE
 
@@ -14,40 +13,36 @@ class Window {
         GLFWwindow * window { nullptr };
         int width = 600;
         int height = 600;
-        float aspectRatio{};
 
         float lastTime = 0.0f;
         float totalTime = 0.0f;
 
-        bool vSyncDisabled = false;
+        bool vSyncEnabled = true;
 
         Window(const int resX, const int resY) {
 
             glfwInit();
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-            if (vSyncDisabled) {
-                glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
+            window = glfwCreateWindow(resX, resY, "Engine", nullptr, nullptr);
+
+            if (!window) {
+                glfwTerminate();
+                exit(EXIT_FAILURE);
             }
 
-            createWindow(resX, resY);
             width = resX;
             height = resY;
-            aspectRatio = (float) width / (float) height;
+
             glfwMakeContextCurrent(window);
 
             if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
                 throw EngineException("Failed to initialize GLAD");
             }
-        }
 
-        void createWindow(const int resX, const int resY) {
-            window = glfwCreateWindow(resX, resY, "Demo", nullptr, nullptr);
-            if (!window) {
-                glfwTerminate();
-                exit(EXIT_FAILURE);
+            if (vSyncEnabled) {
+                glfwSwapInterval(1);
             }
         }
 
@@ -67,34 +62,16 @@ class Window {
             glfwSetCursorPosCallback(window, callback);
         }
 
-        void setFramebufferSizeCallback(GLFWframebuffersizefun callback) {
-            glfwSetFramebufferSizeCallback(window, callback);
-        }
-
-        void framebuffer_size_callback(GLFWwindow * window, int width, int height) {
-            this->width = width;
-            this->height = height;
-        }
-
         glm::vec2 getResolution() {
             return glm::vec2(width, height);
         }
 
         void Update() {
-            glfwGetFramebufferSize(window, &width, &height);
-            aspectRatio = (float) width / (float) height;
             UpdateTime();
-            if (vSyncDisabled) {
-
-                glFinish();
-            }
-            else {
-                glfwSwapBuffers(window);
-            }
-
+            glfwGetFramebufferSize(window, &width, &height);
+            glfwSwapBuffers(window);
             glfwPollEvents();
         }
-
 
         bool shouldBeOpened() {
             return !glfwWindowShouldClose(window);
@@ -113,5 +90,3 @@ class Window {
             exit(EXIT_SUCCESS);
         }
 };
-
-#endif //OPENGL_WINDOWMANAGER_H

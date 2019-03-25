@@ -1,5 +1,4 @@
-#ifndef OPENGL_MESSAGEBUS_H
-#define OPENGL_MESSAGEBUS_H
+#pragma once
 
 #include <functional>
 #include <queue>
@@ -65,4 +64,3 @@ public:
         }
 
 };
-#endif //OPENGL_MESSAGEBUS_H

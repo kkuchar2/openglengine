@@ -1,5 +1,4 @@
-#ifndef OPENGL_SHADERPOOL_H
-#define OPENGL_SHADERPOOL_H
+#pragma once
 
 #include <memory>
 
@@ -21,5 +20,3 @@ class ShaderPool {
                 characterShader = std::make_shared<Shader>("../resources/shaders/TextVert.glsl", "../resources/shaders/TextFrag.glsl");
             }
 };
-
-#endif //OPENGL_SHADERPOOL_H

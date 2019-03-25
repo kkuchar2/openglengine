@@ -1,5 +1,4 @@
-#ifndef OPENGL_SCENE_H
-#define OPENGL_SCENE_H
+#pragma once
 
 #include "GameObject.h"
 #include "Camera/BaseCamera.h"
@@ -18,5 +17,3 @@ class UserScene {
             objectsToRender.push_back(obj);
         }
 };
-
-#endif //OPENGL_SCENE_H

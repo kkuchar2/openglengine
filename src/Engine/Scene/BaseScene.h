@@ -1,5 +1,4 @@
-#ifndef OPENGL_BASESCENE_H
-#define OPENGL_BASESCENE_H
+#pragma once
 
 #include "../Engine.h"
 #include "../Rendering/Shading/ShaderPool.h"
@@ -49,5 +48,3 @@ std::shared_ptr<UserScene> baseScene() {
     scene->addObject(gridObject);
     return scene;
 }
-
-#endif //OPENGL_BASESCENE_H

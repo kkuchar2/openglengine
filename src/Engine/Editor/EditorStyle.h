@@ -1,5 +1,4 @@
-#ifndef OPENGL_EDITORSTYLE_H
-#define OPENGL_EDITORSTYLE_H
+#pragma once
 
 #include "../../imgui/imgui.h"
 #include "../../imgui/imgui_internal.h"
@@ -91,7 +90,4 @@ class EditorStyle {
                 style.Colors[ImGuiCol_DragDropTarget]			= background_light;
                 //style.Colors[ImGuiCol_ModalWindowDarkening]	= ImVec4(0.20f, 0.22f, 0.27f, 0.73f);
             }
-
 };
-
-#endif //OPENGL_EDITORSTYLE_H

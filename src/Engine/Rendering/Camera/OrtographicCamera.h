@@ -1,5 +1,4 @@
-#ifndef OPENGL_ORTHOGRAPHICPROJECTIONRENDERER_H
-#define OPENGL_ORTHOGRAPHICPROJECTIONRENDERER_H
+#pragma once
 
 #include "BaseCamera.h"
 
@@ -25,5 +24,3 @@ class OrtographicCamera : public BaseCamera {
             return glm::ortho(-(float) window->width / 2.0f, (float) window->width / 2.0f, (float) window->height / 2.0f, -(float) window->height / 2.0f, -1000.0f, 1000.0f);
         }
 };
-
-#endif //OPENGL_ORTHOGRAPHICPROJECTIONRENDERER_H

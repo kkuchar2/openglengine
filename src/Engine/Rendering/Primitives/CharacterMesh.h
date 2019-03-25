@@ -1,5 +1,4 @@
-#ifndef OPENGL_TEXT_H
-#define OPENGL_TEXT_H
+#pragma once
 
 #include "../Mesh.h"
 #include "../../Utils/CharacterTextureGenerator.h"
@@ -39,5 +38,3 @@ class CharacterMesh : public Mesh {
             };
         }
 };
-
-#endif //OPENGL_TEXT_H

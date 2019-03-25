@@ -1,5 +1,4 @@
-#ifndef OPENGL_INPUTDISPATCHER_H
-#define OPENGL_INPUTDISPATCHER_H
+#pragma once
 
 #include "../Window.h"
 #include "InputSystem.h"
@@ -32,6 +31,3 @@ class InputDispatcher {
             window->setMouseButtonCallback(InputDispatcher::mouse_button_callback);
         }
 };
-
-
-#endif //OPENGL_INPUTDISPATCHER_H

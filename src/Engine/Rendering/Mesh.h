@@ -1,5 +1,4 @@
-#ifndef OPENGL_MESH_H
-#define OPENGL_MESH_H
+#pragma once
 
 #include <cmath>
 #include <memory>
@@ -319,5 +318,3 @@ class Mesh : public MessageListener {
             }
         }
 };
-
-#endif //OPENGL_MESH_H

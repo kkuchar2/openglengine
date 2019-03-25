@@ -1,5 +1,4 @@
-#ifndef OPENGL_GAMEOBJECT_H
-#define OPENGL_GAMEOBJECT_H
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -25,5 +24,3 @@ class GameObject {
         }
 
 };
-
-#endif //OPENGL_GAMEOBJECT_H

@@ -1,5 +1,4 @@
-#ifndef OPENGL_MAINSCENE_H
-#define OPENGL_MAINSCENE_H
+#pragma once
 
 #include "../Engine.h"
 
@@ -82,5 +81,3 @@ std::shared_ptr<UserScene> mainScene() {
 
     return scene;
 }
-
-#endif //OPENGL_MAINSCENE_H

@@ -1,5 +1,4 @@
-#ifndef OPENGL_SCENE_H
-#define OPENGL_SCENE_H
+#pragma once
 
 #include "GameObject.h"
 #include "../Camera/PerspectiveCamera.h"
@@ -44,5 +43,3 @@ class Scene {
             }
         }
 };
-
-#endif //OPENGL_SCENE_H

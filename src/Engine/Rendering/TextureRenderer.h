@@ -1,5 +1,4 @@
-#ifndef OPENGL_TEXTURERENDERER_H
-#define OPENGL_TEXTURERENDERER_H
+#pragma once
 
 #include <deps/glad/glad.h>
 
@@ -119,5 +118,3 @@ class TextureRenderer {
             glBindRenderbuffer(GL_RENDERBUFFER, 0);
         }
 };
-
-#endif //OPENGL_TEXTURERENDERER_H

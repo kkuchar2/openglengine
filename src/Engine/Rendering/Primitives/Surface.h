@@ -1,5 +1,4 @@
-#ifndef OPENGL_SURFACE_H
-#define OPENGL_SURFACE_H
+#pragma once
 
 #include "../Mesh.h"
 
@@ -58,5 +57,3 @@ class Surface : public Mesh {
             }
         }
 };
-
-#endif //OPENGL_SURFACE_H

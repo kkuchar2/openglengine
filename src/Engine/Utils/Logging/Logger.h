@@ -1,5 +1,4 @@
-#ifndef OPENGL_LOGGER_H
-#define OPENGL_LOGGER_H
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -85,5 +84,3 @@ class Logger {
             Logger::Log(INFO, nullptr, s);
         }
 };
-
-#endif //OPENGL_LOGGER_H

@@ -1,5 +1,4 @@
-#ifndef OPENGL_BMPLOADER_H
-#define OPENGL_BMPLOADER_H
+#pragma once
 
 #include <cstdio>
 #include <iostream>
@@ -57,5 +56,3 @@ class TextureLoader {
             return textureID;
         }
 };
-
-#endif //OPENGL_BMPLOADER_H

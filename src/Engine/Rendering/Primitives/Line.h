@@ -1,5 +1,4 @@
-#ifndef OPENGL_LINE_H
-#define OPENGL_LINE_H
+#pragma once
 
 #include "../Mesh.h"
 
@@ -24,5 +23,3 @@ class Line : public Mesh {
             Mesh::Render(GL_LINES, 2);
         }
 };
-
-#endif //OPENGL_LINE_H

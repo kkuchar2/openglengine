@@ -1,5 +1,4 @@
-#ifndef OPENGL_INPUTSYSTEM_H
-#define OPENGL_INPUTSYSTEM_H
+#pragma once
 
 #include <glm/glm.hpp>
 
@@ -43,5 +42,3 @@ class InputSystem {
             MessageBus::sendMessage(std::make_shared<KeyMessage>(pressed));
         }
 };
-
-#endif //OPENGL_INPUTSYSTEM_H

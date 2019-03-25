@@ -1,5 +1,4 @@
-#ifndef OPENGL_SCENEMAPPER_H
-#define OPENGL_SCENEMAPPER_H
+#pragma once
 
 #include "UserScene.h"
 #include "EngineScene.h"
@@ -18,5 +17,3 @@ class SceneMapper {
             return engineScene;
         }
 };
-
-#endif //OPENGL_SCENEMAPPER_H

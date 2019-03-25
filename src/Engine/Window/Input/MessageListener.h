@@ -1,5 +1,4 @@
-#ifndef OPENGL_COMPONENT_H
-#define OPENGL_COMPONENT_H
+#pragma once
 
 #include <iostream>
 #include <functional>
@@ -36,5 +35,3 @@ class MessageListener {
         virtual void onNotify(std::shared_ptr<Message> & message) {}
 
 };
-
-#endif //OPENGL_COMPONENT_H

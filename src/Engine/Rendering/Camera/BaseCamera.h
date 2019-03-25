@@ -1,5 +1,4 @@
-#ifndef OPENGL_BASECAMERA_H
-#define OPENGL_BASECAMERA_H
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -16,9 +15,7 @@ enum Projection {
     PERSPECTIVE,
     ORTOGRAPHIC,
     UNDEFINED
-};
-
-class BaseCamera : public MessageListener {
+};class BaseCamera : public MessageListener {
 
     protected:
         std::shared_ptr<Window> window;
@@ -140,5 +137,3 @@ class BaseCamera : public MessageListener {
 
         virtual glm::mat4x4 getProjectionMatrix() = 0;
 };
-
-#endif //OPENGL_BASECAMERA_H

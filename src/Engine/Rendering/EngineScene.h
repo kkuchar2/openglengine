@@ -1,5 +1,4 @@
-#ifndef OPENGL_ENGINESCENE_H
-#define OPENGL_ENGINESCENE_H
+#pragma once
 
 #include "GameObject.h"
 #include "Camera/BaseCamera.h"
@@ -28,6 +27,3 @@ class EngineScene {
             std::for_each(objects.begin(), objects.end(), [&camera](auto obj){ obj->Render(camera); });
         }
 };
-
-
-#endif //OPENGL_ENGINESCENE_H

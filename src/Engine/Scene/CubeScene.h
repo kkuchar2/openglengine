@@ -1,5 +1,4 @@
-#ifndef OPENGL_CUBESCENE_H
-#define OPENGL_CUBESCENE_H
+#pragma once
 
 #include "../Engine.h"
 #include "../Utils/NormalsGenerator.h"
@@ -39,5 +38,3 @@ std::shared_ptr<UserScene> cubeScene() {
 
     return scene;
 }
-
-#endif //OPENGL_CUBESCENE_H

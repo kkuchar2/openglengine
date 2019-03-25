@@ -1,5 +1,4 @@
-#ifndef OPENGL_NORMALSGENERATOR_H
-#define OPENGL_NORMALSGENERATOR_H
+#pragma once
 
 #include "../Engine.h"
 
@@ -45,5 +44,3 @@ class NormalsGenerator {
         }
 
 };
-
-#endif //OPENGL_NORMALSGENERATOR_H

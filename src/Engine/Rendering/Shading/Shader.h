@@ -1,5 +1,4 @@
-#ifndef OPENGL_SHADER_H
-#define OPENGL_SHADER_H
+#pragma once
 
 #include <glm/glm.hpp>
 #include <deps/glad/glad.h>
@@ -92,7 +91,6 @@ class Shader {
 
             checkCompileErrors(ID, "PROGRAM");
 
-
             glDeleteShader(vertex);
             glDeleteShader(fragment);
 
@@ -174,5 +172,3 @@ class Shader {
             }
         }
 };
-
-#endif //OPENGL_SHADER_H

@@ -1,5 +1,4 @@
-#ifndef OPENGL_QUAD_H
-#define OPENGL_QUAD_H
+#pragma once
 
 #include "../Mesh.h"
 
@@ -27,5 +26,3 @@ class Quad : public Mesh {
             };
         }
 };
-
-#endif //OPENGL_QUAD_H

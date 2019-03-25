@@ -1,5 +1,4 @@
-#ifndef OPENGL_USERINTERFACE_H
-#define OPENGL_USERINTERFACE_H
+#pragma once
 
 #include <ObservableBase.h>
 #include "../../imgui/imgui.h"
@@ -178,5 +177,3 @@ class Editor {
                 ImGui::DestroyContext();
             }
 };
-
-#endif //OPENGL_USERINTERFACE_H

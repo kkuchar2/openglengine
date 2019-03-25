@@ -1,5 +1,4 @@
-#ifndef OPENGL_MESSAGE_H
-#define OPENGL_MESSAGE_H
+#pragma once
 
 #include <string>
 #include <glm/vec2.hpp>
@@ -92,20 +91,3 @@ class CursorButtonMessage : public Message {
             this->mods = mods;
         }
 };
-
-class GUISceneWindowResizeMessage : public Message {
-    public:
-            double width;
-            double height;
-
-            GUISceneWindowResizeMessage(double width, double height)
-                    : Message(MessageType::SCENE_RESIZE)
-            {
-                this->width = width;
-                this->height = height;
-            }
-};
-
-
-
-#endif //OPENGL_MESSAGE_H

@@ -1,5 +1,4 @@
-#ifndef OPENGL_ORTOGRAPHICSCENE_H
-#define OPENGL_ORTOGRAPHICSCENE_H
+#pragma once
 
 #include "../Engine.h"
 #include "../Utils/CharacterTextureGenerator.h"
@@ -33,5 +32,3 @@ std::shared_ptr<UserScene> orthographicScene() {
 
     return scene;
 }
-
-#endif //OPENGL_ORTOGRAPHICSCENE_H

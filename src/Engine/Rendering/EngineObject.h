@@ -1,5 +1,4 @@
-#ifndef OPENGL_ENGINEOBJECT_H
-#define OPENGL_ENGINEOBJECT_H
+#pragma once
 
 #include "GameObject.h"
 #include "Primitives/Cube.h"
@@ -36,5 +35,3 @@ class EngineObject {
             boundingBox = gameObject->CreateBoundingBox();
         }
 };
-
-#endif //OPENGL_ENGINEOBJECT_H
