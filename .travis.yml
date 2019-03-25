@@ -6,9 +6,10 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-    packages:
+    packages:            
       - g++-7
-
+      - xorg-dev 
+      - libglu1-mesa-dev
 script:
   - export CC=gcc-7
   - export CXX=g++-7
