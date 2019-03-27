@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.9)
 project(opengl)
 
-SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 set(CMAKE_CXX_STANDARD 17)
 
 
@@ -21,7 +21,7 @@ set(ASSIMP_BUILD_STATIC_LIB ON)
 
 add_subdirectory(dependencies/glfw)
 add_subdirectory(dependencies/glm)
-add_subdirectory(dependencies/Rose/RoseCpp)
+add_subdirectory(dependencies/RoseCpp)
 add_subdirectory(dependencies/freetype2)
 
 
@@ -29,7 +29,7 @@ include_directories(dependencies/glfw)
 include_directories(dependencies/glfw/deps)
 include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
-include_directories(dependencies/Rose/RoseCpp/src)
+include_directories(dependencies/RoseCpp/src)
 include_directories(dependencies/freetype2/include)
 
 set(GLAD "${GLFW_SOURCE_DIR}/deps/glad/glad.h" "${GLFW_SOURCE_DIR}/deps/glad.c")
