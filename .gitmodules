@@ -1,12 +1,12 @@
 [submodule "dependencies/glm"]
 	path = dependencies/glm
 	url = https://github.com/g-truc/glm
-[submodule "dependencies/Rose"]
-	path = dependencies/Rose
-	url = https://github.com/kkuchar2/Rose
 [submodule "dependencies/freetype2"]
 	path = dependencies/freetype2
 	url = https://github.com/aseprite/freetype2
 [submodule "dependencies/glfw"]
 	path = dependencies/glfw
 	url = https://github.com/kkuchar2/glfw
+[submodule "dependencies/RoseCpp"]
+	path = dependencies/RoseCpp
+	url = https://github.com/kkuchar2/RoseCpp
