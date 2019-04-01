@@ -31,8 +31,10 @@ include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
 include_directories(dependencies/RoseCpp/src)
 include_directories(dependencies/freetype2/include)
+include_directories(dependencies/glad/include/glad)
+include_directories(dependencies/glad/include/KHR)
 
-set(GLAD "${GLFW_SOURCE_DIR}/deps/glad/glad.h" "${GLFW_SOURCE_DIR}/deps/glad.c")
+set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
 set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
 

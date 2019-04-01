@@ -1,6 +1,6 @@
 #pragma once
 
-#include <deps/glad/glad.h>
+#include <glad.h>
 
 #include "Camera/BaseCamera.h"
 #include "UserScene.h"

@@ -2,7 +2,7 @@
 
 #include <cstdio>
 #include <iostream>
-#include <deps/glad/glad.h>
+#include <glad.h>
 
 class TextureLoader {
     public:

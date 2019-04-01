@@ -4,9 +4,9 @@
 [submodule "dependencies/freetype2"]
 	path = dependencies/freetype2
 	url = https://github.com/aseprite/freetype2
-[submodule "dependencies/glfw"]
-	path = dependencies/glfw
-	url = https://github.com/kkuchar2/glfw
 [submodule "dependencies/RoseCpp"]
 	path = dependencies/RoseCpp
 	url = https://github.com/kkuchar2/RoseCpp
+[submodule "dependencies/glfw"]
+	path = dependencies/glfw
+	url = https://github.com/kkuchar2/glfw
