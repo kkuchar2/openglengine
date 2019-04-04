@@ -31,9 +31,9 @@ class Engine {
         std::shared_ptr<OrtographicCamera> oc;
         std::shared_ptr<PerspectiveCamera> pc;
 
-        ObserverPtr<glm::vec2> observer;
+        Observer<glm::vec2> observer;
 
-        SubscriptionPtr subscription;
+        Subscription subscription;
 
         Engine() {
             window = std::make_shared<Window>(1000, 800);
@@ -54,7 +54,7 @@ class Engine {
 
             editor = std::make_shared<Editor>(window);
 
-            observer = std::make_shared<Observer<glm::vec2>>([&](glm::vec2 v) { renderer->updateSize(v); });
+            observer = createObserver<glm::vec2>(([&](glm::vec2 v) { renderer->updateSize(v); }));
 
             subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
         }
