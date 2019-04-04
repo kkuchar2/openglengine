@@ -8,16 +8,13 @@ int main() {
         engine = std::make_shared<Engine>();
     }
     catch (EngineException & e) {
+        std::cerr << e.what() << std::endl;
         return -1;
     }
 
-    std::shared_ptr<UserScene> bs = baseScene();
-    std::shared_ptr<UserScene> ms = mainScene();
-    std::shared_ptr<UserScene> os = orthographicScene();
-
-    engine->addScene(bs);
-    engine->addScene(ms);
-    engine->addScene(os);
+    engine->addScene(baseScene());
+    engine->addScene(mainScene());
+    engine->addScene(orthographicScene());
 
     engine->renderingLoop();
 

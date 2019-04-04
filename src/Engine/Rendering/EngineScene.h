@@ -14,12 +14,12 @@ class EngineScene {
 
         EngineScene() = default;
 
-        void addObject(std::shared_ptr<EngineObject> & obj) {
+        void addObject(std::shared_ptr<EngineObject> obj) {
             objects.push_back(obj);
         }
 
         void prepare() {
-            std::for_each(objects.begin(), objects.end(), [](auto obj){ obj->Prepare(); });
+            std::for_each(objects.begin(), objects.end(), [](std::shared_ptr<EngineObject> o){ o->Prepare(); });
         }
 
         template<typename T, typename std::enable_if<std::is_base_of<BaseCamera, T>::value>::type* = nullptr>

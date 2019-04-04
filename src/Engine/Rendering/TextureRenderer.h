@@ -10,13 +10,12 @@
 class TextureRenderer {
 
     public:
-        double texWidth = 400.0;
-        double texHeight = 400.0;
+        double width = 400.0;
+        double height = 400.0;
 
-        GLuint renderedTexture;
-        GLuint depthrenderbuffer;
-        GLuint FramebufferName = 0;
-
+        GLuint texture {};
+        GLuint dephRenderBuffer {};
+        GLuint framebufferName = 0;
 
         std::map<Projection, std::vector<std::shared_ptr<EngineScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
 
@@ -27,11 +26,11 @@ class TextureRenderer {
         }
 
         template<typename T, typename std::enable_if<std::is_base_of<BaseCamera, T>::value>::type* = nullptr>
-        void addCamera(std::shared_ptr<T> & camera) {
+        void addCamera(std::shared_ptr<T> camera) {
             cameras.push_back(camera);
         }
 
-        void addScene(std::shared_ptr<EngineScene> & scene) {
+        void addScene(std::shared_ptr<EngineScene> scene) {
             scenes.at(scene->projection).push_back(scene);
         }
 
@@ -45,12 +44,6 @@ class TextureRenderer {
 
         void renderScenes() {
             for (auto & camera : cameras) {
-
-                if (camera->projection == PERSPECTIVE) {
-                    std::shared_ptr<PerspectiveCamera> pCamera = std::dynamic_pointer_cast<PerspectiveCamera>(camera);
-                    pCamera->aspectRatio = static_cast<float>(texWidth / texHeight);
-                }
-
                 camera->Update();
 
                 for (auto & scene : scenes.at(camera->projection)) {
@@ -59,34 +52,25 @@ class TextureRenderer {
             }
         }
 
-        void updateSize(float width, float height) {
-
-            if (abs(texWidth - width) > 2.0 || abs(texHeight - height) > 2.0) {
-                texWidth = width;
-                texHeight = height;
-                createFrameBuffer();
-            }
-        }
-
         void createFrameBuffer() {
 
-            glGenFramebuffers(1, &FramebufferName);
-            glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
+            glGenFramebuffers(1, &framebufferName);
+            glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
 
-            glGenTextures(1, &renderedTexture);
-            glBindTexture(GL_TEXTURE_2D, renderedTexture);
+            glGenTextures(1, &texture);
+            glBindTexture(GL_TEXTURE_2D, texture);
 
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, static_cast<GLsizei>(texWidth), static_cast<GLsizei>(texHeight), 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, static_cast<GLsizei>(width), static_cast<GLsizei>(width), 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-            glGenRenderbuffers(1, &depthrenderbuffer);
-            glBindRenderbuffer(GL_RENDERBUFFER, depthrenderbuffer);
-            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, static_cast<GLsizei>(texWidth), static_cast<GLsizei>(texHeight));
-            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthrenderbuffer);
+            glGenRenderbuffers(1, &dephRenderBuffer);
+            glBindRenderbuffer(GL_RENDERBUFFER, dephRenderBuffer);
+            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, dephRenderBuffer);
 
-            glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
+            glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture, 0);
 
             // Set the list of draw buffers.
             GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
@@ -98,23 +82,23 @@ class TextureRenderer {
         }
 
         void renderToTexture() {
-            glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
+            glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
             glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            glViewport(0, 0, texWidth, texHeight);
+            glViewport(0, 0, width, height);
             renderScenes();
         }
 
         void updateSize(glm::vec2 & newSize) {
-            texWidth = newSize.x;
-            texHeight = newSize.y;
+            width = newSize.x;
+            height = newSize.y;
 
-            glBindTexture(GL_TEXTURE_2D, renderedTexture);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, static_cast<GLsizei>(texWidth), static_cast<GLsizei>(texHeight), 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+            glBindTexture(GL_TEXTURE_2D, texture);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, static_cast<GLsizei>(width), static_cast<GLsizei>(height), 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
             glBindTexture(GL_TEXTURE_2D, 0);
 
-            glBindRenderbuffer(GL_RENDERBUFFER, depthrenderbuffer);
-            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, static_cast<GLsizei>(texWidth), static_cast<GLsizei>(texHeight));
+            glBindRenderbuffer(GL_RENDERBUFFER, dephRenderBuffer);
+            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
             glBindRenderbuffer(GL_RENDERBUFFER, 0);
         }
 };
