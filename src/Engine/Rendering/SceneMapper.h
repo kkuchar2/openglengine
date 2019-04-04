@@ -10,8 +10,7 @@ class SceneMapper {
             std::shared_ptr<EngineScene> engineScene = std::make_shared<EngineScene>();
 
             for (auto & gameObject : userScene->objectsToRender) {
-                std::shared_ptr<EngineObject> engineObject = std::make_shared<EngineObject>(gameObject);
-                engineScene->addObject(engineObject);
+                engineScene->addObject(std::make_shared<EngineObject>(gameObject));
             }
 
             return engineScene;

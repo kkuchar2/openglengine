@@ -101,7 +101,5 @@ class Cube : public Mesh {
                     0.0f, 0.0f,
                     0.0f, 0.0f,
             };
-
-            prepare();
         }
 };

@@ -13,14 +13,13 @@
 #include "../Utils/TextureLoader.h"
 #include "../Window/Input/MessageListener.h"
 
-std::ostream& operator<<(std::ostream & out, const glm::vec3 & v)
-{
+std::ostream & operator<<(std::ostream & out, const glm::vec3 & v) {
     return out << "(" << v.x << ", " << v.y << ", " << v.z << ")";
 }
 
 struct Transform {
     glm::vec3 position = glm::vec3(0.0f);
-    glm::vec3 rotation =  glm::vec3(0.0f);
+    glm::vec3 rotation = glm::vec3(0.0f);
     glm::vec3 scale = glm::vec3(1.0f);
 };
 
@@ -35,7 +34,7 @@ struct BoundingBox {
     glm::vec3 rotation;
 };
 
-typedef std::shared_ptr<Shader>& ShaderPtrRef;
+typedef std::shared_ptr<Shader> & ShaderPtrRef;
 typedef std::function<void(ShaderPtrRef)> ShaderFunc;
 
 class Mesh : public MessageListener {
@@ -66,7 +65,7 @@ class Mesh : public MessageListener {
 
         Transform transform;
 
-        ShaderFunc shaderInit = [](std::shared_ptr<Shader> & shader) { };
+        ShaderFunc shaderInit = [](std::shared_ptr<Shader> & shader) {};
 
         explicit Mesh(const char * path) : MessageListener() {
             loadMesh(path);
@@ -132,11 +131,11 @@ class Mesh : public MessageListener {
 
             glGenBuffers(1, &vbo);
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
-            glBufferStorage(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), nullptr,  createFlags);
+            glBufferStorage(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), nullptr, createFlags);
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-            pVertexPosBufferData = (float *) glMapBufferRange(GL_ARRAY_BUFFER, 0,  vertices.size() * sizeof(float), mapFlags);
+            pVertexPosBufferData = (float *) glMapBufferRange(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(float), mapFlags);
 
             copyVertifcesToBuffer();
         }
@@ -162,7 +161,7 @@ class Mesh : public MessageListener {
         }
 
         void copyVertifcesToBuffer() {
-            for (int i = 0; i < vertices.size(); i+=3) {
+            for (int i = 0; i < vertices.size(); i += 3) {
                 pVertexPosBufferData[i] = vertices[i];
                 pVertexPosBufferData[i + 1] = vertices[i + 1];
                 pVertexPosBufferData[i + 2] = vertices[i + 2];
@@ -203,7 +202,7 @@ class Mesh : public MessageListener {
             float maxZ = minFloat;
 
             for (unsigned int vertexId = 0; vertexId < vertices.size() / 3; vertexId++) {
-                glm::vec3 coords =  glm::vec3(vertices[vertexId * 3], vertices[vertexId * 3 + 1], vertices[vertexId * 3 + 2]);
+                glm::vec3 coords = glm::vec3(vertices[vertexId * 3], vertices[vertexId * 3 + 1], vertices[vertexId * 3 + 2]);
 
                 if (coords.x > maxX) {
                     maxX = coords.x;
@@ -235,7 +234,7 @@ class Mesh : public MessageListener {
             glm::vec3 max = glm::vec3(maxX, maxY, maxZ);
             glm::vec3 min = glm::vec3(minX, minY, minZ);
 
-            BoundingBox bbBox {};
+            BoundingBox bbBox{};
             bbBox.size = transform.scale * size;
             bbBox.center = center * transform.scale + transform.position;
             bbBox.rotation = transform.rotation;
@@ -243,7 +242,7 @@ class Mesh : public MessageListener {
         }
 
         void calculateNormals() {
-            if (disableNormals)  return;
+            if (disableNormals) return;
 
             std::map<unsigned int, std::vector<TriangleInfo>> vertexToTriangles;
 
@@ -286,7 +285,7 @@ class Mesh : public MessageListener {
 
                 weightedSum /= triangleInfos.size();
 
-                normals.insert(normals.end(), { weightedSum.x, weightedSum.y, weightedSum.z });
+                normals.insert(normals.end(), {weightedSum.x, weightedSum.y, weightedSum.z});
             }
         }
 
@@ -312,7 +311,7 @@ class Mesh : public MessageListener {
             vertices = attrib.vertices;
 
             for (const auto & shape : shapes) {
-                for (const auto &index : shape.mesh.indices) {
+                for (const auto & index : shape.mesh.indices) {
                     indices.push_back((unsigned int) index.vertex_index);
                 }
             }

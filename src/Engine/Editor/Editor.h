@@ -141,7 +141,7 @@ class Editor {
                 ImGui::End();
             }
 
-            void renderFrame(std::shared_ptr<Window> & window, int texWidth, int texHeight, GLuint renderedTexture) {
+            void renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture) {
                 glBindFramebuffer(GL_FRAMEBUFFER, 0);
                 glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -153,7 +153,7 @@ class Editor {
 
                 Editor::DockSpaceBegin();
 
-                Editor::renderSceneWindow(texWidth, texHeight, renderedTexture);
+                Editor::renderSceneWindow(width, height, texture);
                 Editor::renderSettingsWindow();
                 Editor::renderConsoleWindow();
 

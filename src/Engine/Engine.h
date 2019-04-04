@@ -54,14 +54,16 @@ class Engine {
 
             editor = std::make_shared<Editor>(window);
 
-            observer = createObserver<glm::vec2>(([&](glm::vec2 v) { renderer->updateSize(v); }));
+            observer = createObserver<glm::vec2>([&](glm::vec2 v) {
+                renderer->updateSize(v);
+                pc->aspectRatio = v.x / v.y;
+            });
 
             subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
         }
 
-        void addScene(std::shared_ptr<UserScene> & scene) {
-            std::shared_ptr<EngineScene> engineScene = SceneMapper::mapToEngine(scene);
-            renderer->addScene(engineScene);
+        void addScene(std::shared_ptr<UserScene> scene) {
+            renderer->addScene(SceneMapper::mapToEngine(scene));
         }
 
         void prepareScenes() {
@@ -73,7 +75,7 @@ class Engine {
 
             while (window->shouldBeOpened()) {
                 renderer->renderToTexture();
-                editor->renderFrame(window, static_cast<int>(renderer->texWidth), static_cast<int>(renderer->texHeight), renderer->renderedTexture);
+                editor->renderFrame(window, renderer->width, renderer->height, renderer->texture);
                 glfwGetFramebufferSize(window->window, &window->width, &window->height);
                 glfwSwapBuffers(window->window);
                 glfwPollEvents();
