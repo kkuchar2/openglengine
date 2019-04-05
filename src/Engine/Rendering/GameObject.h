@@ -16,9 +16,6 @@ class GameObject {
         std::string name = "Default";
         std::vector<std::shared_ptr<MessageListener>> components;
 
-        // TODO: Improve access to shaders
-        ShaderPool shaderPool;
-
         GameObject() = default;
 
         template<typename T, typename std::enable_if<std::is_base_of<MessageListener, T>::value>::type * = nullptr>
@@ -133,7 +130,7 @@ class GameObject {
 
         std::shared_ptr<Line> createLine(glm::vec3 start, glm::vec3 end, glm::vec3 rotation, glm::vec3 position) {
             std::shared_ptr<Line> line = std::make_shared<Line>();
-            line->shader = shaderPool.colorShader;
+            line->shader = ShaderPool::Instance().colorShader;
             line->drawWireframe = false;
             line->setCoords(start, end);
             line->transform.position = position;

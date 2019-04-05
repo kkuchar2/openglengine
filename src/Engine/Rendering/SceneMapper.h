@@ -6,7 +6,7 @@
 
 class SceneMapper {
     public:
-        static std::shared_ptr<EngineScene> mapToEngine(std::shared_ptr<UserScene> & userScene) {
+        static std::shared_ptr<EngineScene> mapToEngine(const std::shared_ptr<UserScene> & userScene) {
             std::shared_ptr<EngineScene> engineScene = std::make_shared<EngineScene>();
 
             for (auto & gameObject : userScene->objectsToRender) {

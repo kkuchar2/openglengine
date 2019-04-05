@@ -62,7 +62,7 @@ class Engine {
             subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
         }
 
-        void addScene(std::shared_ptr<UserScene> scene) {
+        void addScene(const std::shared_ptr<UserScene> & scene) {
             renderer->addScene(SceneMapper::mapToEngine(scene));
         }
 

@@ -14,7 +14,7 @@ class EngineScene {
 
         EngineScene() = default;
 
-        void addObject(std::shared_ptr<EngineObject> obj) {
+        void addObject(const std::shared_ptr<EngineObject> & obj) {
             objects.push_back(obj);
         }
 
