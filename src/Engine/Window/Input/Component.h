@@ -4,17 +4,17 @@
 #include <functional>
 #include "../../Utils/MessageSystem/MessageBus.h"
 
-class MessageListener {
+class Component {
     protected:
         std::shared_ptr<MessageBus> messageBus;
 
         int receiverId;
 
         std::function<void(std::shared_ptr<Message>&)> getNotifyFunc() {
-            std::function<void(std::shared_ptr<Message>&)> messageListener = [this](std::shared_ptr<Message> & message) -> void {
+            std::function<void(std::shared_ptr<Message>&)> Component = [this](std::shared_ptr<Message> & message) -> void {
                 this->onNotify(message);
             };
-            return messageListener;
+            return Component;
         }
 
         void send(std::shared_ptr<Message> & message) {
@@ -22,12 +22,12 @@ class MessageListener {
         }
 
     public:
-        explicit MessageListener() {
+        explicit Component() {
             this->messageBus = MessageBus::instance();
             receiverId = this->messageBus->addReceiver(this->getNotifyFunc());
         }
 
-        ~MessageListener() {
+        ~Component() {
             this->messageBus->removeReceiver(receiverId);
         }
 

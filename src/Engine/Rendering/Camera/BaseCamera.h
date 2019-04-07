@@ -17,7 +17,7 @@ enum Projection {
     ORTOGRAPHIC,
 };
 
-class BaseCamera : public MessageListener {
+class BaseCamera : public Component {
 
     protected:
 

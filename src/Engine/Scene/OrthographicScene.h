@@ -1,32 +1,41 @@
 #pragma once
 
 #include "../Engine.h"
-#include "../Utils/CharacterTextureGenerator.h"
+
+std::shared_ptr<GameObject> quad(float sizeX, float sizeY, const glm::vec2 & position, const glm::vec4 & color) {
+    std::shared_ptr<Quad> quadMesh = std::make_shared<Quad>();
+    quadMesh->shader = ShaderPool::Instance().colorShader;
+    quadMesh->transform.scale = glm::vec3(sizeX, sizeY, 1.0f);
+    quadMesh->transform.position = glm::vec3(position, 0.0f);
+    quadMesh->disableNormals = true;
+    quadMesh->shaderInit = [color](ShaderPtrRef shader) {
+        shader->setVec4("color", color);
+    };
+
+    std::shared_ptr<GameObject> obj = GameObject::create();
+
+    obj->addComponent(quadMesh);
+
+    obj->drawBoundingBox = false;
+
+    return obj;
+}
+
+std::shared_ptr<GameObject> quad(const glm::vec2 & size, const glm::vec2 & position) {
+    return quad(size.x, size.y, position, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));
+}
 
 std::shared_ptr<UserScene> orthographicScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
     scene->projection = ORTOGRAPHIC;
 
-    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 10.0f, 2.0f);
-
-    CharacterTextureGenerator gen;
-    gen.loadFont("../resources/fonts/FreeSans.ttf");
-    gen.setFontSize(48);
-    gen.init();
-
-    std::shared_ptr<CharacterMesh> c = std::make_shared<CharacterMesh>('B', gen.Characters);
-    c->shader = ShaderPool::Instance().characterShader;
-    c->transform.scale = glm::vec3(50.0f, 50.0f, 1.0f);
-    c->transform.position = glm::vec3(50.0f, 50.0f, 0.0f);
-    c->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
-
-    auto characterObject = std::make_shared<GameObject>(c);
-    scene->addObject(characterObject);
+    for (int x = 0; x < 50; x++) {
+        for (int y = 0; y < 50; y++) {
+            scene->addObject(quad(glm::vec2(3.0f), glm::vec2(10.0f * x, 10.0f * y)));
+        }
+    }
 
     return scene;
 }
+

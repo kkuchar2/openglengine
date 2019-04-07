@@ -4,15 +4,14 @@
 
 #include "Shader.h"
 
-typedef std::shared_ptr<Shader> ShaderPtr;
 class ShaderPool
 {
     public:
 
-        ShaderPtr colorShader;
-        ShaderPtr diffuseShader;
-        ShaderPtr gridShader;
-        ShaderPtr characterShader;
+        std::shared_ptr<Shader> colorShader;
+        std::shared_ptr<Shader> diffuseShader;
+        std::shared_ptr<Shader> gridShader;
+        std::shared_ptr<Shader> characterShader;
 
         static ShaderPool & Instance()
         {
@@ -25,8 +24,6 @@ class ShaderPool
 
             return instance;
         }
-    private:
-        ShaderPool() = default;
 
         static std::shared_ptr<Shader> loadShader(const std::string & vertex, const std::string & fragment) {
 
@@ -37,6 +34,11 @@ class ShaderPool
 
             return std::make_shared<Shader>(vPath.c_str(), fPath.c_str());
         }
+
+    private:
+        ShaderPool() = default;
+
+
 
     public:
         ShaderPool(ShaderPool const&) = delete;

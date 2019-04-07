@@ -10,30 +10,7 @@ class EngineObject {
         std::vector<std::shared_ptr<GameObject>> boundingBoxLines;
         std::vector<std::shared_ptr<GameObject>> normalsLines;
 
-        EngineObject(std::shared_ptr<GameObject> & gameObject) {
-            this->gameObject = gameObject;
-        }
-
-        template<typename T, typename std::enable_if<std::is_base_of<BaseCamera, T>::value>::type * = nullptr>
-        void Render(std::shared_ptr<T> & camera) {
-            if (gameObject) {
-                gameObject->Render(camera);
-            }
-
-            if (gameObject->drawBoundingBox) {
-                for (auto & lineObj : boundingBoxLines) {
-                    lineObj->Render(camera);
-                }
-            }
-
-            for (auto & line : normalsLines) {
-                if (line) {
-                    line->Render(camera);
-                }
-            }
-        }
-
-        void Prepare() {
-            boundingBoxLines = gameObject->CreateBoundingBox();
-        }
+        EngineObject(const std::shared_ptr<GameObject> & gameObject);
+        void render(const std::shared_ptr<BaseCamera> & camera) ;
+        void prepare();
 };

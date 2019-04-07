@@ -1,5 +1,3 @@
-#pragma once
-
 #include "BaseScene.h"
 #include "MainScene.h"
 #include "TestScene.h"

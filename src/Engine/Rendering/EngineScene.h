@@ -4,6 +4,7 @@
 #include "Camera/BaseCamera.h"
 #include "Mesh.h"
 #include "EngineObject.h"
+#include <chrono>
 
 class EngineScene {
     public:
@@ -19,11 +20,19 @@ class EngineScene {
         }
 
         void prepare() {
-            std::for_each(objects.begin(), objects.end(), [](std::shared_ptr<EngineObject> o){ o->Prepare(); });
+            auto t_start = std::chrono::high_resolution_clock::now();
+
+            for (auto & obj : objects) {
+                obj->prepare();
+            }
+
+            auto t_end = std::chrono::high_resolution_clock::now();
+
+            double elaspedTimeMs = std::chrono::duration<double, std::milli>(t_end-t_start).count();
+            std::cout << elaspedTimeMs << " ms" << std::endl;
         }
 
-        template<typename T, typename std::enable_if<std::is_base_of<BaseCamera, T>::value>::type* = nullptr>
-        void render(std::shared_ptr<T> & camera) {
-            std::for_each(objects.begin(), objects.end(), [&camera](auto obj){ obj->Render(camera); });
+        void render(const std::shared_ptr<BaseCamera> & camera) {
+            std::for_each(objects.begin(), objects.end(), [&camera](auto obj){ obj->render(camera); });
         }
 };

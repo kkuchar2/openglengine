@@ -1,6 +1,13 @@
 #pragma once
 
 #include "../Engine.h"
+#include "../Behaviour/BehaviourComponent.h"
+
+class SphereUpdateBehaviour : public BehaviourComponent {
+    void Update() override {
+        //std::cout << "Sphere on update, parent: " << obj << std::endl;
+    }
+};
 
 std::shared_ptr<UserScene> shaderTestScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
@@ -19,6 +26,7 @@ std::shared_ptr<UserScene> shaderTestScene() {
     std::shared_ptr<GameObject> sphereObject = GameObject::create();
 
     sphereObject->addComponent(sphereMesh);
+    sphereObject->addComponent(std::make_shared<SphereUpdateBehaviour>());
     sphereObject->drawBoundingBox = true;
 
     scene->addObject(sphereObject);

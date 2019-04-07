@@ -73,7 +73,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/AssetTreeWindow.h src/Engine/Scene/ShaderTestScene.h src/Engine/Utils/MatrixUtils.h)
+set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/AssetTreeWindow.h src/Engine/Scene/ShaderTestScene.h src/Engine/Utils/MatrixUtils.h src/Engine/Behaviour/BehaviourComponent.h src/Engine/Engine.cpp src/Engine/Rendering/GameObject.cpp src/Engine/Behaviour/BehaviourComponent.cpp src/Engine/Rendering/TextureRenderer.cpp src/Engine/Rendering/Mesh.cpp src/Engine/Rendering/EngineObject.cpp)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 
