@@ -25,11 +25,8 @@ std::shared_ptr<UserScene> cubeScene() {
         shader->setVec3("lightPos", *lightPos.get());
     };
 
-    auto lampMeshObject = std::make_shared<GameObject>(lampMesh);
-    auto cubeObject = std::make_shared<GameObject>(cube);
-
-    scene->addObject(lampMeshObject);
-    scene->addObject(cubeObject);
+    scene->addObject(std::make_shared<GameObject>(lampMesh));
+    scene->addObject(std::make_shared<GameObject>(cube));
 
     std::shared_ptr<GameObject> normals = NormalsGenerator::generate(cube, ShaderPool::Instance().colorShader);
     scene->addObject(normals);

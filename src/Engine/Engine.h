@@ -28,25 +28,25 @@ class Engine {
         std::shared_ptr<TextureRenderer> renderer;
         std::shared_ptr<Editor> editor;
 
-        std::shared_ptr<OrtographicCamera> oc;
-        std::shared_ptr<PerspectiveCamera> pc;
+        std::shared_ptr<OrtographicCamera> ortographicCamera;
+        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
         Observer<glm::vec2> observer;
 
         Subscription subscription;
 
         Engine() {
-            window = std::make_shared<Window>(1000, 800);
+            window = std::make_shared<Window>(1500, 1000);
 
             renderer = std::make_shared<TextureRenderer>(window);
 
             InputDispatcher::init(window);
 
-            oc = std::make_shared<OrtographicCamera>(window);
-            pc = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
+            ortographicCamera = std::make_shared<OrtographicCamera>(window);
+            perspectiveCamera = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
 
-            renderer->addCamera(oc);
-            renderer->addCamera(pc);
+            renderer->addCamera(ortographicCamera);
+            renderer->addCamera(perspectiveCamera);
 
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -56,7 +56,7 @@ class Engine {
 
             observer = createObserver<glm::vec2>([&](glm::vec2 v) {
                 renderer->updateSize(v);
-                pc->aspectRatio = v.x / v.y;
+                perspectiveCamera->aspectRatio = v.x / v.y;
             });
 
             subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
@@ -76,7 +76,6 @@ class Engine {
             while (window->shouldBeOpened()) {
                 renderer->renderToTexture();
                 editor->renderFrame(window, renderer->width, renderer->height, renderer->texture);
-                glfwGetFramebufferSize(window->window, &window->width, &window->height);
                 glfwSwapBuffers(window->window);
                 glfwPollEvents();
             }

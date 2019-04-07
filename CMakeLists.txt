@@ -73,7 +73,7 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES})
+set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/AssetTreeWindow.h src/Engine/Scene/ShaderTestScene.h src/Engine/Utils/MatrixUtils.h)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

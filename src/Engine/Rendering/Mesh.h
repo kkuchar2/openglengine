@@ -37,6 +37,10 @@ struct BoundingBox {
 typedef std::shared_ptr<Shader> & ShaderPtrRef;
 typedef std::function<void(ShaderPtrRef)> ShaderFunc;
 
+
+
+
+
 class Mesh : public MessageListener {
     public:
 
@@ -49,7 +53,6 @@ class Mesh : public MessageListener {
 
         bool disableNormals = false;
         bool prepared = false;
-        bool drawWireframe = false;
 
         GLuint textureId = 0;
 
@@ -61,11 +64,11 @@ class Mesh : public MessageListener {
         GLuint nbo = 0;
         GLuint ibo = 0;
 
-        float * pVertexPosBufferData;
+        float * pVertexPosBufferData {};
 
         Transform transform;
 
-        ShaderFunc shaderInit = [](std::shared_ptr<Shader> & shader) {};
+        ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
 
         explicit Mesh(const char * path) : MessageListener() {
             loadMesh(path);
@@ -83,16 +86,6 @@ class Mesh : public MessageListener {
             if (!disableNormals) {
                 calculateNormals();
             }
-
-            std::stringstream ss;
-
-            ss << "Preparing: [ ";
-            ss << "Vertices: " << vertices.size() << ", ";
-            ss << "Indices: " << indices.size() << ", ";
-            ss << "UV's: " << uvs.size() << ", ";
-            ss << "Normals: " << normals.size() << " ]";
-
-            Logger::Log(INFO, this, ss.str());
 
             CreateVertexAttributeObject();
             CreateIndexBuffer();
@@ -123,10 +116,7 @@ class Mesh : public MessageListener {
         }
 
         void CreateVertexBuffer() {
-            GLbitfield mapFlags =
-                    GL_MAP_WRITE_BIT |
-                    GL_MAP_PERSISTENT_BIT |
-                    GL_MAP_COHERENT_BIT;
+            GLbitfield mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
             GLbitfield createFlags = mapFlags | GL_DYNAMIC_STORAGE_BIT;
 
             glGenBuffers(1, &vbo);
@@ -156,7 +146,7 @@ class Mesh : public MessageListener {
             glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
         }
 
-        void UnbindVertexAtrributeObject() {
+        static void UnbindVertexAtrributeObject() {
             glBindVertexArray(0);
         }
 
@@ -179,10 +169,9 @@ class Mesh : public MessageListener {
             Render(mode, static_cast<int>(indices.size()));
         }
 
-        void Render(GLenum mode, int count) {
+        void Render(GLenum renderMode, int count) {
             glBindVertexArray(vao);
-            glPolygonMode(GL_FRONT_AND_BACK, drawWireframe ? GL_LINE : GL_FILL);
-            glDrawElements(mode, count, GL_UNSIGNED_INT, nullptr);
+            glDrawElements(renderMode, count, GL_UNSIGNED_INT, nullptr);
         }
 
         void loadTexture(const char * path) {
@@ -316,4 +305,12 @@ class Mesh : public MessageListener {
                 }
             }
         }
+
+        static std::shared_ptr<Mesh> create(const char * path) {
+            return std::make_shared<Mesh>(path);
+        }
+};
+
+class MeshPtr : std::shared_ptr<Mesh> {
+
 };

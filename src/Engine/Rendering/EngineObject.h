@@ -20,8 +20,7 @@ class EngineObject {
                 gameObject->Render(camera);
             }
 
-            if (!boundingBoxLines.empty()) {
-
+            if (gameObject->drawBoundingBox) {
                 for (auto & lineObj : boundingBoxLines) {
                     lineObj->Render(camera);
                 }

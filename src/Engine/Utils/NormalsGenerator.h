@@ -4,7 +4,7 @@
 
 class NormalsGenerator {
     public:
-        template<typename T, typename std::enable_if<std::is_base_of<Mesh, T>::value>::type* = nullptr>
+        template<typename T, typename std::enable_if<std::is_base_of<Mesh, T>::value>::type * = nullptr>
         static std::shared_ptr<GameObject> generate(std::shared_ptr<T> & renderObject, std::shared_ptr<Shader> & colorShader) {
 
             std::shared_ptr<GameObject> normalsGroup = std::make_shared<GameObject>();

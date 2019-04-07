@@ -1,4 +1,4 @@
-// dear imgui, v1.69 WIP
+// dear imgui, v1.70 WIP
 // (demo code)
 
 // Message to the person tempted to delete this file when integrating Dear ImGui into their code base:
@@ -50,7 +50,7 @@ Index of this file:
 #endif
 
 #include "imgui.h"
-#include <ctype.h>          // toupper, isprint
+#include <ctype.h>          // toupper
 #include <limits.h>         // INT_MIN, INT_MAX
 #include <math.h>           // sqrtf, powf, cosf, sinf, floorf, ceilf
 #include <stdio.h>          // vsnprintf, sscanf, printf
@@ -373,7 +373,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
                 ImGui::SameLine(); HelpMarker("Toggling this at runtime is normally unsupported (most platform back-ends won't refresh the task bar icon state right away).");
                 ImGui::Checkbox("io.ConfigViewportsNoDecoration", &io.ConfigViewportsNoDecoration);
                 ImGui::SameLine(); HelpMarker("Toggling this at runtime is normally unsupported (most platform back-ends won't refresh the decoration right away).");
-                ImGui::Checkbox("io.ConfigViewportsNoParent", &io.ConfigViewportsNoParent);
+                ImGui::Checkbox("io.ConfigViewportsNoDefaultParent", &io.ConfigViewportsNoDefaultParent);
                 ImGui::SameLine(); HelpMarker("Toggling this at runtime is normally unsupported (most platform back-ends won't refresh the parenting right away).");
                 ImGui::Unindent();
             }
@@ -976,48 +976,89 @@ static void ShowDemoWindowWidgets()
         ImGui::TreePop();
     }
 
-    if (ImGui::TreeNode("Filtered Text Input"))
+    if (ImGui::TreeNode("Text Input"))
     {
-        static char buf1[64] = ""; ImGui::InputText("default", buf1, 64);
-        static char buf2[64] = ""; ImGui::InputText("decimal", buf2, 64, ImGuiInputTextFlags_CharsDecimal);
-        static char buf3[64] = ""; ImGui::InputText("hexadecimal", buf3, 64, ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_CharsUppercase);
-        static char buf4[64] = ""; ImGui::InputText("uppercase", buf4, 64, ImGuiInputTextFlags_CharsUppercase);
-        static char buf5[64] = ""; ImGui::InputText("no blank", buf5, 64, ImGuiInputTextFlags_CharsNoBlank);
-        struct TextFilters { static int FilterImGuiLetters(ImGuiInputTextCallbackData* data) { if (data->EventChar < 256 && strchr("imgui", (char)data->EventChar)) return 0; return 1; } };
-        static char buf6[64] = ""; ImGui::InputText("\"imgui\" letters", buf6, 64, ImGuiInputTextFlags_CallbackCharFilter, TextFilters::FilterImGuiLetters);
+        if (ImGui::TreeNode("Multi-line Text Input"))
+        {
+            // Note: we are using a fixed-sized buffer for simplicity here. See ImGuiInputTextFlags_CallbackResize
+            // and the code in misc/cpp/imgui_stdlib.h for how to setup InputText() for dynamically resizing strings.
+            static char text[1024 * 16] =
+                "/*\n"
+                " The Pentium F00F bug, shorthand for F0 0F C7 C8,\n"
+                " the hexadecimal encoding of one offending instruction,\n"
+                " more formally, the invalid operand with locked CMPXCHG8B\n"
+                " instruction bug, is a design flaw in the majority of\n"
+                " Intel Pentium, Pentium MMX, and Pentium OverDrive\n"
+                " processors (all in the P5 microarchitecture).\n"
+                "*/\n\n"
+                "label:\n"
+                "\tlock cmpxchg8b eax\n";
 
-        ImGui::Text("Password input");
-        static char bufpass[64] = "password123";
-        ImGui::InputText("password", bufpass, 64, ImGuiInputTextFlags_Password | ImGuiInputTextFlags_CharsNoBlank);
-        ImGui::SameLine(); HelpMarker("Display all characters as '*'.\nDisable clipboard cut and copy.\nDisable logging.\n");
-        ImGui::InputTextWithHint("password (w/ hint)", "<password>", bufpass, 64, ImGuiInputTextFlags_Password | ImGuiInputTextFlags_CharsNoBlank);
-        ImGui::InputText("password (clear)", bufpass, 64, ImGuiInputTextFlags_CharsNoBlank);
+            static ImGuiInputTextFlags flags = ImGuiInputTextFlags_AllowTabInput;
+            HelpMarker("You can use the ImGuiInputTextFlags_CallbackResize facility if you need to wire InputTextMultiline() to a dynamic string type. See misc/cpp/imgui_stdlib.h for an example. (This is not demonstrated in imgui_demo.cpp)");
+            ImGui::CheckboxFlags("ImGuiInputTextFlags_ReadOnly", (unsigned int*)&flags, ImGuiInputTextFlags_ReadOnly);
+            ImGui::CheckboxFlags("ImGuiInputTextFlags_AllowTabInput", (unsigned int*)&flags, ImGuiInputTextFlags_AllowTabInput);
+            ImGui::CheckboxFlags("ImGuiInputTextFlags_CtrlEnterForNewLine", (unsigned int*)&flags, ImGuiInputTextFlags_CtrlEnterForNewLine);
+            ImGui::InputTextMultiline("##source", text, IM_ARRAYSIZE(text), ImVec2(-1.0f, ImGui::GetTextLineHeight() * 16), flags);
+            ImGui::TreePop();
+        }
 
-        ImGui::TreePop();
-    }
+        if (ImGui::TreeNode("Filtered Text Input"))
+        {
+            static char buf1[64] = ""; ImGui::InputText("default", buf1, 64);
+            static char buf2[64] = ""; ImGui::InputText("decimal", buf2, 64, ImGuiInputTextFlags_CharsDecimal);
+            static char buf3[64] = ""; ImGui::InputText("hexadecimal", buf3, 64, ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_CharsUppercase);
+            static char buf4[64] = ""; ImGui::InputText("uppercase", buf4, 64, ImGuiInputTextFlags_CharsUppercase);
+            static char buf5[64] = ""; ImGui::InputText("no blank", buf5, 64, ImGuiInputTextFlags_CharsNoBlank);
+            struct TextFilters { static int FilterImGuiLetters(ImGuiInputTextCallbackData* data) { if (data->EventChar < 256 && strchr("imgui", (char)data->EventChar)) return 0; return 1; } };
+            static char buf6[64] = ""; ImGui::InputText("\"imgui\" letters", buf6, 64, ImGuiInputTextFlags_CallbackCharFilter, TextFilters::FilterImGuiLetters);
 
-    if (ImGui::TreeNode("Multi-line Text Input"))
-    {
-        // Note: we are using a fixed-sized buffer for simplicity here. See ImGuiInputTextFlags_CallbackResize
-        // and the code in misc/cpp/imgui_stdlib.h for how to setup InputText() for dynamically resizing strings.
-        static char text[1024*16] =
-            "/*\n"
-            " The Pentium F00F bug, shorthand for F0 0F C7 C8,\n"
-            " the hexadecimal encoding of one offending instruction,\n"
-            " more formally, the invalid operand with locked CMPXCHG8B\n"
-            " instruction bug, is a design flaw in the majority of\n"
-            " Intel Pentium, Pentium MMX, and Pentium OverDrive\n"
-            " processors (all in the P5 microarchitecture).\n"
-            "*/\n\n"
-            "label:\n"
-            "\tlock cmpxchg8b eax\n";
+            ImGui::Text("Password input");
+            static char bufpass[64] = "password123";
+            ImGui::InputText("password", bufpass, 64, ImGuiInputTextFlags_Password | ImGuiInputTextFlags_CharsNoBlank);
+            ImGui::SameLine(); HelpMarker("Display all characters as '*'.\nDisable clipboard cut and copy.\nDisable logging.\n");
+            ImGui::InputTextWithHint("password (w/ hint)", "<password>", bufpass, 64, ImGuiInputTextFlags_Password | ImGuiInputTextFlags_CharsNoBlank);
+            ImGui::InputText("password (clear)", bufpass, 64, ImGuiInputTextFlags_CharsNoBlank);
+            ImGui::TreePop();
+        }
 
-        static ImGuiInputTextFlags flags = ImGuiInputTextFlags_AllowTabInput;
-        HelpMarker("You can use the ImGuiInputTextFlags_CallbackResize facility if you need to wire InputTextMultiline() to a dynamic string type. See misc/cpp/imgui_stdlib.h for an example. (This is not demonstrated in imgui_demo.cpp)");
-        ImGui::CheckboxFlags("ImGuiInputTextFlags_ReadOnly", (unsigned int*)&flags, ImGuiInputTextFlags_ReadOnly);
-        ImGui::CheckboxFlags("ImGuiInputTextFlags_AllowTabInput", (unsigned int*)&flags, ImGuiInputTextFlags_AllowTabInput);
-        ImGui::CheckboxFlags("ImGuiInputTextFlags_CtrlEnterForNewLine", (unsigned int*)&flags, ImGuiInputTextFlags_CtrlEnterForNewLine);
-        ImGui::InputTextMultiline("##source", text, IM_ARRAYSIZE(text), ImVec2(-1.0f, ImGui::GetTextLineHeight() * 16), flags);
+        if (ImGui::TreeNode("Resize Callback"))
+        {
+            // If you have a custom string type you would typically create a ImGui::InputText() wrapper than takes your type as input.
+            // See misc/cpp/imgui_stdlib.h and .cpp for an implementation of this using std::string.
+            HelpMarker("Demonstrate using ImGuiInputTextFlags_CallbackResize to wire your resizable string type to InputText().\n\nSee misc/cpp/imgui_stdlib.h for an implementation of this for std::string.");
+            struct Funcs
+            {
+                static int MyResizeCallback(ImGuiInputTextCallbackData* data)
+                {
+                    if (data->EventFlag == ImGuiInputTextFlags_CallbackResize)
+                    {
+                        ImVector<char>* my_str = (ImVector<char>*)data->UserData;
+                        IM_ASSERT(my_str->begin() == data->Buf);
+                        my_str->resize(data->BufSize);  // NB: On resizing calls, generally data->BufSize == data->BufTextLen + 1
+                        data->Buf = my_str->begin();
+                    }
+                    return 0;
+                }
+
+                // Tip: Because ImGui:: is a namespace you can add your own function into the namespace from your own source files.
+                static bool MyInputTextMultiline(const char* label, ImVector<char>* my_str, const ImVec2& size = ImVec2(0, 0), ImGuiInputTextFlags flags = 0)
+                {
+                    IM_ASSERT((flags & ImGuiInputTextFlags_CallbackResize) == 0);
+                    return ImGui::InputTextMultiline(label, my_str->begin(), (size_t)my_str->size(), size, flags | ImGuiInputTextFlags_CallbackResize, Funcs::MyResizeCallback, (void*)my_str);
+                }
+            };
+
+            // For this demo we are using ImVector as a string container.
+            // Note that because we need to store a terminating zero character, our size/capacity are 1 more than usually reported by a typical string class.
+            static ImVector<char> my_str;
+            if (my_str.empty())
+                my_str.push_back(0);
+            Funcs::MyInputTextMultiline("##MyStr", &my_str, ImVec2(-1.0f, ImGui::GetTextLineHeight() * 16));
+            ImGui::Text("Data: %p\nSize: %d\nCapacity: %d", (void*)my_str.begin(), my_str.size(), my_str.capacity());
+            ImGui::TreePop();
+        }
+
         ImGui::TreePop();
     }
 
@@ -1225,6 +1266,16 @@ static void ShowDemoWindowWidgets()
             ImGui::SetColorEditOptions(ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_DisplayHSV | ImGuiColorEditFlags_PickerHueBar);
         if (ImGui::Button("Default: Float + HDR + Hue Wheel"))
             ImGui::SetColorEditOptions(ImGuiColorEditFlags_Float | ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_PickerHueWheel);
+
+        // HSV encoded support (to avoid RGB<>HSV round trips and singularities when S==0 or V==0)
+        static ImVec4 color_stored_as_hsv(0.23f, 1.0f, 1.0f, 1.0f);
+        ImGui::Spacing();
+        ImGui::Text("HSV encoded colors");
+        ImGui::SameLine(); HelpMarker("By default, colors are given to ColorEdit and ColorPicker in RGB, but ImGuiColorEditFlags_InputHSV allows you to store colors as HSV and pass them to ColorEdit and ColorPicker as HSV. This comes with the added benefit that you can manipulate hue values with the picker even when saturation or value are zero.");
+        ImGui::Text("Color widget with InputHSV:");
+        ImGui::ColorEdit4("HSV shown as HSV##1", (float*)&color_stored_as_hsv, ImGuiColorEditFlags_DisplayRGB | ImGuiColorEditFlags_InputHSV | ImGuiColorEditFlags_Float);
+        ImGui::ColorEdit4("HSV shown as RGB##1", (float*)&color_stored_as_hsv, ImGuiColorEditFlags_DisplayHSV | ImGuiColorEditFlags_InputHSV | ImGuiColorEditFlags_Float);
+        ImGui::DragFloat4("Raw HSV values", (float*)&color_stored_as_hsv, 0.01f, 0.0f, 1.0f);
 
         ImGui::TreePop();
     }
@@ -1550,7 +1601,7 @@ static void ShowDemoWindowWidgets()
             "IsItemEdited() = %d\n"
             "IsItemActivated() = %d\n"
             "IsItemDeactivated() = %d\n"
-            "IsItemDeactivatedEdit() = %d\n"
+            "IsItemDeactivatedAfterEdit() = %d\n"
             "IsItemVisible() = %d\n"
             "GetItemRectMin() = (%.1f, %.1f)\n"
             "GetItemRectMax() = (%.1f, %.1f)\n"
@@ -1598,6 +1649,7 @@ static void ShowDemoWindowWidgets()
             "IsWindowHovered(_AllowWhenBlockedByActiveItem) = %d\n"
             "IsWindowHovered(_ChildWindows) = %d\n"
             "IsWindowHovered(_ChildWindows|_RootWindow) = %d\n"
+            "IsWindowHovered(_ChildWindows|_AllowWhenBlockedByPopup) = %d\n"
             "IsWindowHovered(_RootWindow) = %d\n"
             "IsWindowHovered(_AnyWindow) = %d\n",
             ImGui::IsWindowHovered(),
@@ -1605,6 +1657,7 @@ static void ShowDemoWindowWidgets()
             ImGui::IsWindowHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem),
             ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows),
             ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows | ImGuiHoveredFlags_RootWindow),
+            ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows | ImGuiHoveredFlags_AllowWhenBlockedByPopup),
             ImGui::IsWindowHovered(ImGuiHoveredFlags_RootWindow),
             ImGui::IsWindowHovered(ImGuiHoveredFlags_AnyWindow));
 
@@ -2573,10 +2626,11 @@ static void ShowDemoWindowMisc()
             ImGui::Text("Mouse released:"); for (int i = 0; i < IM_ARRAYSIZE(io.MouseDown); i++) if (ImGui::IsMouseReleased(i))         { ImGui::SameLine(); ImGui::Text("b%d", i); }
             ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
 
-            ImGui::Text("Keys down:");      for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (io.KeysDownDuration[i] >= 0.0f)     { ImGui::SameLine(); ImGui::Text("%d (%.02f secs)", i, io.KeysDownDuration[i]); }
-            ImGui::Text("Keys pressed:");   for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (ImGui::IsKeyPressed(i))             { ImGui::SameLine(); ImGui::Text("%d", i); }
-            ImGui::Text("Keys release:");   for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (ImGui::IsKeyReleased(i))            { ImGui::SameLine(); ImGui::Text("%d", i); }
+            ImGui::Text("Keys down:");      for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (io.KeysDownDuration[i] >= 0.0f)     { ImGui::SameLine(); ImGui::Text("%d (0x%X) (%.02f secs)", i, i, io.KeysDownDuration[i]); }
+            ImGui::Text("Keys pressed:");   for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (ImGui::IsKeyPressed(i))             { ImGui::SameLine(); ImGui::Text("%d (0x%X)", i, i); }
+            ImGui::Text("Keys release:");   for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) if (ImGui::IsKeyReleased(i))            { ImGui::SameLine(); ImGui::Text("%d (0x%X)", i, i); }
             ImGui::Text("Keys mods: %s%s%s%s", io.KeyCtrl ? "CTRL " : "", io.KeyShift ? "SHIFT " : "", io.KeyAlt ? "ALT " : "", io.KeySuper ? "SUPER " : "");
+            ImGui::Text("Chars queue:");    for (int i = 0; i < io.InputQueueCharacters.Size; i++) { ImWchar c = io.InputQueueCharacters[i]; ImGui::SameLine();  ImGui::Text("\'%c\' (0x%04X)", (c > ' ' && c <= 255) ? (char)c : '?', c); } // FIXME: We should convert 'c' to UTF-8 here but the functions are not public.
 
             ImGui::Text("NavInputs down:"); for (int i = 0; i < IM_ARRAYSIZE(io.NavInputs); i++) if (io.NavInputs[i] > 0.0f)                    { ImGui::SameLine(); ImGui::Text("[%d] %.2f", i, io.NavInputs[i]); }
             ImGui::Text("NavInputs pressed:"); for (int i = 0; i < IM_ARRAYSIZE(io.NavInputs); i++) if (io.NavInputsDownDuration[i] == 0.0f)    { ImGui::SameLine(); ImGui::Text("[%d]", i); }
@@ -2654,22 +2708,17 @@ static void ShowDemoWindowMisc()
             for (int button = 0; button < 3; button++)
                 ImGui::Text("IsMouseDragging(%d):\n  w/ default threshold: %d,\n  w/ zero threshold: %d\n  w/ large threshold: %d",
                     button, ImGui::IsMouseDragging(button), ImGui::IsMouseDragging(button, 0.0f), ImGui::IsMouseDragging(button, 20.0f));
+
             ImGui::Button("Drag Me");
             if (ImGui::IsItemActive())
-            {
-                // Draw a line between the button and the mouse cursor
-                ImDrawList* draw_list = ImGui::GetWindowDrawList();
-                draw_list->PushClipRectFullScreen();
-                draw_list->AddLine(io.MouseClickedPos[0], io.MousePos, ImGui::GetColorU32(ImGuiCol_Button), 4.0f);
-                draw_list->PopClipRect();
+                ImGui::GetForegroundDrawList()->AddLine(io.MouseClickedPos[0], io.MousePos, ImGui::GetColorU32(ImGuiCol_Button), 4.0f); // Draw a line between the button and the mouse cursor
 
-                // Drag operations gets "unlocked" when the mouse has moved past a certain threshold (the default threshold is stored in io.MouseDragThreshold)
-                // You can request a lower or higher threshold using the second parameter of IsMouseDragging() and GetMouseDragDelta()
-                ImVec2 value_raw = ImGui::GetMouseDragDelta(0, 0.0f);
-                ImVec2 value_with_lock_threshold = ImGui::GetMouseDragDelta(0);
-                ImVec2 mouse_delta = io.MouseDelta;
-                ImGui::SameLine(); ImGui::Text("Raw (%.1f, %.1f), WithLockThresold (%.1f, %.1f), MouseDelta (%.1f, %.1f)", value_raw.x, value_raw.y, value_with_lock_threshold.x, value_with_lock_threshold.y, mouse_delta.x, mouse_delta.y);
-            }
+            // Drag operations gets "unlocked" when the mouse has moved past a certain threshold (the default threshold is stored in io.MouseDragThreshold)
+            // You can request a lower or higher threshold using the second parameter of IsMouseDragging() and GetMouseDragDelta()
+            ImVec2 value_raw = ImGui::GetMouseDragDelta(0, 0.0f);
+            ImVec2 value_with_lock_threshold = ImGui::GetMouseDragDelta(0);
+            ImVec2 mouse_delta = io.MouseDelta;
+            ImGui::Text("GetMouseDragDelta(0):\n  w/ default threshold: (%.1f, %.1f),\n  w/ zero threshold: (%.1f, %.1f)\nMouseDelta: (%.1f, %.1f)", value_with_lock_threshold.x, value_with_lock_threshold.y, value_raw.x, value_raw.y, mouse_delta.x, mouse_delta.y);
             ImGui::TreePop();
         }
 
@@ -2802,7 +2851,7 @@ void ImGui::ShowAboutWindow(bool* p_open)
         if (io.ConfigViewportsNoAutoMerge)                              ImGui::Text("io.ConfigViewportsNoAutoMerge");
         if (io.ConfigViewportsNoTaskBarIcon)                            ImGui::Text("io.ConfigViewportsNoTaskBarIcon");
         if (io.ConfigViewportsNoDecoration)                             ImGui::Text("io.ConfigViewportsNoDecoration");
-        if (io.ConfigViewportsNoParent)                                 ImGui::Text("io.ConfigViewportsNoParent");
+        if (io.ConfigViewportsNoDefaultParent)                          ImGui::Text("io.ConfigViewportsNoDefaultParent");
         if (io.ConfigDockingNoSplit)                                    ImGui::Text("io.ConfigDockingNoSplit");
         if (io.ConfigDockingWithShift)                                  ImGui::Text("io.ConfigDockingWithShift");
         if (io.ConfigDockingTabBarOnSingleWindows)                      ImGui::Text("io.ConfigDockingTabBarOnSingleWindows");
@@ -4106,7 +4155,7 @@ static void ShowExampleAppCustomRendering(bool* p_open)
             draw_list->AddRectFilled(ImVec2(x, y), ImVec2(x + thickness, y + sz), col32); x += spacing + spacing;     // Vertical line (faster than AddLine, but only handle integer thickness)
             draw_list->AddRectFilled(ImVec2(x, y), ImVec2(x + 1, y + 1), col32);          x += sz;                  // Pixel (faster than AddLine)
             draw_list->AddRectFilledMultiColor(ImVec2(x, y), ImVec2(x + sz, y + sz), IM_COL32(0, 0, 0, 255), IM_COL32(255, 0, 0, 255), IM_COL32(255, 255, 0, 255), IM_COL32(0, 255, 0, 255));
-            ImGui::Dummy(ImVec2((sz + spacing) * 8, (sz + spacing) * 3));
+            ImGui::Dummy(ImVec2((sz + spacing) * 9.5f, (sz + spacing) * 3));
             ImGui::EndTabItem();
         }
 
@@ -4193,8 +4242,8 @@ static void ShowExampleAppCustomRendering(bool* p_open)
 void ShowExampleAppDockSpace(bool* p_open)
 {
     static bool opt_fullscreen_persistant = true;
-    static ImGuiDockNodeFlags opt_flags = ImGuiDockNodeFlags_None;
     bool opt_fullscreen = opt_fullscreen_persistant;
+    static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
 
     // We are using the ImGuiWindowFlags_NoDocking flag to make the parent window not dockable into,
     // because it would be confusing to have two docking targets within each others.
@@ -4211,8 +4260,8 @@ void ShowExampleAppDockSpace(bool* p_open)
         window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
     }
 
-    // When using ImGuiDockNodeFlags_PassthruDockspace, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
-    if (opt_flags & ImGuiDockNodeFlags_PassthruDockspace)
+    // When using ImGuiDockNodeFlags_PassthruCentralNode, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
+    if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
         window_flags |= ImGuiWindowFlags_NoBackground;
 
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
@@ -4222,12 +4271,12 @@ void ShowExampleAppDockSpace(bool* p_open)
     if (opt_fullscreen)
         ImGui::PopStyleVar(2);
 
-    // Dockspace
+    // DockSpace
     ImGuiIO& io = ImGui::GetIO();
     if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
     {
-        ImGuiID dockspace_id = ImGui::GetID("MyDockspace");
-        ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), opt_flags);
+        ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+        ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
     }
     else
     {
@@ -4242,18 +4291,22 @@ void ShowExampleAppDockSpace(bool* p_open)
             // which we can't undo at the moment without finer window depth/z control.
             //ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
 
-            if (ImGui::MenuItem("Flag: NoSplit",                "", (opt_flags & ImGuiDockNodeFlags_NoSplit) != 0))                 opt_flags ^= ImGuiDockNodeFlags_NoSplit;
-            if (ImGui::MenuItem("Flag: NoDockingInCentralNode", "", (opt_flags & ImGuiDockNodeFlags_NoDockingInCentralNode) != 0))  opt_flags ^= ImGuiDockNodeFlags_NoDockingInCentralNode;
-            if (ImGui::MenuItem("Flag: NoResize",               "", (opt_flags & ImGuiDockNodeFlags_NoResize) != 0))                opt_flags ^= ImGuiDockNodeFlags_NoResize;
-            if (ImGui::MenuItem("Flag: PassthruDockspace",      "", (opt_flags & ImGuiDockNodeFlags_PassthruDockspace) != 0))       opt_flags ^= ImGuiDockNodeFlags_PassthruDockspace;
-            if (ImGui::MenuItem("Flag: AutoHideTabBar",         "", (opt_flags & ImGuiDockNodeFlags_AutoHideTabBar) != 0))          opt_flags ^= ImGuiDockNodeFlags_AutoHideTabBar;
+            if (ImGui::MenuItem("Flag: NoSplit",                "", (dockspace_flags & ImGuiDockNodeFlags_NoSplit) != 0))                 dockspace_flags ^= ImGuiDockNodeFlags_NoSplit;
+            if (ImGui::MenuItem("Flag: NoResize",               "", (dockspace_flags & ImGuiDockNodeFlags_NoResize) != 0))                dockspace_flags ^= ImGuiDockNodeFlags_NoResize;
+            if (ImGui::MenuItem("Flag: NoDockingInCentralNode", "", (dockspace_flags & ImGuiDockNodeFlags_NoDockingInCentralNode) != 0))  dockspace_flags ^= ImGuiDockNodeFlags_NoDockingInCentralNode;
+            if (ImGui::MenuItem("Flag: PassthruCentralNode",    "", (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode) != 0))     dockspace_flags ^= ImGuiDockNodeFlags_PassthruCentralNode;
+            if (ImGui::MenuItem("Flag: AutoHideTabBar",         "", (dockspace_flags & ImGuiDockNodeFlags_AutoHideTabBar) != 0))          dockspace_flags ^= ImGuiDockNodeFlags_AutoHideTabBar;
             ImGui::Separator();
             if (ImGui::MenuItem("Close DockSpace", NULL, false, p_open != NULL))
                 *p_open = false;
             ImGui::EndMenu();
         }
         HelpMarker(
-            "You can _always_ dock _any_ window into another by holding the SHIFT key while moving a window. Try it now!" "\n"
+            "When docking is enabled, you can ALWAYS dock MOST window into another! Try it now!" "\n\n"
+            " > if io.ConfigDockingWithShift==false (default):" "\n"
+            "   drag windows from title bar to dock" "\n"
+            " > if io.ConfigDockingWithShift==true:" "\n"
+            "   drag windows from anywhere and hold Shift to dock" "\n\n"
             "This demo app has nothing to do with it!" "\n\n"
             "This demo app only demonstrate the use of ImGui::DockSpace() which allows you to manually create a docking node _within_ another window. This is useful so you can decorate your main application window (e.g. with a menu bar)." "\n\n"
             "ImGui::DockSpace() comes with one hard constraint: it needs to be submitted _before_ any window which may be docked into it. Therefore, if you use a dock spot as the central point of your application, you'll probably want it to be part of the very first window you are submitting to imgui every frame." "\n\n"
@@ -4368,13 +4421,13 @@ void ShowExampleAppDocuments(bool* p_open)
     {
         Target_None,
         Target_Tab,                 // Create documents as local tab into a local tab bar
-        Target_DockspaceAndWindow   // Create documents as regular windows, and create an embedded dockspace
+        Target_DockSpaceAndWindow   // Create documents as regular windows, and create an embedded dockspace
     };
     static Target opt_target = Target_Tab;
     static bool   opt_reorderable = true;
     static ImGuiTabBarFlags opt_fitting_flags = ImGuiTabBarFlags_FittingPolicyDefault_;
 
-    // When (opt_target == Target_DockspaceAndWindow) there is the possibily that one of our child Document window (e.g. "Eggplant")
+    // When (opt_target == Target_DockSpaceAndWindow) there is the possibily that one of our child Document window (e.g. "Eggplant")
     // that we emit gets docked into the same spot as the parent window ("Example: Documents").
     // This would create a problematic feedback loop because selecting the "Eggplant" tab would make the "Example: Documents" tab
     // not visible, which in turn would stop submitting the "Eggplant" window.
@@ -4382,7 +4435,7 @@ void ShowExampleAppDocuments(bool* p_open)
     // Another solution may be to make the "Example: Documents" window use the ImGuiWindowFlags_NoDocking.
 
     bool window_contents_visible = ImGui::Begin("Example: Documents", p_open, ImGuiWindowFlags_MenuBar);
-    if (!window_contents_visible && opt_target != Target_DockspaceAndWindow)
+    if (!window_contents_visible && opt_target != Target_DockSpaceAndWindow)
     {
         ImGui::End();
         return;
@@ -4434,7 +4487,7 @@ void ShowExampleAppDocuments(bool* p_open)
     ImGui::PopItemWidth();
     bool redock_all = false;
     if (opt_target == Target_Tab)                { ImGui::SameLine(); ImGui::Checkbox("Reorderable Tabs", &opt_reorderable); }
-    if (opt_target == Target_DockspaceAndWindow) { ImGui::SameLine(); redock_all = ImGui::Button("Redock all"); }
+    if (opt_target == Target_DockSpaceAndWindow) { ImGui::SameLine(); redock_all = ImGui::Button("Redock all"); }
 
     ImGui::Separator();
 
@@ -4479,7 +4532,7 @@ void ShowExampleAppDocuments(bool* p_open)
             ImGui::EndTabBar();
         }
     }
-    else if (opt_target == Target_DockspaceAndWindow)
+    else if (opt_target == Target_DockSpaceAndWindow)
     {
         if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DockingEnable)
         {
@@ -4496,9 +4549,6 @@ void ShowExampleAppDocuments(bool* p_open)
                 if (!doc->Open)
                     continue;
 
-                // FIXME-DOCK: SetNextWindowDock()
-                //ImGuiID default_dock_id = GetDockspaceRootDocumentDockID();
-                //ImGuiID default_dock_id = GetDockspacePreferedDocumentDockID();
                 ImGui::SetNextWindowDockID(dockspace_id, redock_all ? ImGuiCond_Always : ImGuiCond_FirstUseEver);
                 ImGuiWindowFlags window_flags = (doc->Dirty ? ImGuiWindowFlags_UnsavedDocument : 0);
                 bool visible = ImGui::Begin(doc->Name, &doc->Open, window_flags);

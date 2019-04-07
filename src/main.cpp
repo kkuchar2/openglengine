@@ -12,10 +12,11 @@ int main() {
         return -1;
     }
 
-    engine->addScene(baseScene());
-    engine->addScene(mainScene());
-    engine->addScene(orthographicScene());
+    //engine->addScene(baseScene());
+    engine->addScene(shaderTestScene());
+    //engine->addScene(orthographicScene());
 
+    engine->perspectiveCamera->SetPosition(glm::vec3(0.0f, 0.0, 3.0));
     engine->renderingLoop();
 
     glfwTerminate();

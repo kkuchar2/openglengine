@@ -81,7 +81,11 @@ class TextureRenderer {
             }
         }
 
+        int frameCounter = 0;
+
         void renderToTexture() {
+            frameCounter++;
+
             glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
             glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -90,15 +94,20 @@ class TextureRenderer {
         }
 
         void updateSize(glm::vec2 & newSize) {
+
+            if (abs(newSize.x - width) < 1.0f && abs(newSize.y - height) < 1.0f) {
+                return;
+            }
+
             width = newSize.x;
             height = newSize.y;
 
             glBindTexture(GL_TEXTURE_2D, texture);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, static_cast<GLsizei>(width), static_cast<GLsizei>(height), 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
             glBindTexture(GL_TEXTURE_2D, 0);
 
             glBindRenderbuffer(GL_RENDERBUFFER, dephRenderBuffer);
-            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
+            glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
             glBindRenderbuffer(GL_RENDERBUFFER, 0);
         }
 };

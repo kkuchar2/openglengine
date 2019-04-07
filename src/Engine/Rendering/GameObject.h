@@ -13,19 +13,22 @@
 class GameObject {
 
     public:
+        bool drawBoundingBox = false;
+        bool drawNormals = false;
+
         std::string name = "Default";
         std::vector<std::shared_ptr<MessageListener>> components;
 
         GameObject() = default;
 
         template<typename T, typename std::enable_if<std::is_base_of<MessageListener, T>::value>::type * = nullptr>
-        GameObject(std::shared_ptr<T> component) {
+        GameObject(const std::shared_ptr<T> & component) {
             addComponent(component);
         }
 
 
         template<typename T, typename std::enable_if<std::is_base_of<MessageListener, T>::value>::type * = nullptr>
-        void addComponent(std::shared_ptr<T> component) {
+        void addComponent(const std::shared_ptr<T> & component) {
             components.push_back(component);
         }
 
@@ -54,7 +57,7 @@ class GameObject {
             return std::vector<std::shared_ptr<GameObject>>();
         }
 
-        std::vector<std::shared_ptr<GameObject>> CreateBoundingBoxLines(BoundingBox boundingBox) {
+        static std::vector<std::shared_ptr<GameObject>> CreateBoundingBoxLines(BoundingBox boundingBox) {
             std::vector<std::shared_ptr<GameObject>> lines;
 
             glm::vec3 size = boundingBox.size;
@@ -124,14 +127,13 @@ class GameObject {
             return lines;
         }
 
-        std::shared_ptr<GameObject> createLineObject(glm::vec3 start, glm::vec3 end, BoundingBox & boundingBox) {
+        static std::shared_ptr<GameObject> createLineObject(glm::vec3 start, glm::vec3 end, BoundingBox & boundingBox) {
             return std::make_shared<GameObject>(createLine(start, end, boundingBox.rotation, boundingBox.center));
         }
 
-        std::shared_ptr<Line> createLine(glm::vec3 start, glm::vec3 end, glm::vec3 rotation, glm::vec3 position) {
+        static std::shared_ptr<Line> createLine(glm::vec3 start, glm::vec3 end, glm::vec3 rotation, glm::vec3 position) {
             std::shared_ptr<Line> line = std::make_shared<Line>();
             line->shader = ShaderPool::Instance().colorShader;
-            line->drawWireframe = false;
             line->setCoords(start, end);
             line->transform.position = position;
             line->transform.rotation = rotation;
@@ -140,5 +142,14 @@ class GameObject {
             };
             line->prepare();
             return line;
+        }
+
+        static std::shared_ptr<GameObject> create() {
+            return std::make_shared<GameObject>();
+        }
+
+        template<typename T, typename std::enable_if<std::is_base_of<MessageListener, T>::value>::type * = nullptr>
+        static std::shared_ptr<GameObject> create(const std::shared_ptr<T> & component) {
+            return std::make_shared<GameObject>(component);
         }
 };

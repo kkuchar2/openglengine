@@ -13,7 +13,7 @@ class UserScene {
 
         UserScene() = default;
 
-        void addObject(std::shared_ptr<GameObject> & obj) {
+        void addObject(const std::shared_ptr<GameObject> & obj) {
             objectsToRender.push_back(obj);
         }
 };
