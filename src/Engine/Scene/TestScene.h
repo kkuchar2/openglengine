@@ -13,15 +13,12 @@ std::shared_ptr<UserScene> testScene() {
 
     std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
     lampMesh->shader = colorShader;
-    lampMesh->transform.scale = glm::vec3(0.1f);
-    lampMesh->transform.position = *lightPos.get();
     lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
     };
 
     std::shared_ptr<Cube> cube = std::make_shared<Cube>();
     cube->shader = diffuseShader;
-    cube->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
     cube->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
@@ -30,7 +27,6 @@ std::shared_ptr<UserScene> testScene() {
 
     std::shared_ptr<Surface> surface = std::make_shared<Surface>(100, 100);
     surface->shader = diffuseShader;
-    surface->transform.position = glm::vec3(0.0f, 1.5f, 0.0f);
     surface->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
@@ -38,8 +34,14 @@ std::shared_ptr<UserScene> testScene() {
     };
 
     auto lampMeshObject = std::make_shared<GameObject>(lampMesh);
+    lampMeshObject->transform.scale = glm::vec3(0.1f);
+    lampMeshObject->transform.position = *lightPos.get();
+
     auto cubeObject = std::make_shared<GameObject>(cube);
+    cubeObject->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
+
     auto surfaceObject = std::make_shared<GameObject>(surface);
+    surfaceObject->transform.position = glm::vec3(0.0f, 1.5f, 0.0f);
 
     scene->addObject(surfaceObject);
     scene->addObject(lampMeshObject);

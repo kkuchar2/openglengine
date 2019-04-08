@@ -10,25 +10,30 @@ std::shared_ptr<UserScene> cubeScene() {
 
     std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
     lampMesh->shader = ShaderPool::Instance().colorShader;
-    lampMesh->transform.scale = glm::vec3(0.1f);
-    lampMesh->transform.position = *lightPos.get();
     lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
     };
 
     std::shared_ptr<Cube> cube = std::make_shared<Cube>();
     cube->shader = ShaderPool::Instance().diffuseShader;
-    cube->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
     cube->shaderInit = [lightPos](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };
 
-    scene->addObject(std::make_shared<GameObject>(lampMesh));
-    scene->addObject(std::make_shared<GameObject>(cube));
+    auto lampObject = std::make_shared<GameObject>(lampMesh);
 
-    std::shared_ptr<GameObject> normals = NormalsGenerator::generate(cube, ShaderPool::Instance().colorShader);
+    lampObject->transform.scale = glm::vec3(0.1f);
+    lampObject->transform.position = *lightPos.get();
+    scene->addObject(lampObject);
+
+    auto cubeObject = std::make_shared<GameObject>(cube);
+    cubeObject->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
+
+    scene->addObject(cubeObject);
+
+    std::shared_ptr<GameObject> normals = NormalsGenerator::generate(cubeObject->transform, cube, ShaderPool::Instance().colorShader);
     scene->addObject(normals);
 
     return scene;

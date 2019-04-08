@@ -8,10 +8,6 @@ class OrtographicCamera : public BaseCamera {
             projection = ORTOGRAPHIC;
         }
 
-        glm::vec3 getScaleCorrection() override {
-            return glm::vec3(1.0f);
-        }
-
         glm::mat4x4 getModelMatrix() override {
             return glm::translate(glm::mat4(1.0), glm::vec3(-window->width / 2.0f, -window->height / 2.0f, 0.0f));
         }

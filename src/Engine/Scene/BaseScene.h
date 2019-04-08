@@ -10,8 +10,6 @@ std::shared_ptr<UserScene> baseScene() {
 
     std::shared_ptr<Quad> gridQuad = std::make_shared<Quad>();
     gridQuad->shader = ShaderPool::Instance().gridShader;
-    gridQuad->transform.scale = glm::vec3(100.0f, 100.0f, 100.0f);
-    gridQuad->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);
     gridQuad->loadTexture("../resources/textures/texture_white.bmp");
 
     std::shared_ptr<Line> axisX = std::make_shared<Line>();
@@ -36,6 +34,9 @@ std::shared_ptr<UserScene> baseScene() {
     };
 
     auto gridObject = std::make_shared<GameObject>(gridQuad);
+    gridObject->transform.scale = glm::vec3(100.0f, 100.0f, 100.0f);
+    gridObject->transform.rotation = glm::vec3(glm::radians(90.0), 0.0f, 0.0f);
+
     auto axisXObject = std::make_shared<GameObject>(axisX);
     auto axisYObject = std::make_shared<GameObject>(axisY);
     auto axisZObject = std::make_shared<GameObject>(axisZ);

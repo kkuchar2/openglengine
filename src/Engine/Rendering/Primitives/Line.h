@@ -19,7 +19,7 @@ class Line : public Mesh {
             vertices[5] = end.z;
         }
 
-        void Render() override {
-            Mesh::Render(GL_LINES, 2);
+        void Render(int instancesCount) override {
+            Mesh::Render(GL_LINES, 2, instancesCount);
         }
 };

@@ -11,6 +11,8 @@
 #include "../Mesh.h"
 #include "../../Window/Window.h"
 #include "../../Utils/MatrixUtils.h"
+#include "../EngineObject.h"
+#include "../GameObject.h"
 
 enum Projection {
     PERSPECTIVE,
@@ -31,26 +33,20 @@ class BaseCamera : public Component {
             this->window = window;
         }
 
-        void Render(const std::shared_ptr<Mesh> & mesh) {
+        void render(const std::shared_ptr<EngineObject> & object, int instancesCount) {
+
+            std::shared_ptr<Mesh> mesh = object->getMesh();
+
+            if (!mesh) {
+                return;
+            }
+
             std::shared_ptr<Shader> shader = mesh->shader;
 
             shader->use();
 
+            // Set camera position
             shader->setVec3("viewPos", getPosition());
-            shader->setFloat("time", 0.0f);
-            shader->setVec2("resolution", window->getResolution());
-
-            glm::mat4 m = glm::translate(getModelMatrix(), mesh->transform.position);
-
-            m *= MatrixUtils::scaleMatrix(getScaleCorrection());
-            m *= MatrixUtils::rotationMatrix(mesh->transform.rotation);
-            m *= MatrixUtils::scaleMatrix(mesh->transform.scale);
-
-            glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
-
-            shader->setMat4("mvp", mvp);
-            shader->setMat4("m", m);
-            shader->setMat4("v", getViewMatrix());
 
             mesh->shaderInit(shader);
 
@@ -58,7 +54,19 @@ class BaseCamera : public Component {
                 glBindTexture(GL_TEXTURE_2D, mesh->textureId);
             }
 
-            mesh->Render();
+            mesh->Render(instancesCount);
+        }
+
+        glm::mat4 createMVP(const std::shared_ptr<EngineObject> & object) {
+            glm::mat4 modelMatrix = getModelMatrix();
+
+            glm::mat4 m = glm::translate(getModelMatrix(), object->getTransform().position);
+            m *= MatrixUtils::rotationMatrix(object->getTransform().rotation);
+            m *= MatrixUtils::scaleMatrix(object->getTransform().scale);
+
+            glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
+
+            return mvp;
         }
 
         virtual glm::vec3 getScaleCorrection() {

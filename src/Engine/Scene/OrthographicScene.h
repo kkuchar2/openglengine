@@ -5,14 +5,14 @@
 std::shared_ptr<GameObject> quad(float sizeX, float sizeY, const glm::vec2 & position, const glm::vec4 & color) {
     std::shared_ptr<Quad> quadMesh = std::make_shared<Quad>();
     quadMesh->shader = ShaderPool::Instance().colorShader;
-    quadMesh->transform.scale = glm::vec3(sizeX, sizeY, 1.0f);
-    quadMesh->transform.position = glm::vec3(position, 0.0f);
     quadMesh->disableNormals = true;
     quadMesh->shaderInit = [color](ShaderPtrRef shader) {
         shader->setVec4("color", color);
     };
 
     std::shared_ptr<GameObject> obj = GameObject::create();
+    obj->transform.scale = glm::vec3(sizeX, sizeY, 1.0f);
+    obj->transform.position = glm::vec3(position, 0.0f);
 
     obj->addComponent(quadMesh);
 
@@ -30,8 +30,8 @@ std::shared_ptr<UserScene> orthographicScene() {
 
     scene->projection = ORTOGRAPHIC;
 
-    for (int x = 0; x < 50; x++) {
-        for (int y = 0; y < 50; y++) {
+    for (int x = 0; x < 100; x++) {
+        for (int y = 0; y < 100; y++) {
             scene->addObject(quad(glm::vec2(3.0f), glm::vec2(10.0f * x, 10.0f * y)));
         }
     }

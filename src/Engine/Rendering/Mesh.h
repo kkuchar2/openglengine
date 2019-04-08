@@ -12,12 +12,8 @@
 #include "../Utils/OBJ/tiny_obj_loader.h"
 #include "../Utils/TextureLoader.h"
 #include "../Window/Input/Component.h"
+#include "Primitives/MeshType.h"
 
-struct Transform {
-    glm::vec3 position = glm::vec3(0.0f);
-    glm::vec3 rotation = glm::vec3(0.0f);
-    glm::vec3 scale = glm::vec3(1.0f);
-};
 
 struct TriangleInfo {
     float angle;
@@ -41,7 +37,11 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
+        std::vector<glm::mat4> instancedMVPs;
+
         GLenum mode = GL_TRIANGLES;
+
+        MeshType type = OTHER;
 
         bool disableNormals = false;
         bool prepared = false;
@@ -54,11 +54,11 @@ class Mesh : public Component {
         GLuint vbo = 0;
         GLuint uvbo = 0;
         GLuint nbo = 0;
+        GLuint posvbo = 0;
         GLuint ibo = 0;
 
         float * pVertexPosBufferData {};
 
-        Transform transform;
 
         ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
 
@@ -70,25 +70,18 @@ class Mesh : public Component {
 
         void CreateVertexAttributeObject();
         void CreateIndexBuffer();
-
         void CreateVertexBuffer();
-
         void CreateUVBuffer();
-
         void CreateNormalsBuffer();
-
-        static void UnbindVertexAtrributeObject();
+        void CreatePositionBuffer();
 
         void copyVertifcesToBuffer();
-
         void UpdateVertexBuffer();
 
-        virtual void Render();
-        void Render(GLenum renderMode, int count);
+        virtual void Render(int instancesCount);
+        void Render(GLenum renderMode, int indicesCount, int instanceCount);
 
         void loadTexture(const char * path);
-
-        BoundingBox calculateBoundingBox();
 
         void calculateNormals();
 

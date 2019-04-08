@@ -1,7 +1,6 @@
-#version 330 core
+#version 460 core
 
 uniform vec4 color;
-uniform float time;
 
 out vec4 FragColor;
 

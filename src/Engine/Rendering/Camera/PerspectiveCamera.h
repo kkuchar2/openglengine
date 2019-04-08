@@ -25,7 +25,7 @@ class PerspectiveCamera : public BaseCamera {
 
         float aspectRatio = 1.0;
 
-        explicit PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
+        PerspectiveCamera(std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
             this->position = position;
             lookDirectionVector = glm::normalize(lookAt - position);
             projection = PERSPECTIVE;

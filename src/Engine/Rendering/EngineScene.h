@@ -8,7 +8,6 @@
 
 class EngineScene {
     public:
-
         Projection projection = PERSPECTIVE;
 
         std::vector<std::shared_ptr<EngineObject>> objects;
@@ -30,9 +29,5 @@ class EngineScene {
 
             double elaspedTimeMs = std::chrono::duration<double, std::milli>(t_end-t_start).count();
             std::cout << elaspedTimeMs << " ms" << std::endl;
-        }
-
-        void render(const std::shared_ptr<BaseCamera> & camera) {
-            std::for_each(objects.begin(), objects.end(), [&camera](auto obj){ obj->render(camera); });
         }
 };

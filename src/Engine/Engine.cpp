@@ -7,12 +7,6 @@ Engine::Engine() {
 
     InputDispatcher::init(window);
 
-    ortographicCamera = std::make_shared<OrtographicCamera>(window);
-    perspectiveCamera = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
-
-    renderer->addCamera(ortographicCamera);
-    renderer->addCamera(perspectiveCamera);
-
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
@@ -21,7 +15,7 @@ Engine::Engine() {
 
     observer = createObserver<glm::vec2>([&](glm::vec2 v) {
         renderer->updateSize(v);
-        perspectiveCamera->aspectRatio = v.x / v.y;
+        renderer->perspectiveCamera->aspectRatio = v.x / v.y;
     });
 
     subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
@@ -32,16 +26,14 @@ void Engine::addScene(const std::shared_ptr<UserScene> & scene) {
 }
 
 void Engine::prepareScenes() {
-    renderer->prepareScenes();
+    renderer->prepare();
 }
 
-void Engine::renderingLoop() {
-    std::cout << "Preparing scenes start" << std::endl;
+void Engine::start() {
     prepareScenes();
-    std::cout << "Preparing scenes end" << std::endl;
 
     while (window->shouldBeOpened()) {
-        renderer->renderToTexture();
+        renderGraphics();
         editor->renderFrame(window, renderer->width, renderer->height, renderer->texture);
         glfwSwapBuffers(window->window);
         glfwPollEvents();
@@ -52,4 +44,8 @@ void Engine::renderingLoop() {
     glfwTerminate();
 
     subscription->Unsubscribe();
+}
+
+void Engine::renderGraphics() {
+    renderer->renderToTexture();
 }

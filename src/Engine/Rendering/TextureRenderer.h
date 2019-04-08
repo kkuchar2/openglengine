@@ -2,14 +2,19 @@
 
 #include <glad.h>
 
-#include "Camera/BaseCamera.h"
 #include "UserScene.h"
-#include "Camera/PerspectiveCamera.h"
 #include "EngineScene.h"
+
+#include "Camera/OrtographicCamera.h"
+#include "Camera/PerspectiveCamera.h"
 
 class TextureRenderer {
 
     public:
+
+        std::shared_ptr<OrtographicCamera> ortographicCamera;
+        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
+
         double width = 400.0;
         double height = 400.0;
 
@@ -17,19 +22,17 @@ class TextureRenderer {
         GLuint dephRenderBuffer {};
         GLuint framebufferName = 0;
 
+        std::map<MeshType, std::vector<std::pair<std::shared_ptr<EngineObject>, Projection>>> objectsToRender = {{ QUAD, {} },{ OTHER, {} }};
+
         std::map<Projection, std::vector<std::shared_ptr<EngineScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
 
-        std::vector<std::shared_ptr<BaseCamera>> cameras;
-
-        TextureRenderer(const std::shared_ptr<Window> & windowPtr);
-
-        void addCamera(const std::shared_ptr<BaseCamera> & camera);
+        TextureRenderer(std::shared_ptr<Window> & window);
 
         void addScene(const std::shared_ptr<EngineScene> & scene);
 
-        void prepareScenes();
+        void prepare();
 
-        void renderScenes();
+        void render();
 
         void createFrameBuffer();
 

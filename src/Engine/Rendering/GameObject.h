@@ -5,13 +5,21 @@
 
 #include "Mesh.h"
 #include "Primitives/Cube.h"
-#include "Camera/BaseCamera.h"
 #include "Shading/ShaderPool.h"
 #include "Primitives/Line.h"
+#include "Primitives/MeshType.h"
+
+struct Transform {
+    glm::vec3 position = glm::vec3(0.0f);
+    glm::vec3 rotation = glm::vec3(0.0f);
+    glm::vec3 scale = glm::vec3(1.0f);
+};
 
 class GameObject {
 
     public:
+        Transform transform;
+
         bool drawBoundingBox = false;
 
         std::string name = "Default";
@@ -22,8 +30,6 @@ class GameObject {
         GameObject(const std::shared_ptr<Component> & component);
 
         void addComponent(const std::shared_ptr<Component> & component);
-
-        void render(const std::shared_ptr<BaseCamera> & camera);
 
         std::vector<std::shared_ptr<GameObject>> createBoundingBox();
 
@@ -36,4 +42,10 @@ class GameObject {
         static std::shared_ptr<GameObject> create();
 
         void prepare();
+
+        std::shared_ptr<Mesh> getMesh();
+
+        MeshType getMeshType();
+
+        BoundingBox calculateBoundingBox();
 };

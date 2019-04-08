@@ -7,9 +7,8 @@ Mesh::Mesh(const char * path) : Component::Component() {
 Mesh::Mesh() : Component::Component() {}
 
 void Mesh::prepare() {
-    if (prepared) {
-        return;
-    }
+
+    if (prepared) return;
 
     if (!disableNormals) {
         calculateNormals();
@@ -18,16 +17,11 @@ void Mesh::prepare() {
     CreateVertexAttributeObject();
     CreateIndexBuffer();
     CreateVertexBuffer();
+    CreateUVBuffer();
+    CreateNormalsBuffer();
+    CreatePositionBuffer();
 
-    if (!uvs.empty()) {
-        CreateUVBuffer();
-    }
-
-    if (!normals.empty()) {
-        CreateNormalsBuffer();
-    }
-
-    UnbindVertexAtrributeObject();
+    glBindVertexArray(0);
 
     prepared = true;
 }
@@ -54,11 +48,11 @@ void Mesh::CreateVertexBuffer() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
     pVertexPosBufferData = (float *) glMapBufferRange(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(float), mapFlags);
-
     copyVertifcesToBuffer();
 }
 
 void Mesh::CreateUVBuffer() {
+    if (uvs.empty()) return;
     glGenBuffers(1, &uvbo);
     glBindBuffer(GL_ARRAY_BUFFER, uvbo);
     glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(float), uvs.data(), GL_DYNAMIC_DRAW);
@@ -67,6 +61,7 @@ void Mesh::CreateUVBuffer() {
 }
 
 void Mesh::CreateNormalsBuffer() {
+    if (normals.empty()) return;
     glGenBuffers(1, &nbo);
     glBindBuffer(GL_ARRAY_BUFFER, nbo);
     glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(float), normals.data(), GL_DYNAMIC_DRAW);
@@ -74,8 +69,25 @@ void Mesh::CreateNormalsBuffer() {
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
-void Mesh::UnbindVertexAtrributeObject() {
-    glBindVertexArray(0);
+void Mesh::CreatePositionBuffer() {
+    if (instancedMVPs.empty()) return;
+    glGenBuffers(1, &posvbo);
+    glBindBuffer(GL_ARRAY_BUFFER, posvbo);
+    glBufferData(GL_ARRAY_BUFFER, instancedMVPs.size() * sizeof(glm::mat4), instancedMVPs.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(3);
+
+
+    // https://www.reddit.com/r/opengl/comments/6cejtb/why_is_the_stride_in_glvertexattribpointer_for_a/
+    // https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml
+
+    // TODO: Fix
+
+    /*
+     * When you send the glm::mat4 down the buffer, even though its marked as a single attribute in the vertex shader,
+     * it actually needs 4 attributes because you can only send a max size of 4 in the glVertexAttribPointer call
+     */
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glVertexAttribDivisor(3, 1);
 }
 
 void Mesh::copyVertifcesToBuffer() {
@@ -86,75 +98,17 @@ void Mesh::copyVertifcesToBuffer() {
     }
 }
 
-void Mesh::UpdateVertexBuffer() {
-    prepared = false;
-    copyVertifcesToBuffer();
-    prepared = true;
+void Mesh::Render(int instancesCount) {
+    Render(mode, static_cast<int>(indices.size()), instancesCount);
 }
 
-void Mesh::Render() {
-    Render(mode, static_cast<int>(indices.size()));
-}
-
-void Mesh::Render(GLenum renderMode, int count) {
+void Mesh::Render(GLenum renderMode, int indicesCount, int instancesCount) {
     glBindVertexArray(vao);
-    glDrawElements(renderMode, count, GL_UNSIGNED_INT, nullptr);
+    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) 0, instancesCount);
 }
 
 void Mesh::loadTexture(const char * path) {
     textureId = TextureLoader::load(path);
-}
-
-BoundingBox Mesh::calculateBoundingBox() {
-    float minFloat = std::numeric_limits<float>::min();
-    float maxFloat = std::numeric_limits<float>::max();
-
-    float minX = maxFloat;
-    float minY = maxFloat;
-    float minZ = maxFloat;
-
-    float maxX = minFloat;
-    float maxY = minFloat;
-    float maxZ = minFloat;
-
-    for (unsigned int vertexId = 0; vertexId < vertices.size() / 3; vertexId++) {
-        glm::vec3 coords = glm::vec3(vertices[vertexId * 3], vertices[vertexId * 3 + 1], vertices[vertexId * 3 + 2]);
-
-        if (coords.x > maxX) {
-            maxX = coords.x;
-        }
-
-        if (coords.y > maxY) {
-            maxY = coords.y;
-        }
-
-        if (coords.z > maxZ) {
-            maxZ = coords.z;
-        }
-
-        if (coords.x < minX) {
-            minX = coords.x;
-        }
-
-        if (coords.y < minY) {
-            minY = coords.y;
-        }
-
-        if (coords.z < minZ) {
-            minZ = coords.z;
-        }
-    }
-
-    glm::vec3 size = glm::vec3(std::abs(maxX - minX), std::abs(maxY - minY), std::abs(maxZ - minZ));
-    glm::vec3 center = glm::vec3(minX + (maxX - minX) / 2.0f, minY + (maxY - minY) / 2.0f, minZ + (maxZ - minZ) / 2.0f);
-    glm::vec3 max = glm::vec3(maxX, maxY, maxZ);
-    glm::vec3 min = glm::vec3(minX, minY, minZ);
-
-    BoundingBox bbBox {};
-    bbBox.size = transform.scale * size;
-    bbBox.center = center * transform.scale + transform.position;
-    bbBox.rotation = transform.rotation;
-    return bbBox;
 }
 
 void Mesh::calculateNormals() {
