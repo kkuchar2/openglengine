@@ -8,12 +8,9 @@
 class EngineObject {
     public:
         std::shared_ptr<GameObject> gameObject;
-        std::vector<std::shared_ptr<GameObject>> boundingBoxLines;
-        std::vector<std::shared_ptr<GameObject>> normalsLines;
 
         EngineObject(const std::shared_ptr<GameObject> & gameObject);
-        void prepare();
         MeshType getMeshType();
-        std::shared_ptr<Mesh> getMesh();
+        std::shared_ptr<MeshPrototype> getMeshPrototype();
         Transform getTransform();
 };

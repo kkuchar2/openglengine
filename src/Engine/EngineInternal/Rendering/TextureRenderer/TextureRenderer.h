@@ -8,7 +8,13 @@
 #include "Camera/OrtographicCamera.h"
 #include "Camera/PerspectiveCamera.h"
 
+#include <Primitives/Quad.h>
+
 class TextureRenderer {
+
+    private:
+        std::shared_ptr<Quad> quadMesh;
+        int quadInstancesCount = 0;
 
     public:
 
@@ -22,11 +28,9 @@ class TextureRenderer {
         GLuint dephRenderBuffer {};
         GLuint framebufferName = 0;
 
-        std::map<MeshType, std::vector<std::pair<std::shared_ptr<EngineObject>, Projection>>> objectsToRender = {{ QUAD, {} },{ OTHER, {} }};
-
         std::map<Projection, std::vector<std::shared_ptr<EngineScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
 
-        TextureRenderer(std::shared_ptr<Window> & window);
+        TextureRenderer(const std::shared_ptr<Window> & window);
 
         void addScene(const std::shared_ptr<EngineScene> & scene);
 

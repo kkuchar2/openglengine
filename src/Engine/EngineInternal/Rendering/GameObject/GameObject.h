@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include <Rendering/Mesh/MeshPrototype.h>
 
 #include "Mesh/Mesh.h"
 #include "Primitives/Cube.h"
@@ -20,8 +21,6 @@ class GameObject {
     public:
         Transform transform;
 
-        bool drawBoundingBox = false;
-
         std::string name = "Default";
         std::vector<std::shared_ptr<Component>> components;
 
@@ -31,21 +30,11 @@ class GameObject {
 
         void addComponent(const std::shared_ptr<Component> & component);
 
-        std::vector<std::shared_ptr<GameObject>> createBoundingBox();
-
-        static std::vector<std::shared_ptr<GameObject>> createBoundingBoxLines(BoundingBox boundingBox);
-        static std::shared_ptr<GameObject> createLineObject(glm::vec3 start, glm::vec3 end, BoundingBox & boundingBox);
-        static std::shared_ptr<Line> createLine(glm::vec3 start, glm::vec3 end, glm::vec3 rotation, glm::vec3 position);
-
         static std::shared_ptr<GameObject> create(const std::shared_ptr<Component> & component);
 
         static std::shared_ptr<GameObject> create();
 
-        void prepare();
-
-        std::shared_ptr<Mesh> getMesh();
+        std::shared_ptr<MeshPrototype> getMeshPrototype();
 
         MeshType getMeshType();
-
-        BoundingBox calculateBoundingBox();
 };

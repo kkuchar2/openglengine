@@ -29,24 +29,14 @@ class BaseCamera : public Component {
 
         Projection projection;
 
-        explicit BaseCamera(std::shared_ptr<Window> & window) {
+        explicit BaseCamera(const std::shared_ptr<Window> & window) {
             this->window = window;
         }
 
-        void render(const std::shared_ptr<EngineObject> & object, int instancesCount) {
-
-            std::shared_ptr<Mesh> mesh = object->getMesh();
-
-            if (!mesh) {
-                return;
-            }
-
+        void render(const std::shared_ptr<Mesh> & mesh, int instancesCount) {
             std::shared_ptr<Shader> shader = mesh->shader;
 
             shader->use();
-
-            // Set camera position
-            shader->setVec3("viewPos", getPosition());
 
             mesh->shaderInit(shader);
 

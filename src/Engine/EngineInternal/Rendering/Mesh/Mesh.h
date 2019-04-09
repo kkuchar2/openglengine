@@ -43,9 +43,9 @@ class Mesh : public Component {
 
         MeshType type = OTHER;
 
-        bool disableNormals = false;
+        bool disableNormals = true;
         bool prepared = false;
-        bool isInstanced = false;
+        bool isInstanced = true;
 
         GLuint textureId = 0;
 

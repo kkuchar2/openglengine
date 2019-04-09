@@ -1,23 +1,18 @@
 #pragma once
 
 #include <Engine.h>
-#include <Primitives/Quad.h>
+
+#include <Rendering/Primitives/Prototypes/QuadPrototype.h>
 
 std::shared_ptr<GameObject> quad(float sizeX, float sizeY, const glm::vec2 & position, const glm::vec4 & color) {
-    std::shared_ptr<Quad> quadMesh = std::make_shared<Quad>();
-    quadMesh->shader = ShaderPool::Instance().colorShader;
-    quadMesh->disableNormals = true;
-    quadMesh->shaderInit = [color](ShaderPtrRef shader) {
-        shader->setVec4("color", color);
-    };
+    std::shared_ptr<QuadPrototype> quadMeshProto = std::make_shared<QuadPrototype>();
+    quadMeshProto->shaderType = COLOR;
 
     std::shared_ptr<GameObject> obj = GameObject::create();
     obj->transform.scale = glm::vec3(sizeX, sizeY, 1.0f);
     obj->transform.position = glm::vec3(position, 0.0f);
 
-    obj->addComponent(quadMesh);
-
-    obj->drawBoundingBox = false;
+    obj->addComponent(quadMeshProto);
 
     return obj;
 }

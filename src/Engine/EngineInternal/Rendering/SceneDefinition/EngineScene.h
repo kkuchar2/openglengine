@@ -17,17 +17,4 @@ class EngineScene {
         void addObject(const std::shared_ptr<EngineObject> & obj) {
             objects.push_back(obj);
         }
-
-        void prepare() {
-            auto t_start = std::chrono::high_resolution_clock::now();
-
-            for (auto & obj : objects) {
-                obj->prepare();
-            }
-
-            auto t_end = std::chrono::high_resolution_clock::now();
-
-            double elaspedTimeMs = std::chrono::duration<double, std::milli>(t_end-t_start).count();
-            std::cout << elaspedTimeMs << " ms" << std::endl;
-        }
 };

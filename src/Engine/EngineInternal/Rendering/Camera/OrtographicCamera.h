@@ -4,7 +4,7 @@
 
 class OrtographicCamera : public BaseCamera {
     public:
-        explicit OrtographicCamera(std::shared_ptr<Window> & window) : BaseCamera(window) {
+        explicit OrtographicCamera(const std::shared_ptr<Window> & window) : BaseCamera(window) {
             projection = ORTOGRAPHIC;
         }
 
