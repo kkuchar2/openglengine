@@ -1,5 +1,6 @@
-#include "Engine/Engine.h"
-#include "Engine/Scene/Scenes.h"
+#include <Scenes/OrthographicScene.h>
+
+#include <Engine.h>
 
 int main() {
     std::shared_ptr<Engine> engine;

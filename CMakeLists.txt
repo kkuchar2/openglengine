@@ -4,45 +4,6 @@ project(opengl)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 set(CMAKE_CXX_STANDARD 17)
 
-
-#############################################################################################################
-#############################################################################################################
-
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(GLFW_INCLUDE_NONE OFF CACHE BOOL "" FORCE)
-
-set(ZLIB_LIBRARIES zlibstatic)
-set(ENABLE_BOOST_WORKAROUND ON)
-set(BUILD_STATIC_LIB ON)
-set(BUILD_ASSIMP_TOOLS  ON)
-set(ASSIMP_BUILD_STATIC_LIB ON)
-
-add_subdirectory(dependencies/glfw)
-add_subdirectory(dependencies/glm)
-add_subdirectory(dependencies/RoseCpp)
-add_subdirectory(dependencies/freetype2)
-
-
-include_directories(dependencies/glfw)
-include_directories(dependencies/glfw/deps)
-include_directories(dependencies/glfw/include)
-include_directories(dependencies/glm)
-include_directories(dependencies/RoseCpp/src)
-include_directories(dependencies/freetype2/include)
-include_directories(dependencies/glad/include/glad)
-include_directories(dependencies/glad/include/KHR)
-
-set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
-set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
-set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
-
-
-#############################################################################################################
-#############################################################################################################
-
-file(GLOB_RECURSE SRC_FILES src/*.cpp)
 file (GLOB_RECURSE RESOURCE_FILES "resources/*.*")
 
 foreach(resource ${resources})
@@ -73,7 +34,44 @@ foreach(resource ${resources})
 
 endforeach()
 
-set(SOURCE_FILES ${SRC_FILES} src/Engine/Editor/AssetTreeWindow.h src/Engine/Scene/ShaderTestScene.h src/Engine/Utils/MatrixUtils.h src/Engine/Behaviour/BehaviourComponent.h src/Engine/Engine.cpp src/Engine/Rendering/GameObject.cpp src/Engine/Behaviour/BehaviourComponent.cpp src/Engine/Rendering/TextureRenderer.cpp src/Engine/Rendering/Mesh.cpp src/Engine/Rendering/EngineObject.cpp src/Engine/Rendering/Primitives/MeshType.h)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INCLUDE_NONE OFF CACHE BOOL "" FORCE)
+
+set(ZLIB_LIBRARIES zlibstatic)
+set(ENABLE_BOOST_WORKAROUND ON)
+set(BUILD_STATIC_LIB ON)
+set(BUILD_ASSIMP_TOOLS  ON)
+set(ASSIMP_BUILD_STATIC_LIB ON)
+
+add_subdirectory(dependencies/glfw)
+add_subdirectory(dependencies/glm)
+add_subdirectory(dependencies/RoseCpp)
+add_subdirectory(dependencies/freetype2)
+
+include_directories(dependencies)
+include_directories(dependencies/glfw)
+include_directories(dependencies/glfw/deps)
+include_directories(dependencies/glfw/include)
+include_directories(dependencies/glm)
+include_directories(dependencies/RoseCpp/src)
+include_directories(dependencies/freetype2/include)
+include_directories(dependencies/glad/include/glad)
+include_directories(dependencies/glad/include/KHR)
+
+include_directories(src/Engine/EngineInternal)
+include_directories(src/Engine/EngineInternal/Rendering)
+include_directories(src)
+
+file(GLOB_RECURSE SRC_FILES src/*.cpp)
+file(GLOB_RECURSE IMGUI_SRC_FILES dependencies/imgui/*.cpp)
+
+set(SOURCE_FILES ${SRC_FILES} ${IMGUI_SRC_FILES})
+
+set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
+set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
+set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c" src/Engine/EngineInternal/Window/Window.cpp)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 
