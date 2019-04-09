@@ -31,9 +31,9 @@ std::shared_ptr<UserScene> orthographicScene() {
 
     scene->projection = ORTOGRAPHIC;
 
-    for (int x = 0; x < 30; x++) {
-        for (int y = 0; y < 30; y++) {
-            scene->addObject(quad(glm::vec2(3.0f), glm::vec2(10.0f * x, 10.0f * y)));
+    for (int x = 0; x < 100; x++) {
+        for (int y = 0; y < 100; y++) {
+            scene->addObject(quad(glm::vec2(1.0f), glm::vec2(10.0f * x, 10.0f * y)));
         }
     }
 

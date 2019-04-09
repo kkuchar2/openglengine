@@ -72,25 +72,40 @@ void Mesh::CreateNormalsBuffer() {
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
+/**
+ *  When you send the glm::mat4 down the buffer, even though its marked as a single attribute in the vertex shader,
+ *  it actually needs 4 attributes because you can only send a max size of 4 in the glVertexAttribPointer call
+ *
+ *  https://www.reddit.com/r/opengl/comments/6cejtb/why_is_the_stride_in_glvertexattribpointer_for_a/
+ *  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml
+ *   https://stackoverflow.com/questions/17355051/using-a-matrix-as-vertex-attribute-in-opengl3-core-profile
+ */
 void Mesh::CreatePositionBuffer() {
     if (instancedMVPs.empty()) return;
+
     glGenBuffers(1, &posvbo);
     glBindBuffer(GL_ARRAY_BUFFER, posvbo);
     glBufferData(GL_ARRAY_BUFFER, instancedMVPs.size() * sizeof(glm::mat4), instancedMVPs.data(), GL_STATIC_DRAW);
+
     glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(0));
 
-
-    // https://www.reddit.com/r/opengl/comments/6cejtb/why_is_the_stride_in_glvertexattribpointer_for_a/
-    // https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml
-
-    // TODO: Fix
-
-    /*
-     * When you send the glm::mat4 down the buffer, even though its marked as a single attribute in the vertex shader,
-     * it actually needs 4 attributes because you can only send a max size of 4 in the glVertexAttribPointer call
-     */
-    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     glVertexAttribDivisor(3, 1);
+
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 4));
+
+    glVertexAttribDivisor(4, 1);
+
+    glEnableVertexAttribArray(5);
+    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 8));
+
+    glVertexAttribDivisor(5, 1);
+
+    glEnableVertexAttribArray(6);
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 12));
+
+    glVertexAttribDivisor(6, 1);
 }
 
 void Mesh::copyVertifcesToBuffer() {
