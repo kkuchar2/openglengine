@@ -14,7 +14,7 @@ void TextureRenderer::prepare() {
     quadMesh = std::make_shared<Quad>();
     quadMesh->shader = ShaderPool::Instance().colorShader;
     quadMesh->shaderInit = [](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0, 0.0, 0.0, 0.0));
+        shader->setVec4("color", glm::vec4(1.0, 0.0, 0.0, 1.0));
     };
 
     std::vector<glm::mat4> data;

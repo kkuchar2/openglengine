@@ -28,7 +28,7 @@ std::shared_ptr<UserScene> orthographicScene() {
 
     for (int x = 0; x < 100; x++) {
         for (int y = 0; y < 100; y++) {
-            scene->addObject(quad(glm::vec2(1.0f), glm::vec2(10.0f * x, 10.0f * y)));
+            scene->addObject(quad(glm::vec2(1.0f), glm::vec2(2.0f * x, 2.0f * y)));
         }
     }
 

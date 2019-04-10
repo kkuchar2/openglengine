@@ -84,8 +84,6 @@ void Mesh::CreateNormalsBuffer() {
 void Mesh::CreatePositionBuffer() {
     if (instancedMVPs.empty()) return;
 
-    std::cout << "pushing mvp buffer, size: " << instancedMVPs.size() << std::endl;
-
     glGenBuffers(1, &posvbo);
     glBindBuffer(GL_ARRAY_BUFFER, posvbo);
     glBufferData(GL_ARRAY_BUFFER, instancedMVPs.size() * sizeof(glm::mat4), instancedMVPs.data(), GL_STATIC_DRAW);
@@ -93,21 +91,18 @@ void Mesh::CreatePositionBuffer() {
     glEnableVertexAttribArray(3);
     glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(0));
 
-    glVertexAttribDivisor(3, 1);
-
     glEnableVertexAttribArray(4);
     glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 4));
-
-    glVertexAttribDivisor(4, 1);
 
     glEnableVertexAttribArray(5);
     glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 8));
 
-    glVertexAttribDivisor(5, 1);
-
     glEnableVertexAttribArray(6);
     glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 12));
 
+    glVertexAttribDivisor(3, 1);
+    glVertexAttribDivisor(4, 1);
+    glVertexAttribDivisor(5, 1);
     glVertexAttribDivisor(6, 1);
 }
 
@@ -124,7 +119,6 @@ void Mesh::Render(int instancesCount) {
 }
 
 void Mesh::Render(GLenum renderMode, int indicesCount, int instancesCount) {
-    std::cout << "Rendering:  "  << indicesCount << " " << instancesCount << std::endl;
     glBindVertexArray(vao);
     glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) 0, instancesCount);
 }
