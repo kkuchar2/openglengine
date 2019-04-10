@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include <Rose/Observable.h>
+
 class InputSystem {
 
     private:
@@ -10,25 +12,43 @@ class InputSystem {
         glm::vec2 mousePositionDelta = glm::vec2(0.0, 0.0);
 
         std::vector<bool> pressed;
+
     public:
 
-        InputSystem() : pressed(349, false) {
+        std::shared_ptr<Observable<glm::vec2>> mousePositionDeltaProperty;
+
+        static InputSystem & Instance()
+        {
+            static InputSystem instance;
+            return instance;
         }
+
+        InputSystem() {
+            mousePositionDeltaProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
+
+            for (int i = 0; i < 349; i++) {
+                pressed.push_back(false);
+            }
+        };
+
+    public:
+        InputSystem(ShaderPool const&) = delete;
+
+        void operator=(InputSystem const&)  = delete;
 
         void onCursorPositionChanged(double xpos, double ypos) {
             currentMousePosition = glm::vec2(xpos, ypos);
             mousePositionDelta = currentMousePosition - oldMousePosition;
             oldMousePosition = currentMousePosition;
-            MessageBus::sendMessage(std::make_shared<CursorPositionMessage>(xpos, ypos));
-            MessageBus::sendMessage(std::make_shared<CursorDeltaMessage>(mousePositionDelta));
+            mousePositionDeltaProperty->setValue(mousePositionDelta);
         }
 
         void onMouseButtonPressed(int button, int action, int mods) {
-            MessageBus::sendMessage(std::make_shared<CursorButtonMessage>(button, action, mods));
+            // TODO: Create property
         }
 
         void onMouseButtonScroll(double xoffset, double yoffset) {
-            MessageBus::sendMessage(std::make_shared<ScrollMessage>(xoffset, yoffset));
+            // TODO: Create property
         }
 
         void onKeyboardKeyPressed(int key, int scancode, int action, int mods) {
@@ -38,7 +58,6 @@ class InputSystem {
             else if(action == GLFW_RELEASE) {
                 pressed[key] = false;
             }
-
-            MessageBus::sendMessage(std::make_shared<KeyMessage>(pressed));
         }
+
 };

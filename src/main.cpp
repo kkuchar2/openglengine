@@ -17,8 +17,6 @@ int main() {
     //engine->addScene(shaderTestScene());
     engine->addScene(orthographicScene());
 
-    engine->renderer->perspectiveCamera->SetPosition(glm::vec3(0.0f, 0.0, 3.0));
-
     engine->start();
 
     glfwTerminate();

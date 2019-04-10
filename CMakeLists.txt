@@ -71,7 +71,7 @@ set(SOURCE_FILES ${SRC_FILES} ${IMGUI_SRC_FILES})
 
 set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
-set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c" src/Engine/EngineInternal/Window/Window.cpp src/Engine/EngineInternal/Rendering/Mesh/MeshPrototype.h src/Engine/EngineInternal/Rendering/Primitives/Prototypes/QuadPrototype.h src/Engine/EngineInternal/Rendering/Shading/ShaderType.h)
+set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c" src/Engine/EngineInternal/Rendering/Camera/BaseCamera.cpp src/Engine/EngineInternal/Rendering/Camera/Projection.h src/Engine/EngineInternal/Rendering/Camera/PerspectiveCamera.cpp src/Engine/EngineInternal/Rendering/Camera/OrtographicCamera.cpp)
 
 add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

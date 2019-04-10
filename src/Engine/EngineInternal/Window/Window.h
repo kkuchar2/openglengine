@@ -8,17 +8,22 @@
 #include <glm/glm/glm.hpp>
 #include <glad.h>
 
+
+#include <Rose/Observer.h>
+
+
 #include "../EngineException.h"
 
 class Window {
 
     public:
+
         GLFWwindow * window { nullptr };
 
-        int width = -1;
-        int height = -1;
+        int width = 0;
+        int height = 0;
 
-        bool vSyncEnabled = false;
+        bool vSyncEnabled = true;
 
         Window(const int resX, const int resY);
 
@@ -29,8 +34,6 @@ class Window {
         void setScrollCallback(GLFWscrollfun callback);
 
         void setCursorPositionCallback(GLFWcursorposfun callback);
-
-        glm::vec2 getResolution();
 
         bool shouldBeOpened();
 

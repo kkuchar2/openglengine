@@ -11,7 +11,7 @@
 
 #include "../../Utils/OBJ/tiny_obj_loader.h"
 #include "../../Utils/TextureLoader.h"
-#include "../../Window/Input/Component.h"
+#include "Component.h"
 #include "MeshType.h"
 
 

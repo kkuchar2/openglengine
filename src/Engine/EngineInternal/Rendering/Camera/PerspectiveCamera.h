@@ -1,16 +1,15 @@
 #pragma once
 
-
 #include "BaseCamera.h"
 
 class PerspectiveCamera : public BaseCamera {
 
     private:
+
         glm::vec3 lookDirectionVector = glm::vec3(0.0, 0.0, 0.0);
         glm::vec3 frontVector = glm::vec3(0.0, 0.0, -1.0);
         glm::vec3 upVector = glm::vec3(0.0, 1.0, 0.0);
         glm::vec3 velocity = glm::vec3(0.0);
-
 
     public:
         glm::vec3 position = glm::vec3(0.0, 0.0, 0.0);
@@ -25,7 +24,11 @@ class PerspectiveCamera : public BaseCamera {
 
         float aspectRatio = 1.0;
 
-        PerspectiveCamera(const std::shared_ptr<Window> & window, const glm::vec3 position) : BaseCamera(window) {
+        float currentFrame = 0.0f;
+        float deltaTime = 0.0f;
+        float lastFrame = 0.0f;
+
+        PerspectiveCamera(const glm::vec3 position) : BaseCamera() {
             this->position = position;
             lookDirectionVector = glm::normalize(lookAt - position);
             projection = PERSPECTIVE;
@@ -36,7 +39,7 @@ class PerspectiveCamera : public BaseCamera {
             lookDirectionVector = glm::normalize(lookAt - position);
         }
 
-        void onPointerDeltaChanged(glm::vec2 & delta) override {
+        void onMouseMove(const glm::vec2 & delta) override {
 
             if (disableMovement) {
                 return;
@@ -102,9 +105,6 @@ class PerspectiveCamera : public BaseCamera {
             velocity = velocitySum;
         }
 
-        float currentFrame = 0.0f;
-        float deltaTime = 0.0f;
-        float lastFrame = 0.0f;
 
         void Update() override {
             currentFrame = static_cast<float>(glfwGetTime());
@@ -113,19 +113,8 @@ class PerspectiveCamera : public BaseCamera {
             position += velocity * deltaTime;
         }
 
-        glm::vec3 getPosition() override {
-            return position;
-        }
-
-        glm::mat4x4 getModelMatrix() override {
-            return glm::mat4(1.0);
-        }
-
-        glm::mat4x4 getViewMatrix() override {
-            return glm::lookAt(position, position + lookDirectionVector, upVector);
-        }
-
-        glm::mat4x4 getProjectionMatrix() override {
-            return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 1000.0f);
-        }
+        glm::vec3 getPosition() override;
+        glm::mat4x4 getModelMatrix() override;
+        glm::mat4x4 getViewMatrix() override;
+        glm::mat4x4 getProjectionMatrix() override;
 };

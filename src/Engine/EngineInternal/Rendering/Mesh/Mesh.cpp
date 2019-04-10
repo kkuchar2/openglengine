@@ -7,7 +7,7 @@ Mesh::Mesh(const char * path) : Component::Component() {
 Mesh::Mesh() : Component::Component() {}
 
 void Mesh::prepare() {
-    std::cout << "preparing mesh" << std::endl;
+    std::cout << "Preparing mesh" << std::endl;
 
     if (prepared) return;
 

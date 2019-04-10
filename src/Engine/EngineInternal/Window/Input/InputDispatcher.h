@@ -3,24 +3,22 @@
 #include "../Window.h"
 #include "InputSystem.h"
 
-static InputSystem inputSystem;
-
 class InputDispatcher {
     private:
         static void cursor_position_callback(GLFWwindow * window, double xpos, double ypos) {
-            inputSystem.onCursorPositionChanged(xpos, ypos);
+            InputSystem::Instance().onCursorPositionChanged(xpos, ypos);
         }
 
         static void mouse_button_callback(GLFWwindow * window, int button, int action, int mods) {
-            inputSystem.onMouseButtonPressed(button, action, mods);
+            InputSystem::Instance().onMouseButtonPressed(button, action, mods);
         }
 
         static void scroll_callback(GLFWwindow * window, double xoffset, double yoffset) {
-            inputSystem.onMouseButtonScroll(xoffset, yoffset);
+            InputSystem::Instance().onMouseButtonScroll(xoffset, yoffset);
         }
 
         static void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods) {
-            inputSystem.onKeyboardKeyPressed(key, scancode, action, mods);
+            InputSystem::Instance().onKeyboardKeyPressed(key, scancode, action, mods);
         }
 
     public:

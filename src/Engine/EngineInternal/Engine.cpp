@@ -15,7 +15,8 @@ Engine::Engine() {
 
     observer = createObserver<glm::vec2>([&](glm::vec2 v) {
         renderer->updateSize(v);
-        renderer->perspectiveCamera->aspectRatio = v.x / v.y;
+        std::dynamic_pointer_cast<PerspectiveCamera>(renderer->perspectiveCamera)->aspectRatio = v.x / v.y;
+        std::dynamic_pointer_cast<OrtographicCamera>(renderer->ortographicCamera)->updateSize(v.x, v.y);
     });
 
     subscription = editor->sceneWindowSizeProperty->Subscribe(observer);

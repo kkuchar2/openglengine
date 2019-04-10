@@ -16,12 +16,6 @@ class ShaderPool
         static ShaderPool & Instance()
         {
             static ShaderPool instance;
-
-            instance.gridShader = loadShader("Grid.vert", "Grid.frag");
-            instance.colorShader = loadShader("Color.vert", "Color.frag");
-            instance.diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
-            instance.characterShader = loadShader("TextVert.glsl", "TextFrag.glsl");
-
             return instance;
         }
 
@@ -36,11 +30,15 @@ class ShaderPool
         }
 
     private:
-        ShaderPool() = default;
-
-
+        ShaderPool() {
+            gridShader = loadShader("Grid.vert", "Grid.frag");
+            colorShader = loadShader("Color.vert", "Color.frag");
+            diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
+            characterShader = loadShader("TextVert.glsl", "TextFrag.glsl");
+        };
 
     public:
         ShaderPool(ShaderPool const&) = delete;
+
         void operator=(ShaderPool const&)  = delete;
 };

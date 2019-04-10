@@ -43,10 +43,6 @@ void Window::setCursorPositionCallback(GLFWcursorposfun callback) {
     glfwSetCursorPosCallback(window, callback);
 }
 
-glm::vec2 Window::getResolution() {
-    return glm::vec2(width, height);
-}
-
 bool Window::shouldBeOpened() {
     return !glfwWindowShouldClose(window);
 }

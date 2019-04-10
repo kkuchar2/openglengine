@@ -22,7 +22,7 @@ Editor::Editor(const std::shared_ptr<Window> & window) {
 
     EditorStyle::Apply();
 
-    sceneWindowSizeProperty = std::make_shared<ObservableBase<glm::vec2>>(glm::vec2(0.0, 0.0));
+    sceneWindowSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
 }
 
 void Editor::DockSpaceBegin() {

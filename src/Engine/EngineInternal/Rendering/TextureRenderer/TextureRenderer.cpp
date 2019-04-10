@@ -2,8 +2,8 @@
 
 TextureRenderer::TextureRenderer(const std::shared_ptr<Window> & window) {
     createFrameBuffer();
-    ortographicCamera = std::make_shared<OrtographicCamera>(window);
-    perspectiveCamera = std::make_shared<PerspectiveCamera>(window, glm::vec3(0.0, 5.0, 10.0));
+    ortographicCamera = std::make_shared<OrtographicCamera>(window->width, window->height);
+    perspectiveCamera = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 5.0, 10.0));
 }
 
 void TextureRenderer::addScene(const std::shared_ptr<EngineScene> & scene) {
@@ -11,24 +11,37 @@ void TextureRenderer::addScene(const std::shared_ptr<EngineScene> & scene) {
 }
 
 void TextureRenderer::prepare() {
+
+    // Create single mesh as base for instantiation
     quadMesh = std::make_shared<Quad>();
     quadMesh->shader = ShaderPool::Instance().colorShader;
     quadMesh->shaderInit = [](ShaderPtrRef shader) {
         shader->setVec4("color", glm::vec4(1.0, 0.0, 0.0, 1.0));
     };
 
-    std::vector<glm::mat4> data;
 
+    // TODO:
+
+    /**
+     * Group objects based on projection, type, material and ? instantiation enabled
+     */
+
+    // Create mvp matrices data
+    std::vector<glm::mat4> mvps;
+
+    // For now assume that all objects are quads and ortho projection as camera
+
+    // Grab all objects from all scenes
     for (auto & pair : scenes) {
         for (auto & scene : pair.second) {
             for (auto & engineObject : scene->objects) {
-                data.push_back(ortographicCamera->createMVP(engineObject));
+                mvps.push_back(ortographicCamera->createMVP(engineObject));
                 quadInstancesCount++;
             }
         }
     }
 
-    quadMesh->instancedMVPs = data;
+    quadMesh->instancedMVPs = mvps;
     quadMesh->prepare();
 }
 
@@ -77,7 +90,7 @@ void TextureRenderer::renderToTexture() {
 
 void TextureRenderer::updateSize(const glm::vec2 & newSize) {
 
-    if (abs(newSize.x - width) < 1.0f && abs(newSize.y - height) < 1.0f) return;
+    if (std::abs(newSize.x - width) < 1.0f && std::abs(newSize.y - height) < 1.0f) return;
 
     width = newSize.x;
     height = newSize.y;

@@ -19,6 +19,7 @@
 class Engine {
 
     private:
+
         std::shared_ptr<Window> window;
         std::shared_ptr<Editor> editor;
 
@@ -29,6 +30,7 @@ class Engine {
         void prepareScenes();
 
     public:
+
         Engine();
 
         void addScene(const std::shared_ptr<UserScene> & scene);

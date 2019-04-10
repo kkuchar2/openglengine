@@ -3,20 +3,17 @@
 #include "BaseCamera.h"
 
 class OrtographicCamera : public BaseCamera {
+
+    private:
+        float width = 0.0f;
+        float height = 0.0f;
+
     public:
-        explicit OrtographicCamera(const std::shared_ptr<Window> & window) : BaseCamera(window) {
-            projection = ORTOGRAPHIC;
-        }
+        OrtographicCamera(const int width, const int height);
 
-        glm::mat4x4 getModelMatrix() override {
-            return glm::translate(glm::mat4(1.0), glm::vec3(-window->width / 2.0f, -window->height / 2.0f, 0.0f));
-        }
+        void updateSize(const int width, const int height);
 
-        glm::mat4x4 getViewMatrix() override {
-            return glm::mat4(1.0);
-        }
-
-        glm::mat4x4 getProjectionMatrix() override {
-            return glm::ortho(-(float) window->width / 2.0f, (float) window->width / 2.0f, (float) window->height / 2.0f, -(float) window->height / 2.0f, -1000.0f, 1000.0f);
-        }
+        glm::mat4x4 getModelMatrix() override;
+        glm::mat4x4 getViewMatrix() override;
+        glm::mat4x4 getProjectionMatrix() override;
 };

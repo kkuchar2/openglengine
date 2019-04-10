@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Rendering/Shading/ShaderType.h>
-#include <Window/Input/Component.h>
+#include <Component.h>
 #include "MeshType.h"
 
 class MeshPrototype : public Component {

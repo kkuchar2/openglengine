@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ObservableBase.h>
+#include <Rose/Observable.h>
 
 #include <glad.h>
 
@@ -18,10 +18,12 @@
 class Editor {
 
     private:
+        
         ImGuiIO * io_ptr;
 
     public:
-        std::shared_ptr<ObservableBase<glm::vec2>> sceneWindowSizeProperty;
+        
+        std::shared_ptr<Observable<glm::vec2>> sceneWindowSizeProperty;
 
         Editor(const std::shared_ptr<Window> & window);
 
@@ -32,8 +34,11 @@ class Editor {
         static void DockSpaceEnd();
 
         static void renderConsoleWindow();
+        
         static void renderSettingsWindow();
+        
         static void renderInfoWindow();
+        
         static void renderHierarchyWindow();
 
         static void on_scene_window_resize(ImGuiSizeCallbackData * data);
