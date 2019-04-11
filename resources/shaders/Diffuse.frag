@@ -1,7 +1,6 @@
 #version 330 core
 
 uniform vec4 color;
-uniform float time;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
@@ -24,7 +23,7 @@ void main()
   vec3 lightDir = lightPos - FragPos;
 
   float d = distance(lightPos, FragPos);
-  float attenuation = clamp( 1.0 / (1.0 + 0.1 * d), 0.0, 1.0);;
+  float attenuation = clamp( 1.0 / (1.0 + 0.1 * d), 0.0, 1.0);
 
   lightDir = normalize(lightDir);
 

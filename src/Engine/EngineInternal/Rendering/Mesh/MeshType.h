@@ -3,6 +3,6 @@
 enum MeshType {
     QUAD,
     CUBE,
-    OTHER,
+    RESOURCE,
     NONE
 };

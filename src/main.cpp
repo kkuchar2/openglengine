@@ -1,4 +1,4 @@
-#include <Scenes/OrthographicScene.h>
+#include <Scenes/InstanncingRenderingTestScene.h>
 
 #include <Engine.h>
 

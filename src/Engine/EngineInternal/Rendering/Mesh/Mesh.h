@@ -14,7 +14,7 @@
 #include "../../Utils/TextureLoader.h"
 #include "Component.h"
 #include "MeshType.h"
-#include "MeshPrototypeInternal.h"
+#include "MeshPrototype.h"
 
 
 struct TriangleInfo {
@@ -43,9 +43,8 @@ class Mesh : public Component {
 
         GLenum mode = GL_TRIANGLES;
 
-        MeshType type = OTHER;
+        MeshType type = NONE;
         Projection projection = PERSPECTIVE;
-
 
         bool disableNormals = true;
         bool prepared = false;
@@ -90,9 +89,9 @@ class Mesh : public Component {
 
         void calculateNormals();
 
-        void loadMesh(const char * path);
+        void loadFromResource(const char * path);
 
         static std::shared_ptr<Mesh> create(const char * path);
 
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototypeInternal> & proto, const Projection & projection);
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection);
 };

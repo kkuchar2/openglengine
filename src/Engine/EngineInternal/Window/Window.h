@@ -23,9 +23,9 @@ class Window {
         int width = 0;
         int height = 0;
 
-        bool vSyncEnabled = false;
+        bool vSyncEnabled = true;
 
-        Window(const int resX, const int resY);
+        Window(const int & resX, const int & resY);
 
         void setKeyCallback(GLFWkeyfun callback);
 

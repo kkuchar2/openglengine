@@ -5,14 +5,12 @@
 #include <Rendering/Primitives/Cube.h>
 
 Mesh::Mesh(const char * path) : Component::Component() {
-    loadMesh(path);
+    loadFromResource(path);
 }
 
 Mesh::Mesh() : Component::Component() {}
 
 void Mesh::prepare() {
-    std::cout << "Preparing mesh" << std::endl;
-
     if (prepared) return;
 
     if (!disableNormals) {
@@ -177,7 +175,7 @@ void Mesh::calculateNormals() {
     }
 }
 
-void Mesh::loadMesh(const char * path) {
+void Mesh::loadFromResource(const char * path) {
     tinyobj::attrib_t attrib;
 
     std::string warning;
@@ -209,7 +207,7 @@ std::shared_ptr<Mesh> Mesh::create(const char * path) {
     return std::make_shared<Mesh>(path);
 }
 
-std::shared_ptr<Mesh> Mesh::of(const std::shared_ptr<MeshPrototypeInternal> & proto, const Projection & projection) {
+std::shared_ptr<Mesh> Mesh::of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection) {
 
     std::shared_ptr<Mesh> mesh;
 
@@ -218,18 +216,20 @@ std::shared_ptr<Mesh> Mesh::of(const std::shared_ptr<MeshPrototypeInternal> & pr
         case QUAD:
             mesh = std::make_shared<Quad>();
             break;
-        case OTHER:
-            break;
-        case NONE:
-            break;
         case CUBE:
             mesh = std::make_shared<Cube>();
             break;
+        case RESOURCE:
+            mesh = std::make_shared<Mesh>(proto->path);
+            break;
+        case NONE:
+            break;
+
     }
     mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
     mesh->disableNormals = false;
-    mesh->shaderInit = [](ShaderPtrRef s) {
-        s->setVec4("color", glm::vec4(0.0f, 0.8f, 0.5f, 1.0f));
+    mesh->shaderInit = [proto](ShaderPtrRef s) {
+        s->setVec4("color", proto->color);
         s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         s->setVec3("lightPos", glm::vec3(1.2f, 1.0f, 2.0f));
     };

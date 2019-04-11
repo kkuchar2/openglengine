@@ -149,10 +149,10 @@ void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float he
     Editor::DockSpaceBegin();
 
     Editor::renderInfoWindow();
-    Editor::renderHierarchyWindow();
+    //Editor::renderHierarchyWindow();
     Editor::renderSceneWindow(width, height, texture);
-    Editor::renderSettingsWindow();
-    Editor::renderConsoleWindow();
+    //Editor::renderSettingsWindow();
+    //Editor::renderConsoleWindow();
 
     Editor::DockSpaceEnd();
 

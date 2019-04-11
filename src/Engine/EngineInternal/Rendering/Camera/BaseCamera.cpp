@@ -16,6 +16,7 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, int instancesCount) 
 
     shader->use();
 
+    shader->setVec3("viewPos", getPosition());
     shader->setMat4("projectionMatrix", getProjectionMatrix());
     shader->setMat4("viewMatrix", getViewMatrix());
 

@@ -1,6 +1,7 @@
 #version 330 core
 
 uniform vec4 color;
+uniform mat4 pureModelMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 

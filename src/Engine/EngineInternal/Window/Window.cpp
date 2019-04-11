@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(const int resX, const int resY) {
+Window::Window(const int & resX, const int & resY) {
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
