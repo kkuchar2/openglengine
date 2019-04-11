@@ -8,7 +8,7 @@ MeshType EngineObject::getMeshType() {
     return gameObject->getMeshType();
 }
 
-std::shared_ptr<MeshPrototype> EngineObject::getMeshPrototype() {
+std::shared_ptr<MeshPrototypeInternal> EngineObject::getMeshPrototype() {
     return gameObject->getMeshPrototype();
 }
 

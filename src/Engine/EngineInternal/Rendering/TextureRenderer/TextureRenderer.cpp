@@ -26,29 +26,45 @@ void TextureRenderer::prepare() {
      * Group objects based on projection, type, material and ? instantiation enabled
      */
 
-    // Create mvp matrices data
-    std::vector<glm::mat4> mvps;
+    // Create model matrices data
+    std::vector<glm::mat4> matrices;
 
     // For now assume that all objects are quads and ortho projection as camera
+
+
+    //     glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
 
     // Grab all objects from all scenes
     for (auto & pair : scenes) {
         for (auto & scene : pair.second) {
+
+            auto projection = scene->projection;
+
             for (auto & engineObject : scene->objects) {
-                mvps.push_back(ortographicCamera->createMVP(engineObject));
+
+                switch(projection) {
+
+                    case PERSPECTIVE:
+                        matrices.push_back(perspectiveCamera->createModelMatrix(engineObject));
+                        break;
+                    case ORTOGRAPHIC:
+                        matrices.push_back(ortographicCamera->createModelMatrix(engineObject));
+                        break;
+                }
+
                 quadInstancesCount++;
             }
         }
     }
 
-    quadMesh->instancedMVPs = mvps;
+    quadMesh->modelMatrices = matrices;
     quadMesh->prepare();
 }
 
 void TextureRenderer::render() {
     perspectiveCamera->Update();
     ortographicCamera->Update();
-    ortographicCamera->render(quadMesh, quadInstancesCount);
+    perspectiveCamera->render(quadMesh, quadInstancesCount);
 }
 
 void TextureRenderer::createFrameBuffer() {

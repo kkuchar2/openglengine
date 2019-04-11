@@ -39,72 +39,9 @@ class PerspectiveCamera : public BaseCamera {
             lookDirectionVector = glm::normalize(lookAt - position);
         }
 
-        void onMouseMove(const glm::vec2 & delta) override {
-
-            if (disableMovement) {
-                return;
-            }
-
-            if( !rightMousePressed) {
-                return;
-            }
-
-            float sensitivity = 0.05;
-
-            yaw += (delta.x  * sensitivity);
-            pitch += (delta.y * sensitivity);
-
-            if(pitch > 89.0f) {
-                pitch = 89.0f;
-            }
-
-            if(pitch < -89.0f) {
-                pitch = -89.0f;
-            }
-
-            glm::vec3 f;
-            f.x = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-            f.y = -sin(glm::radians(pitch));
-            f.z = -cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-
-            glm::vec3 df = glm::normalize(f) - frontVector;
-            frontVector =  glm::normalize(f);
-
-            lookDirectionVector += df;
-        }
-
-        void onMouseButtonPressed(int button, int action) override {
-            if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-                if (action == GLFW_PRESS && !rightMousePressed) {
-                    rightMousePressed = true;
-                }
-                else if (rightMousePressed) {
-                    rightMousePressed = false;
-                }
-            }
-        }
-
-        void onKeysPressedStateReceived(std::vector<bool> & pressed_keys) override {
-            float speed = 0.5f;
-
-            if (pressed_keys[GLFW_KEY_LEFT_CONTROL]) {
-                speed *= 0.1f;
-            }
-
-            if (pressed_keys[GLFW_KEY_LEFT_SHIFT]) {
-                speed *= 20.0f;
-            }
-
-            auto velocitySum = glm::vec3(0.0);
-
-            velocitySum += float(pressed_keys[GLFW_KEY_W]) * lookDirectionVector * speed;
-            velocitySum -= float(pressed_keys[GLFW_KEY_S]) * lookDirectionVector * speed;
-            velocitySum += float(pressed_keys[GLFW_KEY_A]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
-            velocitySum -= float(pressed_keys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
-
-            velocity = velocitySum;
-        }
-
+        void onMouseMove(const glm::vec2 & delta) override;
+        void onMouseButtonPressed(const MouseButtonInfo & info) override;
+        void onKeyInfoReceived(const KeyInfo & keyInfo) override;
 
         void Update() override {
             currentFrame = static_cast<float>(glfwGetTime());

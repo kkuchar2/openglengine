@@ -1,12 +1,14 @@
 #version 460 core
 
 uniform vec4 color;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
 
 layout (location = 0) in vec3 vCoord;
 layout (location = 1) in vec2 uvCoord;
 layout (location = 2) in vec3 normal;
 
-// MVP split
+// Model matrix split
 layout (location = 3) in vec4 x;
 layout (location = 4) in vec4 y;
 layout (location = 5) in vec4 z;
@@ -18,7 +20,7 @@ out vec3 FragPos;
 
 void main()
 {
-    gl_Position = mat4(x, y, z, w) * vec4(vCoord, 1.0);
+    gl_Position = projectionMatrix * viewMatrix * mat4(x, y, z, w) * vec4(vCoord, 1.0);
     FragPos = vCoord;
     uv = uvCoord;
     Normal = normal;

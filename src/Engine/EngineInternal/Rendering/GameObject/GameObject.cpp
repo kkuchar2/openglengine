@@ -15,10 +15,10 @@ void GameObject::addComponent(const std::shared_ptr<Component> & component) {
     components.push_back(component);
 }
 
-std::shared_ptr<MeshPrototype> GameObject::getMeshPrototype() {
+std::shared_ptr<MeshPrototypeInternal> GameObject::getMeshPrototype() {
     for (auto & componentPtr : components) {
 
-       auto meshProto = std::dynamic_pointer_cast<MeshPrototype>(componentPtr);
+       auto meshProto = std::dynamic_pointer_cast<MeshPrototypeInternal>(componentPtr);
 
         if (meshProto) {
             return meshProto;

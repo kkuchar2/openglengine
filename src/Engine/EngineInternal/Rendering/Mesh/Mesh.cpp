@@ -82,11 +82,11 @@ void Mesh::CreateNormalsBuffer() {
  *   https://stackoverflow.com/questions/17355051/using-a-matrix-as-vertex-attribute-in-opengl3-core-profile
  */
 void Mesh::CreatePositionBuffer() {
-    if (instancedMVPs.empty()) return;
+    if (modelMatrices.empty()) return;
 
     glGenBuffers(1, &posvbo);
     glBindBuffer(GL_ARRAY_BUFFER, posvbo);
-    glBufferData(GL_ARRAY_BUFFER, instancedMVPs.size() * sizeof(glm::mat4), instancedMVPs.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4), modelMatrices.data(), GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(3);
     glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(0));

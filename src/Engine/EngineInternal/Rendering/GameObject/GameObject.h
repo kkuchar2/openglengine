@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include <Rendering/Mesh/MeshPrototype.h>
+#include <Rendering/Mesh/MeshPrototypeInternal.h>
 
 #include "Mesh/Mesh.h"
 #include "Primitives/Cube.h"
@@ -34,7 +34,7 @@ class GameObject {
 
         static std::shared_ptr<GameObject> create();
 
-        std::shared_ptr<MeshPrototype> getMeshPrototype();
+        std::shared_ptr<MeshPrototypeInternal> getMeshPrototype();
 
         MeshType getMeshType();
 };

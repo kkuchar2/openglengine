@@ -24,8 +24,11 @@ class BaseCamera : public Component {
         Observer<glm::vec2> mousePositionDeltaObserver;
         Subscription mousePositionDeltaSubscription;
 
-        // TODO: Create subscriptions and observers for keyboard and mouse buttons
-        // TODO: Consider subscription cleaner to store subscriptions there and unsubscrbe at once
+        Observer<MouseButtonInfo> mouseButtonObserver;
+        Subscription mouseButtonSubscription;
+
+        Observer<KeyInfo> keyInfoObserver;
+        Subscription keyInfoSubscription;
 
     public:
 
@@ -35,7 +38,7 @@ class BaseCamera : public Component {
 
         void render(const std::shared_ptr<Mesh> & mesh, int instancesCount);
 
-        glm::mat4 createMVP(const std::shared_ptr<EngineObject> & object);
+        glm::mat4 createModelMatrix(const std::shared_ptr<EngineObject> & object);
 
         virtual glm::vec3 getScaleCorrection();
 
@@ -43,9 +46,9 @@ class BaseCamera : public Component {
 
         virtual void onMouseMove(const glm::vec2 & delta);
 
-        virtual void onMouseButtonPressed(int button, int action);
+        virtual void onMouseButtonPressed(const MouseButtonInfo & info);
 
-        virtual void onKeysPressedStateReceived(std::vector<bool> & pressed_keys);
+        virtual void onKeyInfoReceived(const KeyInfo & info);
 
         virtual glm::mat4x4 getModelMatrix() = 0;
 

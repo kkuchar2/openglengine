@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 
 #include <Rose/Observable.h>
+#include "MouseButtonInfo.h"
+#include "KeyInfo.h"
 
 class InputSystem {
 
@@ -11,11 +13,13 @@ class InputSystem {
         glm::vec2 currentMousePosition = glm::vec2(0.0, 0.0);
         glm::vec2 mousePositionDelta = glm::vec2(0.0, 0.0);
 
-        std::vector<bool> pressed;
+        KeyInfo keyInfo;
 
     public:
 
         std::shared_ptr<Observable<glm::vec2>> mousePositionDeltaProperty;
+        std::shared_ptr<Observable<MouseButtonInfo>> mouseButtonProperty;
+        std::shared_ptr<Observable<KeyInfo>> keyInfoProperty;
 
         static InputSystem & Instance()
         {
@@ -25,10 +29,8 @@ class InputSystem {
 
         InputSystem() {
             mousePositionDeltaProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
-
-            for (int i = 0; i < 349; i++) {
-                pressed.push_back(false);
-            }
+            mouseButtonProperty = std::make_shared<Observable<MouseButtonInfo>>(MouseButtonInfo());
+            keyInfoProperty = std::make_shared<Observable<KeyInfo>>(KeyInfo());
         };
 
     public:
@@ -43,8 +45,8 @@ class InputSystem {
             mousePositionDeltaProperty->setValue(mousePositionDelta);
         }
 
-        void onMouseButtonPressed(int button, int action, int mods) {
-            // TODO: Create property
+        void onMouseButtonPressed(MouseButtonInfo info) {
+            mouseButtonProperty->setValue(info);
         }
 
         void onMouseButtonScroll(double xoffset, double yoffset) {
@@ -53,11 +55,13 @@ class InputSystem {
 
         void onKeyboardKeyPressed(int key, int scancode, int action, int mods) {
             if(action == GLFW_PRESS) {
-                pressed[key] = true;
+                keyInfo.pressedKeys[key] = true;
             }
             else if(action == GLFW_RELEASE) {
-                pressed[key] = false;
+                keyInfo.pressedKeys[key] = false;
             }
+
+            keyInfoProperty->setValue(keyInfo);
         }
 
 };

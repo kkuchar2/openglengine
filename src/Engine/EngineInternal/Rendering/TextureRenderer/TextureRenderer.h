@@ -18,8 +18,8 @@ class TextureRenderer {
 
     public:
 
-        std::shared_ptr<BaseCamera> ortographicCamera;
-        std::shared_ptr<BaseCamera> perspectiveCamera;
+        std::shared_ptr<OrtographicCamera> ortographicCamera;
+        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
         double width = 400.0;
         double height = 400.0;

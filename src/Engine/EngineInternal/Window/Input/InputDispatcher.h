@@ -3,6 +3,7 @@
 #include "../Window.h"
 #include "InputSystem.h"
 
+
 class InputDispatcher {
     private:
         static void cursor_position_callback(GLFWwindow * window, double xpos, double ypos) {
@@ -10,7 +11,11 @@ class InputDispatcher {
         }
 
         static void mouse_button_callback(GLFWwindow * window, int button, int action, int mods) {
-            InputSystem::Instance().onMouseButtonPressed(button, action, mods);
+            MouseButtonInfo info {};
+            info.button = button;
+            info.action = action;
+            info.mods = mods;
+            InputSystem::Instance().onMouseButtonPressed(info);
         }
 
         static void scroll_callback(GLFWwindow * window, double xoffset, double yoffset) {

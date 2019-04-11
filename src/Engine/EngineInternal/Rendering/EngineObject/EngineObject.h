@@ -11,6 +11,6 @@ class EngineObject {
 
         EngineObject(const std::shared_ptr<GameObject> & gameObject);
         MeshType getMeshType();
-        std::shared_ptr<MeshPrototype> getMeshPrototype();
+        std::shared_ptr<MeshPrototypeInternal> getMeshPrototype();
         Transform getTransform();
 };
