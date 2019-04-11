@@ -6,6 +6,7 @@
 #include <map>
 #include <thread>
 #include <limits>
+#include <Rendering/Camera/Projection.h>
 
 #include "Shading/Shader.h"
 
@@ -13,6 +14,7 @@
 #include "../../Utils/TextureLoader.h"
 #include "Component.h"
 #include "MeshType.h"
+#include "MeshPrototypeInternal.h"
 
 
 struct TriangleInfo {
@@ -42,6 +44,8 @@ class Mesh : public Component {
         GLenum mode = GL_TRIANGLES;
 
         MeshType type = OTHER;
+        Projection projection = PERSPECTIVE;
+
 
         bool disableNormals = true;
         bool prepared = false;
@@ -89,4 +93,6 @@ class Mesh : public Component {
         void loadMesh(const char * path);
 
         static std::shared_ptr<Mesh> create(const char * path);
+
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototypeInternal> & proto, const Projection & projection);
 };

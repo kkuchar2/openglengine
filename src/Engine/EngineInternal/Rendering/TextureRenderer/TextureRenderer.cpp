@@ -12,29 +12,6 @@ void TextureRenderer::addScene(const std::shared_ptr<EngineScene> & scene) {
 
 void TextureRenderer::prepare() {
 
-    // Create single mesh as base for instantiation
-    quadMesh = std::make_shared<Quad>();
-    quadMesh->shader = ShaderPool::Instance().colorShader;
-    quadMesh->shaderInit = [](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0, 0.0, 0.0, 1.0));
-    };
-
-
-    // TODO:
-
-    /**
-     * Group objects based on projection, type, material and ? instantiation enabled
-     */
-
-    // Create model matrices data
-    std::vector<glm::mat4> matrices;
-
-    // For now assume that all objects are quads and ortho projection as camera
-
-
-    //     glm::mat4 mvp = getProjectionMatrix() * getViewMatrix() * m;
-
-    // Grab all objects from all scenes
     for (auto & pair : scenes) {
         for (auto & scene : pair.second) {
 
@@ -42,29 +19,81 @@ void TextureRenderer::prepare() {
 
             for (auto & engineObject : scene->objects) {
 
+                glm::mat4 modelMatrix;
+
                 switch(projection) {
 
                     case PERSPECTIVE:
-                        matrices.push_back(perspectiveCamera->createModelMatrix(engineObject));
+                        modelMatrix = perspectiveCamera->createModelMatrix(engineObject);
                         break;
                     case ORTOGRAPHIC:
-                        matrices.push_back(ortographicCamera->createModelMatrix(engineObject));
+                        modelMatrix = ortographicCamera->createModelMatrix(engineObject);
                         break;
                 }
 
-                quadInstancesCount++;
+                auto meshPrototype = engineObject->getMeshPrototype();
+
+                if (!meshPrototype.get()) {
+                    continue;
+                }
+
+                MeshType meshType = meshPrototype->meshType;
+                ShaderType shaderType = meshPrototype->shaderType;
+
+                if (map.count(meshType) == 0) {
+                    std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
+                    shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(Mesh::of(meshPrototype, projection), 1)));
+                    shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
+                    map.insert(std::make_pair(meshType, shaderToMeshes));
+                }
+                else {
+                    if (map.at(meshType).count(shaderType) == 0) {
+                        std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
+
+                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(Mesh::of(meshPrototype, projection), 1)));
+                        shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
+
+                        map.insert(std::make_pair(meshType, shaderToMeshes));
+                    }
+                    else {
+                        auto currentVal =  map[meshType][shaderType];
+                        map[meshType][shaderType] = std::make_pair(currentVal.first, currentVal.second + 1);
+                        map[meshType][shaderType].first->modelMatrices.push_back(modelMatrix);
+                    }
+                }
             }
         }
     }
 
-    quadMesh->modelMatrices = matrices;
-    quadMesh->prepare();
+    for (auto & pair : map) {
+        std::cout << "Mesh type: " << pair.first << std::endl;
+
+        for (auto & pair2 : map[pair.first]) {
+            std::cout << "\tShader type: " << pair2.first << " Instance count: "
+            << pair2.second.second <<  " " << "matrices count: " << pair2.second.first->modelMatrices.size() << std::endl;
+
+            pair2.second.first->prepare();
+        }
+    }
 }
 
 void TextureRenderer::render() {
     perspectiveCamera->Update();
     ortographicCamera->Update();
-    perspectiveCamera->render(quadMesh, quadInstancesCount);
+
+    for (auto & pair : map) {
+        for (auto & pair2 : map[pair.first]) {
+            switch(pair2.second.first->projection) {
+
+                case PERSPECTIVE:
+                    perspectiveCamera->render(pair2.second.first, pair2.second.second);
+                    break;
+                case ORTOGRAPHIC:
+                    ortographicCamera->render(pair2.second.first, pair2.second.second);
+                    break;
+            }
+        }
+    }
 }
 
 void TextureRenderer::createFrameBuffer() {

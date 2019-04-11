@@ -41,4 +41,11 @@ class ShaderPool
         ShaderPool(ShaderPool const&) = delete;
 
         void operator=(ShaderPool const&)  = delete;
+
+        std::shared_ptr<Shader> getShader(const ShaderType & shaderType) {
+            switch(shaderType) {
+                case COLOR:   return colorShader;
+                case DIFFUSE: return diffuseShader;
+            }
+        }
 };

@@ -1,4 +1,8 @@
+
 #include "Mesh/Mesh.h"
+#include <Rendering/Shading/ShaderPool.h>
+#include <Rendering/Primitives/Quad.h>
+#include <Rendering/Primitives/Cube.h>
 
 Mesh::Mesh(const char * path) : Component::Component() {
     loadMesh(path);
@@ -203,4 +207,32 @@ void Mesh::loadMesh(const char * path) {
 
 std::shared_ptr<Mesh> Mesh::create(const char * path) {
     return std::make_shared<Mesh>(path);
+}
+
+std::shared_ptr<Mesh> Mesh::of(const std::shared_ptr<MeshPrototypeInternal> & proto, const Projection & projection) {
+
+    std::shared_ptr<Mesh> mesh;
+
+    switch(proto->meshType) {
+
+        case QUAD:
+            mesh = std::make_shared<Quad>();
+            break;
+        case OTHER:
+            break;
+        case NONE:
+            break;
+        case CUBE:
+            mesh = std::make_shared<Cube>();
+            break;
+    }
+    mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
+    mesh->disableNormals = false;
+    mesh->shaderInit = [](ShaderPtrRef s) {
+        s->setVec4("color", glm::vec4(0.0f, 0.8f, 0.5f, 1.0f));
+        s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        s->setVec3("lightPos", glm::vec3(1.2f, 1.0f, 2.0f));
+    };
+    mesh->projection = projection;
+    return mesh;
 }

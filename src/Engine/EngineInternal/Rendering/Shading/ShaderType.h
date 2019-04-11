@@ -1,5 +1,6 @@
 #pragma once
 
 enum ShaderType {
-    COLOR
+    COLOR,
+    DIFFUSE
 };

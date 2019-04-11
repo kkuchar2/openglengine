@@ -13,16 +13,15 @@
 class TextureRenderer {
 
     private:
-        std::shared_ptr<Quad> quadMesh;
-        int quadInstancesCount = 0;
+        std::map<MeshType, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
 
     public:
 
         std::shared_ptr<OrtographicCamera> ortographicCamera;
         std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
-        double width = 400.0;
-        double height = 400.0;
+        double width = 1.0;
+        double height = 1.0;
 
         GLuint texture {};
         GLuint dephRenderBuffer {};

@@ -2,6 +2,7 @@
 
 enum MeshType {
     QUAD,
+    CUBE,
     OTHER,
     NONE
 };
