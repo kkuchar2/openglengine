@@ -77,10 +77,7 @@ class Mesh : public Component {
         void CreateVertexBuffer();
         void CreateUVBuffer();
         void CreateNormalsBuffer();
-        void CreatePositionBuffer();
-
-        void copyVertifcesToBuffer();
-        void UpdateVertexBuffer();
+        void CreateTransformBuffer();
 
         virtual void Render(int instancesCount);
         void Render(GLenum renderMode, int indicesCount, int instanceCount);
@@ -92,6 +89,4 @@ class Mesh : public Component {
         void loadFromResource(const char * path);
 
         static std::shared_ptr<Mesh> create(const char * path);
-
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection);
 };

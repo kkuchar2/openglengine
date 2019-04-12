@@ -36,7 +36,7 @@ class BaseCamera : public Component {
 
         BaseCamera();
 
-        void render(const std::shared_ptr<Mesh> & mesh, int instancesCount);
+        void render(const std::shared_ptr<Mesh> & mesh, const int & instancesCount);
 
         glm::mat4 createModelMatrix(const std::shared_ptr<EngineObject> & object);
 

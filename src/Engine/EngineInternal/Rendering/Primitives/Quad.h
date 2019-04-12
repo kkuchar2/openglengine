@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Rendering/Mesh/Mesh.h>
+
 class Quad : public Mesh {
     public:
 

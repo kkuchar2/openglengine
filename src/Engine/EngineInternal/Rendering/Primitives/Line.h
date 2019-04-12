@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mesh/Mesh.h"
+#include <Rendering/Mesh/Mesh.h>
 
 class Line : public Mesh {
     public:

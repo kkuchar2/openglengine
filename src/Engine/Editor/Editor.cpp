@@ -138,8 +138,6 @@ void Editor::renderSceneWindow(float texWidth, float texHeight, GLuint texture) 
 
 void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture) {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glClearColor(1.2f, 0.2f, 0.2f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
     glViewport(0, 0, window->width, window->height);
 
     ImGui_ImplOpenGL3_NewFrame();

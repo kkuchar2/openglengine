@@ -1,29 +1,28 @@
 #pragma once
 
 #include <Engine.h>
+#include <Utils/Objects.h>
 
-std::shared_ptr<GameObject> sphere(const glm::vec3 & size, const glm::vec3 & position, const glm::vec4 & color) {
-    std::shared_ptr<GameObject> obj = GameObject::create();
-    obj->transform.scale = size;
-    obj->transform.position = glm::vec3(position);
-    obj->addComponent(MeshPrototype::of("../resources/models/sphere.obj", DIFFUSE, color));
-    return obj;
-}
-
-std::shared_ptr<UserScene> orthographicScene() {
+std::shared_ptr<UserScene> instancedScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
-    for (int x = 0; x < 200; x++) {
-        for (int y = 0; y < 200; y++) {
-            scene->addObject(
-                sphere(
-                    glm::vec3(0.1f),
-                    glm::vec3(0.5f * (x - 100),  5.0f * sin(x) * cos(y), 0.5f * (y - 100)),
-                    glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
-                )
-            );
+    int i = 0;
+
+    scene->addObject(sphere(glm::vec3(1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+    for (int x = 0; x < 20; x++) {
+        for (int y = 0; y < 20; y++) {
+
+            if (i % 2 == 0) {
+                scene->addObject(teapot(glm::vec3(0.1f), glm::vec3(x - 10, 0.0f, y - 10), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+            }
+            else {
+                scene->addObject(bunny(glm::vec3(3.0f), glm::vec3(x - 10, 0.0f, y - 10), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+            }
+            i++;
         }
     }
+
+    scene->addObject(surface(glm::vec3(1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
 
     return scene;
 }

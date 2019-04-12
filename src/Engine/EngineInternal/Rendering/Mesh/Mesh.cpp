@@ -1,8 +1,5 @@
-
+#include <EngineException.h>
 #include "Mesh/Mesh.h"
-#include <Rendering/Shading/ShaderPool.h>
-#include <Rendering/Primitives/Quad.h>
-#include <Rendering/Primitives/Cube.h>
 
 Mesh::Mesh(const char * path) : Component::Component() {
     loadFromResource(path);
@@ -24,7 +21,7 @@ void Mesh::prepare() {
     CreateNormalsBuffer();
 
     if (isInstanced) {
-        CreatePositionBuffer();
+        CreateTransformBuffer();
     }
 
     glBindVertexArray(0);
@@ -44,17 +41,12 @@ void Mesh::CreateIndexBuffer() {
 }
 
 void Mesh::CreateVertexBuffer() {
-    GLbitfield mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
-    GLbitfield createFlags = mapFlags | GL_DYNAMIC_STORAGE_BIT;
-
+    if (vertices.empty()) return;
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferStorage(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), nullptr, createFlags);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-
-    pVertexPosBufferData = (float *) glMapBufferRange(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(float), mapFlags);
-    copyVertifcesToBuffer();
 }
 
 void Mesh::CreateUVBuffer() {
@@ -75,15 +67,7 @@ void Mesh::CreateNormalsBuffer() {
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
-/**
- *  When you send the glm::mat4 down the buffer, even though its marked as a single attribute in the vertex shader,
- *  it actually needs 4 attributes because you can only send a max size of 4 in the glVertexAttribPointer call
- *
- *  https://www.reddit.com/r/opengl/comments/6cejtb/why_is_the_stride_in_glvertexattribpointer_for_a/
- *  https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml
- *   https://stackoverflow.com/questions/17355051/using-a-matrix-as-vertex-attribute-in-opengl3-core-profile
- */
-void Mesh::CreatePositionBuffer() {
+void Mesh::CreateTransformBuffer() {
     if (modelMatrices.empty()) return;
 
     glGenBuffers(1, &posvbo);
@@ -106,14 +90,6 @@ void Mesh::CreatePositionBuffer() {
     glVertexAttribDivisor(4, 1);
     glVertexAttribDivisor(5, 1);
     glVertexAttribDivisor(6, 1);
-}
-
-void Mesh::copyVertifcesToBuffer() {
-    for (int i = 0; i < vertices.size(); i += 3) {
-        pVertexPosBufferData[i] = vertices[i];
-        pVertexPosBufferData[i + 1] = vertices[i + 1];
-        pVertexPosBufferData[i + 2] = vertices[i + 2];
-    }
 }
 
 void Mesh::Render(int instancesCount) {
@@ -186,12 +162,15 @@ void Mesh::loadFromResource(const char * path) {
 
     bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warning, &error, path);
 
-    if (!error.empty()) {
-        std::cerr << error << std::endl;
+    if (!ret) {
+        if (!error.empty()) {
+            throw EngineException(error);
+        }
+        throw EngineException("Mesh load error.");
     }
 
     if (!warning.empty()) {
-        std::cerr << error << std::endl;
+        std::cout << "Mesh: " << warning << std::endl;
     }
 
     vertices = attrib.vertices;
@@ -205,34 +184,4 @@ void Mesh::loadFromResource(const char * path) {
 
 std::shared_ptr<Mesh> Mesh::create(const char * path) {
     return std::make_shared<Mesh>(path);
-}
-
-std::shared_ptr<Mesh> Mesh::of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection) {
-
-    std::shared_ptr<Mesh> mesh;
-
-    switch(proto->meshType) {
-
-        case QUAD:
-            mesh = std::make_shared<Quad>();
-            break;
-        case CUBE:
-            mesh = std::make_shared<Cube>();
-            break;
-        case RESOURCE:
-            mesh = std::make_shared<Mesh>(proto->path);
-            break;
-        case NONE:
-            break;
-
-    }
-    mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
-    mesh->disableNormals = false;
-    mesh->shaderInit = [proto](ShaderPtrRef s) {
-        s->setVec4("color", proto->color);
-        s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        s->setVec3("lightPos", glm::vec3(1.2f, 1.0f, 2.0f));
-    };
-    mesh->projection = projection;
-    return mesh;
 }

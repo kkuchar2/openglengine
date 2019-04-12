@@ -18,6 +18,8 @@ class MeshPrototype : public Component {
 
         MeshPrototype(const char * path, const ShaderType & shaderType, const glm::vec4 & color);
 
+        const char * getMeshType();
+
         static std::shared_ptr<MeshPrototype> of(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color) {
             return std::make_shared<MeshPrototype>(meshType, shaderType, color);
         }

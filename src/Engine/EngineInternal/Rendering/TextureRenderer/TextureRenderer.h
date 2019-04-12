@@ -13,23 +13,24 @@
 class TextureRenderer {
 
     private:
-        std::map<MeshType, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
+
+        std::map<const char *, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
 
     public:
-
-        std::shared_ptr<OrtographicCamera> ortographicCamera;
-        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
         double width = 1.0;
         double height = 1.0;
 
-        GLuint texture {};
-        GLuint dephRenderBuffer {};
+        GLuint texture = 0;
+        GLuint dephRenderBuffer = 0;
         GLuint framebufferName = 0;
+
+        std::shared_ptr<OrtographicCamera> ortographicCamera;
+        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 
         std::map<Projection, std::vector<std::shared_ptr<EngineScene>>> scenes = {{ PERSPECTIVE, {} },{ ORTOGRAPHIC, {} }};
 
-        TextureRenderer(const std::shared_ptr<Window> & window);
+        explicit TextureRenderer(const std::shared_ptr<Window> & window);
 
         void addScene(const std::shared_ptr<EngineScene> & scene);
 

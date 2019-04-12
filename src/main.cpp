@@ -1,4 +1,5 @@
 #include <Scenes/InstanncingRenderingTestScene.h>
+#include <Engine/EngineInternal/Scene/BaseScene.h>
 
 #include <Engine.h>
 
@@ -13,9 +14,9 @@ int main() {
         return -1;
     }
 
-    //engine->addScene(baseScene());
+    engine->addScene(baseScene());
     //engine->addScene(shaderTestScene());
-    engine->addScene(orthographicScene());
+    engine->addScene(instancedScene());
 
     engine->start();
 

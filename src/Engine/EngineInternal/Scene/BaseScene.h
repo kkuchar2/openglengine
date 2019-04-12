@@ -5,6 +5,9 @@
 
 #include <Primitives/Quad.h>
 
+
+#include <Utils/Objects.h>
+
 std::shared_ptr<UserScene> baseScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 

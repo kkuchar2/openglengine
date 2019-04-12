@@ -13,3 +13,14 @@ MeshPrototype::MeshPrototype(const char * path, const ShaderType & shaderType, c
     this->shaderType = shaderType;
     this->color = color;
 }
+
+const char * MeshPrototype::getMeshType() {
+
+    switch(meshType) {
+        case QUAD: return "QUAD";
+        case CUBE: return "CUBE";
+        case SURFACE: return "SURFACE";
+        case RESOURCE: return path;
+        case NONE: return "";;
+    }
+}

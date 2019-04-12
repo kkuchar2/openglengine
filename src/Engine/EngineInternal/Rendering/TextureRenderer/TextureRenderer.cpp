@@ -1,3 +1,4 @@
+#include <Rendering/Mesh/MeshBuilder.h>
 #include "TextureRenderer.h"
 
 TextureRenderer::TextureRenderer(const std::shared_ptr<Window> & window) {
@@ -37,12 +38,12 @@ void TextureRenderer::prepare() {
                     continue;
                 }
 
-                MeshType meshType = meshPrototype->meshType;
+                const char * meshType = meshPrototype->getMeshType();
                 ShaderType shaderType = meshPrototype->shaderType;
 
                 if (map.count(meshType) == 0) {
                     std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
-                    shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(Mesh::of(meshPrototype, projection), 1)));
+                    shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(MeshBuilder::of(meshPrototype, projection), 1)));
                     shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
                     map.insert(std::make_pair(meshType, shaderToMeshes));
                 }
@@ -50,7 +51,7 @@ void TextureRenderer::prepare() {
                     if (map.at(meshType).count(shaderType) == 0) {
                         std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
 
-                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(Mesh::of(meshPrototype, projection), 1)));
+                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(MeshBuilder::of(meshPrototype, projection), 1)));
                         shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
 
                         map.insert(std::make_pair(meshType, shaderToMeshes));
@@ -66,11 +67,12 @@ void TextureRenderer::prepare() {
     }
 
     for (auto & pair : map) {
-        std::cout << "Mesh type: " << pair.first << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
+        std::cout << "Mesh type: [" << pair.first << "]" << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
 
         for (auto & pair2 : map[pair.first]) {
-            std::cout << "\tShader type: " << pair2.first << " Instance count: "
-            << pair2.second.second <<  " " << "matrices count: " << pair2.second.first->modelMatrices.size() << std::endl;
+            std::cout << "---> Shader type: " << pair2.first << " Instances: " << pair2.second.second << std::endl;
 
             pair2.second.first->prepare();
         }

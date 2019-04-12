@@ -11,7 +11,7 @@ BaseCamera::BaseCamera() {
     keyInfoSubscription = InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver);
 }
 
-void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, int instancesCount) {
+void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const int & instancesCount) {
     std::shared_ptr<Shader> shader = mesh->shader;
 
     shader->use();
