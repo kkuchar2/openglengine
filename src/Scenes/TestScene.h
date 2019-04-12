@@ -9,8 +9,8 @@ std::shared_ptr<UserScene> testScene() {
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 10.0f, 2.0f);
 
-    auto diffuseShader = std::make_shared<Shader>("../resources/shaders/Diffuse.vert", "../resources/shaders/Diffuse.frag");
-    auto colorShader = std::make_shared<Shader>("../resources/shaders/Color.vert", "../resources/shaders/Color.frag");
+    auto diffuseShader = std::make_shared<Shader>("../resources/shaders/DiffuseInstanced.vert", "../resources/shaders/DiffuseInstanced.frag");
+    auto colorShader = std::make_shared<Shader>("../resources/shaders/ColorInstanced.vert", "../resources/shaders/ColorInstanced.frag");
 
     std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
     lampMesh->shader = colorShader;

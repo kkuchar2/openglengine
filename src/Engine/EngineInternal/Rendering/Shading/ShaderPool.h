@@ -8,7 +8,9 @@ class ShaderPool
 {
     public:
 
+        std::shared_ptr<Shader> colorInstancedShader;
         std::shared_ptr<Shader> colorShader;
+        std::shared_ptr<Shader> diffuseInstancedShader;
         std::shared_ptr<Shader> diffuseShader;
         std::shared_ptr<Shader> gridShader;
         std::shared_ptr<Shader> characterShader;
@@ -20,7 +22,6 @@ class ShaderPool
         }
 
         static std::shared_ptr<Shader> loadShader(const std::string & vertex, const std::string & fragment) {
-
             std::string shadersDir = "../resources/shaders/";
 
             std::string vPath = shadersDir + vertex;
@@ -33,7 +34,9 @@ class ShaderPool
         ShaderPool() {
             gridShader = loadShader("Grid.vert", "Grid.frag");
             colorShader = loadShader("Color.vert", "Color.frag");
+            colorInstancedShader = loadShader("ColorInstanced.vert", "ColorInstanced.frag");
             diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
+            diffuseInstancedShader = loadShader("DiffuseInstanced.vert", "DiffuseInstanced.frag");
             characterShader = loadShader("TextVert.glsl", "TextFrag.glsl");
         };
 
@@ -46,6 +49,8 @@ class ShaderPool
             switch(shaderType) {
                 case COLOR:   return colorShader;
                 case DIFFUSE: return diffuseShader;
+                case COLOR_INSTANCED: return colorInstancedShader;
+                case DIFFUSE_INSTANCED: return diffuseInstancedShader;
             }
         }
 };

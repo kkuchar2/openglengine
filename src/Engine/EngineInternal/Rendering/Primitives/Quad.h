@@ -8,7 +8,6 @@ class Quad : public Mesh {
         Quad() : Mesh() {
 
             type = QUAD;
-            isInstanced = true;
 
             vertices = {
                     -1.0f, -1.0f, 0.0, // 0 - bottom left

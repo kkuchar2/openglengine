@@ -6,6 +6,7 @@ class Line : public Mesh {
     public:
 
         explicit Line() : Mesh() {
+            type = LINE;
             vertices = { 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0 };
             indices = { 0, 1 };
         }
@@ -19,7 +20,11 @@ class Line : public Mesh {
             vertices[5] = end.z;
         }
 
-        void Render(int instancesCount) override {
-            Mesh::Render(GL_LINES, 2, instancesCount);
+        void renderInstanced(int instancesCount) override {
+            Mesh::renderInstanced(GL_LINES, 2, instancesCount);
+        }
+
+        void render() override {
+            Mesh::render(GL_LINES, 2);
         }
 };

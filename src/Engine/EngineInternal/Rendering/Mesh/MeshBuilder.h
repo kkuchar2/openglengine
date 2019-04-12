@@ -7,6 +7,7 @@
 
 #include <Rendering/Camera/Projection.h>
 #include <Rendering/Shading/ShaderPool.h>
+#include <Rendering/Primitives/Line.h>
 
 #include "SurfacePrototype.h"
 
@@ -24,14 +25,15 @@ class MeshBuilder {
             std::shared_ptr<Mesh> mesh;
 
             switch(proto->meshType) {
-
+                case LINE:
+                    mesh = std::make_shared<Line>();
+                    break;
                 case QUAD:
                     mesh = std::make_shared<Quad>();
                     break;
                 case CUBE:
                     mesh = std::make_shared<Cube>();
                     break;
-
                 case SURFACE:
                     mesh =  std::make_shared<Surface>(300, 300);
                     break;
@@ -43,6 +45,7 @@ class MeshBuilder {
             }
 
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
+            mesh->isInstanced = true;
             mesh->disableNormals = false;
             mesh->shaderInit = [proto](ShaderPtrRef s) {
                 s->setVec4("color", proto->color);

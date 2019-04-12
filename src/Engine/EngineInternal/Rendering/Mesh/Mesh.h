@@ -39,7 +39,11 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
+        // for instance rendering
         std::vector<glm::mat4> modelMatrices;
+
+        // for classic rendering
+        glm::mat4 modelMatrix;
 
         GLenum mode = GL_TRIANGLES;
 
@@ -48,7 +52,7 @@ class Mesh : public Component {
 
         bool disableNormals = true;
         bool prepared = false;
-        bool isInstanced = true;
+        bool isInstanced = false;
 
         GLuint textureId = 0;
 
@@ -61,12 +65,9 @@ class Mesh : public Component {
         GLuint posvbo = 0;
         GLuint ibo = 0;
 
-        float * pVertexPosBufferData {};
-
-
         ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
 
-        Mesh(const char * path);
+        explicit Mesh(const char * path);
 
         Mesh();
 
@@ -79,8 +80,13 @@ class Mesh : public Component {
         void CreateNormalsBuffer();
         void CreateTransformBuffer();
 
-        virtual void Render(int instancesCount);
-        void Render(GLenum renderMode, int indicesCount, int instanceCount);
+        virtual void render();
+
+        virtual void renderInstanced(int instancesCount);
+
+        void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
+
+        void render(GLenum renderMode, int indicesCount);
 
         void loadTexture(const char * path);
 

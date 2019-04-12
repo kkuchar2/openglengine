@@ -1,12 +1,12 @@
 #pragma once
 
-#include "GameObject/GameObject.h"
+#include "GameObject/GameObjectBase.h"
 
 class BehaviourComponent : public Component {
     public:
-        GameObject * obj;
+        GameObjectBase * obj;
 
         virtual void Update() {}
 
-        void SetObject(GameObject * obj);
+        void SetObject(GameObjectBase * obj);
 };

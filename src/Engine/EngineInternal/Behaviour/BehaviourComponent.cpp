@@ -1,6 +1,5 @@
 #include "BehaviourComponent.h"
 
-
-void BehaviourComponent::SetObject(GameObject * parentObject) {
+void BehaviourComponent::SetObject(GameObjectBase * parentObject) {
     obj = parentObject;
 }

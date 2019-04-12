@@ -11,7 +11,7 @@ BaseCamera::BaseCamera() {
     keyInfoSubscription = InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver);
 }
 
-void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const int & instancesCount) {
+void BaseCamera::renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount) {
     std::shared_ptr<Shader> shader = mesh->shader;
 
     shader->use();
@@ -26,14 +26,33 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const int & instance
         glBindTexture(GL_TEXTURE_2D, mesh->textureId);
     }
 
-    mesh->Render(instancesCount);
+    mesh->renderInstanced(instancesCount);
 }
 
-glm::mat4 BaseCamera::createModelMatrix(const std::shared_ptr<EngineObject> & object) {
+void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & transform) {
+    std::shared_ptr<Shader> shader = mesh->shader;
+
+    shader->use();
+
+    shader->setVec3("viewPos", getPosition());
+    shader->setMat4("projectionMatrix", getProjectionMatrix());
+    shader->setMat4("viewMatrix", getViewMatrix());
+    shader->setMat4("modelMatrix", createModelMatrix(transform));
+
+    mesh->shaderInit(shader);
+
+    if (mesh->textureId != 0) {
+        glBindTexture(GL_TEXTURE_2D, mesh->textureId);
+    }
+
+    mesh->render();
+}
+
+glm::mat4 BaseCamera::createModelMatrix(const Transform & transform) {
     glm::mat4 modelMatrix = getModelMatrix();
-    glm::mat4 m = glm::translate(getModelMatrix(), object->getTransform().position);
-    m *= MatrixUtils::rotationMatrix(object->getTransform().rotation);
-    m *= MatrixUtils::scaleMatrix(object->getTransform().scale);
+    glm::mat4 m = glm::translate(getModelMatrix(), transform.position);
+    m *= MatrixUtils::rotationMatrix(transform.rotation);
+    m *= MatrixUtils::scaleMatrix(transform.scale);
     return m;
 }
 
@@ -59,3 +78,5 @@ BaseCamera::~BaseCamera() {
     mouseButtonSubscription->Unsubscribe();
     keyInfoSubscription->Unsubscribe();
 }
+
+

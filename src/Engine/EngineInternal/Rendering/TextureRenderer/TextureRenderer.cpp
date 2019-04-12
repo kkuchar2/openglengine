@@ -13,6 +13,16 @@ void TextureRenderer::addScene(const std::shared_ptr<EngineScene> & scene) {
 
 void TextureRenderer::prepare() {
 
+    /**
+     * Iterate over all scenes, for each object based on projection
+     * calculate model matrix.
+     *
+     * If object has MeshPrototype component,
+     * assume, that we want to render it instanced.
+     *
+     * Otherwise if object has Mesh component, we add that
+     * mesh to classic rendering container and render it normally.
+     */
     for (auto & pair : scenes) {
         for (auto & scene : pair.second) {
 
@@ -25,57 +35,73 @@ void TextureRenderer::prepare() {
                 switch(projection) {
 
                     case PERSPECTIVE:
-                        modelMatrix = perspectiveCamera->createModelMatrix(engineObject);
+                        modelMatrix = perspectiveCamera->createModelMatrix(engineObject->getTransform());
                         break;
                     case ORTOGRAPHIC:
-                        modelMatrix = ortographicCamera->createModelMatrix(engineObject);
+                        modelMatrix = ortographicCamera->createModelMatrix(engineObject->getTransform());
                         break;
                 }
 
+
                 auto meshPrototype = engineObject->getMeshPrototype();
+                auto mesh = engineObject->getMesh();
 
-                if (!meshPrototype.get()) {
-                    continue;
-                }
+                if (meshPrototype.get()) {
 
-                const char * meshType = meshPrototype->getMeshType();
-                ShaderType shaderType = meshPrototype->shaderType;
+                    const char * meshType = meshPrototype->getMeshType();
+                    ShaderType shaderType = meshPrototype->shaderType;
 
-                if (map.count(meshType) == 0) {
-                    std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
-                    shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(MeshBuilder::of(meshPrototype, projection), 1)));
-                    shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
-                    map.insert(std::make_pair(meshType, shaderToMeshes));
-                }
-                else {
-                    if (map.at(meshType).count(shaderType) == 0) {
-                        std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>> shaderToMeshes;
 
-                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(MeshBuilder::of(meshPrototype, projection), 1)));
+                    if (map.count(meshType) == 0) {
+                        auto instancedMesh = MeshBuilder::of(meshPrototype, projection);
+                        ShaderToMeshesMap shaderToMeshes;
+                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(instancedMesh, 1)));
                         shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
-
                         map.insert(std::make_pair(meshType, shaderToMeshes));
                     }
                     else {
-                        auto currentVal =  map[meshType][shaderType];
-                        map[meshType][shaderType] = std::make_pair(currentVal.first, currentVal.second + 1);
-                        map[meshType][shaderType].first->modelMatrices.push_back(modelMatrix);
+                        if (map.at(meshType).count(shaderType) == 0) {
+                            auto instancedMesh = MeshBuilder::of(meshPrototype, projection);
+                            ShaderToMeshesMap shaderToMeshes;
+                            shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(instancedMesh, 1)));
+                            shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
+                            map.insert(std::make_pair(meshType, shaderToMeshes));
+                        } else {
+                            auto currentVal = map[meshType][shaderType];
+                            map[meshType][shaderType] = std::make_pair(currentVal.first, currentVal.second + 1);
+                            map[meshType][shaderType].first->modelMatrices.push_back(modelMatrix);
+                        }
                     }
                 }
+                else if (mesh.get()) {
+                    mesh->projection = projection;
+                    mesh->modelMatrix = modelMatrix;
+                    mesh->prepare();
+                    meshesToRender.emplace_back(mesh, engineObject->getTransform());
+                }
+
             }
         }
     }
 
+    std::cout << "INSTANCED RENDERING:" << std::endl;
     for (auto & pair : map) {
-        std::cout << "-------------------------------------------" << std::endl;
-        std::cout << "Mesh type: [" << pair.first << "]" << std::endl;
-        std::cout << "-------------------------------------------" << std::endl;
+        std::cout << "\t* Mesh type: [" << pair.first << "]" << std::endl;
+
+        std::cout << std::endl;
 
         for (auto & pair2 : map[pair.first]) {
-            std::cout << "---> Shader type: " << pair2.first << " Instances: " << pair2.second.second << std::endl;
-
+            std::cout << "\t\t---> Shader type: " << pair2.first << " Instances: " << pair2.second.second << std::endl;
             pair2.second.first->prepare();
         }
+
+        std::cout << std::endl;
+    }
+
+
+    std::cout << "CLASSIC RENDERING:" << std::endl;
+    for (auto & pair : meshesToRender) {
+        std::cout << "\t* Mesh type: [" << pair.first->type << "]" << std::endl;
     }
 }
 
@@ -88,12 +114,24 @@ void TextureRenderer::render() {
             switch(pair2.second.first->projection) {
 
                 case PERSPECTIVE:
-                    perspectiveCamera->render(pair2.second.first, pair2.second.second);
+                    perspectiveCamera->renderInstanced(pair2.second.first, pair2.second.second);
                     break;
                 case ORTOGRAPHIC:
-                    ortographicCamera->render(pair2.second.first, pair2.second.second);
+                    ortographicCamera->renderInstanced(pair2.second.first, pair2.second.second);
                     break;
             }
+        }
+    }
+
+    for (auto & pair : meshesToRender) {
+        switch(pair.first->projection) {
+
+            case PERSPECTIVE:
+                perspectiveCamera->render(pair.first, pair.second);
+                break;
+            case ORTOGRAPHIC:
+                ortographicCamera->render(pair.first, pair.second);
+                break;
         }
     }
 }

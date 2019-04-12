@@ -1,9 +1,8 @@
 #pragma once
 
-#include <memory>
-#include <vector>
-#include <Rendering/Mesh/MeshPrototype.h>
+#include "GameObjectBase.h"
 
+#include <Rendering/Mesh/MeshPrototype.h>
 #include "Mesh/Mesh.h"
 #include "Primitives/Cube.h"
 #include "Shading/ShaderPool.h"
@@ -11,20 +10,15 @@
 #include "Mesh/MeshType.h"
 #include "Transform.h"
 
-class GameObject {
+class GameObject : public GameObjectBase {
 
     public:
-        Transform transform;
 
-        std::vector<std::shared_ptr<Component>> components;
+        Transform transform;
 
         GameObject() = default;
 
-        GameObject(const std::shared_ptr<Component> & component);
-
-        void addComponent(const std::shared_ptr<Component> & component);
-
-        std::shared_ptr<MeshPrototype> getMeshPrototype();
+        explicit GameObject(const std::shared_ptr<Component> & component);
 
         MeshType getMeshType();
 

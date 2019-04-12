@@ -92,13 +92,22 @@ void Mesh::CreateTransformBuffer() {
     glVertexAttribDivisor(6, 1);
 }
 
-void Mesh::Render(int instancesCount) {
-    Render(mode, static_cast<int>(indices.size()), instancesCount);
+void Mesh::render() {
+    render(mode, static_cast<int>(indices.size()));
 }
 
-void Mesh::Render(GLenum renderMode, int indicesCount, int instancesCount) {
+void Mesh::render(GLenum renderMode, int indicesCount) {
     glBindVertexArray(vao);
-    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) 0, instancesCount);
+    glDrawElements(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr);
+}
+
+void Mesh::renderInstanced(int instancesCount) {
+    renderInstanced(mode, static_cast<int>(indices.size()), instancesCount);
+}
+
+void Mesh::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
+    glBindVertexArray(vao);
+    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
 }
 
 void Mesh::loadTexture(const char * path) {

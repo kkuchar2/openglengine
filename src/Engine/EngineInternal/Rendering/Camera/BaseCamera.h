@@ -36,9 +36,11 @@ class BaseCamera : public Component {
 
         BaseCamera();
 
-        void render(const std::shared_ptr<Mesh> & mesh, const int & instancesCount);
+        void renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount);
 
-        glm::mat4 createModelMatrix(const std::shared_ptr<EngineObject> & object);
+        void render(const std::shared_ptr<Mesh> & mesh, const Transform & transform);
+
+        glm::mat4 createModelMatrix(const Transform & transform);
 
         virtual glm::vec3 getScaleCorrection();
 

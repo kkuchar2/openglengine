@@ -2,5 +2,7 @@
 
 enum ShaderType {
     COLOR,
-    DIFFUSE
+    COLOR_INSTANCED,
+    DIFFUSE,
+    DIFFUSE_INSTANCED
 };

@@ -17,10 +17,12 @@ MeshPrototype::MeshPrototype(const char * path, const ShaderType & shaderType, c
 const char * MeshPrototype::getMeshType() {
 
     switch(meshType) {
+        case LINE: return "LINE";
         case QUAD: return "QUAD";
         case CUBE: return "CUBE";
         case SURFACE: return "SURFACE";
         case RESOURCE: return path;
-        case NONE: return "";;
+        case NONE: return "";
+        default: return "";
     }
 }

@@ -10,11 +10,38 @@
 
 #include <Primitives/Quad.h>
 
+using ShaderToMeshesMap = std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>>;
+
 class TextureRenderer {
 
     private:
-
+        /**
+         * INSTANCED RENDERING
+         *
+         * Map that keeps unique [mesh-shader] pairs for instanced rendering
+         *
+         * a - mesh type            const char *
+         * b - shader type          ShaderType
+         * c - shader object ptr    std::shared_ptr<Mesh>
+         * d - instance count       int
+         *
+         *                   a_1                        a_n
+         *              ------------                ------------
+         *               |        |
+         *               |        |       ( ... )
+         *              b_1      b_n
+         *            /             \
+         *         [c,d]          [c, d]
+         */
         std::map<const char *, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
+
+
+        /**
+         * CLASSIC RENDERING
+         *
+         * Vector for meshes, that will be rendered without instancing
+         */
+        std::vector<std::pair<std::shared_ptr<Mesh>, Transform>> meshesToRender;
 
     public:
 
