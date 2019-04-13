@@ -4,16 +4,6 @@
 GameObject::GameObject(const std::shared_ptr<Component> & component) : GameObjectBase(component) {
 }
 
-MeshType GameObject::getMeshType() {
-    auto meshProto = getComponent<MeshPrototype>();
-
-    if (meshProto) {
-        return meshProto->meshType;
-    }
-    return NONE;
-}
-
-
 std::shared_ptr<GameObject> GameObject::create() {
     return std::make_shared<GameObject>();
 }

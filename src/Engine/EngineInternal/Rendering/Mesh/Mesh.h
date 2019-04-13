@@ -47,7 +47,6 @@ class Mesh : public Component {
 
         GLenum mode = GL_TRIANGLES;
 
-        MeshType type = NONE;
         Projection projection = PERSPECTIVE;
 
         bool disableNormals = true;

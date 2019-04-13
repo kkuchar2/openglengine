@@ -7,7 +7,10 @@ std::shared_ptr<GameObject> object(const char * path, const glm::vec3 & size, co
 
     float r = 0.0f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(90.0f-0.0f)));
     obj->transform.rotation = glm::vec3(0.0f, r, 0.0f);
-    obj->addComponent(MeshPrototype::of(path, DIFFUSE_INSTANCED, color));
+
+    auto proto = MeshPrototype::of(path, DIFFUSE_INSTANCED, color);
+    proto->instanced = true;
+    obj->addComponent(proto);
     return obj;
 }
 

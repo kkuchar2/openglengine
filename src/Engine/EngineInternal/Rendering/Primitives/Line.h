@@ -6,7 +6,6 @@ class Line : public Mesh {
     public:
 
         explicit Line() : Mesh() {
-            type = LINE;
             vertices = { 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0 };
             indices = { 0, 1 };
         }

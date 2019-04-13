@@ -12,6 +12,25 @@
 
 using ShaderToMeshesMap = std::map<ShaderType, std::pair<std::shared_ptr<Mesh>, int>>;
 
+/**
+ * If we want to render mesh:
+ *
+ * 1. Create mesh prototype
+ * 2. Set prototype mesh type (or mesh path)
+ * 3. Set prototype instancing mode to true or false
+ * 4. Set prototype mesh shader (if we use instancing, we need to specify instaced shader)
+ * 5. Set optional texture
+ * 6. Set optional color
+ *
+ * NOTE: For now instanced rendering groups unique meshes based
+ * on mesh type (or mesh path) and shader type. If we use the same
+ * shader type and the same mesh type, meshes will not be rendered (just one).
+ *
+ * TODO: Consider grouping through something as 'material'
+ *
+ * We have to fix problem, when we want to use the same shader +
+ * the same mesh type + instancing, but just different color / texture / shader parameter
+ */
 class TextureRenderer {
 
     private:
@@ -20,7 +39,7 @@ class TextureRenderer {
          *
          * Map that keeps unique [mesh-shader] pairs for instanced rendering
          *
-         * a - mesh type            const char *
+         * a - mesh type            const char *   (mesh enum string or mesh path)
          * b - shader type          ShaderType
          * c - shader object ptr    std::shared_ptr<Mesh>
          * d - instance count       int
@@ -33,15 +52,15 @@ class TextureRenderer {
          *            /             \
          *         [c,d]          [c, d]
          */
-        std::map<const char *, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
 
+        std::map<const char *, std::map<ShaderType,std::pair<std::shared_ptr<Mesh>, int>>> map;
 
         /**
          * CLASSIC RENDERING
          *
          * Vector for meshes, that will be rendered without instancing
          */
-        std::vector<std::pair<std::shared_ptr<Mesh>, Transform>> meshesToRender;
+        std::vector<std::pair<std::pair<std::shared_ptr<Mesh>, const char *>, Transform>> meshesToRender;
 
     public:
 

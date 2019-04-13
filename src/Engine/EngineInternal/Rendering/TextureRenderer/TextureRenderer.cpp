@@ -13,16 +13,6 @@ void TextureRenderer::addScene(const std::shared_ptr<EngineScene> & scene) {
 
 void TextureRenderer::prepare() {
 
-    /**
-     * Iterate over all scenes, for each object based on projection
-     * calculate model matrix.
-     *
-     * If object has MeshPrototype component,
-     * assume, that we want to render it instanced.
-     *
-     * Otherwise if object has Mesh component, we add that
-     * mesh to classic rendering container and render it normally.
-     */
     for (auto & pair : scenes) {
         for (auto & scene : pair.second) {
 
@@ -30,9 +20,11 @@ void TextureRenderer::prepare() {
 
             for (auto & engineObject : scene->objects) {
 
+
+                // Get model matrix based on camera
                 glm::mat4 modelMatrix;
 
-                switch(projection) {
+                switch (projection) {
 
                     case PERSPECTIVE:
                         modelMatrix = perspectiveCamera->createModelMatrix(engineObject->getTransform());
@@ -42,20 +34,23 @@ void TextureRenderer::prepare() {
                         break;
                 }
 
-
+                // Get mesh prototype
                 auto meshPrototype = engineObject->getMeshPrototype();
-                auto mesh = engineObject->getMesh();
 
-                if (meshPrototype.get()) {
+                if (!meshPrototype.get()) continue;
 
-                    const char * meshType = meshPrototype->getMeshType();
-                    ShaderType shaderType = meshPrototype->shaderType;
+                const char * meshType = meshPrototype->getMeshType();
 
+                ShaderType shaderType = meshPrototype->shaderType;
 
+                // Check if instanced rendering is enabled
+                bool instanced = meshPrototype->instanced;
+
+                if (instanced) {
                     if (map.count(meshType) == 0) {
-                        auto instancedMesh = MeshBuilder::of(meshPrototype, projection);
+                        auto mesh = MeshBuilder::of(meshPrototype, projection);
                         ShaderToMeshesMap shaderToMeshes;
-                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(instancedMesh, 1)));
+                        shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(mesh, 1)));
                         shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
                         map.insert(std::make_pair(meshType, shaderToMeshes));
                     }
@@ -66,23 +61,25 @@ void TextureRenderer::prepare() {
                             shaderToMeshes.insert(std::make_pair(shaderType, std::make_pair(instancedMesh, 1)));
                             shaderToMeshes.at(shaderType).first->modelMatrices.push_back(modelMatrix);
                             map.insert(std::make_pair(meshType, shaderToMeshes));
-                        } else {
+                        }
+                        else {
                             auto currentVal = map[meshType][shaderType];
                             map[meshType][shaderType] = std::make_pair(currentVal.first, currentVal.second + 1);
                             map[meshType][shaderType].first->modelMatrices.push_back(modelMatrix);
                         }
                     }
                 }
-                else if (mesh.get()) {
+                else {
+                    auto mesh = MeshBuilder::of(meshPrototype, projection);
                     mesh->projection = projection;
                     mesh->modelMatrix = modelMatrix;
                     mesh->prepare();
-                    meshesToRender.emplace_back(mesh, engineObject->getTransform());
+                    meshesToRender.emplace_back(std::make_pair(mesh, meshPrototype->getMeshType()), engineObject->getTransform());
                 }
-
             }
         }
     }
+
 
     std::cout << "INSTANCED RENDERING:" << std::endl;
     for (auto & pair : map) {
@@ -101,17 +98,20 @@ void TextureRenderer::prepare() {
 
     std::cout << "CLASSIC RENDERING:" << std::endl;
     for (auto & pair : meshesToRender) {
-        std::cout << "\t* Mesh type: [" << pair.first->type << "]" << std::endl;
+        std::cout << "\t* Mesh type: [" << pair.first.second << "]" << std::endl;
     }
+
+    std::cout << "Preprocessing scenes end.." << std::endl;
 }
 
 void TextureRenderer::render() {
     perspectiveCamera->Update();
     ortographicCamera->Update();
 
+    // Render all meshes in instanced rendering mode
     for (auto & pair : map) {
         for (auto & pair2 : map[pair.first]) {
-            switch(pair2.second.first->projection) {
+            switch (pair2.second.first->projection) {
 
                 case PERSPECTIVE:
                     perspectiveCamera->renderInstanced(pair2.second.first, pair2.second.second);
@@ -123,14 +123,15 @@ void TextureRenderer::render() {
         }
     }
 
+    // Render all meshes in classic rendering mode
     for (auto & pair : meshesToRender) {
-        switch(pair.first->projection) {
+        switch (pair.first.first->projection) {
 
             case PERSPECTIVE:
-                perspectiveCamera->render(pair.first, pair.second);
+                perspectiveCamera->render(pair.first.first, pair.second);
                 break;
             case ORTOGRAPHIC:
-                ortographicCamera->render(pair.first, pair.second);
+                ortographicCamera->render(pair.first.first, pair.second);
                 break;
         }
     }

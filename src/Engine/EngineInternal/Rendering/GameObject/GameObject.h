@@ -20,8 +20,6 @@ class GameObject : public GameObjectBase {
 
         explicit GameObject(const std::shared_ptr<Component> & component);
 
-        MeshType getMeshType();
-
         static std::shared_ptr<GameObject> create(const std::shared_ptr<Component> & component);
 
         static std::shared_ptr<GameObject> create();

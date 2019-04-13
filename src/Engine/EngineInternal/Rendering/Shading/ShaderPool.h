@@ -13,6 +13,7 @@ class ShaderPool
         std::shared_ptr<Shader> diffuseInstancedShader;
         std::shared_ptr<Shader> diffuseShader;
         std::shared_ptr<Shader> gridShader;
+        std::shared_ptr<Shader> gridInstancedShader;
         std::shared_ptr<Shader> characterShader;
 
         static ShaderPool & Instance()
@@ -33,6 +34,7 @@ class ShaderPool
     private:
         ShaderPool() {
             gridShader = loadShader("Grid.vert", "Grid.frag");
+            gridInstancedShader = loadShader("GridInstanced.vert", "GridInstanced.frag");
             colorShader = loadShader("Color.vert", "Color.frag");
             colorInstancedShader = loadShader("ColorInstanced.vert", "ColorInstanced.frag");
             diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
@@ -47,10 +49,12 @@ class ShaderPool
 
         std::shared_ptr<Shader> getShader(const ShaderType & shaderType) {
             switch(shaderType) {
-                case COLOR:   return colorShader;
+                case COLOR: return colorShader;
                 case DIFFUSE: return diffuseShader;
                 case COLOR_INSTANCED: return colorInstancedShader;
                 case DIFFUSE_INSTANCED: return diffuseInstancedShader;
+                case GRID: return gridShader;
+                case GRID_INSTANCED: return gridInstancedShader;
             }
         }
 };

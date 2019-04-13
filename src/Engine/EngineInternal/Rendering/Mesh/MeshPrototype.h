@@ -13,6 +13,11 @@ class MeshPrototype : public Component {
         MeshType meshType = NONE;
         ShaderType shaderType = COLOR_INSTANCED;
         glm::vec4 color = glm::vec4(1.0, 1.0, 1.0, 1.0);
+        const char * texture = nullptr;
+        bool instanced = false;
+        bool disableNormals = false;
+
+        MeshPrototype();
 
         MeshPrototype(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color);
 

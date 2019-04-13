@@ -8,17 +8,11 @@
 #include <Rendering/Camera/Projection.h>
 #include <Rendering/Shading/ShaderPool.h>
 #include <Rendering/Primitives/Line.h>
+#include <Rendering/Primitives/LinePrototype.h>
 
 #include "SurfacePrototype.h"
 
 class MeshBuilder {
-
-    static std::shared_ptr<Surface> createSurfaceMesh(const std::shared_ptr<MeshPrototype> & proto) {
-        std::shared_ptr<SurfacePrototype> surfProto = std::dynamic_pointer_cast<SurfacePrototype>(proto);
-        std::shared_ptr<Surface> surface = std::make_shared<Surface>(300, 300);
-        return surface;
-    }
-
     public:
         static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection) {
 
@@ -44,15 +38,25 @@ class MeshBuilder {
                     break;
             }
 
+            if (proto->meshType == LINE) {
+                auto lineProto = std::dynamic_pointer_cast<LinePrototype>(proto);
+                auto lineMesh = std::dynamic_pointer_cast<Line>(mesh);
+                lineMesh->setCoords(lineProto->start, lineProto->end);
+            }
+
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
-            mesh->isInstanced = true;
-            mesh->disableNormals = false;
+            mesh->isInstanced = proto->instanced;
+            mesh->disableNormals = proto->disableNormals;
             mesh->shaderInit = [proto](ShaderPtrRef s) {
                 s->setVec4("color", proto->color);
                 s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
                 s->setVec3("lightPos", glm::vec3(0.0f, 2.0f, 0.0f));
             };
             mesh->projection = projection;
+
+            if (proto->texture != nullptr) {
+                mesh->loadTexture(proto->texture);
+            }
             return mesh;
         }
 };

@@ -6,9 +6,6 @@ class Quad : public Mesh {
     public:
 
         Quad() : Mesh() {
-
-            type = QUAD;
-
             vertices = {
                     -1.0f, -1.0f, 0.0, // 0 - bottom left
                     -1.0f, 1.0f, 0.0, // 1 - top left

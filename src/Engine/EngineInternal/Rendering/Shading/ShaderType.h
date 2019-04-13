@@ -4,5 +4,7 @@ enum ShaderType {
     COLOR,
     COLOR_INSTANCED,
     DIFFUSE,
-    DIFFUSE_INSTANCED
+    DIFFUSE_INSTANCED,
+    GRID,
+    GRID_INSTANCED,
 };

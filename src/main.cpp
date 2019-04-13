@@ -1,5 +1,7 @@
 #include <Scenes/InstanncingRenderingTestScene.h>
+#include <Scenes/MainScene.h>
 #include <Engine/EngineInternal/Scene/BaseScene.h>
+
 
 #include <Engine.h>
 

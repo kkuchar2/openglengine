@@ -1,5 +1,6 @@
 #include "MeshPrototype.h"
 
+MeshPrototype::MeshPrototype() { }
 
 MeshPrototype::MeshPrototype(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color) {
     this->meshType = meshType;
