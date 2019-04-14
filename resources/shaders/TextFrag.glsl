@@ -4,7 +4,7 @@ uniform vec4 color;
 uniform float time;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
-uniform vec3 viewPos;
+uniform vec3 cameraPosition;
 uniform sampler2D tex;
 
 in vec2 uv;

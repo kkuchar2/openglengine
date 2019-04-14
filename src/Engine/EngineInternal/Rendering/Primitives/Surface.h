@@ -37,9 +37,9 @@ class Surface : public Mesh {
                 float x = x_mesh / scale;
                 float z = z_mesh / scale;
 
-                //float y_mesh = cos(x) * sin(z);
+                float y_mesh = cos(x) * sin(z);
 
-                float y_mesh = 0.0f;
+                //float y_mesh = 0.0f;
 
                 vertices.insert(vertices.end(), {x_mesh, y_mesh, z_mesh});
 

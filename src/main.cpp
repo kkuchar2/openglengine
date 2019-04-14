@@ -1,8 +1,6 @@
 #include <Scenes/InstanncingRenderingTestScene.h>
 #include <Scenes/MainScene.h>
 #include <Engine/EngineInternal/Scene/BaseScene.h>
-
-
 #include <Engine.h>
 
 int main() {
@@ -12,13 +10,11 @@ int main() {
         engine = std::make_shared<Engine>();
     }
     catch (EngineException & e) {
-        std::cerr << e.what() << std::endl;
-        return -1;
+        std::cout << e.what() << std::endl;
     }
 
-    engine->addScene(baseScene());
-    //engine->addScene(shaderTestScene());
-    engine->addScene(instancedScene());
+    //engine->addScene(baseScene());
+    engine->addScene(mainScene());
 
     engine->start();
 

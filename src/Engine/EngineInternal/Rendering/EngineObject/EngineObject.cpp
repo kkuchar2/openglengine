@@ -11,3 +11,7 @@ std::shared_ptr<MeshPrototype> EngineObject::getMeshPrototype() {
 Transform EngineObject::getTransform() {
     return gameObject->transform;
 }
+
+void EngineObject::OnUpdate() {
+    gameObject->OnUpdate();
+}

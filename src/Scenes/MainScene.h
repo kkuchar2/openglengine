@@ -2,78 +2,79 @@
 
 #include <Engine.h>
 #include <Primitives/Surface.h>
+#include <Behaviour/RotatingBehaviour.h>
 
 std::shared_ptr<UserScene> mainScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
-    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(1.2f, 1.0f, 2.0f);
+    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(2.2f, 3.0f, 2.0f);
 
-    std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
-    lampMesh->shader = ShaderPool::Instance().colorShader;
-    lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-    };
+    std::shared_ptr<MeshPrototype> lampMeshProto = std::make_shared<MeshPrototype>();
+    std::shared_ptr<MeshPrototype> cubeMeshProto = std::make_shared<MeshPrototype>();
+    std::shared_ptr<MeshPrototype> bunnyMeshProto = std::make_shared<MeshPrototype>();
+    std::shared_ptr<MeshPrototype> suzanneMeshProto = std::make_shared<MeshPrototype>();
+    std::shared_ptr<MeshPrototype> teapotMeshProto = std::make_shared<MeshPrototype>();
+    std::shared_ptr<MeshPrototype> surfaceMeshProto = std::make_shared<MeshPrototype>();
 
-    std::shared_ptr<Cube> cube = std::make_shared<Cube>();
-    cube->shader = ShaderPool::Instance().diffuseShader;
-    cube->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    cubeMeshProto->instanced = false;
+    cubeMeshProto->meshType = CUBE;
+    cubeMeshProto->shaderType = DIFFUSE;
+    cubeMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
-    std::shared_ptr<Mesh> bunnyMesh = std::make_shared<Mesh>("../resources/models/bunny.obj");
-    bunnyMesh->shader = ShaderPool::Instance().diffuseShader;
-    bunnyMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    surfaceMeshProto->instanced = false;
+    surfaceMeshProto->meshType = SURFACE;
+    surfaceMeshProto->shaderType = DIFFUSE;
+    surfaceMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
-    std::shared_ptr<Mesh> suzanneMesh = std::make_shared<Mesh>("../resources/models/suzanne.obj");
-    suzanneMesh->shader = ShaderPool::Instance().diffuseShader;
-    suzanneMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    bunnyMeshProto->instanced = false;
+    bunnyMeshProto->meshType = RESOURCE;
+    bunnyMeshProto->path = "../resources/models/bunny.obj";
+    bunnyMeshProto->shaderType = DIFFUSE;
+    bunnyMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
-    std::shared_ptr<Mesh> teapotMesh = std::make_shared<Mesh>("../resources/models/teapot.obj");
-    teapotMesh->shader = ShaderPool::Instance().diffuseShader;
-    teapotMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    suzanneMeshProto->instanced = false;
+    suzanneMeshProto->meshType = RESOURCE;
+    suzanneMeshProto->path = "../resources/models/suzanne.obj";
+    suzanneMeshProto->shaderType = DIFFUSE;
+    suzanneMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
-    std::shared_ptr<Surface> surface = std::make_shared<Surface>(300, 300);
-    surface->shader = ShaderPool::Instance().diffuseShader;
-    surface->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    teapotMeshProto->instanced = false;
+    teapotMeshProto->meshType = RESOURCE;
+    teapotMeshProto->path = "../resources/models/teapot.obj";
+    teapotMeshProto->shaderType = DIFFUSE;
+    teapotMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
-    auto lampMeshObject = std::make_shared<GameObject>(lampMesh);
+    lampMeshProto->instanced = false;
+    lampMeshProto->meshType = RESOURCE;
+    lampMeshProto->path = "../resources/models/sphere.obj";
+    lampMeshProto->shaderType = COLOR;
+    lampMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    std::shared_ptr<GameObject> lampMeshObject = std::make_shared<GameObject>(lampMeshProto);
+    std::shared_ptr<GameObject> cubeObject = std::make_shared<GameObject>(cubeMeshProto);
+    std::shared_ptr<GameObject> bunnyObject = std::make_shared<GameObject>(bunnyMeshProto);
+    std::shared_ptr<GameObject> suzanneMeshObject = std::make_shared<GameObject>(suzanneMeshProto);
+    std::shared_ptr<GameObject> teapotMeshObject = std::make_shared<GameObject>(teapotMeshProto);
+    std::shared_ptr<GameObject> surfaceObject = std::make_shared<GameObject>(surfaceMeshProto);
+
     lampMeshObject->transform.scale = glm::vec3(0.1f);
     lampMeshObject->transform.position = *lightPos.get();
 
-
-    auto cubeObject = std::make_shared<GameObject>(cube);
     cubeObject->transform.position = glm::vec3(2.0f, 0.5f, 0.0f);
+    cubeObject->addComponent(std::make_shared<RotatingBehaviour>());
 
-    auto bunnyObject = std::make_shared<GameObject>(bunnyMesh);
-    bunnyObject->transform.scale = glm::vec3(10.0f);
+    bunnyObject->addComponent(std::make_shared<RotatingBehaviour>());
+    bunnyObject->transform.scale = glm::vec3(20.0f);
 
-    auto suzanneMeshObject = std::make_shared<GameObject>(suzanneMesh);
+
+    suzanneMeshObject->addComponent(std::make_shared<RotatingBehaviour>());
     suzanneMeshObject->transform.position = glm::vec3(0.0f, 7.0f, 0.0f);
     suzanneMeshObject->transform.rotation = glm::vec3(0.0f, 30.0f, -10.0f);
 
-    auto teapotMeshObject = std::make_shared<GameObject>(teapotMesh);
     teapotMeshObject->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMeshObject->transform.scale = glm::vec3(0.5f);
+    teapotMeshObject->addComponent(std::make_shared<RotatingBehaviour>());
 
-    auto surfaceObject = std::make_shared<GameObject>(surface);
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
     scene->addObject(surfaceObject);
@@ -82,7 +83,6 @@ std::shared_ptr<UserScene> mainScene() {
     scene->addObject(suzanneMeshObject);
     scene->addObject(bunnyObject);
     scene->addObject(cubeObject);
-    scene->addObject(lampMeshObject);
 
     return scene;
 }

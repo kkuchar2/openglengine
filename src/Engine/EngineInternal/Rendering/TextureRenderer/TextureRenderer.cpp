@@ -19,8 +19,6 @@ void TextureRenderer::prepare() {
             auto projection = scene->projection;
 
             for (auto & engineObject : scene->objects) {
-
-
                 // Get model matrix based on camera
                 glm::mat4 modelMatrix;
 
@@ -74,39 +72,41 @@ void TextureRenderer::prepare() {
                     mesh->projection = projection;
                     mesh->modelMatrix = modelMatrix;
                     mesh->prepare();
-                    meshesToRender.emplace_back(std::make_pair(mesh, meshPrototype->getMeshType()), engineObject->getTransform());
+                    meshesToRender.emplace_back(std::make_pair(mesh, meshPrototype->getMeshType()), engineObject);
                 }
             }
         }
     }
 
-
     std::cout << "INSTANCED RENDERING:" << std::endl;
     for (auto & pair : map) {
         std::cout << "\t* Mesh type: [" << pair.first << "]" << std::endl;
-
-        std::cout << std::endl;
 
         for (auto & pair2 : map[pair.first]) {
             std::cout << "\t\t---> Shader type: " << pair2.first << " Instances: " << pair2.second.second << std::endl;
             pair2.second.first->prepare();
         }
-
-        std::cout << std::endl;
     }
-
+    std::cout << std::endl;
 
     std::cout << "CLASSIC RENDERING:" << std::endl;
     for (auto & pair : meshesToRender) {
         std::cout << "\t* Mesh type: [" << pair.first.second << "]" << std::endl;
     }
-
-    std::cout << "Preprocessing scenes end.." << std::endl;
 }
 
 void TextureRenderer::render() {
+
     perspectiveCamera->Update();
     ortographicCamera->Update();
+
+    for (auto & pair : scenes) {
+        for (auto & scene : pair.second) {
+            for (auto & engineObject : scene->objects) {
+                engineObject->OnUpdate();
+            }
+        }
+    }
 
     // Render all meshes in instanced rendering mode
     for (auto & pair : map) {
@@ -128,10 +128,10 @@ void TextureRenderer::render() {
         switch (pair.first.first->projection) {
 
             case PERSPECTIVE:
-                perspectiveCamera->render(pair.first.first, pair.second);
+                perspectiveCamera->render(pair.first.first, pair.second->getTransform());
                 break;
             case ORTOGRAPHIC:
-                ortographicCamera->render(pair.first.first, pair.second);
+                ortographicCamera->render(pair.first.first, pair.second->getTransform());
                 break;
         }
     }

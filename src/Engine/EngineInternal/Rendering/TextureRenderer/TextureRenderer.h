@@ -60,7 +60,7 @@ class TextureRenderer {
          *
          * Vector for meshes, that will be rendered without instancing
          */
-        std::vector<std::pair<std::pair<std::shared_ptr<Mesh>, const char *>, Transform>> meshesToRender;
+        std::vector<std::pair<std::pair<std::shared_ptr<Mesh>, const char *>, std::shared_ptr<EngineObject>>> meshesToRender;
 
     public:
 

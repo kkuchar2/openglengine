@@ -2,6 +2,6 @@
 
 class Component {
     public:
-        Component() { }
+        Component() = default;
         virtual void Update() {}
 };

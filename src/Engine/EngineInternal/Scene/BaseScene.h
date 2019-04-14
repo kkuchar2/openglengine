@@ -9,6 +9,22 @@
 #include <Utils/Objects.h>
 #include <Rendering/Primitives/LinePrototype.h>
 
+std::shared_ptr<GameObject> cylinder(const glm::vec3 & pos, const glm::vec3 scale, const glm::vec3 rot) {
+    std::shared_ptr<MeshPrototype> cylinderMeshProto = std::make_shared<MeshPrototype>();
+    cylinderMeshProto->instanced = false;
+    cylinderMeshProto->meshType = RESOURCE;
+    cylinderMeshProto->path = "../resources/models/cylinder.obj";
+    cylinderMeshProto->shaderType = DIFFUSE;
+    cylinderMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    std::shared_ptr<GameObject> obj = std::make_shared<GameObject>(cylinderMeshProto);
+    obj->transform.position = pos;
+    obj->transform.scale = scale;
+    obj->transform.rotation = rot;
+
+    return obj;
+}
+
 std::shared_ptr<UserScene> baseScene() {
     std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
 
@@ -50,6 +66,8 @@ std::shared_ptr<UserScene> baseScene() {
     scene->addObject(axisYObject);
     scene->addObject(axisZObject);
     scene->addObject(gridObject);
+
+    scene->addObject(cylinder(glm::vec3(0.0, 5.0, 10.0), glm::vec3(1.0f), glm::vec3(0.0f)));
 
     return scene;
 }

@@ -40,4 +40,10 @@ class GameObjectBase {
             }
             return nullptr;
         }
+
+        void OnUpdate() {
+            for (auto & component : components) {
+                component->Update();
+            }
+        }
 };

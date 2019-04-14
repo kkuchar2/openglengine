@@ -173,9 +173,8 @@ void Mesh::loadFromResource(const char * path) {
 
     if (!ret) {
         if (!error.empty()) {
-            throw EngineException(error);
+            std::cerr << "Error: " << error << std::endl;
         }
-        throw EngineException("Mesh load error.");
     }
 
     if (!warning.empty()) {
