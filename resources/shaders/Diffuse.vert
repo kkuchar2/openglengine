@@ -1,10 +1,8 @@
 #version 330 core
 
-uniform mat4 mvp;
-uniform mat4 m;
-uniform mat4 v;
-
-uniform float time;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
 uniform vec4 color;
 
 layout (location = 0) in vec3 vCoord;
@@ -17,8 +15,8 @@ out vec3 FragPos;
 
 void main()
 {
-    gl_Position = mvp * vec4(vCoord, 1.0);
-    FragPos = vec3(m * vec4(vCoord, 1.0));
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vCoord, 1.0);
+    FragPos = vec3(modelMatrix * vec4(vCoord, 1.0));
     uv = uvCoord;
     Normal = normal;
 }

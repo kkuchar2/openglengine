@@ -1,5 +1,9 @@
-#include "Engine/Engine.h"
-#include "Engine/Scene/Scenes.h"
+#include <Scenes/InstanncingRenderingTestScene.h>
+#include <Scenes/MainScene.h>
+#include <Engine/EngineInternal/Scene/BaseScene.h>
+
+
+#include <Engine.h>
 
 int main() {
     std::shared_ptr<Engine> engine;
@@ -13,10 +17,10 @@ int main() {
     }
 
     engine->addScene(baseScene());
-    engine->addScene(mainScene());
-    engine->addScene(orthographicScene());
+    //engine->addScene(shaderTestScene());
+    engine->addScene(instancedScene());
 
-    engine->renderingLoop();
+    engine->start();
 
     glfwTerminate();
 
