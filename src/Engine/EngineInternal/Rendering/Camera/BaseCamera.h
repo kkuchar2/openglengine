@@ -44,8 +44,6 @@ class BaseCamera : public Component {
 
         static glm::mat4 createModelMatrix(const Transform & transform);
 
-        virtual glm::vec3 getScaleCorrection();
-
         virtual glm::vec3 getPosition();
 
         virtual void onMouseMove(const glm::vec2 & delta);

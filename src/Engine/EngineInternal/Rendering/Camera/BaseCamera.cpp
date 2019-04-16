@@ -64,10 +64,6 @@ void BaseCamera::onMouseButtonPressed(const MouseButtonInfo & info) {}
 
 void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {}
 
-glm::vec3 BaseCamera::getScaleCorrection() {
-    return glm::vec3(1.0f);
-}
-
 glm::vec3 BaseCamera::getPosition() {
     return glm::vec3(0.0f, 0.0f, 0.0f);
 }
