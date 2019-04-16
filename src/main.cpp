@@ -2,6 +2,7 @@
 #include <Scenes/MainScene.h>
 #include <Engine/EngineInternal/Scene/BaseScene.h>
 #include <Engine.h>
+#include <Scenes/OrthoScene.h>
 
 int main() {
     std::shared_ptr<Engine> engine;
@@ -13,8 +14,9 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 
-    //engine->addScene(baseScene());
-    engine->addScene(mainScene());
+    engine->addScene(baseScene());
+    engine->addScene(instancedScene());
+    engine->addScene(orthoScene());
 
     engine->start();
 

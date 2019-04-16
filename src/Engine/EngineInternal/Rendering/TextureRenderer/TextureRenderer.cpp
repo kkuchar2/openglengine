@@ -70,7 +70,6 @@ void TextureRenderer::prepare() {
                 else {
                     auto mesh = MeshBuilder::of(meshPrototype, projection);
                     mesh->projection = projection;
-                    mesh->modelMatrix = modelMatrix;
                     mesh->prepare();
                     meshesToRender.emplace_back(std::make_pair(mesh, meshPrototype->getMeshType()), engineObject);
                 }

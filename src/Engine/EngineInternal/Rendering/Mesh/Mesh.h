@@ -39,11 +39,8 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
-        // for instance rendering
+        // For instance rendering
         std::vector<glm::mat4> modelMatrices;
-
-        // for classic rendering
-        glm::mat4 modelMatrix;
 
         GLenum mode = GL_TRIANGLES;
 

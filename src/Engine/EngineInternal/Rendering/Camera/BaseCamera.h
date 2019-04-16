@@ -40,7 +40,9 @@ class BaseCamera : public Component {
 
         void render(const std::shared_ptr<Mesh> & mesh, const Transform & transform);
 
-        glm::mat4 createModelMatrix(const Transform & transform);
+        void initShaderCommon(const std::shared_ptr<Shader> & shader);
+
+        static glm::mat4 createModelMatrix(const Transform & transform);
 
         virtual glm::vec3 getScaleCorrection();
 
@@ -51,8 +53,6 @@ class BaseCamera : public Component {
         virtual void onMouseButtonPressed(const MouseButtonInfo & info);
 
         virtual void onKeyInfoReceived(const KeyInfo & info);
-
-        virtual glm::mat4x4 getModelMatrix() = 0;
 
         virtual glm::mat4x4 getViewMatrix() = 0;
 

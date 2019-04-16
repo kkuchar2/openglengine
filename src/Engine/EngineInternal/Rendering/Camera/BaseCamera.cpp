@@ -16,9 +16,7 @@ void BaseCamera::renderInstanced(const std::shared_ptr<Mesh> & mesh, const int &
 
     shader->use();
 
-    shader->setVec3("cameraPosition", getPosition());
-    shader->setMat4("projectionMatrix", getProjectionMatrix());
-    shader->setMat4("viewMatrix", getViewMatrix());
+    initShaderCommon(shader);
 
     mesh->shaderInit(shader);
 
@@ -34,9 +32,8 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & tr
 
     shader->use();
 
-    shader->setVec3("cameraPosition", getPosition());
-    shader->setMat4("projectionMatrix", getProjectionMatrix());
-    shader->setMat4("viewMatrix", getViewMatrix());
+    initShaderCommon(shader);
+
     shader->setMat4("modelMatrix", createModelMatrix(transform));
 
     mesh->shaderInit(shader);
@@ -48,22 +45,24 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & tr
     mesh->render();
 }
 
+void BaseCamera::initShaderCommon(const std::shared_ptr<Shader> & shader) {
+    shader->setVec3("cameraPosition", getPosition());
+    shader->setMat4("projectionMatrix", getProjectionMatrix());
+    shader->setMat4("viewMatrix", getViewMatrix());
+}
+
 glm::mat4 BaseCamera::createModelMatrix(const Transform & transform) {
-    glm::mat4 modelMatrix = getModelMatrix();
-    glm::mat4 m = glm::translate(getModelMatrix(), transform.position);
+    glm::mat4 m = glm::translate(glm::mat4x4(1.0f), transform.position);
     m *= MatrixUtils::rotationMatrix(transform.rotation);
     m *= MatrixUtils::scaleMatrix(transform.scale);
     return m;
 }
 
-void BaseCamera::onMouseMove(const glm::vec2 & delta) { }
+void BaseCamera::onMouseMove(const glm::vec2 & delta) {}
 
-void BaseCamera::onMouseButtonPressed(const MouseButtonInfo & info) {
+void BaseCamera::onMouseButtonPressed(const MouseButtonInfo & info) {}
 
-}
-
-void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {
-}
+void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {}
 
 glm::vec3 BaseCamera::getScaleCorrection() {
     return glm::vec3(1.0f);

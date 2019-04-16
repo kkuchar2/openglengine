@@ -51,7 +51,6 @@ class PerspectiveCamera : public BaseCamera {
         }
 
         glm::vec3 getPosition() override;
-        glm::mat4x4 getModelMatrix() override;
         glm::mat4x4 getViewMatrix() override;
         glm::mat4x4 getProjectionMatrix() override;
 };
