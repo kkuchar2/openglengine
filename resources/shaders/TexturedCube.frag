@@ -9,11 +9,15 @@ in vec2 uv;
 in vec3 Normal;
 in vec3 FragPos;
 
-uniform sampler2D tex;
+// Direction vector representing a 3D texture coordinate
+in vec3 TexCoords;
+
+// Cubemap texture sampler
+uniform samplerCube cubemap;
 
 out vec4 FragColor;
 
 void main()
 {
-    FragColor = texture(tex, uv);
+    FragColor = texture(cubemap, TexCoords);
 }

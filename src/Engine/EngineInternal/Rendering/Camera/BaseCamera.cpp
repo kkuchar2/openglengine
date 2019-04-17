@@ -13,35 +13,18 @@ BaseCamera::BaseCamera() {
 
 void BaseCamera::renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount) {
     std::shared_ptr<Shader> shader = mesh->shader;
-
     shader->use();
-
     initShaderCommon(shader);
-
     mesh->shaderInit(shader);
-
-    if (mesh->textureId != 0) {
-        glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-    }
-
     mesh->renderInstanced(instancesCount);
 }
 
 void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & transform) {
     std::shared_ptr<Shader> shader = mesh->shader;
-
     shader->use();
-
     initShaderCommon(shader);
-
     shader->setMat4("modelMatrix", createModelMatrix(transform));
-
     mesh->shaderInit(shader);
-
-    if (mesh->textureId != 0) {
-        glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-    }
-
     mesh->render();
 }
 
@@ -64,9 +47,7 @@ void BaseCamera::onMouseButtonPressed(const MouseButtonInfo & info) {}
 
 void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {}
 
-glm::vec3 BaseCamera::getPosition() {
-    return glm::vec3(0.0f, 0.0f, 0.0f);
-}
+glm::vec3 BaseCamera::getPosition() { return glm::vec3(0.0f); }
 
 BaseCamera::~BaseCamera() {
     mousePositionDeltaSubscription->Unsubscribe();

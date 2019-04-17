@@ -6,5 +6,6 @@ enum MeshType {
     CUBE,
     SURFACE,
     RESOURCE,
-    NONE
+    NONE,
+    SKYBOX
 };

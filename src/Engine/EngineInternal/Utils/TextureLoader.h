@@ -3,56 +3,17 @@
 #include <cstdio>
 #include <iostream>
 #include <glad.h>
+#include <vector>
+
+struct TextureInfo {
+    int width;
+    int height;
+    unsigned char * data;
+};
 
 class TextureLoader {
     public:
-        static GLuint load(const char * path) {
-            unsigned char header[54];
-            int dataPos;
-            int width, height;
-            int imageSize;
-
-            unsigned char * data;
-
-            FILE * file = fopen(path, "rb");
-
-            if (!file) {
-                std::cerr << "Could not open " << path << std::endl;
-                return 0;
-            }
-
-            if (fread(header, 1, 54, file) != 54) {
-                std::cerr << "Invalid BMP file: " << path << std::endl;
-                return 0;
-            }
-
-            if ( header[0] != 'B' || header[1] != 'M' ){
-                std::cerr << "Invalid BMP file: " << path << std::endl;
-                return 0;
-            }
-
-            imageSize  = *(int*)&(header[0x22]);
-            width      = *(int*)&(header[0x12]);
-            height     = *(int*)&(header[0x16]);
-
-            if (imageSize == 0) {
-                imageSize = width * height * 3;
-            }
-
-
-            data = new unsigned char [imageSize];
-
-            fread(data, 1, imageSize, file);
-
-            fclose(file);
-
-            GLuint textureID;
-            glGenTextures(1, &textureID);
-            glBindTexture(GL_TEXTURE_2D, textureID);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
-
-            return textureID;
-        }
+        static TextureInfo loadTextureData(const char * path);
+        static GLuint loadCubeMap(const std::vector<std::string> & paths);
+        static GLuint generateAndBindTexture(const TextureInfo & info);
 };

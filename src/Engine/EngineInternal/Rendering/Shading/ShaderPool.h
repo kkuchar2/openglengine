@@ -8,6 +8,8 @@ class ShaderPool
 {
     public:
 
+        std::shared_ptr<Shader> textureCubeShader;
+        std::shared_ptr<Shader> textureColorShader;
         std::shared_ptr<Shader> colorInstancedShader;
         std::shared_ptr<Shader> colorShader;
         std::shared_ptr<Shader> diffuseInstancedShader;
@@ -33,6 +35,8 @@ class ShaderPool
 
     private:
         ShaderPool() {
+            textureCubeShader = loadShader("TexturedCube.vert", "TexturedCube.frag");
+            textureColorShader = loadShader("Textured.vert", "Textured.frag");
             gridShader = loadShader("Grid.vert", "Grid.frag");
             gridInstancedShader = loadShader("GridInstanced.vert", "GridInstanced.frag");
             colorShader = loadShader("Color.vert", "Color.frag");
@@ -55,6 +59,8 @@ class ShaderPool
                 case DIFFUSE_INSTANCED: return diffuseInstancedShader;
                 case GRID: return gridShader;
                 case GRID_INSTANCED: return gridInstancedShader;
+                case TEXTURE: return textureColorShader;
+                case TEXTURE_CUBE: return textureCubeShader;
             }
         }
 };

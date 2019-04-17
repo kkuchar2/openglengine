@@ -9,7 +9,7 @@ glm::mat4x4 PerspectiveCamera::getViewMatrix() {
 }
 
 glm::mat4x4 PerspectiveCamera::getProjectionMatrix() {
-    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 1000.0f);
+    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 20000.0f);
 }
 
 void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {

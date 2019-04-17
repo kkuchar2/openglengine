@@ -7,4 +7,6 @@ enum ShaderType {
     DIFFUSE_INSTANCED,
     GRID,
     GRID_INSTANCED,
+    TEXTURE,
+    TEXTURE_CUBE
 };

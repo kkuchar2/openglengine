@@ -15,7 +15,7 @@ std::shared_ptr<UserScene> orthoScene() {
 
     std::shared_ptr<GameObject> obj1 = std::make_shared<GameObject>(quadProto);
 
-    obj1->transform.scale = glm::vec3(0.5f, 0.5f, 0.0f);
+    obj1->transform.scale = glm::vec3(0.1f, 0.1f, 0.0f);
     obj1->transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 
     scene->projection = ORTOGRAPHIC;

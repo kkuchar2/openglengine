@@ -23,7 +23,7 @@ class Window {
         int width = 0;
         int height = 0;
 
-        bool vSyncEnabled = true;
+        bool vSyncEnabled = false;
 
         Window(const int & resX, const int & resY);
 

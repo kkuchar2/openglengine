@@ -49,6 +49,7 @@ class Mesh : public Component {
         bool disableNormals = true;
         bool prepared = false;
         bool isInstanced = false;
+        bool cubeMap = false;
 
         GLuint textureId = 0;
 
@@ -85,6 +86,7 @@ class Mesh : public Component {
         void render(GLenum renderMode, int indicesCount);
 
         void loadTexture(const char * path);
+        void loadCubeMap(const std::vector<std::string> & paths);
 
         void calculateNormals();
 

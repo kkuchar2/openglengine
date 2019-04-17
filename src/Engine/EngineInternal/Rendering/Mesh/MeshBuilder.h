@@ -9,6 +9,7 @@
 #include <Rendering/Shading/ShaderPool.h>
 #include <Rendering/Primitives/Line.h>
 #include <Rendering/Primitives/LinePrototype.h>
+#include <Rendering/Primitives/SkyboxPrototype.h>
 
 #include "SurfacePrototype.h"
 
@@ -31,6 +32,9 @@ class MeshBuilder {
                         break;
                     case SURFACE:
                         mesh = std::make_shared<Surface>(300, 300);
+                        break;
+                    case SKYBOX:
+                        mesh = std::make_shared<Cube>();
                         break;
                     case RESOURCE:
                         mesh = std::make_shared<Mesh>(proto->path);
@@ -57,6 +61,7 @@ class MeshBuilder {
 
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
             mesh->isInstanced = proto->instanced;
+            mesh->cubeMap = proto->cubeMap;
             mesh->disableNormals = proto->disableNormals;
             mesh->shaderInit = [proto](ShaderPtrRef s) {
                 s->setVec4("color", proto->color);
@@ -65,10 +70,18 @@ class MeshBuilder {
             };
             mesh->projection = projection;
 
-            if (proto->texture != nullptr) {
-                mesh->loadTexture(proto->texture);
-            }
 
+            // Load texture
+            if (proto->meshType != SKYBOX) {
+                if (proto->texture != nullptr) {
+                    mesh->loadTexture(proto->texture);
+                }
+            }
+            else {
+                auto skyboxProto = std::dynamic_pointer_cast<SkyboxPrototype>(proto);
+                mesh->cubeMap = true;
+                mesh->loadCubeMap(skyboxProto->paths);
+            }
 
             return mesh;
         }

@@ -16,6 +16,7 @@ class MeshPrototype : public Component {
         const char * texture = nullptr;
         bool instanced = false;
         bool disableNormals = false;
+        bool cubeMap = false;
 
         MeshPrototype();
 

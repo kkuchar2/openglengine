@@ -44,7 +44,7 @@ void Mesh::CreateVertexBuffer() {
     if (vertices.empty()) return;
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
@@ -53,7 +53,7 @@ void Mesh::CreateUVBuffer() {
     if (uvs.empty()) return;
     glGenBuffers(1, &uvbo);
     glBindBuffer(GL_ARRAY_BUFFER, uvbo);
-    glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(float), uvs.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(float), uvs.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
@@ -62,7 +62,7 @@ void Mesh::CreateNormalsBuffer() {
     if (normals.empty()) return;
     glGenBuffers(1, &nbo);
     glBindBuffer(GL_ARRAY_BUFFER, nbo);
-    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(float), normals.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(float), normals.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
@@ -92,26 +92,45 @@ void Mesh::CreateTransformBuffer() {
     glVertexAttribDivisor(6, 1);
 }
 
-void Mesh::render() {
-    render(mode, static_cast<int>(indices.size()));
-}
-
 void Mesh::render(GLenum renderMode, int indicesCount) {
+    if (cubeMap) {
+        glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
+    }
+    else {
+        glBindTexture(GL_TEXTURE_2D, textureId);
+    }
+
     glBindVertexArray(vao);
     glDrawElements(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr);
+}
+
+void Mesh::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
+    if (cubeMap) {
+        glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
+    }
+    else {
+        glBindTexture(GL_TEXTURE_2D, textureId);
+    }
+
+    glBindVertexArray(vao);
+    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
+}
+
+void Mesh::render() {
+    render(mode, static_cast<int>(indices.size()));
 }
 
 void Mesh::renderInstanced(int instancesCount) {
     renderInstanced(mode, static_cast<int>(indices.size()), instancesCount);
 }
 
-void Mesh::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
-    glBindVertexArray(vao);
-    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
-}
 
 void Mesh::loadTexture(const char * path) {
-    textureId = TextureLoader::load(path);
+    textureId = TextureLoader::generateAndBindTexture(TextureLoader::loadTextureData(path));
+}
+
+void Mesh::loadCubeMap(const std::vector<std::string> & paths) {
+    textureId = TextureLoader::loadCubeMap(paths);
 }
 
 void Mesh::calculateNormals() {

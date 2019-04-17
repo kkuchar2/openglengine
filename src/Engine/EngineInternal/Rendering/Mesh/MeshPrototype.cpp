@@ -1,6 +1,6 @@
 #include "MeshPrototype.h"
 
-MeshPrototype::MeshPrototype() { }
+MeshPrototype::MeshPrototype() = default;
 
 MeshPrototype::MeshPrototype(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color) {
     this->meshType = meshType;
@@ -22,8 +22,10 @@ const char * MeshPrototype::getMeshType() {
         case QUAD: return "QUAD";
         case CUBE: return "CUBE";
         case SURFACE: return "SURFACE";
+        case SKYBOX: return "SKYBOX";
         case RESOURCE: return path;
         case NONE: return "";
         default: return "";
+
     }
 }

@@ -110,6 +110,7 @@ void TextureRenderer::render() {
     // Render all meshes in instanced rendering mode
     for (auto & pair : map) {
         for (auto & pair2 : map[pair.first]) {
+
             switch (pair2.second.first->projection) {
 
                 case PERSPECTIVE:

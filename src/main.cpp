@@ -16,7 +16,7 @@ int main() {
 
     engine->addScene(baseScene());
     engine->addScene(instancedScene());
-    engine->addScene(orthoScene());
+    //engine->addScene(orthoScene());
 
     engine->start();
 
