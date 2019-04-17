@@ -2,6 +2,6 @@
 
 Project to learn rendering pipeline from scratch. Simple rendering engine. 
 
-[![Video](https://j.gifs.com/zv7n0Z.gif)](https://www.youtube.com/watch?v=p-eLOMT7Z0Y)
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
 
 ![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/mesh_prototype/current_output.png)
