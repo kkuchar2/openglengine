@@ -13,6 +13,7 @@ std::shared_ptr<GameObject> object(const char * path, const glm::vec3 & size, co
     auto proto = MeshPrototype::of(path, DIFFUSE, color);
     proto->instanced = true;
     obj->addComponent(proto);
+    obj->addComponent(std::make_shared<RotatingBehaviour>());
     return obj;
 }
 

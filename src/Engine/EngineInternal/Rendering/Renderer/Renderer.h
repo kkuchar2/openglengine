@@ -64,6 +64,8 @@ class Renderer {
 
         std::shared_ptr<BaseCamera> getCamera(const Projection & projection);
 
+        int allInstancedCount = 0;
+
     public:
 
         double width = 1.0;

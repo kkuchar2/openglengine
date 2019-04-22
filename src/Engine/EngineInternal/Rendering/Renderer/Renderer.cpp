@@ -69,6 +69,7 @@ void Renderer::preprocessScenes() {
                     map[meshType][shaderType]->addInstance(child->transform.modelMatrix);
                 }
             }
+            allInstancedCount++;
         }
         else {
             auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
@@ -82,6 +83,14 @@ void Renderer::updateModelMatrices(int startRange, int endRange) {
     int idx = 0;
 
     for (auto & child : objectsToRender) {
+
+        if (idx < startRange) {
+            idx++;
+            continue;
+        }
+        if (idx > endRange) {
+            break;
+        }
         child->OnUpdate();
         auto meshPrototype = child->getMeshPrototype();
         if (!meshPrototype.get()) continue;
@@ -93,17 +102,15 @@ void Renderer::updateModelMatrices(int startRange, int endRange) {
 
 void Renderer::renderAllMeshes() {
 
-    // Update all model matrices
-    int idx = 0;
+    std::thread t1 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 0 + 0, (allInstancedCount / 4) * 1);
+    std::thread t2 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 1 + 1, (allInstancedCount / 4) * 2);
+    std::thread t3 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 2 + 1, (allInstancedCount / 4) * 3);
+    std::thread t4 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 3 + 1, (allInstancedCount / 4) * 4 - 1);
 
-    for (auto & child : objectsToRender) {
-        child->OnUpdate();
-        auto meshPrototype = child->getMeshPrototype();
-        if (!meshPrototype.get()) continue;
-        if (!meshPrototype->instanced) continue;
-        map[meshPrototype->meshTypeStr][meshPrototype->shaderType]->mesh->modelMatrices[idx] = child->transform.modelMatrix;
-        idx++;
-    }
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
 
     // Instanced render
     for (auto const &[meshTypeString, shaderTypeToMeshesMap] : map) {

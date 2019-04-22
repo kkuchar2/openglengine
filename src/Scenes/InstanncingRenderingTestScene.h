@@ -5,10 +5,10 @@
 
 void addScatteredCubes(const std::shared_ptr<Scene> & scene) {
 
-    for (int x = 0; x < 50; x++) {
-        for (int y = 0; y < 50; y++) {
-            for (int z = 0; z < 50; z++) {
-                scene->addChild(cube(glm::vec3(0.1f), glm::vec3(x, y, z), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+    for (int x = 0; x < 30; x++) {
+        for (int y = 0; y < 100; y++) {
+            for (int z = 0; z < 100; z++) {
+                scene->addChild(cube(glm::vec3(0.2f), glm::vec3(x * 4, y * 4, z * 4), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
             }
         }
     }
