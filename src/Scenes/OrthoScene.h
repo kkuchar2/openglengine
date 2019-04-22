@@ -1,9 +1,9 @@
 #pragma once
 
-#include <Rendering/SceneDefinition/UserScene.h>
+#include <Rendering/SceneDefinition/Scene.h>
 
-std::shared_ptr<UserScene> orthoScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> orthoScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<MeshPrototype> quadProto = std::make_shared<MeshPrototype>();
 
@@ -19,7 +19,7 @@ std::shared_ptr<UserScene> orthoScene() {
     obj1->transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 
     scene->projection = ORTOGRAPHIC;
-    scene->addObject(obj1);
+    scene->addChild(obj1);
 
     return scene;
 }

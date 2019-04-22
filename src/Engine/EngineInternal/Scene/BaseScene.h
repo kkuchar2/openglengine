@@ -7,8 +7,8 @@
 #include <Rendering/Primitives/LinePrototype.h>
 #include <Rendering/Primitives/SkyboxPrototype.h>
 
-std::shared_ptr<UserScene> baseScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> baseScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<SkyboxPrototype> skybox = std::make_shared<SkyboxPrototype>();
     skybox->paths = {
@@ -57,13 +57,11 @@ std::shared_ptr<UserScene> baseScene() {
     axisZ->color = glm::vec4(0.0f, 0.0, 1.0, 1.0);
     std::shared_ptr<GameObject> axisZObject = std::make_shared<GameObject>(axisZ);
 
-    scene->addObject(skyBoxObject);
-
-    scene->addObject(axisXObject);
-    scene->addObject(axisYObject);
-    scene->addObject(axisZObject);
-    scene->addObject(gridObject);
-
+    scene->addChild(skyBoxObject);
+    scene->addChild(axisXObject);
+    scene->addChild(axisYObject);
+    scene->addChild(axisZObject);
+    scene->addChild(gridObject);
 
     return scene;
 }

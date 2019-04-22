@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject/GameObject.h"
-#include "SceneDefinition/UserScene.h"
+#include "SceneDefinition/Scene.h"
 
 #include "Rendering/Camera/OrtographicCamera.h"
 #include "Rendering/Camera/PerspectiveCamera.h"
@@ -13,8 +13,7 @@
 
 #include "../Editor/Editor.h"
 
-#include "TextureRenderer/TextureRenderer.h"
-#include "SceneDefinition/SceneMapper.h"
+#include "Rendering/Renderer/Renderer.h"
 
 class Engine {
 
@@ -33,9 +32,9 @@ class Engine {
 
         Engine();
 
-        void addScene(const std::shared_ptr<UserScene> & scene);
+        void addScene(const std::shared_ptr<Scene> & scene);
 
         void start();
 
-        std::shared_ptr<TextureRenderer> renderer;
+        std::shared_ptr<Renderer> renderer;
 };

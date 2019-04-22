@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="freetype"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\dependencies\;CMake Files\dependencies\glfw\;CMake Files\dependencies\glfw\CMake\;CMake Files\dependencies\glfw\CMake\modules\;CMake Files\dependencies\glfw\src\;CMake Files\dependencies\RoseCpp\;CMake Files\dependencies\freetype2\;CMake Files\dependencies\freetype2\builds\;CMake Files\dependencies\freetype2\builds\cmake\;CMake Files\dependencies\glm\;CMake Files\dependencies\glm\cmake\;CMake Files\dependencies\glm\glm\;CMake Files\dependencies\glm\test\;CMake Files\dependencies\glm\test\bug\;CMake Files\dependencies\glm\test\core\;CMake Files\dependencies\glm\test\ext\;CMake Files\dependencies\glm\test\gtc\;CMake Files\dependencies\glm\test\gtx\;CMake Files\dependencies\glm\test\perf\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freetype">
+				<Option output="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/libfreetype.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/include"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 freetype"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freetype/fast">
+				<Option output="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/libfreetype.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/include"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 freetype/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/freetype2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/config/ftconfig.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/config/ftheader.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/config/ftmodule.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/config/ftoption.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/config/ftstdlib.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/freetype.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftadvanc.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftbbox.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftbdf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftbitmap.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftbzip2.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftcache.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftchapters.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftcid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftcolor.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftdriver.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/fterrdef.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/fterrors.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftfntfmt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftgasp.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftglyph.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftgxval.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftgzip.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftimage.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftincrem.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftlcdfil.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftlist.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftlzw.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftmac.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftmm.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftmodapi.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftmoderr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftotval.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftoutln.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftparams.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftpfr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftrender.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftsizes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftsnames.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftstroke.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftsynth.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftsystem.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/fttrigon.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/fttypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ftwinfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/autohint.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/cffotypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/cfftypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftcalc.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftdebug.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftdrv.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftgloadr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/fthash.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftmemory.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftobjs.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftpsprop.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftrfork.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftserv.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftstream.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/fttrace.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/ftvalid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/internal.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/psaux.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/pshints.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/sfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/t1types.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/internal/tttypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/t1tables.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/ttnameid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/tttables.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/freetype/tttags.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/include/ft2build.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/autofit/autofit.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftbase.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftbase.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftbbox.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftbdf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftbitmap.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftcid.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftdebug.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftfstype.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftgasp.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftglyph.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftgxval.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftinit.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftmm.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftotval.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftpatent.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftpfr.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftstroke.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftsynth.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftsystem.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/fttype1.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/base/ftwinfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/bdf/bdf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/bdf/bdf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/bzip2/ftbzip2.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/cache/ftcache.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/cff/cff.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/cid/type1cid.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/gzip/ftgzip.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/lzw/ftlzw.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/pcf/pcf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/pcf/pcf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/pfr/pfr.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/psaux/psaux.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/pshinter/pshinter.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/psnames/psnames.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/raster/raster.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/sfnt/sfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/smooth/smooth.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/truetype/truetype.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/type1/type1.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/type42/type42.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/winfonts/winfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/src/winfonts/winfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glfw\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/CMake/modules/FindVulkan.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glfw\CMake\modules\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/RoseCpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\RoseCpp\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\freetype2\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/builds/cmake/FindHarfBuzz.cmake">
+			<Option virtualFolder="CMake Files\dependencies\freetype2\builds\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/CMakePackageConfigHelpers.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/GNUInstallDirs.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glm.pc.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glmBuildConfig.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glmConfig.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\glm\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/bug/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\bug\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/core/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\core\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/ext/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\ext\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/gtc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\gtc\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/gtx/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\gtx\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/perf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\perf\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

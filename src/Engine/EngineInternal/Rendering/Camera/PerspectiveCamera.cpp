@@ -1,17 +1,5 @@
 #include "PerspectiveCamera.h"
 
-glm::vec3 PerspectiveCamera::getPosition() {
-    return position;
-}
-
-glm::mat4x4 PerspectiveCamera::getViewMatrix() {
-    return glm::lookAt(position, position + lookDirectionVector, upVector);
-}
-
-glm::mat4x4 PerspectiveCamera::getProjectionMatrix() {
-    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 20000.0f);
-}
-
 void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {
     if (disableMovement) {
         return;
@@ -21,7 +9,7 @@ void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {
         return;
     }
 
-    float sensitivity = 0.05;
+    float sensitivity = 0.1;
 
     yaw += (delta.x * sensitivity);
     pitch += (delta.y * sensitivity);
@@ -49,8 +37,8 @@ void PerspectiveCamera::onMouseButtonPressed(const MouseButtonInfo & info) {
     if (info.button == GLFW_MOUSE_BUTTON_RIGHT) {
         if (info.action == GLFW_PRESS && !rightMousePressed) {
             rightMousePressed = true;
-        } else if (rightMousePressed) {
-
+        }
+        else if (rightMousePressed) {
             rightMousePressed = false;
         }
     }
@@ -65,17 +53,27 @@ void PerspectiveCamera::onKeyInfoReceived(const KeyInfo & keyInfo) {
     }
 
     if (keyInfo.pressedKeys[GLFW_KEY_LEFT_SHIFT]) {
-        speed *= 20.0f;
+        speed *= 40.0f;
     }
 
     auto velocitySum = glm::vec3(0.0);
 
     velocitySum += float(keyInfo.pressedKeys[GLFW_KEY_W]) * lookDirectionVector * speed;
     velocitySum -= float(keyInfo.pressedKeys[GLFW_KEY_S]) * lookDirectionVector * speed;
-    velocitySum +=
-            float(keyInfo.pressedKeys[GLFW_KEY_A]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
-    velocitySum -=
-            float(keyInfo.pressedKeys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
+    velocitySum += float(keyInfo.pressedKeys[GLFW_KEY_A]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
+    velocitySum -= float(keyInfo.pressedKeys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
 
     velocity = velocitySum;
+}
+
+glm::vec3 PerspectiveCamera::getPosition() {
+    return position;
+}
+
+glm::mat4x4 PerspectiveCamera::getViewMatrix() {
+    return glm::lookAt(position, position + lookDirectionVector, upVector);
+}
+
+glm::mat4x4 PerspectiveCamera::getProjectionMatrix() {
+    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 20000.0f);
 }

@@ -39,8 +39,12 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
-        // For instance rendering
+        glm::mat4x4 modelMatrix = glm::mat4x4();
+
+        // Model matrices
         std::vector<glm::mat4> modelMatrices;
+
+        const char * meshType = "default";
 
         GLenum mode = GL_TRIANGLES;
 
@@ -82,6 +86,8 @@ class Mesh : public Component {
         virtual void renderInstanced(int instancesCount);
 
         void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
+
+        void UpdateModelMatrices();
 
         void render(GLenum renderMode, int indicesCount);
 

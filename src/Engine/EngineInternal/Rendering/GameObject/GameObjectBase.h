@@ -3,6 +3,8 @@
 #include <memory>
 #include <vector>
 #include <Component.h>
+#include <Rendering/Mesh/MeshPrototype.h>
+#include <Rendering/Camera/Projection.h>
 
 
 class GameObjectBase {
@@ -10,6 +12,10 @@ class GameObjectBase {
     public:
 
         std::vector<std::shared_ptr<Component>> components;
+
+        std::shared_ptr<MeshPrototype> meshProto;
+
+        Projection projection = PERSPECTIVE;
 
         GameObjectBase();
 
@@ -29,6 +35,10 @@ class GameObjectBase {
             }
 
             return nullptr;
+        }
+
+        std::shared_ptr<MeshPrototype> getMeshPrototype() {
+            return meshProto;
         }
 
         template<typename T>

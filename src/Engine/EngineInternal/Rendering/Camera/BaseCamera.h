@@ -11,9 +11,11 @@
 #include "Mesh/Mesh.h"
 #include "../../Window/Window.h"
 #include "../../Utils/MatrixUtils.h"
-#include "EngineObject/EngineObject.h"
+
 #include "GameObject/GameObject.h"
 #include "Projection.h"
+
+#include <Rendering/Renderer/InstancedMeshInfo.h>
 
 #include <Window/Input/InputSystem.h>
 
@@ -22,21 +24,25 @@ class BaseCamera : public Component {
     private:
 
         Observer<glm::vec2> mousePositionDeltaObserver;
-        Subscription mousePositionDeltaSubscription;
-
         Observer<MouseButtonInfo> mouseButtonObserver;
-        Subscription mouseButtonSubscription;
-
         Observer<KeyInfo> keyInfoObserver;
+
+        Subscription mousePositionDeltaSubscription;
+        Subscription mouseButtonSubscription;
         Subscription keyInfoSubscription;
+
+
+        glm::mat4x4 projectionMatrix = glm::mat4x4();
+        glm::mat4x4 viewMatrix = glm::mat4x4();
+        glm::mat4x4 projectionViewMatrix = glm::mat4x4();
 
     public:
 
-        Projection projection;
+        Projection projection = PERSPECTIVE;
 
         BaseCamera();
 
-        void renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount);
+        void renderInstanced(const std::shared_ptr<InstancedMeshInfo> & info);
 
         void render(const std::shared_ptr<Mesh> & mesh, const Transform & transform);
 

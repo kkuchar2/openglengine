@@ -6,6 +6,7 @@ MeshPrototype::MeshPrototype(const MeshType & meshType, const ShaderType & shade
     this->meshType = meshType;
     this->shaderType = shaderType;
     this->color = color;
+    this->meshTypeStr = getMeshType();
 }
 
 MeshPrototype::MeshPrototype(const char * path, const ShaderType & shaderType, const glm::vec4 & color) {
@@ -13,6 +14,7 @@ MeshPrototype::MeshPrototype(const char * path, const ShaderType & shaderType, c
     this->meshType = RESOURCE;
     this->shaderType = shaderType;
     this->color = color;
+    this->meshTypeStr = getMeshType();
 }
 
 const char * MeshPrototype::getMeshType() {
@@ -26,6 +28,5 @@ const char * MeshPrototype::getMeshType() {
         case RESOURCE: return path;
         case NONE: return "";
         default: return "";
-
     }
 }

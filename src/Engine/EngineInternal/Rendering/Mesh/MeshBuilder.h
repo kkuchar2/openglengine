@@ -10,6 +10,7 @@
 #include <Rendering/Primitives/Line.h>
 #include <Rendering/Primitives/LinePrototype.h>
 #include <Rendering/Primitives/SkyboxPrototype.h>
+#include <Rendering/Primitives/Point.h>
 
 #include "SurfacePrototype.h"
 
@@ -33,6 +34,9 @@ class MeshBuilder {
                     case SURFACE:
                         mesh = std::make_shared<Surface>(300, 300);
                         break;
+                    case POINT:
+                        mesh = std::make_shared<Point>();
+                        break;
                     case SKYBOX:
                         mesh = std::make_shared<Cube>();
                         break;
@@ -42,7 +46,8 @@ class MeshBuilder {
                     case NONE:
                         mesh = std::make_shared<Mesh>(proto->path);
                         break;
-                }
+
+                 }
 
 
                 if (proto->meshType == LINE) {
@@ -83,6 +88,8 @@ class MeshBuilder {
                 mesh->loadCubeMap(skyboxProto->paths);
             }
 
+            mesh->projection = projection;
+            mesh->meshType = proto->getMeshType();
             return mesh;
         }
 };

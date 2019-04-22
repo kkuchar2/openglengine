@@ -7,5 +7,6 @@ enum MeshType {
     SURFACE,
     RESOURCE,
     NONE,
-    SKYBOX
+    SKYBOX,
+    POINT
 };

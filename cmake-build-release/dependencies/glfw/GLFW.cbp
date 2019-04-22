@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="GLFW"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\dependencies\;CMake Files\dependencies\glfw\;CMake Files\dependencies\glfw\CMake\;CMake Files\dependencies\glfw\CMake\modules\;CMake Files\dependencies\glfw\src\;CMake Files\dependencies\RoseCpp\;CMake Files\dependencies\freetype2\;CMake Files\dependencies\freetype2\builds\;CMake Files\dependencies\freetype2\builds\cmake\;CMake Files\dependencies\glm\;CMake Files\dependencies\glm\cmake\;CMake Files\dependencies\glm\glm\;CMake Files\dependencies\glm\test\;CMake Files\dependencies\glm\test\bug\;CMake Files\dependencies\glm\test\core\;CMake Files\dependencies\glm\test\ext\;CMake Files\dependencies\glm\test\gtc\;CMake Files\dependencies\glm\test\gtx\;CMake Files\dependencies\glm\test\perf\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw">
+				<Option output="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/include"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 glfw"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw/fast">
+				<Option output="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/include"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src"/>
+					<Add directory="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 glfw/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/cmake-build-release/dependencies/glfw/src/glfw_config.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/include/GLFW/glfw3.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/include/GLFW/glfw3native.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/egl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/egl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glx_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glx_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/input.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/internal.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/linux_joystick.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/linux_joystick.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/mappings.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/osmesa_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/osmesa_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/posix_thread.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/posix_thread.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/posix_time.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/posix_time.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/vulkan.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/x11_init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/x11_monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/x11_platform.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/x11_window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/xkb_unicode.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/xkb_unicode.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glfw\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/CMake/modules/FindVulkan.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glfw\CMake\modules\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glfw/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\dependencies\glfw\src\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/RoseCpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\RoseCpp\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\freetype2\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/freetype2/builds/cmake/FindHarfBuzz.cmake">
+			<Option virtualFolder="CMake Files\dependencies\freetype2\builds\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/CMakePackageConfigHelpers.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/GNUInstallDirs.cmake">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glm.pc.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glmBuildConfig.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/cmake/glmConfig.cmake.in">
+			<Option virtualFolder="CMake Files\dependencies\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\glm\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/bug/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\bug\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/core/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\core\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/ext/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\ext\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/gtc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\gtc\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/gtx/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\gtx\"/>
+		</Unit>
+		<Unit filename="/home/kkucharski/Desktop/OpenGLEngine/dependencies/glm/test/perf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\dependencies\glm\test\perf\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

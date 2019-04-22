@@ -4,8 +4,8 @@
 
 #include "../Engine/EngineInternal/Utils/NormalsGenerator.h"
 
-std::shared_ptr<UserScene> cubeScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> cubeScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-2.0f, 2.0f, 2.0f);
 
@@ -27,15 +27,15 @@ std::shared_ptr<UserScene> cubeScene() {
 
     lampObject->transform.scale = glm::vec3(0.1f);
     lampObject->transform.position = *lightPos.get();
-    scene->addObject(lampObject);
+    scene->addChild(lampObject);
 
     auto cubeObject = std::make_shared<GameObject>(cube);
     cubeObject->transform.position = glm::vec3(0.0f, 0.5f, 0.0f);
 
-    scene->addObject(cubeObject);
+    scene->addChild(cubeObject);
 
     std::shared_ptr<GameObject> normals = NormalsGenerator::generate(cubeObject->transform, cube, ShaderPool::Instance().colorShader);
-    scene->addObject(normals);
+    scene->addChild(normals);
 
     return scene;
 }

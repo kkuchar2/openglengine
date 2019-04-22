@@ -12,7 +12,7 @@ class Scene {
 
         Scene() = default;
 
-        void addObject(std::shared_ptr<GameObject> & obj) {
+        void addChild(std::shared_ptr<GameObject> & obj) {
             objectsToRender.push_back(obj);
         }
 };

@@ -3,13 +3,14 @@
 Engine::Engine() {
     window = std::make_shared<Window>(1500, 1000);
 
-    renderer = std::make_shared<TextureRenderer>(window);
+    renderer = std::make_shared<Renderer>(window);
 
     InputDispatcher::init(window);
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
+    glPointSize(1.0f);
 
     editor = std::make_shared<Editor>(window);
 
@@ -22,11 +23,12 @@ Engine::Engine() {
     subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
 }
 
-void Engine::addScene(const std::shared_ptr<UserScene> & scene) {
-    renderer->addScene(SceneMapper::mapToEngine(scene));
+void Engine::addScene(const std::shared_ptr<Scene> & scene) {
+    renderer->addScene(scene);
 }
 
 void Engine::prepareScenes() {
+    renderer->preprocessScenes();
     renderer->prepare();
 }
 

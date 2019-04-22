@@ -9,8 +9,8 @@ class SphereUpdateBehaviour : public BehaviourComponent {
     }
 };
 
-std::shared_ptr<UserScene> shaderTestScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> shaderTestScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(1.2f, 1.0f, 2.0f);
     std::shared_ptr<Mesh> sphereMesh = Mesh::create("../resources/models/sphere.obj");
@@ -28,7 +28,7 @@ std::shared_ptr<UserScene> shaderTestScene() {
     sphereObject->addComponent(std::make_shared<SphereUpdateBehaviour>());
     sphereObject->drawBoundingBox = true;
 
-    scene->addObject(sphereObject);
+    scene->addChild(sphereObject);
 
     return scene;
 }

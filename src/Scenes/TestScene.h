@@ -4,8 +4,8 @@
 
 #include "../Engine/EngineInternal/Utils/NormalsGenerator.h"
 
-std::shared_ptr<UserScene> testScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> testScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 10.0f, 2.0f);
 
@@ -44,12 +44,12 @@ std::shared_ptr<UserScene> testScene() {
     auto surfaceObject = std::make_shared<GameObject>(surface);
     surfaceObject->transform.position = glm::vec3(0.0f, 1.5f, 0.0f);
 
-    scene->addObject(surfaceObject);
-    scene->addObject(lampMeshObject);
-    scene->addObject(cubeObject);
+    scene->addChild(surfaceObject);
+    scene->addChild(lampMeshObject);
+    scene->addChild(cubeObject);
 
     //std::shared_ptr<GameObject> normals = NormalsGenerator::generate(surface, colorShader);
-    //scene->addObject(normals);
+    //scene->addChild(normals);
 
     return scene;
 }

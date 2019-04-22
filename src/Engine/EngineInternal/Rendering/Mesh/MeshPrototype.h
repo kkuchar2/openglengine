@@ -18,6 +18,8 @@ class MeshPrototype : public Component {
         bool disableNormals = false;
         bool cubeMap = false;
 
+        const char * meshTypeStr;
+
         MeshPrototype();
 
         MeshPrototype(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color);
