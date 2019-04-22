@@ -102,7 +102,5 @@ class Renderer {
 
         void logRenderMap();
 
-        glm::mat4x4 createModelMatrix(const Projection & projection, const Transform & transform);
-
         ShaderToMeshesMap createShaderToMeshesMap(const ShaderType & shaderType, const std::shared_ptr<Mesh> & mesh, const Projection & projection, const Transform & transform);
 };

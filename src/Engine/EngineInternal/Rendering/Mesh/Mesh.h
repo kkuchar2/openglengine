@@ -39,9 +39,6 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
-        glm::mat4x4 modelMatrix = glm::mat4x4();
-
-        // Model matrices
         std::vector<glm::mat4> modelMatrices;
 
         const char * meshType = "default";
@@ -52,7 +49,6 @@ class Mesh : public Component {
 
         bool disableNormals = true;
         bool prepared = false;
-        bool isInstanced = false;
         bool cubeMap = false;
 
         GLuint textureId = 0;
@@ -63,7 +59,7 @@ class Mesh : public Component {
         GLuint vbo = 0;
         GLuint uvbo = 0;
         GLuint nbo = 0;
-        GLuint posvbo = 0;
+        GLuint model_matrices_vbo = 0;
         GLuint ibo = 0;
 
         ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
@@ -79,7 +75,7 @@ class Mesh : public Component {
         void CreateVertexBuffer();
         void CreateUVBuffer();
         void CreateNormalsBuffer();
-        void CreateTransformBuffer();
+        void CreateModelMatricesBuffer();
 
         virtual void render();
 

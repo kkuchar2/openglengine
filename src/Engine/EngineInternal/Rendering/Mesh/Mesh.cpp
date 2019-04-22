@@ -19,10 +19,7 @@ void Mesh::prepare() {
     CreateVertexBuffer();
     CreateUVBuffer();
     CreateNormalsBuffer();
-
-    if (isInstanced) {
-        CreateTransformBuffer();
-    }
+    CreateModelMatricesBuffer();
 
     glBindVertexArray(0);
 
@@ -67,11 +64,11 @@ void Mesh::CreateNormalsBuffer() {
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
-void Mesh::CreateTransformBuffer() {
+void Mesh::CreateModelMatricesBuffer() {
     if (modelMatrices.empty()) return;
 
-    glGenBuffers(1, &posvbo);
-    glBindBuffer(GL_ARRAY_BUFFER, posvbo);
+    glGenBuffers(1, &model_matrices_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
     glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4), nullptr, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(3);
@@ -118,7 +115,7 @@ void Mesh::UpdateModelMatrices() {
 
     glBindVertexArray(vao);
 
-    glBindBuffer(GL_ARRAY_BUFFER, posvbo);
+    glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
     glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4), modelMatrices.data(), GL_STREAM_DRAW);
 
     glEnableVertexAttribArray(3);

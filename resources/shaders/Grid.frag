@@ -1,6 +1,5 @@
 #version 400
 
-
 uniform vec2 resolution;
 uniform sampler2D tex;
 

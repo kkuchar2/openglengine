@@ -28,16 +28,11 @@ void Renderer::prepare() {
     }
 }
 
-glm::mat4x4 Renderer::createModelMatrix(const Projection & projection, const Transform & transform) {
-    return getCamera(projection)->createModelMatrix(transform);
-}
-
 ShaderToMeshesMap Renderer::createShaderToMeshesMap(const ShaderType & shaderType, const std::shared_ptr<Mesh> & mesh,
                                                     const Projection & projection, const Transform & transform) {
     ShaderToMeshesMap shaderToMeshes;
     shaderToMeshes.insert(std::make_pair(shaderType, InstancedMeshInfo::ptr(mesh, 1)));
-    mesh->modelMatrix = getCamera(projection)->createModelMatrix(transform);
-    shaderToMeshes.at(shaderType)->mesh->modelMatrices.push_back(mesh->modelMatrix);
+    shaderToMeshes.at(shaderType)->mesh->modelMatrices.push_back(transform.modelMatrix);
     return shaderToMeshes;
 }
 
@@ -45,9 +40,8 @@ void Renderer::preprocessScenes() {
 
     for (auto & child : objectsToRender) {
 
-        child->transform.positionMatrix = MatrixUtils::translationMatrix(child->transform.position);
-        child->transform.scaleMatrix = MatrixUtils::scaleMatrix(child->transform.scale);
-        child->transform.rotationMatrix = MatrixUtils::rotationMatrix(child->transform.rotation);
+        child->transform.calculatePRSMatrices();
+        child->transform.calculateModelMatrix();
 
         Projection projection = child->projection;
 
@@ -63,27 +57,21 @@ void Renderer::preprocessScenes() {
 
         if (instanced) {
             if (map.count(meshType) == 0) {
-                auto mesh = MeshBuilder::of(meshPrototype, projection);
-                mesh->modelMatrix = getCamera(projection)->createModelMatrix(child->transform);
+                auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
                 map.insert(std::make_pair(meshType, createShaderToMeshesMap(shaderType, mesh, projection, child->transform)));
             }
             else {
                 if (map.at(meshType).count(shaderType) == 0) {
-                    auto mesh = MeshBuilder::of(meshPrototype, projection);
+                    auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
                     map.at(meshType) = createShaderToMeshesMap(shaderType, mesh, projection, child->transform);
                 }
                 else {
-                    glm::mat4 modelMatrix = getCamera(projection)->createModelMatrix(child->transform);
-
-                    map[meshType][shaderType]->increment();
-                    map[meshType][shaderType]->mesh->modelMatrix = modelMatrix;
-                    map[meshType][shaderType]->mesh->modelMatrices.push_back(modelMatrix);
+                    map[meshType][shaderType]->addInstance(child->transform.modelMatrix);
                 }
             }
         }
         else {
-            auto mesh = MeshBuilder::of(meshPrototype, projection);
-            mesh->modelMatrix = getCamera(projection)->createModelMatrix(child->transform);
+            auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
             meshesToRender.emplace_back(mesh, child);
         }
     }
@@ -106,8 +94,6 @@ void Renderer::updateModelMatrices(int startRange, int endRange) {
 void Renderer::renderAllMeshes() {
 
     // Update all model matrices
-
-
     int idx = 0;
 
     for (auto & child : objectsToRender) {
@@ -118,7 +104,6 @@ void Renderer::renderAllMeshes() {
         map[meshPrototype->meshTypeStr][meshPrototype->shaderType]->mesh->modelMatrices[idx] = child->transform.modelMatrix;
         idx++;
     }
-
 
     // Instanced render
     for (auto const &[meshTypeString, shaderTypeToMeshesMap] : map) {

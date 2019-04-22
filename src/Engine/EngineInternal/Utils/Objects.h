@@ -10,7 +10,7 @@ std::shared_ptr<GameObject> object(const char * path, const glm::vec3 & size, co
     float r = 0.0f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(90.0f-0.0f)));
     obj->transform.rotation = glm::vec3(0.0f, r, 0.0f);
 
-    auto proto = MeshPrototype::of(path, FAST_DIFFUSE, color);
+    auto proto = MeshPrototype::of(path, DIFFUSE, color);
     proto->instanced = true;
     obj->addComponent(proto);
     return obj;
@@ -25,7 +25,7 @@ std::shared_ptr<GameObject> cube(const glm::vec3 & size, const glm::vec3 & posit
     float r = 0.0f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(90.0f-0.0f)));
     obj->transform.rotation = glm::vec3(0.0f, r, 0.0f);
 
-    auto proto = MeshPrototype::of(CUBE, DIFFUSE_INSTANCED, color);
+    auto proto = MeshPrototype::of(CUBE, DIFFUSE, color);
     proto->instanced = true;
     obj->addComponent(proto);
     obj->addComponent(std::make_shared<RotatingBehaviour>());
@@ -40,7 +40,7 @@ std::shared_ptr<GameObject> point(const glm::vec3 & size, const glm::vec3 & posi
     float r = 0.0f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(90.0f-0.0f)));
     obj->transform.rotation = glm::vec3(0.0f, r, 0.0f);
 
-    auto proto = MeshPrototype::of(POINT, COLOR_INSTANCED, color);
+    auto proto = MeshPrototype::of(POINT, COLOR, color);
     proto->instanced = true;
     obj->addComponent(proto);
     obj->addComponent(std::make_shared<RotatingBehaviour>());
@@ -55,7 +55,7 @@ std::shared_ptr<GameObject> quad(const glm::vec3 & size, const glm::vec3 & posit
     float r = 0.0f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(90.0f-0.0f)));
     obj->transform.rotation = glm::vec3(0.0f, r, 0.0f);
 
-    auto proto = MeshPrototype::of(QUAD, COLOR_INSTANCED, color);
+    auto proto = MeshPrototype::of(QUAD, COLOR, color);
     proto->instanced = true;
     obj->addComponent(proto);
     obj->addComponent(std::make_shared<RotatingBehaviour>());
@@ -84,7 +84,7 @@ std::shared_ptr<GameObject> surface(const glm::vec2 & size, const glm::vec3 & po
     std::shared_ptr<GameObject> obj = GameObject::create();
     obj->transform.position = glm::vec3(position);
 
-    auto surfaceProto = SurfacePrototype::of(DIFFUSE_INSTANCED, color);
+    auto surfaceProto = SurfacePrototype::of(DIFFUSE, color);
     surfaceProto->width = size.x;
     surfaceProto->height = size.y;
     obj->addComponent(surfaceProto);
@@ -93,6 +93,6 @@ std::shared_ptr<GameObject> surface(const glm::vec2 & size, const glm::vec3 & po
 
 std::shared_ptr<GameObject> line(glm::vec3 start, glm::vec3 end, const glm::vec4 & color) {
     std::shared_ptr<GameObject> obj = GameObject::create();
-    obj->addComponent(MeshPrototype::of(LINE, COLOR_INSTANCED, color));
+    obj->addComponent(MeshPrototype::of(LINE, COLOR, color));
     return obj;
 }

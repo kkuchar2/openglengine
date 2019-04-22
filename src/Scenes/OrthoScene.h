@@ -9,7 +9,7 @@ std::shared_ptr<Scene> orthoScene() {
 
     quadProto->instanced = true;
     quadProto->meshType = QUAD;
-    quadProto->shaderType = COLOR_INSTANCED;
+    quadProto->shaderType = COLOR;
     quadProto->color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
     quadProto->disableNormals = true;
 

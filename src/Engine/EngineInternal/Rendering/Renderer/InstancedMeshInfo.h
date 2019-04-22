@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <Rendering/Mesh/Mesh.h>
+#include <glfw/deps/linmath.h>
 
 class InstancedMeshInfo {
     public:
@@ -13,7 +14,8 @@ class InstancedMeshInfo {
             this->instanceCount = instanceCount;
         }
 
-        void increment() {
+        void addInstance(const glm::mat4x4 & modelMatrix) {
+            mesh->modelMatrices.push_back(modelMatrix);
             instanceCount++;
         }
 

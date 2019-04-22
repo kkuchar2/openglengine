@@ -48,8 +48,6 @@ class BaseCamera : public Component {
 
         void initShaderCommon(const std::shared_ptr<Shader> & shader);
 
-        static glm::mat4 createModelMatrix(const Transform & transform);
-
         virtual glm::vec3 getPosition();
 
         virtual void onMouseMove(const glm::vec2 & delta);

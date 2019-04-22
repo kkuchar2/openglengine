@@ -11,12 +11,13 @@
 #include <Rendering/Primitives/LinePrototype.h>
 #include <Rendering/Primitives/SkyboxPrototype.h>
 #include <Rendering/Primitives/Point.h>
+#include <Rendering/GameObject/Transform.h>
 
 #include "SurfacePrototype.h"
 
 class MeshBuilder {
     public:
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection) {
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection, const Transform & transform) {
 
             std::shared_ptr<Mesh> mesh;
 
@@ -49,7 +50,6 @@ class MeshBuilder {
 
                  }
 
-
                 if (proto->meshType == LINE) {
                     auto lineProto = std::dynamic_pointer_cast<LinePrototype>(proto);
                     auto lineMesh = std::dynamic_pointer_cast<Line>(mesh);
@@ -65,7 +65,6 @@ class MeshBuilder {
             }
 
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
-            mesh->isInstanced = proto->instanced;
             mesh->cubeMap = proto->cubeMap;
             mesh->disableNormals = proto->disableNormals;
             mesh->shaderInit = [proto](ShaderPtrRef s) {
@@ -75,6 +74,7 @@ class MeshBuilder {
             };
             mesh->projection = projection;
 
+            mesh->modelMatrices.push_back(transform.modelMatrix);
 
             // Load texture
             if (proto->meshType != SKYBOX) {

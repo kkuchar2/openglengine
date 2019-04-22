@@ -18,36 +18,36 @@ std::shared_ptr<Scene> mainScene() {
 
     cubeMeshProto->instanced = true;
     cubeMeshProto->meshType = CUBE;
-    cubeMeshProto->shaderType = DIFFUSE_INSTANCED;
+    cubeMeshProto->shaderType = DIFFUSE;
     cubeMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     surfaceMeshProto->instanced = true;
     surfaceMeshProto->meshType = SURFACE;
-    surfaceMeshProto->shaderType = DIFFUSE_INSTANCED;
+    surfaceMeshProto->shaderType = DIFFUSE;
     surfaceMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     bunnyMeshProto->instanced = true;
     bunnyMeshProto->meshType = RESOURCE;
     bunnyMeshProto->path = "../resources/models/bunny.obj";
-    bunnyMeshProto->shaderType = DIFFUSE_INSTANCED;
+    bunnyMeshProto->shaderType = DIFFUSE;
     bunnyMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     suzanneMeshProto->instanced = true;
     suzanneMeshProto->meshType = RESOURCE;
     suzanneMeshProto->path = "../resources/models/suzanne.obj";
-    suzanneMeshProto->shaderType = DIFFUSE_INSTANCED;
+    suzanneMeshProto->shaderType = DIFFUSE;
     suzanneMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     teapotMeshProto->instanced = true;
     teapotMeshProto->meshType = RESOURCE;
     teapotMeshProto->path = "../resources/models/teapot.obj";
-    teapotMeshProto->shaderType = COLOR_INSTANCED;
+    teapotMeshProto->shaderType = COLOR;
     teapotMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     lampMeshProto->instanced = true;
     lampMeshProto->meshType = RESOURCE;
     lampMeshProto->path = "../resources/models/sphere.obj";
-    lampMeshProto->shaderType = COLOR_INSTANCED;
+    lampMeshProto->shaderType = COLOR;
     lampMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     std::shared_ptr<GameObject> lampMeshObject = std::make_shared<GameObject>(lampMeshProto);

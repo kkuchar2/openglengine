@@ -24,7 +24,7 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & tr
     std::shared_ptr<Shader> shader = mesh->shader;
     shader->use();
     initShaderCommon(shader);
-    shader->setMat4("m", mesh->modelMatrix);
+    mesh->UpdateModelMatrices();
     mesh->shaderInit(shader);
     mesh->render();
 }
@@ -32,10 +32,6 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & tr
 void BaseCamera::initShaderCommon(const std::shared_ptr<Shader> & shader) {
     shader->setVec3("cameraPosition", getPosition());
     shader->setMat4("vp", getProjectionMatrix() * getViewMatrix());
-}
-
-glm::mat4 BaseCamera::createModelMatrix(const Transform & transform) {
-    return transform.positionMatrix * transform.rotationMatrix * transform.scaleMatrix;
 }
 
 void BaseCamera::onMouseMove(const glm::vec2 & delta) {}
