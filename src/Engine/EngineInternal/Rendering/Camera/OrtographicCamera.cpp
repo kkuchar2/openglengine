@@ -1,13 +1,13 @@
 #include "OrtographicCamera.h"
 
-OrtographicCamera::OrtographicCamera(int w, int h) : BaseCamera() {
-    updateSize(w, h);
+OrtographicCamera::OrtographicCamera(const glm::vec2 & size) : BaseCamera() {
+    updateSize(size);
     projection = ORTOGRAPHIC;
 }
 
-void OrtographicCamera::updateSize(int w, int h) {
-    width = static_cast<float>(w);
-    height = static_cast<float>(h);
+void OrtographicCamera::updateSize(const glm::vec2 & size) {
+    width = size.x;
+    height = size.y;
 }
 
 glm::mat4x4 OrtographicCamera::getViewMatrix()  {

@@ -18,36 +18,36 @@ std::shared_ptr<Scene> mainScene() {
 
     cubeMeshProto->instanced = true;
     cubeMeshProto->meshType = CUBE;
-    cubeMeshProto->shaderType = DIFFUSE;
+    cubeMeshProto->shaderType = PHONG;
     cubeMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     surfaceMeshProto->instanced = true;
     surfaceMeshProto->meshType = SURFACE;
-    surfaceMeshProto->shaderType = DIFFUSE;
+    surfaceMeshProto->shaderType = PHONG;
     surfaceMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     bunnyMeshProto->instanced = true;
     bunnyMeshProto->meshType = RESOURCE;
     bunnyMeshProto->path = "../resources/models/bunny.obj";
-    bunnyMeshProto->shaderType = DIFFUSE;
+    bunnyMeshProto->shaderType = PHONG;
     bunnyMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     suzanneMeshProto->instanced = true;
     suzanneMeshProto->meshType = RESOURCE;
     suzanneMeshProto->path = "../resources/models/suzanne.obj";
-    suzanneMeshProto->shaderType = DIFFUSE;
+    suzanneMeshProto->shaderType = PHONG;
     suzanneMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     teapotMeshProto->instanced = true;
     teapotMeshProto->meshType = RESOURCE;
     teapotMeshProto->path = "../resources/models/teapot.obj";
-    teapotMeshProto->shaderType = COLOR;
+    teapotMeshProto->shaderType = PHONG;
     teapotMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     lampMeshProto->instanced = true;
     lampMeshProto->meshType = RESOURCE;
     lampMeshProto->path = "../resources/models/sphere.obj";
-    lampMeshProto->shaderType = COLOR;
+    lampMeshProto->shaderType = AMBIENT;
     lampMeshProto->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
     std::shared_ptr<GameObject> lampMeshObject = std::make_shared<GameObject>(lampMeshProto);
@@ -77,7 +77,7 @@ std::shared_ptr<Scene> mainScene() {
 
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
-    //scene->addChild(surfaceObject);
+    scene->addChild(surfaceObject);
     scene->addChild(lampMeshObject);
     scene->addChild(teapotMeshObject);
     scene->addChild(suzanneMeshObject);

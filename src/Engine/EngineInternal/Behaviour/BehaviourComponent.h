@@ -1,13 +1,20 @@
 #pragma once
 
+#include <Rendering/GameObject/GameObject.h>
 #include "GameObject/GameObjectBase.h"
 
 class BehaviourComponent : public Component {
 
     public:
-        GameObjectBase * gameObject = nullptr;
+        GameObject * gameObject = nullptr;
 
-        void Update() override {}
+        void Start() override {
 
-        void SetObject(GameObjectBase * obj);
+        }
+
+        void Update() override {
+
+        }
+
+        void SetObject(GameObject * obj);
 };

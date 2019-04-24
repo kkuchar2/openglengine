@@ -1,13 +1,8 @@
 #include "PerspectiveCamera.h"
 
 void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {
-    if (disableMovement) {
-        return;
-    }
-
-    if (!rightMousePressed) {
-        return;
-    }
+    if (disableMovement) return;
+    if (!rightMousePressed) return;
 
     float sensitivity = 0.1;
 
@@ -23,6 +18,7 @@ void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {
     }
 
     glm::vec3 f;
+
     f.x = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
     f.y = -sin(glm::radians(pitch));
     f.z = -cos(glm::radians(yaw)) * cos(glm::radians(pitch));
@@ -53,7 +49,7 @@ void PerspectiveCamera::onKeyInfoReceived(const KeyInfo & keyInfo) {
     }
 
     if (keyInfo.pressedKeys[GLFW_KEY_LEFT_SHIFT]) {
-        speed *= 40.0f;
+        speed *= 20.0f;
     }
 
     auto velocitySum = glm::vec3(0.0);
@@ -64,6 +60,17 @@ void PerspectiveCamera::onKeyInfoReceived(const KeyInfo & keyInfo) {
     velocitySum -= float(keyInfo.pressedKeys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
 
     velocity = velocitySum;
+}
+
+void PerspectiveCamera::Update() {
+    currentFrame = static_cast<float>(glfwGetTime());
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    position += velocity * deltaTime;
+}
+
+void PerspectiveCamera::updateAspectRatio(const glm::vec2 & size) {
+    aspectRatio = size.x / size.y;
 }
 
 glm::vec3 PerspectiveCamera::getPosition() {

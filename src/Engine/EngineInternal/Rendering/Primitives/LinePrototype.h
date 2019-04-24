@@ -11,7 +11,7 @@ class LinePrototype : public MeshPrototype {
 
         LinePrototype() : MeshPrototype() {
             meshType = LINE;
-            shaderType = COLOR;
+            shaderType = AMBIENT;
         }
 
 };

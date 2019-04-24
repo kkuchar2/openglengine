@@ -20,10 +20,9 @@ class Window {
 
         GLFWwindow * window { nullptr };
 
-        int width = 0;
-        int height = 0;
+        glm::vec2 size = glm::vec2(0.0);
 
-        bool vSyncEnabled = false;
+        bool vSyncEnabled = true;
 
         Window(const int & resX, const int & resY);
 

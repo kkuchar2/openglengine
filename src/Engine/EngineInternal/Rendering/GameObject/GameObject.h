@@ -8,13 +8,11 @@
 #include "Shading/ShaderPool.h"
 #include "Primitives/Line.h"
 #include "Mesh/MeshType.h"
-#include "Transform.h"
 
 class GameObject : public GameObjectBase {
 
     public:
-
-        Transform transform;
+        bool rendered = true;
 
         GameObject() = default;
 

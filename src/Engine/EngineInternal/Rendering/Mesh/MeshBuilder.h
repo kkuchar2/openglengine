@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include <Rendering/Primitives/Quad.h>
 #include <Rendering/Primitives/Cube.h>
 #include <Rendering/Primitives/Surface.h>
@@ -12,16 +10,17 @@
 #include <Rendering/Primitives/SkyboxPrototype.h>
 #include <Rendering/Primitives/Point.h>
 #include <Rendering/GameObject/Transform.h>
+#include <Rendering/GameObject/GameObject.h>
 
 #include "SurfacePrototype.h"
 
 class MeshBuilder {
     public:
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const Projection & projection, const Transform & transform) {
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const std::shared_ptr<GameObject> & obj) {
 
             std::shared_ptr<Mesh> mesh;
 
-            if (proto->path == nullptr) {
+            if (proto->path.empty()) {
                  switch (proto->meshType) {
                     case LINE:
                         mesh = std::make_shared<Line>();
@@ -64,19 +63,19 @@ class MeshBuilder {
                 std::cerr << "Mesh of type: " << proto->meshType << ", " << proto->path << " is null" << std::endl;
             }
 
+            mesh->meshType = proto->getMeshTypeStr();
+            mesh->shaderType = proto->getShaderTypeStr();
+            mesh->projection = obj->projection;
+            mesh->modelMatrices.push_back(obj->transform.modelMatrix);
+            mesh->colorVectors.push_back(proto->color);
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
             mesh->cubeMap = proto->cubeMap;
             mesh->disableNormals = proto->disableNormals;
             mesh->shaderInit = [proto](ShaderPtrRef s) {
-                s->setVec4("color", proto->color);
                 s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
                 s->setVec3("lightPos", glm::vec3(2.2f, 3.0f, 2.0f));
             };
-            mesh->projection = projection;
 
-            mesh->modelMatrices.push_back(transform.modelMatrix);
-
-            // Load texture
             if (proto->meshType != SKYBOX) {
                 if (proto->texture != nullptr) {
                     mesh->loadTexture(proto->texture);
@@ -88,8 +87,6 @@ class MeshBuilder {
                 mesh->loadCubeMap(skyboxProto->paths);
             }
 
-            mesh->projection = projection;
-            mesh->meshType = proto->getMeshType();
             return mesh;
         }
 };

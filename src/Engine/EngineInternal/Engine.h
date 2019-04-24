@@ -22,19 +22,17 @@ class Engine {
         std::shared_ptr<Window> window;
         std::shared_ptr<Editor> editor;
 
-        Observer<glm::vec2> observer;
+        Observer<glm::vec2> onWindowSizeChanged;
         Subscription subscription;
 
-        void renderGraphics();
-        void prepareScenes();
+        std::shared_ptr<Renderer> renderer;
 
+        void prepareScenes();
     public:
 
         Engine();
 
-        void addScene(const std::shared_ptr<Scene> & scene);
-
         void start();
 
-        std::shared_ptr<Renderer> renderer;
+        void addScene(const std::shared_ptr<Scene> & scene);
 };

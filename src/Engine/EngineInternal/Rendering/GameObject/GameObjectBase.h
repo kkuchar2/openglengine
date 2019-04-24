@@ -5,11 +5,14 @@
 #include <Component.h>
 #include <Rendering/Mesh/MeshPrototype.h>
 #include <Rendering/Camera/Projection.h>
+#include "Transform.h"
 
 
 class GameObjectBase {
 
     public:
+
+        Transform transform;
 
         std::vector<std::shared_ptr<Component>> components;
 

@@ -35,7 +35,7 @@ std::shared_ptr<Scene> baseScene() {
 
     std::shared_ptr<LinePrototype> axisX = std::make_shared<LinePrototype>();
     axisX->instanced = false;
-    axisX->shaderType = COLOR;
+    axisX->shaderType = AMBIENT;
     axisX->start = glm::vec3(-20.0f, 0.0f, 0.0f);
     axisX->end = glm::vec3(20.0f, 0.0f, 0.0f);
     axisX->color = glm::vec4(0.0f, 1.0, 0.0, 1.0);
@@ -43,7 +43,7 @@ std::shared_ptr<Scene> baseScene() {
 
     std::shared_ptr<LinePrototype> axisY = std::make_shared<LinePrototype>();
     axisY->instanced = false;
-    axisY->shaderType = COLOR;
+    axisY->shaderType = AMBIENT;
     axisY->start = glm::vec3(0.0f, -20.0f, 0.0f);
     axisY->end = glm::vec3(0.0f, 20.0f, 0.0f);
     axisY->color = glm::vec4(1.0f, 0.0, 0.0, 1.0);
@@ -51,7 +51,7 @@ std::shared_ptr<Scene> baseScene() {
 
     std::shared_ptr<LinePrototype> axisZ = std::make_shared<LinePrototype>();
     axisZ->instanced = false;
-    axisZ->shaderType = COLOR;
+    axisZ->shaderType = AMBIENT;
     axisZ->start = glm::vec3(0.0f, 0.0f, -20.0f);
     axisZ->end = glm::vec3(0.0f, 0.0f, 20.0f);
     axisZ->color = glm::vec4(0.0f, 0.0, 1.0, 1.0);

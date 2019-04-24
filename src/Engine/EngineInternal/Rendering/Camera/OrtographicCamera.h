@@ -9,9 +9,9 @@ class OrtographicCamera : public BaseCamera {
         float height = 0.0f;
 
     public:
-        OrtographicCamera(int width, int height);
+        OrtographicCamera(const glm::vec2 & size);
 
-        void updateSize(int width, int height);
+        void updateSize(const glm::vec2 & size);
 
         glm::mat4x4 getViewMatrix() override;
         glm::mat4x4 getProjectionMatrix() override;

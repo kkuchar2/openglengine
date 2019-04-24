@@ -14,13 +14,9 @@ Engine::Engine() {
 
     editor = std::make_shared<Editor>(window);
 
-    observer = createObserver<glm::vec2>([&](glm::vec2 v) {
-        renderer->updateSize(v);
-        std::dynamic_pointer_cast<PerspectiveCamera>(renderer->perspectiveCamera)->aspectRatio = v.x / v.y;
-        std::dynamic_pointer_cast<OrtographicCamera>(renderer->ortographicCamera)->updateSize(v.x, v.y);
-    });
+    onWindowSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { renderer->updateSize(v); });
 
-    subscription = editor->sceneWindowSizeProperty->Subscribe(observer);
+    subscription = editor->sceneWindowSizeProperty->Subscribe(onWindowSizeChanged);
 }
 
 void Engine::addScene(const std::shared_ptr<Scene> & scene) {
@@ -36,7 +32,7 @@ void Engine::start() {
     prepareScenes();
 
     while (window->shouldBeOpened()) {
-        renderGraphics();
+        renderer->renderFrame();
         editor->renderFrame(window, renderer->width, renderer->height, renderer->texture);
         glfwSwapBuffers(window->window);
         glfwPollEvents();
@@ -47,8 +43,4 @@ void Engine::start() {
     glfwTerminate();
 
     subscription->Unsubscribe();
-}
-
-void Engine::renderGraphics() {
-    renderer->renderToTexture();
 }

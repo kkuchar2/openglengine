@@ -15,7 +15,7 @@ class Transform {
 
         glm::mat4x4 modelMatrix = glm::mat4x4();
 
-        void calculatePRSMatrices() {
+        void calculatePositionRotationScaleMatrices() {
             positionMatrix = MatrixUtils::translationMatrix(position);
             scaleMatrix = MatrixUtils::scaleMatrix(scale);
             rotationMatrix = MatrixUtils::rotationMatrix(rotation);

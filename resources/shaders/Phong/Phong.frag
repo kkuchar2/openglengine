@@ -1,6 +1,5 @@
 #version 330 core
 
-uniform vec4 color;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 cameraPosition;
@@ -8,12 +7,12 @@ uniform vec3 cameraPosition;
 in vec2 uv;
 in vec3 Normal;
 in vec3 FragPos;
+in vec4 fColor;
 
 out vec4 FragColor;
 
 void main()
 {
-
   bool showNormals = false;
 
   float ambientStrength = 0.2;
@@ -37,7 +36,7 @@ void main()
   float spec = pow(max(dot(viewDir, reflectDir), 0.0), 256);
   vec3 specular = specularStrength * spec * lightColor;
 
-  vec3 result = (ambient + diffuse + specular) * vec3(color);
+  vec3 result = (ambient + diffuse + specular) * vec3(fColor);
 
   if (showNormals) {
     FragColor = vec4(norm / 2 + vec3(0.5), 1.0);

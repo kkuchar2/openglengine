@@ -15,7 +15,7 @@
 #include "GameObject/GameObject.h"
 #include "Projection.h"
 
-#include <Rendering/Renderer/InstancedMeshInfo.h>
+#include <Rendering/Renderer/MeshInfo.h>
 
 #include <Window/Input/InputSystem.h>
 
@@ -31,20 +31,15 @@ class BaseCamera : public Component {
         Subscription mouseButtonSubscription;
         Subscription keyInfoSubscription;
 
-
-        glm::mat4x4 projectionMatrix = glm::mat4x4();
-        glm::mat4x4 viewMatrix = glm::mat4x4();
-        glm::mat4x4 projectionViewMatrix = glm::mat4x4();
-
     public:
 
         Projection projection = PERSPECTIVE;
 
         BaseCamera();
 
-        void renderInstanced(const std::shared_ptr<InstancedMeshInfo> & info);
+        void renderInstanced(const std::shared_ptr<MeshInfo> & info);
 
-        void render(const std::shared_ptr<Mesh> & mesh, const Transform & transform);
+        void render(const std::shared_ptr<Mesh> & mesh);
 
         void initShaderCommon(const std::shared_ptr<Shader> & shader);
 

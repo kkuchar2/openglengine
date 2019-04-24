@@ -4,138 +4,92 @@
 #include <thread>
 
 Renderer::Renderer(const std::shared_ptr<Window> & window) {
-    createFrameBuffer();
-    ortographicCamera = std::make_shared<OrtographicCamera>(window->width, window->height);
+    createFramebuffer();
+    ortographicCamera = std::make_shared<OrtographicCamera>(window->size);
     perspectiveCamera = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 5.0, 10.0));
 }
 
 void Renderer::addScene(const std::shared_ptr<Scene> & scene) {
     for (auto & child : scene->children) {
-        child->projection = scene->projection;
-        objectsToRender.push_back(std::move(child));
+        gameObjects.push_back(std::move(child));
     }
 }
 
 void Renderer::prepare() {
-    for (auto const &[meshTypeString, shaderTypeToMeshesMap] : map) {
-        for (auto const &[shaderType, meshInfo] : shaderTypeToMeshesMap) {
-            meshInfo->mesh->prepare();
-        }
+
+    for (auto & info : meshes) {
+        info->mesh->prepare();
     }
 
-    for (auto const &[mesh, object] : meshesToRender) {
-        mesh->prepare();
+    for (auto  & [id, info] : instancedMeshes) {
+        info->mesh->prepare();
     }
-}
-
-ShaderToMeshesMap Renderer::createShaderToMeshesMap(const ShaderType & shaderType, const std::shared_ptr<Mesh> & mesh,
-                                                    const Projection & projection, const Transform & transform) {
-    ShaderToMeshesMap shaderToMeshes;
-    shaderToMeshes.insert(std::make_pair(shaderType, InstancedMeshInfo::ptr(mesh, 1)));
-    shaderToMeshes.at(shaderType)->mesh->modelMatrices.push_back(transform.modelMatrix);
-    return shaderToMeshes;
 }
 
 void Renderer::preprocessScenes() {
 
-    for (auto & child : objectsToRender) {
+    for (auto & child : gameObjects) {
 
-        child->transform.calculatePRSMatrices();
+        child->transform.calculatePositionRotationScaleMatrices();
         child->transform.calculateModelMatrix();
 
-        Projection projection = child->projection;
+        auto proto = child->getMeshPrototype();
 
-        auto meshPrototype = child->getMeshPrototype();
+        proto->updateIds();
 
-        if (!meshPrototype.get()) continue;
+        if (!proto.get()) continue;
 
-        const char * meshType = meshPrototype->meshTypeStr;
+        std::string id = proto->shaderMeshTypeId;
 
-        ShaderType shaderType = meshPrototype->shaderType;
-
-        bool instanced = meshPrototype->instanced;
-
-        if (instanced) {
-            if (map.count(meshType) == 0) {
-                auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
-                map.insert(std::make_pair(meshType, createShaderToMeshesMap(shaderType, mesh, projection, child->transform)));
+        if (proto->instanced) {
+            if (instancedMeshes.count(id) == 0) {
+                auto mesh = MeshBuilder::of(proto, child);
+                instancedMeshes.insert(std::make_pair(id, MeshInfo::ptr(mesh, child)));
             }
             else {
-                if (map.at(meshType).count(shaderType) == 0) {
-                    auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
-                    map.at(meshType) = createShaderToMeshesMap(shaderType, mesh, projection, child->transform);
-                }
-                else {
-                    map[meshType][shaderType]->addInstance(child->transform.modelMatrix);
-                }
+                instancedMeshes[id]->addInstance(child, proto->color);
             }
             allInstancedCount++;
         }
         else {
-            auto mesh = MeshBuilder::of(meshPrototype, projection, child->transform);
-            meshesToRender.emplace_back(mesh, child);
+            meshes.emplace_back(MeshInfo::ptr(MeshBuilder::of(proto, child), child));
         }
     }
+
+    logRenderMap();
 }
 
-
-void Renderer::updateModelMatrices(int startRange, int endRange) {
-    int idx = 0;
-
-    for (auto & child : objectsToRender) {
-
-        if (idx < startRange) {
-            idx++;
-            continue;
-        }
-        if (idx > endRange) {
-            break;
-        }
-        child->OnUpdate();
-        auto meshPrototype = child->getMeshPrototype();
-        if (!meshPrototype.get()) continue;
-        if (!meshPrototype->instanced) continue;
-        map[meshPrototype->meshTypeStr][meshPrototype->shaderType]->mesh->modelMatrices[idx] = child->transform.modelMatrix;
-        idx++;
+void Renderer::renderFrame() {
+    glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glViewport(0, 0, width, height);
+    
+    for (auto const & [id, info] : instancedMeshes) {
+        getCamera(info->mesh->projection)->renderInstanced(info);
     }
+
+    for (auto const & info : meshes) {
+        getCamera(info->mesh->projection)->render(info->mesh);
+    }
+
+    onUpdate();
 }
 
-void Renderer::renderAllMeshes() {
-
-    std::thread t1 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 0 + 0, (allInstancedCount / 4) * 1);
-    std::thread t2 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 1 + 1, (allInstancedCount / 4) * 2);
-    std::thread t3 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 2 + 1, (allInstancedCount / 4) * 3);
-    std::thread t4 (&Renderer::updateModelMatrices, this, (allInstancedCount / 4) * 3 + 1, (allInstancedCount / 4) * 4 - 1);
-
-    t1.join();
-    t2.join();
-    t3.join();
-    t4.join();
-
-    // Instanced render
-    for (auto const &[meshTypeString, shaderTypeToMeshesMap] : map) {
-        for (auto const &[shaderType, instancedMeshInfo] : shaderTypeToMeshesMap) {
-            getCamera(instancedMeshInfo->mesh->projection)->renderInstanced(instancedMeshInfo);
-        }
-    }
-
-    // Classic render
-    for (auto const & [mesh, object] : meshesToRender) {
-        getCamera(mesh->projection)->render(mesh, object->transform);
-    }
-}
-
-void Renderer::updateCameras() {
+void Renderer::onUpdate() {
     perspectiveCamera->Update();
     ortographicCamera->Update();
+
+    for (const auto & [id, meshInfo] : instancedMeshes) {
+        meshInfo->Update();
+    }
+
+    for (const auto & meshInfo : meshes) {
+        meshInfo->Update();
+    }
 }
 
-void Renderer::render() {
-    updateCameras();
-    renderAllMeshes();
-}
-
-void Renderer::createFrameBuffer() {
+void Renderer::createFramebuffer() {
 
     glGenFramebuffers(1, &framebufferName);
     glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
@@ -155,7 +109,6 @@ void Renderer::createFrameBuffer() {
 
     glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture, 0);
 
-    // Set the list of draw buffers.
     GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
     glDrawBuffers(1, DrawBuffers);
 
@@ -164,20 +117,12 @@ void Renderer::createFrameBuffer() {
     }
 }
 
-void Renderer::renderToTexture() {
-    glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glViewport(0, 0, width, height);
-    render();
-}
+void Renderer::updateSize(const glm::vec2 & size) {
 
-void Renderer::updateSize(const glm::vec2 & newSize) {
+    if (std::abs(size.x - width) < 1.0f && std::abs(size.y - height) < 1.0f) return;
 
-    if (std::abs(newSize.x - width) < 1.0f && std::abs(newSize.y - height) < 1.0f) return;
-
-    width = newSize.x;
-    height = newSize.y;
+    width = size.x;
+    height = size.y;
 
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
@@ -186,6 +131,9 @@ void Renderer::updateSize(const glm::vec2 & newSize) {
     glBindRenderbuffer(GL_RENDERBUFFER, dephRenderBuffer);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
     glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+    perspectiveCamera->updateAspectRatio(size);
+    ortographicCamera->updateSize(size);
 }
 
 std::shared_ptr<BaseCamera> Renderer::getCamera(const Projection & projection) {
@@ -197,18 +145,15 @@ std::shared_ptr<BaseCamera> Renderer::getCamera(const Projection & projection) {
 
 void Renderer::logRenderMap() {
     std::cout << "INSTANCED RENDERING:" << std::endl;
-    for (auto const &[meshTypeString, shaderTypeToMeshesMap] : map) {
-        std::cout << "\t* Mesh type: [" << meshTypeString << "]" << std::endl;
 
-        for (auto const &[shaderType, meshInfo] : shaderTypeToMeshesMap) {
-            std::cout << "\t\t---> Shader type: " << shaderType << " Instances: " << meshInfo->instanceCount
-                      << std::endl;
-        }
+    for (auto  & [id, instancedMeshInfo] : instancedMeshes) {
+        std::cout << "\t* ID: [" << id << "]: " << instancedMeshInfo->objects.size() << std::endl;
     }
+
     std::cout << std::endl;
 
     std::cout << "CLASSIC RENDERING:" << std::endl;
-    for (auto const &[mesh, object] : meshesToRender) {
-        std::cout << "\t* Mesh type: [" << mesh->meshType << "]" << std::endl;
+    for (auto const & info : meshes) {
+        std::cout << "\t* Mesh type: [" << info->mesh->meshType << "]" << std::endl;
     }
 }

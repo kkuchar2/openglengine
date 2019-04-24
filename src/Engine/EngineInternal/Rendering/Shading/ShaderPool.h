@@ -10,8 +10,8 @@ class ShaderPool
 
         std::shared_ptr<Shader> textureCubeShader;
         std::shared_ptr<Shader> textureColorShader;
-        std::shared_ptr<Shader> colorShader;
-        std::shared_ptr<Shader> diffuseShader;
+        std::shared_ptr<Shader> ambientShader;
+        std::shared_ptr<Shader> phongShader;
         std::shared_ptr<Shader> gridShader;
         std::shared_ptr<Shader> mandelbrotShader;
 
@@ -32,12 +32,12 @@ class ShaderPool
 
     private:
         ShaderPool() {
-            textureCubeShader = loadShader("TexturedCube.vert", "TexturedCube.frag");
-            textureColorShader = loadShader("Textured.vert", "Textured.frag");
-            gridShader = loadShader("Grid.vert", "Grid.frag");
-            colorShader = loadShader("Color.vert", "Color.frag");
-            diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
-            mandelbrotShader = loadShader("Mandelbrot.vert", "Mandelbrot.frag");
+            textureCubeShader = loadShader("TexturedCube/TexturedCube.vert", "TexturedCube/TexturedCube.frag");
+            textureColorShader = loadShader("Textured/Textured.vert", "Textured/Textured.frag");
+            gridShader = loadShader("Grid/Grid.vert", "Grid/Grid.frag");
+            ambientShader = loadShader("Ambient/Ambient.vert", "Ambient/Ambient.frag");
+            phongShader = loadShader("Phong/Phong.vert", "Phong/Phong.frag");
+            mandelbrotShader = loadShader("Mandelbrot/Mandelbrot.vert", "Mandelbrot/Mandelbrot.frag");
         };
 
     public:
@@ -47,8 +47,8 @@ class ShaderPool
 
         std::shared_ptr<Shader> getShader(const ShaderType & shaderType) {
             switch(shaderType) {
-                case COLOR: return colorShader;
-                case DIFFUSE: return diffuseShader;
+                case AMBIENT: return ambientShader;
+                case PHONG: return phongShader;
                 case GRID: return gridShader;
                 case TEXTURE: return textureColorShader;
                 case TEXTURE_CUBE: return textureCubeShader;

@@ -11,20 +11,22 @@ BaseCamera::BaseCamera() {
     keyInfoSubscription = InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver);
 }
 
-void BaseCamera::renderInstanced(const std::shared_ptr<InstancedMeshInfo> & info) {
+void BaseCamera::renderInstanced(const std::shared_ptr<MeshInfo> & info) {
     std::shared_ptr<Shader> shader = info->mesh->shader;
     shader->use();
     initShaderCommon(shader);
     info->mesh->shaderInit(shader);
     info->mesh->UpdateModelMatrices();
-    info->mesh->renderInstanced(info->instanceCount);
+    info->mesh->UpdateColorVectors();
+    info->mesh->renderInstanced(info->objects.size());
 }
 
-void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & transform) {
+void BaseCamera::render(const std::shared_ptr<Mesh> & mesh) {
     std::shared_ptr<Shader> shader = mesh->shader;
     shader->use();
     initShaderCommon(shader);
     mesh->UpdateModelMatrices();
+    mesh->UpdateColorVectors();
     mesh->shaderInit(shader);
     mesh->render();
 }

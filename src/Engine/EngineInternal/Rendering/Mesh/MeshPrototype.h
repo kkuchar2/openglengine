@@ -9,24 +9,29 @@
 
 class MeshPrototype : public Component {
     public:
-        const char * path = nullptr;
+        std::string path;
         MeshType meshType = NONE;
-        ShaderType shaderType = COLOR;
+        ShaderType shaderType = AMBIENT;
         glm::vec4 color = glm::vec4(1.0, 1.0, 1.0, 1.0);
         const char * texture = nullptr;
         bool instanced = false;
         bool disableNormals = false;
         bool cubeMap = false;
 
-        const char * meshTypeStr;
+        std::string meshTypeStr;
+        std::string shaderTypeStr;
+        std::string shaderMeshTypeId;
 
         MeshPrototype();
 
         MeshPrototype(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color);
 
-        MeshPrototype(const char * path, const ShaderType & shaderType, const glm::vec4 & color);
+        MeshPrototype(const std::string & path, const ShaderType & shaderType, const glm::vec4 & color);
 
-        const char * getMeshType();
+        std::string getMeshTypeStr();
+        std::string getShaderTypeStr();
+
+        void updateIds();
 
         static std::shared_ptr<MeshPrototype> of(const MeshType & meshType, const ShaderType & shaderType, const glm::vec4 & color) {
             return std::make_shared<MeshPrototype>(meshType, shaderType, color);

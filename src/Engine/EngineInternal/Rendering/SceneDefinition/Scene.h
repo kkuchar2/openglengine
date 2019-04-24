@@ -14,6 +14,7 @@ class Scene {
         Scene() = default;
 
         void addChild(const std::shared_ptr<GameObject> & child) {
+            child->projection = projection;
             children.push_back(child);
         }
 };

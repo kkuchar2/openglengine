@@ -11,7 +11,7 @@ void GameObjectBase::addComponent(const std::shared_ptr<Component> & component) 
     auto behaviour = castComponent<BehaviourComponent>(component);
 
     if (behaviour) {
-        behaviour->SetObject(this);
+        behaviour->SetObject(static_cast<GameObject *>(this));
     }
 
     auto meshProto = castComponent<MeshPrototype>(component);

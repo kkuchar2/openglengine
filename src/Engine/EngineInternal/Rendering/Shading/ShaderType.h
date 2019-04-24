@@ -1,8 +1,8 @@
 #pragma once
 
 enum ShaderType {
-    COLOR,
-    DIFFUSE,
+    AMBIENT,
+    PHONG,
     GRID,
     TEXTURE,
     TEXTURE_CUBE,

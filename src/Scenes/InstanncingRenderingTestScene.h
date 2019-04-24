@@ -5,10 +5,18 @@
 
 void addScatteredCubes(const std::shared_ptr<Scene> & scene) {
 
-    for (int x = 0; x < 30; x++) {
-        for (int y = 0; y < 100; y++) {
-            for (int z = 0; z < 100; z++) {
-                scene->addChild(cube(glm::vec3(0.2f), glm::vec3(x * 4, y * 4, z * 4), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+    srand((unsigned)time(nullptr));
+
+    for (int x = 0; x < 67; x++) {
+        float c1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+        for (int y = 0; y < 67; y++) {
+            float c2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+            for (int z = 0; z < 67; z++) {
+                float c3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+                scene->addChild(cube(glm::vec3(0.1f), glm::vec3(x - 20, y - 20, z - 20), glm::vec4(c1, c2, c3, 1.0f)));
             }
         }
     }

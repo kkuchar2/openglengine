@@ -43,12 +43,9 @@ class PerspectiveCamera : public BaseCamera {
         void onMouseButtonPressed(const MouseButtonInfo & info) override;
         void onKeyInfoReceived(const KeyInfo & keyInfo) override;
 
-        void Update() override {
-            currentFrame = static_cast<float>(glfwGetTime());
-            deltaTime = currentFrame - lastFrame;
-            lastFrame = currentFrame;
-            position += velocity * deltaTime;
-        }
+        void Update() override;
+
+        void updateAspectRatio(const glm::vec2 & size);
 
         glm::vec3 getPosition() override;
         glm::mat4x4 getViewMatrix() override;

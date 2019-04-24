@@ -6,27 +6,48 @@ MeshPrototype::MeshPrototype(const MeshType & meshType, const ShaderType & shade
     this->meshType = meshType;
     this->shaderType = shaderType;
     this->color = color;
-    this->meshTypeStr = getMeshType();
+    this->meshTypeStr = getMeshTypeStr();
+    this->shaderTypeStr = getShaderTypeStr();
+    this->shaderMeshTypeId = meshTypeStr + std::string("_") + shaderTypeStr;
 }
 
-MeshPrototype::MeshPrototype(const char * path, const ShaderType & shaderType, const glm::vec4 & color) {
+MeshPrototype::MeshPrototype(const std::string & path, const ShaderType & shaderType, const glm::vec4 & color) {
     this->path = path;
     this->meshType = RESOURCE;
     this->shaderType = shaderType;
     this->color = color;
-    this->meshTypeStr = getMeshType();
+    this->meshTypeStr = getMeshTypeStr();
+    this->shaderTypeStr = getShaderTypeStr();
+    this->shaderMeshTypeId = meshTypeStr + std::string("_") + shaderTypeStr;
 }
 
-const char * MeshPrototype::getMeshType() {
+std::string MeshPrototype::getMeshTypeStr() {
 
     switch(meshType) {
-        case LINE: return "LINE";
-        case QUAD: return "QUAD";
-        case CUBE: return "CUBE";
-        case SURFACE: return "SURFACE";
-        case SKYBOX: return "SKYBOX";
+        case LINE: return "line";
+        case QUAD: return "quad";
+        case CUBE: return "cube";
+        case SURFACE: return "surface";
+        case SKYBOX: return "skybox";
         case RESOURCE: return path;
         case NONE: return "";
         default: return "";
     }
+}
+
+std::string MeshPrototype::getShaderTypeStr() {
+    switch(shaderType) {
+        case AMBIENT: return "ambient";
+        case PHONG: return "phong";
+        case GRID: return "grid";
+        case TEXTURE: return "texture";
+        case TEXTURE_CUBE: return "texture_cube";
+        case MANDELBROT: return "mandelbrot";
+    }
+}
+
+void MeshPrototype::updateIds() {
+    this->meshTypeStr = getMeshTypeStr();
+    this->shaderTypeStr = getShaderTypeStr();
+    this->shaderMeshTypeId = meshTypeStr + std::string("_") + shaderTypeStr;
 }

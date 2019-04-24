@@ -40,8 +40,10 @@ class Mesh : public Component {
         std::vector<float> normals;
 
         std::vector<glm::mat4> modelMatrices;
+        std::vector<glm::vec4> colorVectors;
 
-        const char * meshType = "default";
+        std::string meshType = "default";
+        std::string shaderType = "default";
 
         GLenum mode = GL_TRIANGLES;
 
@@ -60,11 +62,12 @@ class Mesh : public Component {
         GLuint uvbo = 0;
         GLuint nbo = 0;
         GLuint model_matrices_vbo = 0;
+        GLuint color_vectors_vbo = 0;
         GLuint ibo = 0;
 
         ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
 
-        explicit Mesh(const char * path);
+        explicit Mesh(const std::string & path);
 
         Mesh();
 
@@ -76,6 +79,7 @@ class Mesh : public Component {
         void CreateUVBuffer();
         void CreateNormalsBuffer();
         void CreateModelMatricesBuffer();
+        void CreateColorBuffer();
 
         virtual void render();
 
@@ -84,6 +88,7 @@ class Mesh : public Component {
         void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
 
         void UpdateModelMatrices();
+        void UpdateColorVectors();
 
         void render(GLenum renderMode, int indicesCount);
 
@@ -92,7 +97,9 @@ class Mesh : public Component {
 
         void calculateNormals();
 
-        void loadFromResource(const char * path);
+        void loadFromResource(const std::string & path);
 
         static std::shared_ptr<Mesh> create(const char * path);
+
+        void UpdateModelMatrix(const int & idx, const glm::mat4x4 & m);
 };

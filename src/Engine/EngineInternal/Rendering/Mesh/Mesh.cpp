@@ -1,7 +1,7 @@
 #include <EngineException.h>
 #include "Mesh/Mesh.h"
 
-Mesh::Mesh(const char * path) : Component::Component() {
+Mesh::Mesh(const std::string & path) : Component::Component() {
     loadFromResource(path);
 }
 
@@ -20,6 +20,7 @@ void Mesh::prepare() {
     CreateUVBuffer();
     CreateNormalsBuffer();
     CreateModelMatricesBuffer();
+    CreateColorBuffer();
 
     glBindVertexArray(0);
 
@@ -89,6 +90,19 @@ void Mesh::CreateModelMatricesBuffer() {
     glVertexAttribDivisor(6, 1);
 }
 
+void Mesh::CreateColorBuffer() {
+    if (colorVectors.empty()) return;
+
+    glGenBuffers(1, &color_vectors_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
+    glBufferData(GL_ARRAY_BUFFER, colorVectors.size() * sizeof(glm::vec4), nullptr, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(7);
+    glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);
+
+    glVertexAttribDivisor(7, 1);
+}
+
 void Mesh::render(GLenum renderMode, int indicesCount) {
     glBindTexture(cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
     glBindVertexArray(vao);
@@ -134,7 +148,19 @@ void Mesh::UpdateModelMatrices() {
     glVertexAttribDivisor(4, 1);
     glVertexAttribDivisor(5, 1);
     glVertexAttribDivisor(6, 1);
+}
 
+void Mesh::UpdateColorVectors() {
+    if(colorVectors.size() == 0) return;
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
+    glBufferData(GL_ARRAY_BUFFER, colorVectors.size() * sizeof(glm::vec4), colorVectors.data(), GL_STREAM_DRAW);
+
+    glEnableVertexAttribArray(7);
+    glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);
+
+    glVertexAttribDivisor(7, 1);
 }
 
 void Mesh::loadTexture(const char * path) {
@@ -191,7 +217,10 @@ void Mesh::calculateNormals() {
     }
 }
 
-void Mesh::loadFromResource(const char * path) {
+void Mesh::loadFromResource(const std::string & path) {
+
+    std::cout << "Loading: " << path << std::endl;
+
     tinyobj::attrib_t attrib;
 
     std::string warning;
@@ -200,7 +229,7 @@ void Mesh::loadFromResource(const char * path) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
 
-    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warning, &error, path);
+    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warning, &error, path.c_str());
 
     if (!ret) {
         if (!error.empty()) {
@@ -221,6 +250,12 @@ void Mesh::loadFromResource(const char * path) {
     }
 }
 
+void Mesh::UpdateModelMatrix(const int & idx, const glm::mat4x4 & m) {
+    std::cout << &modelMatrices << " Updating model matrices at idx: " << idx << " size: " << modelMatrices.size() << std::endl;
+    modelMatrices[idx] = m;
+}
+
 std::shared_ptr<Mesh> Mesh::create(const char * path) {
     return std::make_shared<Mesh>(path);
 }
+

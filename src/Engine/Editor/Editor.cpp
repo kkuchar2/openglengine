@@ -138,7 +138,7 @@ void Editor::renderSceneWindow(float texWidth, float texHeight, GLuint texture) 
 
 void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture) {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glViewport(0, 0, window->width, window->height);
+    glViewport(0, 0, window->size.x, window->size.y);
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
