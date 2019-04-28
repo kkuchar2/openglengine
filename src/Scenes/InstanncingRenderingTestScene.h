@@ -7,16 +7,16 @@ void addScatteredCubes(const std::shared_ptr<Scene> & scene) {
 
     srand((unsigned)time(nullptr));
 
-    for (int x = 0; x < 67; x++) {
+    for (int x = 0; x < 10; x++) {
         float c1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
-        for (int y = 0; y < 67; y++) {
+        for (int y = 0; y < 10; y++) {
             float c2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
-            for (int z = 0; z < 67; z++) {
+            for (int z = 0; z < 10; z++) {
                 float c3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
-                scene->addChild(cube(glm::vec3(0.1f), glm::vec3(x - 20, y - 20, z - 20), glm::vec4(c1, c2, c3, 1.0f)));
+                scene->addChild(cube(glm::vec3(0.1f), glm::vec3(x, y, z), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
             }
         }
     }

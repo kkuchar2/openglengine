@@ -23,7 +23,12 @@ class Engine {
         std::shared_ptr<Editor> editor;
 
         Observer<glm::vec2> onWindowSizeChanged;
-        Subscription subscription;
+        Observer<bool> onBoundingBoxesEnablementChanged;
+        Observer<bool> onVSyncValueChange;
+
+        Subscription windowSizeSubscription;
+        Subscription boundingBoxSubscription;
+        Subscription vSyncSubscription;
 
         std::shared_ptr<Renderer> renderer;
 

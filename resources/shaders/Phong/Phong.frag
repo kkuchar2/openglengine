@@ -22,7 +22,7 @@ void main()
   vec3 lightDir = lightPos - FragPos;
 
   float d = distance(lightPos, FragPos);
-  float attenuation = clamp( 1.0 / (1.0 + 0.1 * d), 0.0, 1.0);
+  float attenuation = clamp( 5.0 / (1.0 + 0.1 * d), 0.0, 1.0);
 
   lightDir = normalize(lightDir);
 
@@ -42,6 +42,6 @@ void main()
     FragColor = vec4(norm / 2 + vec3(0.5), 1.0);
   }
   else {
-    FragColor = vec4(attenuation * result, 1.0);
+    FragColor = vec4(attenuation * result, fColor.a);
   }
 }

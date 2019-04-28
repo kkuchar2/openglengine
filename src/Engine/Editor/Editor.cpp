@@ -23,6 +23,8 @@ Editor::Editor(const std::shared_ptr<Window> & window) {
     EditorStyle::Apply();
 
     sceneWindowSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
+    enableBoundingBoxesProperty = std::make_shared<Observable<bool>>(false);
+    enableVsyncProperty = std::make_shared<Observable<bool>>(true);
 }
 
 void Editor::DockSpaceBegin() {
@@ -106,12 +108,46 @@ void Editor::renderSettingsWindow() {
 void Editor::renderInfoWindow() {
     ImGui::Begin("Info");
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::Text("Enable bounding boxes:");
+    ToggleButton("id", enableBoundingBoxesProperty);
+    ImGui::Text("VSync enabled:");
+    ToggleButton("id2", enableVsyncProperty);
     ImGui::End();
 }
 
 void Editor::renderHierarchyWindow() {
     ImGui::Begin("Hierarchy");
     ImGui::End();
+}
+
+void Editor::ToggleButton(const char * str_id, const std::shared_ptr<Observable<bool>> & property)
+{
+    ImVec2 p = ImGui::GetCursorScreenPos();
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+
+    float height = ImGui::GetFrameHeight() * 1.1f;
+    float width = height * 2.0f;
+    float radius = height * 0.50f;
+
+    ImGui::InvisibleButton(str_id, ImVec2(width, height));
+    if (ImGui::IsItemClicked())
+        property->setValue(!property->getValue());
+
+    float t = property->getValue() ? 1.0f : 0.0f;
+
+    ImGuiContext& g = *GImGui;
+    float ANIM_SPEED = 0.08f;
+    if (g.LastActiveId == g.CurrentWindow->GetID(str_id))// && g.LastActiveIdTimer < ANIM_SPEED)
+    {
+        float t_anim = ImSaturate(g.LastActiveIdTimer / ANIM_SPEED);
+        t = property->getValue() ? (t_anim) : (1.0f - t_anim);
+    }
+
+    ImU32 col_bg = IM_COL32(70, 70, 70, 255);
+    ImU32 col_circle = property->getValue() ? IM_COL32(10, 213, 96, 255) : IM_COL32(255, 255, 255, 255);
+
+    draw_list->AddRectFilled(p, ImVec2(p.x + width, p.y + height), col_bg, height * 0.5f);
+    draw_list->AddCircleFilled(ImVec2(p.x + radius + t * (width - radius * 2.0f), p.y + radius), radius - 1.5f, col_circle, 24);
 }
 
 void Editor::on_scene_window_resize(ImGuiSizeCallbackData * data) {
@@ -136,7 +172,7 @@ void Editor::renderSceneWindow(float texWidth, float texHeight, GLuint texture) 
     ImGui::End();
 }
 
-void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture) {
+void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint mainTexture) {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, window->size.x, window->size.y);
 
@@ -148,7 +184,8 @@ void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float he
 
     Editor::renderInfoWindow();
     //Editor::renderHierarchyWindow();
-    Editor::renderSceneWindow(width, height, texture);
+    Editor::renderSceneWindow(width, height, mainTexture);
+    Editor::renderSceneWindow(width, height, mainTexture);
     //Editor::renderSettingsWindow();
     //Editor::renderConsoleWindow();
 

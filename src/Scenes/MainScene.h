@@ -77,7 +77,7 @@ std::shared_ptr<Scene> mainScene() {
 
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
-    scene->addChild(surfaceObject);
+    //scene->addChild(surfaceObject);
     scene->addChild(lampMeshObject);
     scene->addChild(teapotMeshObject);
     scene->addChild(suzanneMeshObject);

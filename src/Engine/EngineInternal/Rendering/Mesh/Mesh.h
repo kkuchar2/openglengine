@@ -15,7 +15,7 @@
 #include "Component.h"
 #include "MeshType.h"
 #include "MeshPrototype.h"
-
+#include "GameObject/Transform.h"
 
 struct TriangleInfo {
     float angle;
@@ -25,7 +25,6 @@ struct TriangleInfo {
 struct BoundingBox {
     glm::vec3 size;
     glm::vec3 center;
-    glm::vec3 rotation;
 };
 
 typedef std::shared_ptr<Shader> & ShaderPtrRef;
@@ -100,6 +99,4 @@ class Mesh : public Component {
         void loadFromResource(const std::string & path);
 
         static std::shared_ptr<Mesh> create(const char * path);
-
-        void UpdateModelMatrix(const int & idx, const glm::mat4x4 & m);
 };

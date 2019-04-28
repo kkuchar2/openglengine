@@ -13,9 +13,7 @@ class RotatingBehaviour : public BehaviourComponent {
             auto oldRotation = t.rotation;
             auto oldPos = t.position;
 
-            gameObject->transform.rotation = glm::vec3(oldRotation.x, oldRotation.y + 0.01f, oldRotation.z);
-            gameObject->transform.modelMatrix = MatrixUtils::modelMatrix(
-                    gameObject->transform.scale, gameObject->transform.position,
-                    MatrixUtils::rotationMatrix(gameObject->transform.rotation));
+            gameObject->transform.rotation = glm::vec3(oldRotation.x + 0.01f , oldRotation.y + 0.01f, oldRotation.z + 0.01f);
+            gameObject->transform.rotationMatrix = MatrixUtils::rotationMatrix(gameObject->transform.rotation);
         }
 };

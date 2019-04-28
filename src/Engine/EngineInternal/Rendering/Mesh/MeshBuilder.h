@@ -14,9 +14,10 @@
 
 #include "SurfacePrototype.h"
 
+
 class MeshBuilder {
     public:
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const std::shared_ptr<GameObject> & obj) {
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const std::shared_ptr<GameObjectBase> & obj) {
 
             std::shared_ptr<Mesh> mesh;
 
@@ -66,7 +67,6 @@ class MeshBuilder {
             mesh->meshType = proto->getMeshTypeStr();
             mesh->shaderType = proto->getShaderTypeStr();
             mesh->projection = obj->projection;
-            mesh->modelMatrices.push_back(obj->transform.modelMatrix);
             mesh->colorVectors.push_back(proto->color);
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
             mesh->cubeMap = proto->cubeMap;

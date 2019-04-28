@@ -125,7 +125,7 @@ void Mesh::renderInstanced(int instancesCount) {
 
 void Mesh::UpdateModelMatrices() {
 
-    if(modelMatrices.size() == 0) return;
+    if (modelMatrices.size() == 0) return;
 
     glBindVertexArray(vao);
 
@@ -151,7 +151,7 @@ void Mesh::UpdateModelMatrices() {
 }
 
 void Mesh::UpdateColorVectors() {
-    if(colorVectors.size() == 0) return;
+    if (colorVectors.size() == 0) return;
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
@@ -192,7 +192,7 @@ void Mesh::calculateNormals() {
         glm::vec3 a = v_2 - v_1;
         glm::vec3 b = v_3 - v_1;
 
-        TriangleInfo info {};
+        TriangleInfo info{};
         info.angle = std::acos(glm::dot(a, b) / (glm::length(a) * glm::length(b)));
         info.normal = glm::normalize(glm::cross(a, b));
 
@@ -213,7 +213,7 @@ void Mesh::calculateNormals() {
 
         weightedSum /= triangleInfos.size();
 
-        normals.insert(normals.end(), { weightedSum.x, weightedSum.y, weightedSum.z });
+        normals.insert(normals.end(), {weightedSum.x, weightedSum.y, weightedSum.z});
     }
 }
 
@@ -250,12 +250,6 @@ void Mesh::loadFromResource(const std::string & path) {
     }
 }
 
-void Mesh::UpdateModelMatrix(const int & idx, const glm::mat4x4 & m) {
-    std::cout << &modelMatrices << " Updating model matrices at idx: " << idx << " size: " << modelMatrices.size() << std::endl;
-    modelMatrices[idx] = m;
-}
-
 std::shared_ptr<Mesh> Mesh::create(const char * path) {
     return std::make_shared<Mesh>(path);
 }
-

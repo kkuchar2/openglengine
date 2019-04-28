@@ -25,21 +25,26 @@ class Editor {
         
         std::shared_ptr<Observable<glm::vec2>> sceneWindowSizeProperty;
 
+        std::shared_ptr<Observable<bool>> enableBoundingBoxesProperty;
+        std::shared_ptr<Observable<bool>> enableVsyncProperty;
+
         Editor(const std::shared_ptr<Window> & window);
 
         static void DockSpaceBegin();
 
         static ImGuiID createView(ImGuiID & node_id, ImGuiDir split_dir, float ratio);
 
-        static void DockSpaceEnd();
+        void DockSpaceEnd();
 
-        static void renderConsoleWindow();
+        void renderConsoleWindow();
         
-        static void renderSettingsWindow();
+        void renderSettingsWindow();
         
-        static void renderInfoWindow();
-        
-        static void renderHierarchyWindow();
+        void renderInfoWindow();
+
+        void renderHierarchyWindow();
+
+        void ToggleButton(const char * str_id, const std::shared_ptr<Observable<bool>> & property);
 
         static void on_scene_window_resize(ImGuiSizeCallbackData * data);
 
@@ -49,5 +54,5 @@ class Editor {
 
         void renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture);
 
-        static void terminate();
+        void terminate();
 };

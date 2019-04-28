@@ -23,7 +23,11 @@ Window::Window(const int & resX, const int & resY) {
     }
 
     glfwSwapInterval(vSyncEnabled ? 1 : 0);
+}
 
+void Window::setVSyncEnabled(bool & v) {
+    vSyncEnabled = v;
+    glfwSwapInterval(vSyncEnabled ? 1 : 0);
 }
 
 void Window::setKeyCallback(GLFWkeyfun callback) {

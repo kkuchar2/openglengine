@@ -8,15 +8,20 @@ Engine::Engine() {
     InputDispatcher::init(window);
 
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
     glEnable(GL_DEPTH_TEST);
-    glPointSize(1.0f);
+    //glEnable(GL_CULL_FACE);
 
     editor = std::make_shared<Editor>(window);
 
-    onWindowSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { renderer->updateSize(v); });
 
-    subscription = editor->sceneWindowSizeProperty->Subscribe(onWindowSizeChanged);
+    onWindowSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { renderer->updateSize(v); });
+    onBoundingBoxesEnablementChanged = createObserver<bool>([&](bool v) { renderer->enableBoundingBoxes = v; });
+    onVSyncValueChange = createObserver<bool>([&](bool v) { window->setVSyncEnabled(v); });
+
+    windowSizeSubscription = editor->sceneWindowSizeProperty->Subscribe(onWindowSizeChanged);
+    boundingBoxSubscription = editor->enableBoundingBoxesProperty->Subscribe(onBoundingBoxesEnablementChanged);
+    vSyncSubscription = editor->enableVsyncProperty->Subscribe(onVSyncValueChange);
 }
 
 void Engine::addScene(const std::shared_ptr<Scene> & scene) {
@@ -33,7 +38,7 @@ void Engine::start() {
 
     while (window->shouldBeOpened()) {
         renderer->renderFrame();
-        editor->renderFrame(window, renderer->width, renderer->height, renderer->texture);
+        editor->renderFrame(window, renderer->width, renderer->height, renderer->mainTexture);
         glfwSwapBuffers(window->window);
         glfwPollEvents();
     }
@@ -42,5 +47,7 @@ void Engine::start() {
 
     glfwTerminate();
 
-    subscription->Unsubscribe();
+    windowSizeSubscription->Unsubscribe();
+    boundingBoxSubscription->Unsubscribe();
+    vSyncSubscription->Unsubscribe();
 }

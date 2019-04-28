@@ -5,8 +5,8 @@
 #include <Component.h>
 #include <Rendering/Mesh/MeshPrototype.h>
 #include <Rendering/Camera/Projection.h>
+#include <Rendering/Mesh/Mesh.h>
 #include "Transform.h"
-
 
 class GameObjectBase {
 
@@ -14,7 +14,13 @@ class GameObjectBase {
 
         Transform transform;
 
+        std::shared_ptr<GameObjectBase> boundingBox;
+
+        BoundingBox bbox;
+
         std::vector<std::shared_ptr<Component>> components;
+
+        std::vector<std::shared_ptr<GameObjectBase>> children;
 
         std::shared_ptr<MeshPrototype> meshProto;
 
@@ -40,10 +46,6 @@ class GameObjectBase {
             return nullptr;
         }
 
-        std::shared_ptr<MeshPrototype> getMeshPrototype() {
-            return meshProto;
-        }
-
         template<typename T>
         static std::shared_ptr<T> castComponent(const std::shared_ptr<Component> & component) {
             std::shared_ptr<T> t = std::dynamic_pointer_cast<T>(component);
@@ -51,12 +53,24 @@ class GameObjectBase {
             if (t) {
                 return t;
             }
+
             return nullptr;
         }
 
-        void OnUpdate() {
+        void Update() {
             for (auto & component : components) {
                 component->Update();
+            }
+
+            if (boundingBox.get()) {
+                boundingBox->transform.position = transform.position;
+                boundingBox->transform.pivot = transform.scale * bbox.center;
+                boundingBox->transform.rotation = transform.rotation;
+                boundingBox->transform.scale = transform.scale * bbox.size;
+
+                boundingBox->transform.positionMatrix = MatrixUtils::translationMatrix(boundingBox->transform.position);
+                boundingBox->transform.scaleMatrix = MatrixUtils::scaleMatrix(boundingBox->transform.scale);
+                boundingBox->transform.rotationMatrix = MatrixUtils::rotationMatrix(boundingBox->transform.rotation);
             }
         }
 };

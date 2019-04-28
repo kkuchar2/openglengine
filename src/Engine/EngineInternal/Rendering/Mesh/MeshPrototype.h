@@ -14,9 +14,11 @@ class MeshPrototype : public Component {
         ShaderType shaderType = AMBIENT;
         glm::vec4 color = glm::vec4(1.0, 1.0, 1.0, 1.0);
         const char * texture = nullptr;
+
         bool instanced = false;
         bool disableNormals = false;
         bool cubeMap = false;
+        bool disableBoundingBox = false;
 
         std::string meshTypeStr;
         std::string shaderTypeStr;

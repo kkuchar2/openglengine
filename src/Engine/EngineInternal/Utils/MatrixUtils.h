@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/glm/ext.hpp>
 #include <glm/gtx/quaternion.hpp>
-
+#include <glm/gtx/string_cast.hpp>
 
 class MatrixUtils {
     public:
@@ -18,7 +18,7 @@ class MatrixUtils {
         }
 
         static glm::mat4 scaleMatrix(glm::vec3 scale) {
-            return glm::mat4(
+            return glm::mat4x4(
                     scale.x, 0.0, 0.0, 0.0,
                     0.0, scale.y, 0.0, 0.0,
                     0.0, 0.0, scale.z, 0.0,
@@ -27,11 +27,20 @@ class MatrixUtils {
         }
 
         static glm::mat4x4 translationMatrix(const glm::vec3 & p) {
-            return glm::mat4(
+            return glm::mat4x4(
                     1.0, 0.0, 0.0, 0.0,
                     0.0, 1.0, 0.0, 0.0,
                     0.0, 0.0, 1.0, 0.0,
                     p.x, p.y, p.z, 1.0
+            );
+        }
+
+        static glm::mat4x4 translate(const glm::vec3 & p) {
+            return glm::mat4(
+                    0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0,
+                    p.x, p.y, p.z, 0.0
             );
         }
 

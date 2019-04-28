@@ -14,10 +14,10 @@ void GameObjectBase::addComponent(const std::shared_ptr<Component> & component) 
         behaviour->SetObject(static_cast<GameObject *>(this));
     }
 
-    auto meshProto = castComponent<MeshPrototype>(component);
+    auto proto = castComponent<MeshPrototype>(component);
 
-    if (meshProto) {
-        this->meshProto = meshProto;
+    if (proto) {
+        meshProto = proto;
     }
 
     components.push_back(component);

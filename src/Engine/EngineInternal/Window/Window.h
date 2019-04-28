@@ -36,6 +36,8 @@ class Window {
 
         bool shouldBeOpened();
 
+        void setVSyncEnabled(bool & v);
+
         void glfwSetWindowCenter();
 
         ~Window();
