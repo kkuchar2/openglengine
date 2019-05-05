@@ -3,26 +3,26 @@
 #include <Rendering/Primitives/Cube.h>
 #include <Rendering/Primitives/Surface.h>
 
-#include <Rendering/Camera/Projection.h>
+#include <Engine/EngineInternal/Rendering/Projection.h>
 #include <Rendering/Shading/ShaderPool.h>
 #include <Rendering/Primitives/Line.h>
 #include <Rendering/Primitives/LinePrototype.h>
 #include <Rendering/Primitives/SkyboxPrototype.h>
 #include <Rendering/Primitives/Point.h>
-#include <Rendering/GameObject/Transform.h>
-#include <Rendering/GameObject/GameObject.h>
+#include <Engine/EngineInternal/Scene/Transform.h>
+#include <Scene/GameObject/GameObject.h>
 
-#include "SurfacePrototype.h"
+#include "Engine/EngineInternal/Components/MeshComponent/SurfaceMeshComponent.h"
 
 
 class MeshBuilder {
     public:
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshPrototype> & proto, const std::shared_ptr<GameObjectBase> & obj) {
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshComponent> & proto, const Projection & projection) {
 
             std::shared_ptr<Mesh> mesh;
 
             if (proto->path.empty()) {
-                 switch (proto->meshType) {
+                switch (proto->meshType) {
                     case LINE:
                         mesh = std::make_shared<Line>();
                         break;
@@ -48,7 +48,7 @@ class MeshBuilder {
                         mesh = std::make_shared<Mesh>(proto->path);
                         break;
 
-                 }
+                }
 
                 if (proto->meshType == LINE) {
                     auto lineProto = std::dynamic_pointer_cast<LinePrototype>(proto);
@@ -66,7 +66,7 @@ class MeshBuilder {
 
             mesh->meshType = proto->getMeshTypeStr();
             mesh->shaderType = proto->getShaderTypeStr();
-            mesh->projection = obj->projection;
+            mesh->projection = projection;
             mesh->colorVectors.push_back(proto->color);
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
             mesh->cubeMap = proto->cubeMap;

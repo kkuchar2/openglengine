@@ -112,7 +112,7 @@ struct ImGuiInputTextCallbackData;  // Shared state of InputText() when using cu
 struct ImGuiListClipper;            // Helper to manually clip large list of items
 struct ImGuiOnceUponAFrame;         // Helper for running a block of code not more than once a frame, used by IMGUI_ONCE_UPON_A_FRAME macro
 struct ImGuiPayload;                // User data payload for drag and drop operations
-struct ImGuiPlatformIO;             // Multi-viewport support: interface for Platform/Renderer back-ends + viewports to render
+struct ImGuiPlatformIO;             // Multi-viewport support: interface for Platform/EngineRenderer back-ends + viewports to render
 struct ImGuiPlatformMonitor;        // Multi-viewport support: user-provided bounds for each connected monitor/display. Used when positioning popups and tooltips to avoid them straddling monitors
 struct ImGuiSizeCallbackData;       // Callback data when using SetNextWindowSizeConstraints() (rare/advanced use)
 struct ImGuiStorage;                // Helper for key->value storage
@@ -1074,7 +1074,7 @@ enum ImGuiBackendFlags_
     // [BETA] Viewports
     ImGuiBackendFlags_PlatformHasViewports  = 1 << 10,  // Back-end Platform supports multiple viewports.
     ImGuiBackendFlags_HasMouseHoveredViewport=1 << 11,  // Back-end Platform supports setting io.MouseHoveredViewport to the viewport directly under the mouse _IGNORING_ viewports with the ImGuiViewportFlags_NoInputs flag and _REGARDLESS_ of whether another viewport is focused and may be capturing the mouse. This information is _NOT EASY_ to provide correctly with most high-level engines! Don't set this without studying how the examples/ back-end handle it!
-    ImGuiBackendFlags_RendererHasViewports  = 1 << 12   // Back-end Renderer supports multiple viewports.
+    ImGuiBackendFlags_RendererHasViewports  = 1 << 12   // Back-end EngineRenderer supports multiple viewports.
 };
 
 // Enumeration for PushStyleColor() / PopStyleColor()
@@ -1443,7 +1443,7 @@ struct ImGuiIO
     // (the imgui_impl_xxxx back-end files are setting those up for you)
     //------------------------------------------------------------------
 
-    // Optional: Platform/Renderer back-end name (informational only! will be displayed in About Window) + User data for back-end/wrappers to store their own stuff.
+    // Optional: Platform/EngineRenderer back-end name (informational only! will be displayed in About Window) + User data for back-end/wrappers to store their own stuff.
     const char* BackendPlatformName;            // = NULL
     const char* BackendRendererName;            // = NULL
     void*       BackendPlatformUserData;        // = NULL
@@ -2282,9 +2282,9 @@ struct ImGuiPlatformMonitor
 
 // (Optional) Setup required only if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) is enabled. 
 // Access via ImGui::GetPlatformIO(). This is designed so we can mix and match two imgui_impl_xxxx files,
-// one for the Platform (~window handling), one for Renderer. Custom engine back-ends will often provide 
-// both Platform and Renderer interfaces and so may not need to use all functions.
-// Platform functions are typically called before their Renderer counterpart, 
+// one for the Platform (~window handling), one for EngineRenderer. Custom engine back-ends will often provide
+// both Platform and EngineRenderer interfaces and so may not need to use all functions.
+// Platform functions are typically called before their EngineRenderer counterpart,
 // apart from Destroy which are called the other way. 
 // RenderPlatformWindowsDefault() is that helper that iterate secondary viewports and call, in this order:
 //   Platform_RenderWindow(), Renderer_RenderWindow(), Platform_SwapBuffers(), Renderer_SwapBuffers()
@@ -2316,9 +2316,9 @@ struct ImGuiPlatformIO
     float   (*Platform_GetWindowDpiScale)(ImGuiViewport* vp);               // (Optional) [BETA] (FIXME-DPI) DPI handling: Return DPI scale for this viewport. 1.0f = 96 DPI.
     void    (*Platform_OnChangedViewport)(ImGuiViewport* vp);               // (Optional) [BETA] (FIXME-DPI) DPI handling: Called during Begin() every time the viewport we are outputting into changes, so back-end has a chance to swap fonts to adjust style.
     void    (*Platform_SetImeInputPos)(ImGuiViewport* vp, ImVec2 pos);      // (Optional) Set IME (Input Method Editor, e.g. for Asian languages) input position, so text preview appears over the imgui input box.
-    int     (*Platform_CreateVkSurface)(ImGuiViewport* vp, ImU64 vk_inst, const void* vk_allocators, ImU64* out_vk_surface); // (Optional) For Renderer to call into Platform code
+    int     (*Platform_CreateVkSurface)(ImGuiViewport* vp, ImU64 vk_inst, const void* vk_allocators, ImU64* out_vk_surface); // (Optional) For EngineRenderer to call into Platform code
 
-    // (Optional) Renderer functions (e.g. DirectX, OpenGL3, Vulkan)
+    // (Optional) EngineRenderer functions (e.g. DirectX, OpenGL3, Vulkan)
     void    (*Renderer_CreateWindow)(ImGuiViewport* vp);                    // Create swap chains, frame buffers etc.
     void    (*Renderer_DestroyWindow)(ImGuiViewport* vp);
     void    (*Renderer_SetWindowSize)(ImGuiViewport* vp, ImVec2 size);      // Resize swap chain, frame buffers etc.
@@ -2347,7 +2347,7 @@ enum ImGuiViewportFlags_
     ImGuiViewportFlags_NoFocusOnAppearing       = 1 << 2,   // Platform Window: Don't take focus when created.
     ImGuiViewportFlags_NoFocusOnClick           = 1 << 3,   // Platform Window: Don't take focus when clicked on.
     ImGuiViewportFlags_NoInputs                 = 1 << 4,   // Platform Window: Make mouse pass through so we can drag this window while peaking behind it.
-    ImGuiViewportFlags_NoRendererClear          = 1 << 5,   // Platform Window: Renderer doesn't need to clear the framebuffer ahead (because we will fill it entirely).
+    ImGuiViewportFlags_NoRendererClear          = 1 << 5,   // Platform Window: EngineRenderer doesn't need to clear the framebuffer ahead (because we will fill it entirely).
     ImGuiViewportFlags_TopMost                  = 1 << 6,   // Platform Window: Display on top (for tooltips only)
     ImGuiViewportFlags_Minimized                = 1 << 7    // Platform Window: Window is minimized, can skip render. When minimized we tend to avoid using the viewport pos/size for clipping window or testing if they are contained in the viewport.
 };

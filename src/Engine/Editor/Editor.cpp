@@ -23,8 +23,9 @@ Editor::Editor(const std::shared_ptr<Window> & window) {
     EditorStyle::Apply();
 
     sceneWindowSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
-    enableBoundingBoxesProperty = std::make_shared<Observable<bool>>(false);
-    enableVsyncProperty = std::make_shared<Observable<bool>>(true);
+    enableBoundingBoxesProperty = std::make_shared<BooleanProperty>(true);
+    enableVsyncProperty = std::make_shared<BooleanProperty>(window->vSyncEnabled);
+    showNormalsProperty = std::make_shared<BooleanProperty>(false);
 }
 
 void Editor::DockSpaceBegin() {
@@ -102,16 +103,29 @@ void Editor::renderConsoleWindow() {
 
 void Editor::renderSettingsWindow() {
     ImGui::Begin("Settings");
+
+    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Text("Enable bounding boxes:");
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
+    ToggleButton("id", enableBoundingBoxesProperty);
+
+    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Text("Enable VSync:");
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
+    ToggleButton("id2", enableVsyncProperty);
+
+    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Text("Show normals:");
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
+    ToggleButton("id3", showNormalsProperty);
     ImGui::End();
 }
 
 void Editor::renderInfoWindow() {
     ImGui::Begin("Info");
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-    ImGui::Text("Enable bounding boxes:");
-    ToggleButton("id", enableBoundingBoxesProperty);
-    ImGui::Text("VSync enabled:");
-    ToggleButton("id2", enableVsyncProperty);
     ImGui::End();
 }
 
@@ -182,11 +196,10 @@ void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float he
 
     Editor::DockSpaceBegin();
 
-    Editor::renderInfoWindow();
+    //Editor::renderInfoWindow();
     //Editor::renderHierarchyWindow();
     Editor::renderSceneWindow(width, height, mainTexture);
-    Editor::renderSceneWindow(width, height, mainTexture);
-    //Editor::renderSettingsWindow();
+    Editor::renderSettingsWindow();
     //Editor::renderConsoleWindow();
 
     Editor::DockSpaceEnd();

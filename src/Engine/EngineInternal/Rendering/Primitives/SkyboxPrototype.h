@@ -1,14 +1,14 @@
 #pragma once
 
-#include <Rendering/Mesh/MeshPrototype.h>
+#include <Components/MeshComponent/MeshComponent.h>
 #include <glm/glm/glm.hpp>
 
-class SkyboxPrototype : public MeshPrototype {
+class SkyboxPrototype : public MeshComponent {
 
     public:
         std::vector<std::string> paths;
 
-        SkyboxPrototype() : MeshPrototype() {
+        SkyboxPrototype() : MeshComponent() {
             meshType = SKYBOX;
             shaderType = TEXTURE_CUBE;
         }

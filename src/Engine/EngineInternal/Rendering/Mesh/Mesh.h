@@ -6,16 +6,14 @@
 #include <map>
 #include <thread>
 #include <limits>
-#include <Rendering/Camera/Projection.h>
+#include <tinyobj/tiny_obj_loader.h>
+
+#include <Engine/EngineInternal/Rendering/Projection.h>
 
 #include "Shading/Shader.h"
-
-#include "../../Utils/OBJ/tiny_obj_loader.h"
-#include "../../Utils/TextureLoader.h"
-#include "Component.h"
+#include "Utils/TextureLoader/TextureLoader.h"
 #include "MeshType.h"
-#include "MeshPrototype.h"
-#include "GameObject/Transform.h"
+#include "Engine/EngineInternal/Scene/Transform.h"
 
 struct TriangleInfo {
     float angle;
@@ -30,7 +28,7 @@ struct BoundingBox {
 typedef std::shared_ptr<Shader> & ShaderPtrRef;
 typedef std::function<void(ShaderPtrRef)> ShaderFunc;
 
-class Mesh : public Component {
+class Mesh {
     public:
 
         std::vector<float> vertices;
@@ -38,8 +36,11 @@ class Mesh : public Component {
         std::vector<float> uvs;
         std::vector<float> normals;
 
-        std::vector<glm::mat4> modelMatrices;
+        std::vector<glm::mat4x4> modelMatrices;
+        std::vector<glm::mat4x4> modelMatricesCulled; // less than model matrices
+
         std::vector<glm::vec4> colorVectors;
+        std::vector<glm::vec4> colorVectorsCulled;
 
         std::string meshType = "default";
         std::string shaderType = "default";
@@ -93,8 +94,6 @@ class Mesh : public Component {
 
         void loadTexture(const char * path);
         void loadCubeMap(const std::vector<std::string> & paths);
-
-        void calculateNormals();
 
         void loadFromResource(const std::string & path);
 

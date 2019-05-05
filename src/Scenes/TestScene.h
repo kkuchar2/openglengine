@@ -1,8 +1,8 @@
 #pragma once
 
-#include <Engine.h>
+#include <Engine/Engine.h>
 
-#include "../Engine/EngineInternal/Utils/NormalsGenerator.h"
+#include "Utils/NormalsGenerator/NormalsGenerator.h"
 
 std::shared_ptr<Scene> testScene() {
     std::shared_ptr<Scene> scene = std::make_shared<Scene>();
@@ -15,13 +15,13 @@ std::shared_ptr<Scene> testScene() {
     std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
     lampMesh->shader = colorShader;
     lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
     };
 
     std::shared_ptr<Cube> cube = std::make_shared<Cube>();
     cube->shader = diffuseShader;
     cube->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };
@@ -29,7 +29,7 @@ std::shared_ptr<Scene> testScene() {
     std::shared_ptr<Surface> surface = std::make_shared<Surface>(100, 100);
     surface->shader = diffuseShader;
     surface->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };

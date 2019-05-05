@@ -10,6 +10,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include <glm/glm/glm.hpp>
+#include <RoseCpp/src/Rose/Property/BooleanProperty.h>
 
 #include "EditorStyle.h"
 
@@ -25,8 +26,9 @@ class Editor {
         
         std::shared_ptr<Observable<glm::vec2>> sceneWindowSizeProperty;
 
-        std::shared_ptr<Observable<bool>> enableBoundingBoxesProperty;
-        std::shared_ptr<Observable<bool>> enableVsyncProperty;
+        std::shared_ptr<BooleanProperty> enableBoundingBoxesProperty;
+        std::shared_ptr<BooleanProperty> enableVsyncProperty;
+        std::shared_ptr<BooleanProperty> showNormalsProperty;
 
         Editor(const std::shared_ptr<Window> & window);
 

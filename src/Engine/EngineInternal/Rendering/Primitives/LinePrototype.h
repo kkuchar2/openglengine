@@ -1,15 +1,15 @@
 #pragma once
 
-#include <Rendering/Mesh/MeshPrototype.h>
+#include <Components/MeshComponent/MeshComponent.h>
 #include <glm/glm/glm.hpp>
 
-class LinePrototype : public MeshPrototype {
+class LinePrototype : public MeshComponent {
 
     public:
         glm::vec3 start = glm::vec3(0.0f, 0.0f, 0.0f);
         glm::vec3 end = glm::vec3(1.0f, 1.0f, 1.0f);
 
-        LinePrototype() : MeshPrototype() {
+        LinePrototype() : MeshComponent() {
             meshType = LINE;
             shaderType = AMBIENT;
         }

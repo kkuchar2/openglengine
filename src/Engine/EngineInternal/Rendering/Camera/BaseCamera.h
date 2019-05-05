@@ -8,18 +8,22 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <Properties/Vec3Property.h>
+
 #include "Mesh/Mesh.h"
-#include "../../Window/Window.h"
-#include "../../Utils/MatrixUtils.h"
 
-#include "GameObject/GameObject.h"
-#include "Projection.h"
+#include <Engine/EngineInternal/Window/Window.h>
 
-#include <Rendering/Renderer/MeshInfo.h>
+#include <MatrixUtils.h>
+
+#include <Scene/GameObject/GameObject.h>
+#include "Engine/EngineInternal/Rendering/Projection.h"
+
+#include <Engine/EngineInternal/Rendering/Mesh/MeshInfo.h>
 
 #include <Window/Input/InputSystem.h>
 
-class BaseCamera : public Component {
+class BaseCamera {
 
     private:
 
@@ -27,11 +31,11 @@ class BaseCamera : public Component {
         Observer<MouseButtonInfo> mouseButtonObserver;
         Observer<KeyInfo> keyInfoObserver;
 
-        Subscription mousePositionDeltaSubscription;
-        Subscription mouseButtonSubscription;
-        Subscription keyInfoSubscription;
+        SubscriptionContainer SC;
 
     public:
+
+        bool showNormals = false;
 
         Projection projection = PERSPECTIVE;
 
@@ -54,6 +58,8 @@ class BaseCamera : public Component {
         virtual glm::mat4x4 getViewMatrix() = 0;
 
         virtual glm::mat4x4 getProjectionMatrix() = 0;
+
+        virtual void Update() = 0;
 
         ~BaseCamera();
 };

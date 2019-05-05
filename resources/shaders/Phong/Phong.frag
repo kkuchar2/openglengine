@@ -3,7 +3,7 @@
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 cameraPosition;
-
+uniform bool showNormals = false;
 in vec2 uv;
 in vec3 Normal;
 in vec3 FragPos;
@@ -13,8 +13,6 @@ out vec4 FragColor;
 
 void main()
 {
-  bool showNormals = false;
-
   float ambientStrength = 0.2;
   vec3 ambient = ambientStrength * lightColor;
 

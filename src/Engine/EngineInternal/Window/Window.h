@@ -22,7 +22,7 @@ class Window {
 
         glm::vec2 size = glm::vec2(0.0);
 
-        bool vSyncEnabled = true;
+        bool vSyncEnabled = false;
 
         Window(const int & resX, const int & resY);
 

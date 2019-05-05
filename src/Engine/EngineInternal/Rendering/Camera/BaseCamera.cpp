@@ -2,13 +2,12 @@
 
 BaseCamera::BaseCamera() {
     mousePositionDeltaObserver = createObserver<glm::vec2>([&](glm::vec2 v) { onMouseMove(v); });
-    mousePositionDeltaSubscription = InputSystem::Instance().mousePositionDeltaProperty->Subscribe(mousePositionDeltaObserver);
-
     mouseButtonObserver = createObserver<MouseButtonInfo>([&](MouseButtonInfo info) { onMouseButtonPressed(info); });
-    mouseButtonSubscription = InputSystem::Instance().mouseButtonProperty->Subscribe(mouseButtonObserver);
-
     keyInfoObserver = createObserver<KeyInfo>([&](KeyInfo info) { onKeyInfoReceived(info); });
-    keyInfoSubscription = InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver);
+
+    SC.add(InputSystem::Instance().mousePositionDeltaProperty->Subscribe(mousePositionDeltaObserver));
+    SC.add(InputSystem::Instance().mouseButtonProperty->Subscribe(mouseButtonObserver));
+    SC.add(InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver));
 }
 
 void BaseCamera::renderInstanced(const std::shared_ptr<MeshInfo> & info) {
@@ -32,6 +31,7 @@ void BaseCamera::render(const std::shared_ptr<Mesh> & mesh) {
 }
 
 void BaseCamera::initShaderCommon(const std::shared_ptr<Shader> & shader) {
+    shader->setBool("showNormals", showNormals);
     shader->setVec3("cameraPosition", getPosition());
     shader->setMat4("vp", getProjectionMatrix() * getViewMatrix());
 }
@@ -45,9 +45,7 @@ void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {}
 glm::vec3 BaseCamera::getPosition() { return glm::vec3(0.0f); }
 
 BaseCamera::~BaseCamera() {
-    mousePositionDeltaSubscription->Unsubscribe();
-    mouseButtonSubscription->Unsubscribe();
-    keyInfoSubscription->Unsubscribe();
+    SC.unsubscribeAll();
 }
 
 

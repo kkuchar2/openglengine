@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "Shader.h"
+#include "ShaderType.h"
 
 class ShaderPool
 {

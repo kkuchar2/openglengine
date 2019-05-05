@@ -4,6 +4,27 @@ project(opengl)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 set(CMAKE_CXX_STANDARD 17)
 
+if(NOT WIN32)
+    string(ASCII 27 Esc)
+    set(ColourReset "${Esc}[m")
+    set(ColourBold  "${Esc}[1m")
+    set(Red         "${Esc}[31m")
+    set(Green       "${Esc}[32m")
+    set(Yellow      "${Esc}[33m")
+    set(Blue        "${Esc}[34m")
+    set(Magenta     "${Esc}[35m")
+    set(Cyan        "${Esc}[36m")
+    set(White       "${Esc}[37m")
+    set(BoldRed     "${Esc}[1;31m")
+    set(BoldGreen   "${Esc}[1;32m")
+    set(BoldYellow  "${Esc}[1;33m")
+    set(BoldBlue    "${Esc}[1;34m")
+    set(BoldMagenta "${Esc}[1;35m")
+    set(BoldCyan    "${Esc}[1;36m")
+    set(BoldWhite   "${Esc}[1;37m")
+endif()
+
+
 file (GLOB_RECURSE RESOURCE_FILES "resources/*.*")
 
 foreach(resource ${resources})
@@ -45,24 +66,45 @@ set(BUILD_STATIC_LIB ON)
 set(BUILD_ASSIMP_TOOLS  ON)
 set(ASSIMP_BUILD_STATIC_LIB ON)
 
+set(GLM_TEST_ENABLE OFF)
+
+
+
+message("${Cyan}Configuring glfw${ColourReset}")
+
 add_subdirectory(dependencies/glfw)
+
+message("${Cyan}Configuring glm${ColourReset}")
+
 add_subdirectory(dependencies/glm)
+
+message("${Cyan}Configuring RoseCpp${ColourReset}")
+
 add_subdirectory(dependencies/RoseCpp)
-add_subdirectory(dependencies/freetype2)
+
+message("${Cyan}Configuring bullet3${ColourReset}")
+
+set(BUILD_SHARED_LIBS ON)
+
+add_subdirectory(dependencies/bullet3)
 
 include_directories(dependencies)
 include_directories(dependencies/glfw)
 include_directories(dependencies/glfw/deps)
 include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
+include_directories(dependencies/bullet3/src)
 include_directories(dependencies/RoseCpp/src)
 include_directories(dependencies/freetype2/include)
 include_directories(dependencies/glad/include/glad)
 include_directories(dependencies/glad/include/KHR)
 
-include_directories(src/Engine/EngineInternal)
-include_directories(src/Engine/EngineInternal/Rendering)
+include_directories(dependencies)
+
 include_directories(src)
+include_directories(src/Engine/EngineInternal)
+include_directories(src/Engine/EngineInternal/Utils)
+include_directories(src/Engine/EngineInternal/Rendering)
 
 file(GLOB_RECURSE SRC_FILES src/*.cpp)
 file(GLOB_RECURSE IMGUI_SRC_FILES dependencies/imgui/*.cpp)
@@ -71,8 +113,16 @@ set(SOURCE_FILES ${SRC_FILES} ${IMGUI_SRC_FILES})
 
 set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
-set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c" src/Engine/EngineInternal/Rendering/Mesh/SurfacePrototype.h src/Engine/EngineInternal/Rendering/Mesh/MeshBuilder.h src/Engine/EngineInternal/Utils/Objects.h src/Engine/EngineInternal/Rendering/GameObject/GameObjectBase.h src/Engine/EngineInternal/Rendering/GameObject/GameObjectBase.cpp src/Engine/EngineInternal/Rendering/Primitives/LinePrototype.h src/Engine/EngineInternal/Behaviour/RotatingBehaviour.h src/Scenes/OrthoScene.h src/Engine/EngineInternal/Utils/stb_image.h src/Engine/EngineInternal/Utils/TextureLoader.cpp src/Engine/EngineInternal/Rendering/Primitives/SkyboxPrototype.h src/Engine/EngineInternal/Rendering/Renderer/MeshInfo.h src/Engine/EngineInternal/Rendering/Primitives/Point.h src/Engine/EngineInternal/Utils/FastMath.h src/Engine/EngineInternal/Utils/BoundingBoxGenerator.h)
+set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
+set(TINYOBJ "dependencies/tinyobj/tiny_obj_loader.h" "dependencies/tinyobj/tiny_obj_loader.cpp")
 
-add_executable(opengl ${SOURCE_FILES} ${TINYCTHREAD} ${GETOPT} ${GLAD})
+add_executable(opengl ${SOURCE_FILES} ${TINYOBJ} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 
-target_link_libraries(opengl glfw freetype)
+target_link_libraries(opengl
+        glfw
+        freetype
+        Bullet3Common
+        BulletDynamics
+        BulletCollision
+        LinearMath
+)
