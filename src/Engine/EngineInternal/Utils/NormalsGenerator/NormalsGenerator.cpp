@@ -1,5 +1,7 @@
 #include "NormalsGenerator.h"
 
+#include <Engine/EngineInternal/Rendering/Mesh/TriangleInfo.h>
+
 void NormalsGenerator::generate(Mesh * mesh) {
     std::map<unsigned int, std::vector<TriangleInfo>> vertexToTriangles;
 

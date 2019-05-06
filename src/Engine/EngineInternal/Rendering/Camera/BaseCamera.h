@@ -43,7 +43,7 @@ class BaseCamera {
 
         void renderInstanced(const std::shared_ptr<MeshInfo> & info);
 
-        void render(const std::shared_ptr<Mesh> & mesh);
+        void render(const std::shared_ptr<MeshInfo> & info);
 
         void initShaderCommon(const std::shared_ptr<Shader> & shader);
 

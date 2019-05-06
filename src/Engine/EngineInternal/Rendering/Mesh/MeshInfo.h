@@ -9,6 +9,7 @@
 class MeshInfo {
     public:
         std::shared_ptr<Mesh> mesh;
+        std::shared_ptr<MeshRenderer> renderer;
         std::vector<std::shared_ptr<GameObject>> objects;
         std::vector<std::shared_ptr<GameObject>> boundingBoxes;
 

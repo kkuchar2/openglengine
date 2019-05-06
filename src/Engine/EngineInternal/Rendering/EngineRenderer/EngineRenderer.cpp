@@ -21,11 +21,17 @@ void EngineRenderer::prepare() {
     renderingManager->preprocessScenes();
 
     for (auto & info : renderingManager->meshes) {
-        info->mesh->prepare();
+        if (!info->renderer.get()) {
+            std::cerr << "Renderer is NULL" << std::endl;
+        }
+        info->renderer->prepare();
     }
 
     for (auto  & [id, info] : renderingManager->instancedMeshes) {
-        info->mesh->prepare();
+        if (!info->renderer.get()) {
+            std::cerr << "Renderer is null" << std::endl;
+        }
+        info->renderer->prepare();
     }
 }
 
@@ -46,7 +52,7 @@ void EngineRenderer::renderFrame() {
     }
 
     for (auto const & info : renderingManager->meshes) {
-        getCamera(info->mesh->projection)->render(info->mesh);
+        getCamera(info->mesh->projection)->render(info);
     }
 }
 

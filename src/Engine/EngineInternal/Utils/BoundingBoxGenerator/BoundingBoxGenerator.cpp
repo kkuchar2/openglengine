@@ -1,3 +1,4 @@
+#include <Engine/EngineInternal/Rendering/Mesh/MeshRenderer.h>
 #include "BoundingBoxGenerator.h"
 
 void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & mesh,
@@ -63,4 +64,5 @@ void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & me
     child->boundingBox = std::make_shared<GameObject>();
     child->boundingBox->instanced = true;
     child->boundingBox->addComponent(cubeMeshProto);
+    child->boundingBox->addComponent(std::make_shared<MeshRenderer>());
 }

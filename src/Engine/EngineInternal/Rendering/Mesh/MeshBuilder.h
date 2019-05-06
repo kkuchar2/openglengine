@@ -13,11 +13,12 @@
 #include <Scene/GameObject/GameObject.h>
 
 #include "Engine/EngineInternal/Components/MeshComponent/SurfaceMeshComponent.h"
+#include "MeshRenderer.h"
 
 
 class MeshBuilder {
     public:
-        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshComponent> & proto, const Projection & projection) {
+        static std::shared_ptr<Mesh> of(const std::shared_ptr<MeshComponent> & proto, const std::shared_ptr<MeshRenderer> & renderer,  const Projection & projection) {
 
             std::shared_ptr<Mesh> mesh;
 
@@ -52,7 +53,7 @@ class MeshBuilder {
 
                 if (proto->meshType == LINE) {
                     auto lineProto = std::dynamic_pointer_cast<LinePrototype>(proto);
-                    auto lineMesh = std::dynamic_pointer_cast<Line>(mesh);
+                    std::shared_ptr<Line> lineMesh = std::static_pointer_cast<Line>(mesh);
                     lineMesh->setCoords(lineProto->start, lineProto->end);
                 }
             }
@@ -71,21 +72,23 @@ class MeshBuilder {
             mesh->shader = ShaderPool::Instance().getShader(proto->shaderType);
             mesh->cubeMap = proto->cubeMap;
             mesh->disableNormals = proto->disableNormals;
-            mesh->shaderInit = [proto](ShaderPtrRef s) {
+            mesh->shaderInit = [proto](std::shared_ptr<Shader> & s) {
                 s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
                 s->setVec3("lightPos", glm::vec3(2.2f, 3.0f, 2.0f));
             };
 
             if (proto->meshType != SKYBOX) {
                 if (proto->texture != nullptr) {
-                    mesh->loadTexture(proto->texture);
+                    renderer->loadTexture(proto->texture);
                 }
             }
             else {
                 auto skyboxProto = std::dynamic_pointer_cast<SkyboxPrototype>(proto);
                 mesh->cubeMap = true;
-                mesh->loadCubeMap(skyboxProto->paths);
+                renderer->loadCubeMap(skyboxProto->paths);
             }
+
+            renderer->init(mesh);
 
             return mesh;
         }

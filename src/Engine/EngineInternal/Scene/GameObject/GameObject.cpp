@@ -25,31 +25,6 @@ void GameObject::addComponent(const std::shared_ptr<Component> & component) {
     components.push_back(component);
 }
 
-template<typename T>
-std::shared_ptr<T> GameObject::castComponent(const std::shared_ptr<Component> & component) {
-    std::shared_ptr<T> t = std::dynamic_pointer_cast<T>(component);
-
-    if (t) {
-        return t;
-    }
-
-    return nullptr;
-}
-
-template<typename T>
-std::shared_ptr<T> GameObject::getComponent() {
-    for (auto & component : components) {
-
-        auto c = std::dynamic_pointer_cast<T>(component);
-
-        if (c) {
-            return c;
-        }
-    }
-
-    return nullptr;
-}
-
 void GameObject::init() {
     transform.init();
     if (!boundingBox.get()) return;

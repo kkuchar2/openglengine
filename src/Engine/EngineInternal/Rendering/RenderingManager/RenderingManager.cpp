@@ -13,9 +13,14 @@ void RenderingManager::preprocessScenes() {
     ///--------------------------------------------------------------------------------------
 
     for (auto & child : children) {
-        auto proto = child->meshProto;
 
+        auto proto = child->meshProto;
         if (!proto.get()) continue;
+
+        child->addComponent(std::make_shared<MeshRenderer>());
+
+        auto meshRenderer = child->getComponent<MeshRenderer>();
+        if (!meshRenderer.get()) continue;
 
         proto->updateIds();
 
@@ -23,8 +28,9 @@ void RenderingManager::preprocessScenes() {
 
         if (child->instanced) {
             if (instancedMeshes.count(id) == 0) {
-                auto mesh = MeshBuilder::of(proto, child->projection);
+                auto mesh = MeshBuilder::of(proto, meshRenderer, child->projection);
                 auto meshInfo = MeshInfo::ptr(mesh, child);
+                meshInfo->renderer = meshRenderer;
 
                 if (!proto->disableBoundingBox) {
                     BoundingBoxGenerator::calculateBoundingBox(mesh, child);
@@ -39,12 +45,13 @@ void RenderingManager::preprocessScenes() {
                     instancedMeshes[id]->boundingBoxes.emplace_back(child->boundingBox);
                 }
                 instancedMeshes[id]->addInstance(child, proto->color);
-
             }
         }
         else {
-            auto mesh = MeshBuilder::of(proto, child->projection);
-            meshes.emplace_back(MeshInfo::ptr(mesh, child));
+            auto mesh = MeshBuilder::of(proto, meshRenderer, child->projection);
+            auto meshInfo = MeshInfo::ptr(mesh, child);
+            meshInfo->renderer = meshRenderer;
+            meshes.emplace_back(meshInfo);
 
             if (!proto->disableBoundingBox) {
                 BoundingBoxGenerator::calculateBoundingBox(mesh, child);
@@ -65,9 +72,15 @@ void RenderingManager::preprocessScenes() {
 
         auto proto = boundingBox->meshProto;
 
+        if (!proto.get()) continue;
+
+        auto meshRenderer = boundingBox->getComponent<MeshRenderer>();
+
         if (instancedMeshes.count("bbox") == 0) {
-            auto mesh = MeshBuilder::of(proto, PERSPECTIVE);
-            instancedMeshes.insert(std::make_pair("bbox", MeshInfo::ptr(mesh, boundingBox)));
+            auto mesh = MeshBuilder::of(proto, meshRenderer, PERSPECTIVE);
+            auto meshInfo =  MeshInfo::ptr(mesh, boundingBox);
+            meshInfo->renderer = meshRenderer;
+            instancedMeshes.insert(std::make_pair("bbox", meshInfo));
         }
         else {
             instancedMeshes["bbox"]->addInstance(boundingBox, proto->color);
