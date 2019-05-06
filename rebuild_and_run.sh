@@ -2,7 +2,8 @@
 
 rm -rf build
 mkdir build
-cd build
-cmake -DGLM_TEST_ENABLE=OFF ..
-make -j8
-./opengl
+cd build 
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cd ..
+cmake --build build --target all -- -j 8
+

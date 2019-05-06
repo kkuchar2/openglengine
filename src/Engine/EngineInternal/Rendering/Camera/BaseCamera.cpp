@@ -2,60 +2,38 @@
 
 BaseCamera::BaseCamera() {
     mousePositionDeltaObserver = createObserver<glm::vec2>([&](glm::vec2 v) { onMouseMove(v); });
-    mousePositionDeltaSubscription = InputSystem::Instance().mousePositionDeltaProperty->Subscribe(mousePositionDeltaObserver);
-
     mouseButtonObserver = createObserver<MouseButtonInfo>([&](MouseButtonInfo info) { onMouseButtonPressed(info); });
-    mouseButtonSubscription = InputSystem::Instance().mouseButtonProperty->Subscribe(mouseButtonObserver);
-
     keyInfoObserver = createObserver<KeyInfo>([&](KeyInfo info) { onKeyInfoReceived(info); });
-    keyInfoSubscription = InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver);
+
+    SC.add(InputSystem::Instance().mousePositionDeltaProperty->Subscribe(mousePositionDeltaObserver));
+    SC.add(InputSystem::Instance().mouseButtonProperty->Subscribe(mouseButtonObserver));
+    SC.add(InputSystem::Instance().keyInfoProperty->Subscribe(keyInfoObserver));
 }
 
-void BaseCamera::renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount) {
-    std::shared_ptr<Shader> shader = mesh->shader;
-
+void BaseCamera::renderInstanced(const std::shared_ptr<MeshInfo> & info) {
+    std::shared_ptr<Shader> shader = info->mesh->shader;
     shader->use();
-
     initShaderCommon(shader);
-
-    mesh->shaderInit(shader);
-
-    if (mesh->textureId != 0) {
-        glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-    }
-
-    mesh->renderInstanced(instancesCount);
+    info->mesh->shaderInit(shader);
+    info->mesh->UpdateModelMatrices();
+    info->mesh->UpdateColorVectors();
+    info->mesh->renderInstanced(info->objects.size());
 }
 
-void BaseCamera::render(const std::shared_ptr<Mesh> & mesh, const Transform & transform) {
+void BaseCamera::render(const std::shared_ptr<Mesh> & mesh) {
     std::shared_ptr<Shader> shader = mesh->shader;
-
     shader->use();
-
     initShaderCommon(shader);
-
-    shader->setMat4("modelMatrix", createModelMatrix(transform));
-
+    mesh->UpdateModelMatrices();
+    mesh->UpdateColorVectors();
     mesh->shaderInit(shader);
-
-    if (mesh->textureId != 0) {
-        glBindTexture(GL_TEXTURE_2D, mesh->textureId);
-    }
-
     mesh->render();
 }
 
 void BaseCamera::initShaderCommon(const std::shared_ptr<Shader> & shader) {
+    shader->setBool("showNormals", showNormals);
     shader->setVec3("cameraPosition", getPosition());
-    shader->setMat4("projectionMatrix", getProjectionMatrix());
-    shader->setMat4("viewMatrix", getViewMatrix());
-}
-
-glm::mat4 BaseCamera::createModelMatrix(const Transform & transform) {
-    glm::mat4 m = glm::translate(glm::mat4x4(1.0f), transform.position);
-    m *= MatrixUtils::rotationMatrix(transform.rotation);
-    m *= MatrixUtils::scaleMatrix(transform.scale);
-    return m;
+    shader->setMat4("vp", getProjectionMatrix() * getViewMatrix());
 }
 
 void BaseCamera::onMouseMove(const glm::vec2 & delta) {}
@@ -64,14 +42,10 @@ void BaseCamera::onMouseButtonPressed(const MouseButtonInfo & info) {}
 
 void BaseCamera::onKeyInfoReceived(const KeyInfo & info) {}
 
-glm::vec3 BaseCamera::getPosition() {
-    return glm::vec3(0.0f, 0.0f, 0.0f);
-}
+glm::vec3 BaseCamera::getPosition() { return glm::vec3(0.0f); }
 
 BaseCamera::~BaseCamera() {
-    mousePositionDeltaSubscription->Unsubscribe();
-    mouseButtonSubscription->Unsubscribe();
-    keyInfoSubscription->Unsubscribe();
+    SC.unsubscribeAll();
 }
 
 

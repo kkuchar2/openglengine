@@ -1,11 +1,24 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/glm/ext.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 class MatrixUtils {
     public:
-        static glm::mat4 scaleMatrix(glm::vec3 scale) {
-            return glm::mat4(
+
+        static glm::mat4x4 modelMatrix(const glm::vec3 & s, const glm::vec3 & t, const glm::mat4x4 & r) {
+            return glm::mat4x4(
+                    r[0][0] * s.x, r[0][1] * s.x, r[0][2] * s.x, 0,
+                    r[1][0] * s.y, r[1][1] * s.y, r[1][2] * s.y, 0,
+                    r[2][0] * s.z, r[2][1] * s.z, r[2][2] * s.z, 0,
+                    t.x, t.y, t.z, 1.0
+            );
+        }
+
+        static glm::mat4x4 scaleMatrix(glm::vec3 scale) {
+            return glm::mat4x4(
                     scale.x, 0.0, 0.0, 0.0,
                     0.0, scale.y, 0.0, 0.0,
                     0.0, 0.0, scale.z, 0.0,
@@ -13,24 +26,37 @@ class MatrixUtils {
             );
         }
 
-        static glm::mat4 rotationMatrix(glm::vec3 rotation) {
-            glm::mat4 rotMatX = rotationMatrix(glm::vec3(1.0, 0.0, 0.0), rotation.x);
-            glm::mat4 rotMatY = rotationMatrix(glm::vec3(0.0, 1.0, 0.0), rotation.y);
-            glm::mat4 rotMatZ = rotationMatrix(glm::vec3(0.0, 0.0, 1.0), rotation.z);
-            return rotMatX * rotMatY * rotMatZ;
+        static glm::mat4x4 translationMatrix(const glm::vec3 & p) {
+            return glm::mat4x4(
+                    1.0, 0.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0, 0.0,
+                    0.0, 0.0, 1.0, 0.0,
+                    p.x, p.y, p.z, 1.0
+            );
         }
 
-        static glm::mat4 rotationMatrix(glm::vec3 axis, float angle) {
-            axis = normalize(axis);
+        static glm::mat4x4 translate(const glm::vec3 & p) {
+            return glm::mat4x4(
+                    0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0,
+                    p.x, p.y, p.z, 0.0
+            );
+        }
 
-            float s = static_cast<float>(sin(angle));
-            float c = static_cast<float>(cos(angle));
-            float oc = static_cast<float>(1.0 - c);
+        static glm::mat4x4 rotationMatrix(const glm::vec3 & r) {
+            float a = cos(r.x);
+            float b = sin(r.x);
+            float c = cos(r.y);
+            float d = sin(r.y);
+            float e = cos(r.z);
+            float f = sin(r.z);
 
-            return glm::mat4(
-                    oc * axis.x * axis.x + c, oc * axis.x * axis.y - axis.z * s, oc * axis.z * axis.x + axis.y * s, 0.0,
-                    oc * axis.x * axis.y + axis.z * s, oc * axis.y * axis.y + c, oc * axis.y * axis.z - axis.x * s, 0.0,
-                    oc * axis.z * axis.x - axis.y * s, oc * axis.y * axis.z + axis.x * s, oc * axis.z * axis.z + c, 0.0,
-                    0.0, 0.0, 0.0, 1.0);
+            return glm::mat4x4(
+                    e * c, f * c, -d, 0.0,
+                    -f * a + e * d * b, e * a + f * d * b, c * b, 0.0,
+                    f * b + e * d * a, -e * b + f * d * a, c * a, 0.0,
+                    0.0f, 0.0f, 0.0f, 1.0f
+            );
         }
 };

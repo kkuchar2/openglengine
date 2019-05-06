@@ -1,18 +1,18 @@
 #pragma once
 
 #include "GameObject/GameObject.h"
-#include "../Camera/PerspectiveCamera.h"
+#include <Engine/EngineInternal/Rendering/Projection.h>
 
 class Scene {
     public:
 
         Projection projection = PERSPECTIVE;
 
-        std::vector<std::shared_ptr<GameObject>> objectsToRender;
+        std::vector<std::shared_ptr<GameObject>> children;
 
         Scene() = default;
 
-        void addObject(std::shared_ptr<GameObject> & obj) {
-            objectsToRender.push_back(obj);
+        void addChild(const std::shared_ptr<GameObject> & child) {
+            children.push_back(child);
         }
 };

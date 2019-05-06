@@ -1,17 +1,21 @@
-#include <EngineException.h>
 #include "Mesh/Mesh.h"
 
-Mesh::Mesh(const char * path) : Component::Component() {
+#include <Utils/NormalsGenerator/NormalsGenerator.h>
+
+Mesh::Mesh(const std::string & path) {
     loadFromResource(path);
 }
 
-Mesh::Mesh() : Component::Component() {}
+Mesh::Mesh() {}
 
 void Mesh::prepare() {
-    if (prepared) return;
+    if (prepared) {
+        std::cout << "Mesh already prepared" << std::endl;
+        return;
+    }
 
     if (!disableNormals) {
-        calculateNormals();
+        NormalsGenerator::generate(this);
     }
 
     CreateVertexAttributeObject();
@@ -19,10 +23,8 @@ void Mesh::prepare() {
     CreateVertexBuffer();
     CreateUVBuffer();
     CreateNormalsBuffer();
-
-    if (isInstanced) {
-        CreateTransformBuffer();
-    }
+    CreateModelMatricesBuffer();
+    CreateColorBuffer();
 
     glBindVertexArray(0);
 
@@ -41,50 +43,64 @@ void Mesh::CreateIndexBuffer() {
 }
 
 void Mesh::CreateVertexBuffer() {
-    if (vertices.empty()) return;
+    if (vertices.empty()) {
+        std::cerr << "ERROR: Vertices are empty" << std::endl;
+        return;
+    }
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 void Mesh::CreateUVBuffer() {
-    if (uvs.empty()) return;
+    if (uvs.empty()) {
+        std::cerr << "ERROR: UV's are empty" << std::endl;
+        return;
+    }
+
     glGenBuffers(1, &uvbo);
     glBindBuffer(GL_ARRAY_BUFFER, uvbo);
-    glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(float), uvs.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(float), uvs.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 void Mesh::CreateNormalsBuffer() {
-    if (normals.empty()) return;
+    if (normals.empty()) {
+        std::cerr << "ERROR: Normals are empty" << std::endl;
+        return;
+    }
+
     glGenBuffers(1, &nbo);
     glBindBuffer(GL_ARRAY_BUFFER, nbo);
-    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(float), normals.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(float), normals.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
-void Mesh::CreateTransformBuffer() {
-    if (modelMatrices.empty()) return;
+void Mesh::CreateModelMatricesBuffer() {
+    if (modelMatrices.empty())  {
+        std::cerr << "ERROR: Model matrices are empty" << std::endl;
+        return;
+    }
 
-    glGenBuffers(1, &posvbo);
-    glBindBuffer(GL_ARRAY_BUFFER, posvbo);
-    glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4), modelMatrices.data(), GL_STATIC_DRAW);
+    glGenBuffers(1, &model_matrices_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
+    glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4x4), nullptr, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(0));
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) nullptr);
 
     glEnableVertexAttribArray(4);
-    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 4));
+    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 4));
 
     glEnableVertexAttribArray(5);
-    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 8));
+    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 8));
 
     glEnableVertexAttribArray(6);
-    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(float) * 12));
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 12));
 
     glVertexAttribDivisor(3, 1);
     glVertexAttribDivisor(4, 1);
@@ -92,75 +108,99 @@ void Mesh::CreateTransformBuffer() {
     glVertexAttribDivisor(6, 1);
 }
 
-void Mesh::render() {
-    render(mode, static_cast<int>(indices.size()));
+void Mesh::CreateColorBuffer() {
+    if (colorVectors.empty()) {
+        std::cerr << "ERROR: Color vectors are empty" << std::endl;
+        return;
+    }
+
+    glGenBuffers(1, &color_vectors_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
+    glBufferData(GL_ARRAY_BUFFER, colorVectors.size() * sizeof(glm::vec4), nullptr, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(7);
+    glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);
+
+    glVertexAttribDivisor(7, 1);
 }
 
 void Mesh::render(GLenum renderMode, int indicesCount) {
+    glBindTexture(cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
     glBindVertexArray(vao);
     glDrawElements(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr);
+}
+
+void Mesh::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
+    glBindTexture(cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
+    glBindVertexArray(vao);
+    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
+}
+
+void Mesh::render() {
+    render(mode, static_cast<int>(indices.size()));
 }
 
 void Mesh::renderInstanced(int instancesCount) {
     renderInstanced(mode, static_cast<int>(indices.size()), instancesCount);
 }
 
-void Mesh::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
+void Mesh::UpdateModelMatrices() {
+    if (modelMatrices.empty()) {
+        std::cerr << "ERROR: model matrices are empty" << std::endl;
+        return;
+    }
+
     glBindVertexArray(vao);
-    glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
+
+    glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
+    glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4x4), modelMatrices.data(), GL_STREAM_DRAW);
+
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) nullptr);
+
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 4));
+
+    glEnableVertexAttribArray(5);
+    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 8));
+
+    glEnableVertexAttribArray(6);
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) (sizeof(float) * 12));
+
+    glVertexAttribDivisor(3, 1);
+    glVertexAttribDivisor(4, 1);
+    glVertexAttribDivisor(5, 1);
+    glVertexAttribDivisor(6, 1);
+}
+
+void Mesh::UpdateColorVectors() {
+    if (colorVectors.empty()) {
+        std::cerr << "ERROR: color vectors are empty" << std::endl;
+        return;
+    }
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
+    glBufferData(GL_ARRAY_BUFFER, colorVectors.size() * sizeof(glm::vec4), colorVectors.data(), GL_STREAM_DRAW);
+
+    glEnableVertexAttribArray(7);
+    glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);
+
+    glVertexAttribDivisor(7, 1);
 }
 
 void Mesh::loadTexture(const char * path) {
-    textureId = TextureLoader::load(path);
+    textureId = TextureLoader::generateAndBindTexture(TextureLoader::loadTextureData(path));
 }
 
-void Mesh::calculateNormals() {
-    std::map<unsigned int, std::vector<TriangleInfo>> vertexToTriangles;
-
-    std::vector<TriangleInfo> triangles;
-
-    for (unsigned int vertexId = 0; vertexId < vertices.size() / 3; vertexId++) {
-        vertexToTriangles.insert(std::pair<int, std::vector<TriangleInfo>>(vertexId, triangles));
-    }
-
-    for (unsigned int j = 0; j < indices.size() / 3; j++) {
-        unsigned int v1 = indices[j * 3];
-        unsigned int v2 = indices[j * 3 + 1];
-        unsigned int v3 = indices[j * 3 + 2];
-
-        glm::vec3 v_1 = glm::vec3(vertices[v1 * 3], vertices[v1 * 3 + 1], vertices[v1 * 3 + 2]);
-        glm::vec3 v_2 = glm::vec3(vertices[v2 * 3], vertices[v2 * 3 + 1], vertices[v2 * 3 + 2]);
-        glm::vec3 v_3 = glm::vec3(vertices[v3 * 3], vertices[v3 * 3 + 1], vertices[v3 * 3 + 2]);
-
-        glm::vec3 a = v_2 - v_1;
-        glm::vec3 b = v_3 - v_1;
-
-        TriangleInfo info {};
-        info.angle = std::acos(glm::dot(a, b) / (glm::length(a) * glm::length(b)));
-        info.normal = glm::normalize(glm::cross(a, b));
-
-        vertexToTriangles.at(v1).emplace_back(info);
-        vertexToTriangles.at(v2).emplace_back(info);
-        vertexToTriangles.at(v3).emplace_back(info);
-    }
-
-    for (auto & pair : vertexToTriangles) {
-
-        std::vector<TriangleInfo> triangleInfos = pair.second;
-
-        glm::vec3 weightedSum = glm::vec3(0.0, 0.0, 0.0);
-
-        for (auto & info : triangleInfos) {
-            weightedSum += info.normal * info.angle;
-        }
-
-        weightedSum /= triangleInfos.size();
-
-        normals.insert(normals.end(), { weightedSum.x, weightedSum.y, weightedSum.z });
-    }
+void Mesh::loadCubeMap(const std::vector<std::string> & paths) {
+    textureId = TextureLoader::loadCubeMap(paths);
 }
 
-void Mesh::loadFromResource(const char * path) {
+void Mesh::loadFromResource(const std::string & path) {
+
+    std::cout << "Loading: " << path << std::endl;
+
     tinyobj::attrib_t attrib;
 
     std::string warning;
@@ -169,7 +209,7 @@ void Mesh::loadFromResource(const char * path) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
 
-    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warning, &error, path);
+    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warning, &error, path.c_str());
 
     if (!ret) {
         if (!error.empty()) {
