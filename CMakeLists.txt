@@ -62,11 +62,10 @@ set(GLFW_INCLUDE_NONE OFF CACHE BOOL "" FORCE)
 
 set(ZLIB_LIBRARIES zlibstatic)
 set(ENABLE_BOOST_WORKAROUND ON)
-set(BUILD_STATIC_LIB ON)
-set(BUILD_ASSIMP_TOOLS  ON)
-set(ASSIMP_BUILD_STATIC_LIB ON)
 
-set(GLM_TEST_ENABLE OFF)
+option(BUILD_STATIC_LIB ON)
+
+
 
 
 
@@ -76,6 +75,8 @@ add_subdirectory(dependencies/glfw)
 
 message("${Cyan}Configuring glm${ColourReset}")
 
+option(GLM_TEST_ENABLE "Build unit tests" OFF)
+
 add_subdirectory(dependencies/glm)
 
 message("${Cyan}Configuring RoseCpp${ColourReset}")
@@ -84,7 +85,16 @@ add_subdirectory(dependencies/RoseCpp)
 
 message("${Cyan}Configuring bullet3${ColourReset}")
 
-set(BUILD_SHARED_LIBS ON)
+option(BUILD_SHARED_LIBS ON)
+option(BUILD_UNIT_TESTS OFF)
+option(USE_GRAPHICAL_BENCHMARK OFF)
+option(BUILD_CPU_DEMOS OFF)
+option(BUILD_ENET OFF)
+option(BUILD_CLSOCKET OFF)
+option(BUILD_BULLET3 OFF)
+option(BUILD_EXTRAS OFF)
+option(BUILD_OPENGL3_DEMOS OFF)
+option(BUILD_BULLET2_DEMOS OFF)
 
 add_subdirectory(dependencies/bullet3)
 
