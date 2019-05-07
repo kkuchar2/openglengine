@@ -1,7 +1,7 @@
 #pragma once
-
 #include <Scene/GameObject/GameObject.h>
-#include <Engine/EngineInternal/Components/MeshComponent/SurfaceMeshComponent.h>
+#include <Components/MeshComponent/SurfaceMeshComponent.h>
+#include <Rendering/Mesh/MeshRenderer/MeshRenderer.h>
 
 class GameObjectFactory {
 
@@ -46,6 +46,12 @@ class GameObjectFactory {
                 const glm::vec4 & color = glm::vec4(1.0f));
 
         static std::shared_ptr<GameObject> teapot(
+                const glm::vec3 & pos = glm::vec3(0.0f),
+                const glm::vec3 & rot = glm::vec3(0.0f),
+                const glm::vec3 & scale = glm::vec3(1.0f),
+                const glm::vec4 & color = glm::vec4(1.0f));
+
+        static std::shared_ptr<GameObject> cone(
                 const glm::vec3 & pos = glm::vec3(0.0f),
                 const glm::vec3 & rot = glm::vec3(0.0f),
                 const glm::vec3 & scale = glm::vec3(1.0f),

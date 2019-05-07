@@ -2,8 +2,10 @@
 
 #include <memory>
 #include <vector>
+
 #include <Scene/GameObject/GameObject.h>
-#include <Rendering/Primitives/LinePrototype.h>
+#include <Rendering/Mesh/Primitives/LineMeshComponent.h>
+#include <Rendering/Mesh/MeshRenderer/MeshRenderer.h>
 
 class BoundingBoxGenerator {
     public:

@@ -1,26 +1,49 @@
 #include "MeshRenderer.h"
 
 #include <Utils/NormalsGenerator/NormalsGenerator.h>
+#include <Rendering/Shading/ShaderPool.h>
 
-void MeshRenderer::init(const std::shared_ptr<Mesh> & mesh) {
-    this->mesh = mesh;
+void MeshRenderer::init(const std::shared_ptr<Mesh> & m) {
+    mesh = m;
 }
 
 void MeshRenderer::prepare() {
 
+    /// Verify if associated mesh exists
     if (!mesh.get()) {
         std::cerr << "MeshRenderer: Mesh is NULL" << std::endl;
     }
 
+    /// Ignore if mesh already prepared
     if (mesh->prepared) {
         std::cout << "Mesh already prepared" << std::endl;
         return;
     }
 
-    if (!mesh->disableNormals) {
+    /// Load shader
+    shader = ShaderPool::Instance().getShader(shaderType);
+
+
+    /// Setup shader update method
+    shaderInit = [](const std::shared_ptr<Shader> & s) {
+        s->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        s->setVec3("lightPos", glm::vec3(2.2f, 3.0f, 2.0f));
+    };
+
+    /// Load textures
+    if (texture != nullptr) {
+        loadTexture(texture);
+    }
+    else if (paths.size() > 0) {
+        loadCubeMap(paths);
+    }
+
+    /// Generate normals for mesh if required
+    if (!disableNormals) {
         NormalsGenerator::generate(mesh.get());
     }
 
+    /// Prepare GPU buffers and initialize them
     CreateVertexAttributeObject();
     CreateIndexBuffer();
     CreateVertexBuffer();
@@ -197,31 +220,52 @@ void MeshRenderer::UpdateColorVectors() {
     glVertexAttribDivisor(7, 1);
 }
 
-
 void MeshRenderer::loadTexture(const char * path) {
+    std::cout << "Loading texture: " << path << std::endl;
     textureId = TextureLoader::generateAndBindTexture(TextureLoader::loadTextureData(path));
+    std::cout << "Texture id: " << textureId << std::endl;
 }
 
 void MeshRenderer::loadCubeMap(const std::vector<std::string> & paths) {
+    std::cout << "Loading cube map textures" << std::endl;
+
+
+    for (auto & path : paths) {
+        std::cout << "\tLoading texture: " << path << std::endl;
+    }
+
     textureId = TextureLoader::loadCubeMap(paths);
+
+    std::cout << "Texture id: " << textureId << std::endl;
 }
 
 void MeshRenderer::render() {
-    render(mesh->mode, static_cast<int>(mesh->indices.size()));
+    render(mesh->renderingMode, static_cast<int>(mesh->indices.size()));
 }
 
 void MeshRenderer::renderInstanced(int instancesCount) {
-    renderInstanced(mesh->mode, static_cast<int>(mesh->indices.size()), instancesCount);
+    renderInstanced(mesh->renderingMode, static_cast<int>(mesh->indices.size()), instancesCount);
 }
 
 void MeshRenderer::render(GLenum renderMode, int indicesCount) {
-    glBindTexture(mesh->cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
+    glBindTexture(cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
     glBindVertexArray(vao);
     glDrawElements(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr);
 }
 
 void MeshRenderer::renderInstanced(GLenum renderMode, int indicesCount, int instancesCount) {
-    glBindTexture(mesh->cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
+    glBindTexture(cubeMap ? GL_TEXTURE_CUBE_MAP : GL_TEXTURE_2D, textureId);
     glBindVertexArray(vao);
     glDrawElementsInstanced(renderMode, indicesCount, GL_UNSIGNED_INT, (void *) nullptr, instancesCount);
+}
+
+std::string MeshRenderer::getShaderTypeStr() {
+    switch(shaderType) {
+        case AMBIENT: return "ambient";
+        case PHONG: return "phong";
+        case GRID: return "grid";
+        case TEXTURE: return "texture";
+        case TEXTURE_CUBE: return "texture_cube";
+        case MANDELBROT: return "mandelbrot";
+    }
 }

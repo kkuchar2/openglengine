@@ -6,7 +6,7 @@
 #include <Components/MeshComponent/MeshComponent.h>
 #include <Engine/EngineInternal/Rendering/Projection.h>
 #include <Rendering/Mesh/Mesh.h>
-#include <Engine/EngineInternal/Rendering/Mesh/BoundingBox.h>
+#include <Engine/EngineInternal/Rendering/BoundingBox.h>
 #include "Engine/EngineInternal/Scene/Transform.h"
 
 class GameObject {
@@ -27,17 +27,19 @@ class GameObject {
 
         std::vector<std::shared_ptr<GameObject>> children;
 
-        std::shared_ptr<MeshComponent> meshProto;
-
         Projection projection = PERSPECTIVE;
 
         GameObject();
 
         explicit GameObject(const std::shared_ptr<Component> & baseComponent);
 
-        void addComponent(const std::shared_ptr<Component> & baseComponent);
+        void init();
 
-        template<typename T>
+        void update();
+
+        std::shared_ptr<Component> addComponent(const std::shared_ptr<Component> & baseComponent);
+
+        template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr>
         std::shared_ptr<T> getComponent() {
             for (auto & component : components) {
 
@@ -51,6 +53,16 @@ class GameObject {
             return nullptr;
         }
 
+        template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr>
+        std::shared_ptr<T> getComponentOrDefault() {
+            auto component = getComponent<T>();
+
+            if (!component.get()) {
+                return castComponent<T>(addComponent(std::make_shared<T>()));
+            }
+
+            return component;
+        }
 
         template<typename T>
         std::shared_ptr<T> castComponent(const std::shared_ptr<Component> & component) {
@@ -62,10 +74,6 @@ class GameObject {
 
             return nullptr;
         }
-
-        void init();
-
-        void Update();
 
         static std::shared_ptr<GameObject> create(
             const glm::vec3 & position = glm::vec3(0.0f),

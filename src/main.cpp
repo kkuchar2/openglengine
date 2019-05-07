@@ -15,8 +15,6 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 
-    engine->engineRenderer->perspectiveCamera->setPosition(glm::vec3(0.0, 2.0, 5.0));
-
     engine->addScene(testSphereScene());
     //engine->addScene(instancedScene());
     engine->addScene(mainScene());

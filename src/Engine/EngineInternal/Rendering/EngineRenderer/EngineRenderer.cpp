@@ -6,7 +6,7 @@
 EngineRenderer::EngineRenderer(const std::shared_ptr<Window> & window, const std::shared_ptr<PhysicsEngine> & physicsEngine) {
     createFramebuffer();
     ortographicCamera = std::make_shared<OrtographicCamera>(window->size);
-    perspectiveCamera = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 20.0, 30.0));
+    perspectiveCamera = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 5.0, 10.0));
     renderingManager = std::make_shared<RenderingManager>();
     renderingManager->physicsEngine = physicsEngine;
 }
@@ -21,16 +21,10 @@ void EngineRenderer::prepare() {
     renderingManager->preprocessScenes();
 
     for (auto & info : renderingManager->meshes) {
-        if (!info->renderer.get()) {
-            std::cerr << "Renderer is NULL" << std::endl;
-        }
         info->renderer->prepare();
     }
 
     for (auto  & [id, info] : renderingManager->instancedMeshes) {
-        if (!info->renderer.get()) {
-            std::cerr << "Renderer is null" << std::endl;
-        }
         info->renderer->prepare();
     }
 }
@@ -48,11 +42,11 @@ void EngineRenderer::renderFrame() {
     for (auto const & [id, info] : renderingManager->instancedMeshes) {
         if (id == "bbox" && !renderingManager->enableBoundingBoxes) continue;
         glPolygonMode(GL_FRONT_AND_BACK, id == "bbox"? GL_LINE : GL_FILL);
-        getCamera(info->mesh->projection)->renderInstanced(info);
+        getCamera(info->renderer->projection)->renderInstanced(info);
     }
 
     for (auto const & info : renderingManager->meshes) {
-        getCamera(info->mesh->projection)->render(info);
+        getCamera(info->renderer->projection)->render(info);
     }
 }
 

@@ -1,4 +1,3 @@
-#include <Engine/EngineInternal/Rendering/Mesh/MeshRenderer.h>
 #include "BoundingBoxGenerator.h"
 
 void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & mesh,
@@ -54,15 +53,18 @@ void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & me
     glm::vec3 min = glm::vec3(minX, minY, minZ);
 
 
-    std::shared_ptr<MeshComponent> cubeMeshProto = std::make_shared<MeshComponent>();
-    cubeMeshProto->meshType = CUBE;
-    cubeMeshProto->shaderType = AMBIENT;
-    cubeMeshProto->color = glm::vec4(0.0, 1.0, 0.2f, 1.0f);
+    auto cubeMesh = std::make_shared<MeshComponent>();
+    cubeMesh->meshType = CUBE;
+
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+
+    meshRenderer->shaderType = AMBIENT;
+    meshRenderer->color = glm::vec4(0.0, 1.0, 0.2f, 1.0f);
 
     child->bbox.center = b.center;
     child->bbox.size = b.size;
     child->boundingBox = std::make_shared<GameObject>();
     child->boundingBox->instanced = true;
-    child->boundingBox->addComponent(cubeMeshProto);
-    child->boundingBox->addComponent(std::make_shared<MeshRenderer>());
+    child->boundingBox->addComponent(cubeMesh);
+    child->boundingBox->addComponent(meshRenderer);
 }

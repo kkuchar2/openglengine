@@ -13,47 +13,39 @@ void RenderingManager::preprocessScenes() {
     ///--------------------------------------------------------------------------------------
 
     for (auto & child : children) {
+        auto meshComponent = child->getComponent<MeshComponent>();
+        if (!meshComponent.get()) continue;
 
-        auto proto = child->meshProto;
-        if (!proto.get()) continue;
-
-        child->addComponent(std::make_shared<MeshRenderer>());
-
-        auto meshRenderer = child->getComponent<MeshRenderer>();
-        if (!meshRenderer.get()) continue;
-
-        proto->updateIds();
-
-        std::string id = proto->shaderMeshTypeId;
+        auto meshRenderer = child->getComponentOrDefault<MeshRenderer>();
+        meshRenderer->projection = child->projection;
 
         if (child->instanced) {
-            if (instancedMeshes.count(id) == 0) {
-                auto mesh = MeshBuilder::of(proto, meshRenderer, child->projection);
-                auto meshInfo = MeshInfo::ptr(mesh, child);
-                meshInfo->renderer = meshRenderer;
+            std::string id = meshRenderer->getShaderTypeStr() + "_" + meshComponent->getMeshIdText();
 
-                if (!proto->disableBoundingBox) {
+            if (instancedMeshes.count(id) == 0) {
+                auto mesh = MeshBuilder::buildMesh(meshComponent);
+                auto meshInfo = std::make_shared<MeshInfo>(mesh, child, meshRenderer);
+
+                if (meshRenderer->enableBoundingBox) {
                     BoundingBoxGenerator::calculateBoundingBox(mesh, child);
-                    meshInfo->boundingBoxes.emplace_back(child->boundingBox);
                 }
 
                 instancedMeshes.insert(std::make_pair(id, meshInfo));
             }
             else {
-                if (!proto->disableBoundingBox) {
+                if (meshRenderer->enableBoundingBox) {
                     BoundingBoxGenerator::calculateBoundingBox(instancedMeshes[id]->mesh, child);
-                    instancedMeshes[id]->boundingBoxes.emplace_back(child->boundingBox);
                 }
-                instancedMeshes[id]->addInstance(child, proto->color);
+                instancedMeshes[id]->addInstance(child, meshRenderer->color);
             }
         }
         else {
-            auto mesh = MeshBuilder::of(proto, meshRenderer, child->projection);
-            auto meshInfo = MeshInfo::ptr(mesh, child);
-            meshInfo->renderer = meshRenderer;
+            auto mesh = MeshBuilder::buildMesh(meshComponent);
+            auto meshInfo = std::make_shared<MeshInfo>(mesh, child, meshRenderer);
+
             meshes.emplace_back(meshInfo);
 
-            if (!proto->disableBoundingBox) {
+            if (meshRenderer->enableBoundingBox) {
                 BoundingBoxGenerator::calculateBoundingBox(mesh, child);
             }
         }
@@ -70,20 +62,19 @@ void RenderingManager::preprocessScenes() {
 
         if (!boundingBox.get()) continue;
 
-        auto proto = boundingBox->meshProto;
+        auto meshComponent = boundingBox->getComponent<MeshComponent>();
 
-        if (!proto.get()) continue;
+        if (!meshComponent.get()) continue;
 
         auto meshRenderer = boundingBox->getComponent<MeshRenderer>();
 
         if (instancedMeshes.count("bbox") == 0) {
-            auto mesh = MeshBuilder::of(proto, meshRenderer, PERSPECTIVE);
-            auto meshInfo =  MeshInfo::ptr(mesh, boundingBox);
-            meshInfo->renderer = meshRenderer;
+            auto mesh = MeshBuilder::buildMesh(meshComponent);
+            auto meshInfo =  std::make_shared<MeshInfo>(mesh, boundingBox, meshRenderer);
             instancedMeshes.insert(std::make_pair("bbox", meshInfo));
         }
         else {
-            instancedMeshes["bbox"]->addInstance(boundingBox, proto->color);
+            instancedMeshes["bbox"]->addInstance(boundingBox, meshRenderer->color);
         }
     }
 
@@ -101,7 +92,7 @@ void RenderingManager::preprocessScenes() {
             child->rb_idx = physicsEngine->addCollisionBox(1.0f, child->boundingBox->transform.position, child->boundingBox->transform.scale);
         }
 
-        child->Update();
+        child->update();
     }
 
     logRenderMap();
@@ -112,9 +103,7 @@ void RenderingManager::Update(const std::shared_ptr<PerspectiveCamera> & camera)
 
         float distance = glm::distance(camera->getPosition(), child->transform.position);
 
-        if (distance > 20.0f) continue;
-
-        child->Update();
+        child->update();
 
         auto boundingBox = child->boundingBox;
 
@@ -137,7 +126,7 @@ void RenderingManager::logRenderMap() {
 
     std::cout << "CLASSIC RENDERING:" << std::endl;
     for (auto const & info : meshes) {
-        std::cout << "\t* Mesh type: [" << info->mesh->meshType << "]" << std::endl;
+        std::cout << "\t* Mesh type: [" << info->mesh->meshId << "]" << std::endl;
     }
 }
 

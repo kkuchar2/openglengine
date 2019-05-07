@@ -11,26 +11,20 @@ BaseCamera::BaseCamera() {
 }
 
 void BaseCamera::renderInstanced(const std::shared_ptr<MeshInfo> & info) {
-    if (!info->renderer.get()) {
-        std::cout << "renderer is NULL" << std::endl;
-    }
-    std::shared_ptr<Shader> shader = info->mesh->shader;
+    std::shared_ptr<Shader> shader = info->renderer->shader;
     shader->use();
     initShaderCommon(shader);
-    info->mesh->shaderInit(shader);
+    info->renderer->shaderInit(shader);
     info->renderer->UpdateModelMatrices();
     info->renderer->UpdateColorVectors();
     info->renderer->renderInstanced(info->objects.size());
 }
 
 void BaseCamera::render(const std::shared_ptr<MeshInfo> & info) {
-    if (!info->renderer.get()) {
-        std::cout << "renderer is NULL" << std::endl;
-    }
-    std::shared_ptr<Shader> shader = info->mesh->shader;
+    std::shared_ptr<Shader> shader = info->renderer->shader;
     shader->use();
     initShaderCommon(shader);
-    info->mesh->shaderInit(shader);
+    info->renderer->shaderInit(shader);
     info->renderer->UpdateModelMatrices();
     info->renderer->UpdateColorVectors();
     info->renderer->render();

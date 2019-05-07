@@ -1,5 +1,7 @@
 #include "GameObjectFactory.h"
 
+
+
 std::shared_ptr<GameObject> GameObjectFactory::cube(
         const glm::vec3 & position,
         const glm::vec3 & rotation,
@@ -7,8 +9,15 @@ std::shared_ptr<GameObject> GameObjectFactory::cube(
         const glm::vec4 & color) {
 
     std::shared_ptr<GameObject> obj = GameObject::create(position, rotation, scale);
-    auto proto = MeshComponent::of(CUBE, PHONG, color);
-    obj->addComponent(proto);
+    auto mesh = std::make_shared<MeshComponent>(CUBE);
+
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+    meshRenderer->shaderType = PHONG;
+    meshRenderer->color = color;
+
+    obj->addComponent(mesh);
+    obj->addComponent(meshRenderer);
+
     return obj;
 }
 
@@ -18,8 +27,12 @@ std::shared_ptr<GameObject> GameObjectFactory::point(
 
     std::shared_ptr<GameObject> obj = GameObject::create(position);
     obj->instanced = true;
-    auto proto = MeshComponent::of(POINT, AMBIENT, color);
-    obj->addComponent(proto);
+    auto mesh = std::make_shared<MeshComponent>(POINT);
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+    meshRenderer->shaderType = AMBIENT;
+    meshRenderer->color = color;
+    obj->addComponent(mesh);
+    obj->addComponent(meshRenderer);
 }
 
 std::shared_ptr<GameObject> GameObjectFactory::quad(
@@ -30,8 +43,12 @@ std::shared_ptr<GameObject> GameObjectFactory::quad(
 
     std::shared_ptr<GameObject> obj = GameObject::create(position, rotation, scale);
     obj->instanced = true;
-    auto proto = MeshComponent::of(QUAD, AMBIENT, color);
-    obj->addComponent(proto);
+    auto mesh = std::make_shared<MeshComponent>(QUAD);
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+    meshRenderer->shaderType = AMBIENT;
+    meshRenderer->color = color;
+    obj->addComponent(mesh);
+    obj->addComponent(meshRenderer);
     return obj;
 }
 
@@ -44,8 +61,12 @@ std::shared_ptr<GameObject> GameObjectFactory::model(
 
     std::shared_ptr<GameObject> obj = GameObject::create(position, rotation, scale);
     obj->instanced = true;
-    auto proto = MeshComponent::of(path, PHONG, color);
-    obj->addComponent(proto);
+    auto mesh = std::make_shared<MeshComponent>(path);
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+    meshRenderer->shaderType = PHONG;
+    meshRenderer->color = color;
+    obj->addComponent(mesh);
+    obj->addComponent(meshRenderer);
     return obj;
 }
 
@@ -85,6 +106,15 @@ std::shared_ptr<GameObject> GameObjectFactory::teapot(
     return GameObjectFactory::model("../resources/models/teapot.obj", position,rotation, scale, color);
 }
 
+std::shared_ptr<GameObject> GameObjectFactory::cone(
+        const glm::vec3 & position,
+        const glm::vec3 & rotation,
+        const glm::vec3 & scale,
+        const glm::vec4 & color) {
+
+    return GameObjectFactory::model("../resources/models/cone.obj", position,rotation, scale, color);
+}
+
 std::shared_ptr<GameObject> GameObjectFactory::surface(
         const glm::vec3 & position,
         const glm::vec3 & rotation,
@@ -93,10 +123,16 @@ std::shared_ptr<GameObject> GameObjectFactory::surface(
 
     std::shared_ptr<GameObject> obj = GameObject::create(position);
 
-    auto surfaceProto = SurfaceMeshComponent::of(PHONG, color);
-    surfaceProto->width = scale.x;
-    surfaceProto->height = scale.y;
+    auto mesh = SurfaceMeshComponent::create();
+    mesh->width = scale.x;
+    mesh->height = scale.y;
 
+    auto meshRenderer = std::make_shared<MeshRenderer>();
+    meshRenderer->shaderType = PHONG;
+    meshRenderer->color = color;
+
+    obj->addComponent(mesh);
+    obj->addComponent(meshRenderer);
 
     return obj;
 }

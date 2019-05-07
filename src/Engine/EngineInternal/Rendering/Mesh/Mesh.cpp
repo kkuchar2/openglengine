@@ -3,12 +3,12 @@
 #include <Utils/NormalsGenerator/NormalsGenerator.h>
 
 Mesh::Mesh(const std::string & path) {
-    loadFromResource(path);
+    loadFromFile(path);
 }
 
 Mesh::Mesh() {}
 
-void Mesh::loadFromResource(const std::string & path) {
+void Mesh::loadFromFile(const std::string & path) {
 
     std::cout << "Loading: " << path << std::endl;
 
@@ -39,8 +39,4 @@ void Mesh::loadFromResource(const std::string & path) {
             indices.push_back((unsigned int) index.vertex_index);
         }
     }
-}
-
-std::shared_ptr<Mesh> Mesh::create(const char * path) {
-    return std::make_shared<Mesh>(path);
 }

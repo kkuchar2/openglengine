@@ -1,6 +1,7 @@
 #include "GameObject.h"
 
-#include <Engine/EngineInternal/Components/Behaviour/BehaviourComponent.h>
+#include <Components/Behaviour/BehaviourComponent.h>
+#include <Rendering/Mesh/MeshRenderer/MeshRenderer.h>
 
 GameObject::GameObject() = default;
 
@@ -8,22 +9,17 @@ GameObject::GameObject(const std::shared_ptr<Component> & component) {
     addComponent(component);
 }
 
-void GameObject::addComponent(const std::shared_ptr<Component> & component) {
+std::shared_ptr<Component> GameObject::addComponent(const std::shared_ptr<Component> & component) {
 
-    auto behaviour = castComponent<BehaviourComponent>(component);
-
-    if (behaviour) {
-        behaviour->SetObject(static_cast<GameObject *>(this));
-    }
-
-    auto proto = castComponent<MeshComponent>(component);
-
-    if (proto) {
-        meshProto = proto;
+    if (Component::isTypeOf<BehaviourComponent>(component)) {
+        Component::asType<BehaviourComponent>(component)->SetObject(this);
     }
 
     components.push_back(component);
+
+    return components[components.size() - 1];
 }
+
 
 void GameObject::init() {
     transform.init();
@@ -37,7 +33,7 @@ void GameObject::init() {
     boundingBox->transform.init();
 }
 
-void GameObject::Update() {
+void GameObject::update() {
     transform.calculateModelMatrix();
 
     if (!boundingBox.get()) return;

@@ -7,9 +7,9 @@ class SurfaceMeshComponent : public MeshComponent {
         float width = 10.0;
         float height = 10.0;
 
-        SurfaceMeshComponent(const ShaderType & shaderType, const glm::vec4 & color) : MeshComponent(SURFACE, shaderType, color) {}
+        SurfaceMeshComponent() : MeshComponent(SURFACE) {}
 
-        static std::shared_ptr<SurfaceMeshComponent> of(const ShaderType & shaderType, const glm::vec4 & color) {
-            return std::make_shared<SurfaceMeshComponent>(shaderType, color);
+        static std::shared_ptr<SurfaceMeshComponent> create() {
+            return std::make_shared<SurfaceMeshComponent>();
         }
 };

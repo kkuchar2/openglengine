@@ -25,8 +25,6 @@ class EngineRenderer {
         GLuint dephRenderBuffer = 0;
         GLuint framebufferName = 0;
 
-        bool showNormals = false;
-
         std::shared_ptr<OrtographicCamera> ortographicCamera;
         std::shared_ptr<PerspectiveCamera> perspectiveCamera;
 

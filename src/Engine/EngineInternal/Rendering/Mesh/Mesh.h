@@ -15,10 +15,10 @@
 #include "MeshType.h"
 #include "Engine/EngineInternal/Scene/Transform.h"
 
-typedef std::function<void(std::shared_ptr<Shader> &)> ShaderFunc;
 
 class Mesh {
     public:
+        std::string meshId = "default";
 
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
@@ -28,26 +28,13 @@ class Mesh {
         std::vector<glm::mat4x4> modelMatrices;
         std::vector<glm::vec4> colorVectors;
 
-        std::string meshType = "default";
-        std::string shaderType = "default";
+        GLenum renderingMode = GL_TRIANGLES;
 
-        GLenum mode = GL_TRIANGLES;
-
-        Projection projection = PERSPECTIVE;
-
-        bool disableNormals = true;
         bool prepared = false;
-        bool cubeMap = false;
-
-        std::shared_ptr<Shader> shader;
-
-        ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
-
-        explicit Mesh(const std::string & path);
 
         Mesh();
 
-        void loadFromResource(const std::string & path);
+        Mesh(const std::string & path);
 
-        static std::shared_ptr<Mesh> create(const char * path);
+        void loadFromFile(const std::string & path);
 };

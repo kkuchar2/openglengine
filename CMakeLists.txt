@@ -124,7 +124,7 @@ set(SOURCE_FILES ${SRC_FILES} ${IMGUI_SRC_FILES})
 set(GLAD "dependencies/glad/include/glad/glad.h" "dependencies/glad/src/glad.c")
 set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h" "${GLFW_SOURCE_DIR}/deps/getopt.c")
 set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h" "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
-set(TINYOBJ "dependencies/tinyobj/tiny_obj_loader.h" "dependencies/tinyobj/tiny_obj_loader.cpp" src/Engine/EngineInternal/Rendering/Mesh/MeshRenderer.cpp src/Engine/EngineInternal/Rendering/Mesh/MeshRenderer.h src/Engine/EngineInternal/Rendering/Mesh/TriangleInfo.h src/Engine/EngineInternal/Rendering/Mesh/BoundingBox.h)
+set(TINYOBJ "dependencies/tinyobj/tiny_obj_loader.h" "dependencies/tinyobj/tiny_obj_loader.cpp")
 
 add_executable(opengl ${SOURCE_FILES} ${TINYOBJ} ${TINYCTHREAD} ${GETOPT} ${GLAD})
 

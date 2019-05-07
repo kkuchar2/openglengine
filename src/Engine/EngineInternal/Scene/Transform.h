@@ -18,7 +18,7 @@ class Transform {
         glm::mat4x4 modelMatrix = glm::mat4x4();
         glm::mat4x4 pivotMat = glm::mat4x4();
 
-        int index = 0;
+        int modelMatrixIndex = 0;
 
         std::vector<glm::mat4x4> * matricesRef;
 
@@ -30,10 +30,10 @@ class Transform {
         }
 
         void calculateModelMatrix() {
-            (*matricesRef)[index] = positionMatrix * rotationMatrix  * scaleMatrix;
+            (*matricesRef)[modelMatrixIndex] = positionMatrix * rotationMatrix  * scaleMatrix;
         }
 
         void calculateModelMatrix2() {
-            (*matricesRef)[index] = positionMatrix * rotationMatrix * pivotMat * scaleMatrix;
+            (*matricesRef)[modelMatrixIndex] = positionMatrix * rotationMatrix * pivotMat * scaleMatrix;
         }
 };

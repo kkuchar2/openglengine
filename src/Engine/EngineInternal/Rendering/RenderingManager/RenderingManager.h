@@ -1,16 +1,17 @@
 #pragma once
 
 #include <Scene/GameObject/GameObject.h>
-#include <Engine/EngineInternal/Rendering/Mesh/MeshInfo.h>
+#include <Rendering/Mesh/MeshBuilder.h>
+#include <Rendering/Mesh/MeshInfo.h>
 #include <Rendering/Camera/PerspectiveCamera/PerspectiveCamera.h>
 #include <PhysicsEngine/PhysicsEngine.h>
+#include <Utils/BoundingBoxGenerator/BoundingBoxGenerator.h>
 
 class RenderingManager {
+
     public:
-
-
         bool physicsEnabled = false;
-        bool enableBoundingBoxes = false;
+        bool enableBoundingBoxes = true;
 
         std::vector<std::shared_ptr<GameObject>> children;
 
