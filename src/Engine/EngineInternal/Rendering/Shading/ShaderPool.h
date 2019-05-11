@@ -3,18 +3,18 @@
 #include <memory>
 
 #include "Shader.h"
+#include "ShaderType.h"
 
 class ShaderPool
 {
     public:
 
-        std::shared_ptr<Shader> colorInstancedShader;
-        std::shared_ptr<Shader> colorShader;
-        std::shared_ptr<Shader> diffuseInstancedShader;
-        std::shared_ptr<Shader> diffuseShader;
+        std::shared_ptr<Shader> textureCubeShader;
+        std::shared_ptr<Shader> textureColorShader;
+        std::shared_ptr<Shader> ambientShader;
+        std::shared_ptr<Shader> phongShader;
         std::shared_ptr<Shader> gridShader;
-        std::shared_ptr<Shader> gridInstancedShader;
-        std::shared_ptr<Shader> characterShader;
+        std::shared_ptr<Shader> mandelbrotShader;
 
         static ShaderPool & Instance()
         {
@@ -33,13 +33,12 @@ class ShaderPool
 
     private:
         ShaderPool() {
-            gridShader = loadShader("Grid.vert", "Grid.frag");
-            gridInstancedShader = loadShader("GridInstanced.vert", "GridInstanced.frag");
-            colorShader = loadShader("Color.vert", "Color.frag");
-            colorInstancedShader = loadShader("ColorInstanced.vert", "ColorInstanced.frag");
-            diffuseShader = loadShader("Diffuse.vert", "Diffuse.frag");
-            diffuseInstancedShader = loadShader("DiffuseInstanced.vert", "DiffuseInstanced.frag");
-            characterShader = loadShader("TextVert.glsl", "TextFrag.glsl");
+            textureCubeShader = loadShader("TexturedCube/TexturedCube.vert", "TexturedCube/TexturedCube.frag");
+            textureColorShader = loadShader("Textured/Textured.vert", "Textured/Textured.frag");
+            gridShader = loadShader("Grid/Grid.vert", "Grid/Grid.frag");
+            ambientShader = loadShader("Ambient/Ambient.vert", "Ambient/Ambient.frag");
+            phongShader = loadShader("Phong/Phong.vert", "Phong/Phong.frag");
+            mandelbrotShader = loadShader("Mandelbrot/Mandelbrot.vert", "Mandelbrot/Mandelbrot.frag");
         };
 
     public:
@@ -49,12 +48,12 @@ class ShaderPool
 
         std::shared_ptr<Shader> getShader(const ShaderType & shaderType) {
             switch(shaderType) {
-                case COLOR: return colorShader;
-                case DIFFUSE: return diffuseShader;
-                case COLOR_INSTANCED: return colorInstancedShader;
-                case DIFFUSE_INSTANCED: return diffuseInstancedShader;
+                case AMBIENT: return ambientShader;
+                case PHONG: return phongShader;
                 case GRID: return gridShader;
-                case GRID_INSTANCED: return gridInstancedShader;
+                case TEXTURE: return textureColorShader;
+                case TEXTURE_CUBE: return textureCubeShader;
+                case MANDELBROT: return mandelbrotShader;
             }
         }
 };

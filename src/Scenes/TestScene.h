@@ -1,11 +1,11 @@
 #pragma once
 
-#include <Engine.h>
+#include <Engine/Engine.h>
 
-#include "../Engine/EngineInternal/Utils/NormalsGenerator.h"
+#include "Utils/NormalsGenerator/NormalsGenerator.h"
 
-std::shared_ptr<UserScene> testScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> testScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
     std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(-1.2f, 10.0f, 2.0f);
 
@@ -14,22 +14,22 @@ std::shared_ptr<UserScene> testScene() {
 
     std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
     lampMesh->shader = colorShader;
-    lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    lampMesh->shaderInit = [lightPos](std::shared_ptr<Shader> & shader) {
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
     };
 
     std::shared_ptr<Cube> cube = std::make_shared<Cube>();
     cube->shader = diffuseShader;
-    cube->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    cube->shaderInit = [lightPos](std::shared_ptr<Shader> & shader) {
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };
 
     std::shared_ptr<Surface> surface = std::make_shared<Surface>(100, 100);
     surface->shader = diffuseShader;
-    surface->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    surface->shaderInit = [lightPos](std::shared_ptr<Shader> & shader) {
+        shader->setglm::vec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         shader->setVec3("lightPos", *lightPos.get());
     };
@@ -44,12 +44,12 @@ std::shared_ptr<UserScene> testScene() {
     auto surfaceObject = std::make_shared<GameObject>(surface);
     surfaceObject->transform.position = glm::vec3(0.0f, 1.5f, 0.0f);
 
-    scene->addObject(surfaceObject);
-    scene->addObject(lampMeshObject);
-    scene->addObject(cubeObject);
+    scene->addChild(surfaceObject);
+    scene->addChild(lampMeshObject);
+    scene->addChild(cubeObject);
 
     //std::shared_ptr<GameObject> normals = NormalsGenerator::generate(surface, colorShader);
-    //scene->addObject(normals);
+    //scene->addChild(normals);
 
     return scene;
 }

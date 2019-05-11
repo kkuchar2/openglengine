@@ -8,41 +8,44 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <Properties/Vec3Property.h>
+
 #include "Mesh/Mesh.h"
-#include "../../Window/Window.h"
-#include "../../Utils/MatrixUtils.h"
-#include "EngineObject/EngineObject.h"
-#include "GameObject/GameObject.h"
-#include "Projection.h"
+
+#include <Engine/EngineInternal/Window/Window.h>
+
+#include <MatrixUtils.h>
+
+#include <Scene/GameObject/GameObject.h>
+#include "Engine/EngineInternal/Rendering/Projection.h"
+
+#include <Engine/EngineInternal/Rendering/Mesh/MeshInfo.h>
 
 #include <Window/Input/InputSystem.h>
 
-class BaseCamera : public Component {
+class BaseCamera {
 
     private:
 
         Observer<glm::vec2> mousePositionDeltaObserver;
-        Subscription mousePositionDeltaSubscription;
-
         Observer<MouseButtonInfo> mouseButtonObserver;
-        Subscription mouseButtonSubscription;
-
         Observer<KeyInfo> keyInfoObserver;
-        Subscription keyInfoSubscription;
+
+        SubscriptionContainer SC;
 
     public:
 
-        Projection projection;
+        bool showNormals = false;
+
+        Projection projection = PERSPECTIVE;
 
         BaseCamera();
 
-        void renderInstanced(const std::shared_ptr<Mesh> & mesh, const int & instancesCount);
+        void renderInstanced(const std::shared_ptr<MeshInfo> & info);
 
-        void render(const std::shared_ptr<Mesh> & mesh, const Transform & transform);
+        void render(const std::shared_ptr<MeshInfo> & info);
 
-        glm::mat4 createModelMatrix(const Transform & transform);
-
-        virtual glm::vec3 getScaleCorrection();
+        void initShaderCommon(const std::shared_ptr<Shader> & shader);
 
         virtual glm::vec3 getPosition();
 
@@ -52,11 +55,11 @@ class BaseCamera : public Component {
 
         virtual void onKeyInfoReceived(const KeyInfo & info);
 
-        virtual glm::mat4x4 getModelMatrix() = 0;
-
         virtual glm::mat4x4 getViewMatrix() = 0;
 
         virtual glm::mat4x4 getProjectionMatrix() = 0;
+
+        virtual void Update() = 0;
 
         ~BaseCamera();
 };

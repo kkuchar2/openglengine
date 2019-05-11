@@ -3,6 +3,7 @@
 #include <glm/glm.hpp>
 
 #include <Rose/Observable.h>
+#include <Rendering/Shading/ShaderPool.h>
 #include "MouseButtonInfo.h"
 #include "KeyInfo.h"
 

@@ -13,18 +13,22 @@ Window::Window(const int & resX, const int & resY) {
         exit(EXIT_FAILURE);
     }
 
-    width = resX;
-    height = resY;
+    size = glm::vec2(resX, resY);
 
     glfwMakeContextCurrent(window);
     glfwSetWindowCenter();
+    glfwMaximizeWindow(window);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         throw EngineException("Failed to initialize GLAD");
     }
 
     glfwSwapInterval(vSyncEnabled ? 1 : 0);
+}
 
+void Window::setVSyncEnabled(bool & v) {
+    vSyncEnabled = v;
+    glfwSwapInterval(vSyncEnabled ? 1 : 0);
 }
 
 void Window::setKeyCallback(GLFWkeyfun callback) {

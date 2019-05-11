@@ -20,10 +20,9 @@ class Window {
 
         GLFWwindow * window { nullptr };
 
-        int width = 0;
-        int height = 0;
+        glm::vec2 size = glm::vec2(0.0);
 
-        bool vSyncEnabled = true;
+        bool vSyncEnabled = false;
 
         Window(const int & resX, const int & resY);
 
@@ -36,6 +35,8 @@ class Window {
         void setCursorPositionCallback(GLFWcursorposfun callback);
 
         bool shouldBeOpened();
+
+        void setVSyncEnabled(bool & v);
 
         void glfwSetWindowCenter();
 

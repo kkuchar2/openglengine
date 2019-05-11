@@ -6,92 +6,35 @@
 #include <map>
 #include <thread>
 #include <limits>
-#include <Rendering/Camera/Projection.h>
+#include <tinyobj/tiny_obj_loader.h>
+
+#include <Engine/EngineInternal/Rendering/Projection.h>
 
 #include "Shading/Shader.h"
-
-#include "../../Utils/OBJ/tiny_obj_loader.h"
-#include "../../Utils/TextureLoader.h"
-#include "Component.h"
+#include "Utils/TextureLoader/TextureLoader.h"
 #include "MeshType.h"
-#include "MeshPrototype.h"
+#include "Engine/EngineInternal/Scene/Transform.h"
 
 
-struct TriangleInfo {
-    float angle;
-    glm::vec3 normal;
-};
-
-struct BoundingBox {
-    glm::vec3 size;
-    glm::vec3 center;
-    glm::vec3 rotation;
-};
-
-typedef std::shared_ptr<Shader> & ShaderPtrRef;
-typedef std::function<void(ShaderPtrRef)> ShaderFunc;
-
-class Mesh : public Component {
+class Mesh {
     public:
+        std::string meshId = "default";
 
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
         std::vector<float> uvs;
         std::vector<float> normals;
 
-        // for instance rendering
-        std::vector<glm::mat4> modelMatrices;
+        std::vector<glm::mat4x4> modelMatrices;
+        std::vector<glm::vec4> colorVectors;
 
-        // for classic rendering
-        glm::mat4 modelMatrix;
+        GLenum renderingMode = GL_TRIANGLES;
 
-        GLenum mode = GL_TRIANGLES;
-
-        Projection projection = PERSPECTIVE;
-
-        bool disableNormals = true;
         bool prepared = false;
-        bool isInstanced = false;
-
-        GLuint textureId = 0;
-
-        std::shared_ptr<Shader> shader;
-
-        GLuint vao = 0;
-        GLuint vbo = 0;
-        GLuint uvbo = 0;
-        GLuint nbo = 0;
-        GLuint posvbo = 0;
-        GLuint ibo = 0;
-
-        ShaderFunc shaderInit = [](const std::shared_ptr<Shader> & shaderFunc) {};
-
-        explicit Mesh(const char * path);
 
         Mesh();
 
-        void prepare();
+        Mesh(const std::string & path);
 
-        void CreateVertexAttributeObject();
-        void CreateIndexBuffer();
-        void CreateVertexBuffer();
-        void CreateUVBuffer();
-        void CreateNormalsBuffer();
-        void CreateTransformBuffer();
-
-        virtual void render();
-
-        virtual void renderInstanced(int instancesCount);
-
-        void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
-
-        void render(GLenum renderMode, int indicesCount);
-
-        void loadTexture(const char * path);
-
-        void calculateNormals();
-
-        void loadFromResource(const char * path);
-
-        static std::shared_ptr<Mesh> create(const char * path);
+        void loadFromFile(const std::string & path);
 };

@@ -1,28 +1,36 @@
 #include <Scenes/InstanncingRenderingTestScene.h>
 #include <Scenes/MainScene.h>
-#include <Engine/EngineInternal/Scene/BaseScene.h>
+#include <Scenes/test/TestCubeScene.h>
+#include <Scenes/test/TestSphereScene.h>
+#include <Engine/Engine.h>
+#include <Scenes/OrthoScene.h>
 
+void testPhysicsEngine() {
+    PhysicsEngine pe;
+    pe.test();
+}
 
-#include <Engine.h>
-
-int main() {
+void mainEngine() {
     std::shared_ptr<Engine> engine;
 
     try {
         engine = std::make_shared<Engine>();
     }
     catch (EngineException & e) {
-        std::cerr << e.what() << std::endl;
-        return -1;
+        std::cout << e.what() << std::endl;
     }
 
-    engine->addScene(baseScene());
-    //engine->addScene(shaderTestScene());
+    engine->addScene(testSphereScene());
     engine->addScene(instancedScene());
+    engine->addScene(mainScene());
 
     engine->start();
 
     glfwTerminate();
+}
 
+int main() {
+    //testPhysicsEngine();
+    mainEngine();
     return 0;
 }

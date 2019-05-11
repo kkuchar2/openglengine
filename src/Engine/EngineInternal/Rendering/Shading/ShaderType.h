@@ -1,10 +1,10 @@
 #pragma once
 
 enum ShaderType {
-    COLOR,
-    COLOR_INSTANCED,
-    DIFFUSE,
-    DIFFUSE_INSTANCED,
+    AMBIENT,
+    PHONG,
     GRID,
-    GRID_INSTANCED,
+    TEXTURE,
+    TEXTURE_CUBE,
+    MANDELBROT
 };

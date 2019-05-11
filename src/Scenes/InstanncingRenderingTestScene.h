@@ -1,27 +1,38 @@
 #pragma once
 
-#include <Engine.h>
-#include <Utils/Objects.h>
+#include <Engine/Engine.h>
+#include <Scene/GameObjectFactory/GameObjectFactory.h>
+#include <Engine/EngineInternal/Components/Behaviour/RotatorComponent/Rotator.h>
 
-std::shared_ptr<UserScene> instancedScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> instancedScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
-    int i = 0;
+    srand (static_cast <unsigned> (time(0)));
 
-    scene->addObject(sphere(glm::vec3(1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
-    for (int x = 0; x < 10; x++) {
-        for (int y = 0; y < 10; y++) {
-            for (int z = 0; z < 10; z++) {
-                if (i % 2 == 0) {
-                    scene->addObject(teapot(glm::vec3(0.1f), glm::vec3(x - 5, y - 5, z - 5), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
-                } else  {
-                    scene->addObject(suzanne(glm::vec3(0.2f), glm::vec3(x - 5, y - 5, z - 5), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
-                }
-                i++;
+    for (int x = 0; x < 30; x++) {
+        for (int y = 0; y < 30; y++) {
+            for (int z = 10; z < 40; z++) {
+
+                float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+                float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+                float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+                std::shared_ptr<GameObject> cube = GameObjectFactory::cube(glm::vec3(x - 10, z - 10 , y - 10), glm::vec3(r, g, b),
+                                                                             glm::vec3(0.1f),
+
+                                                                             glm::vec4(r, g, b, 1.0f));
+
+                auto rigidbody = std::make_shared<Rigidbody>();
+                rigidbody->mass = 1.0f;
+                rigidbody->restitution = 0.2f;
+
+                cube->addComponent(rigidbody);
+
+                cube->addComponent(std::make_shared<Rotator>());
+                cube->instanced = true;
+                scene->addChild(cube);
             }
         }
     }
-
     return scene;
 }
-

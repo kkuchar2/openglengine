@@ -1,88 +1,123 @@
 #pragma once
 
-#include <Engine.h>
-#include <Primitives/Surface.h>
+#include <Engine/Engine.h>
+#include <Mesh/Primitives/Surface.h>
 
-std::shared_ptr<UserScene> mainScene() {
-    std::shared_ptr<UserScene> scene = std::make_shared<UserScene>();
+std::shared_ptr<Scene> mainScene() {
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 
-    std::shared_ptr<glm::vec3> lightPos = std::make_shared<glm::vec3>(1.2f, 1.0f, 2.0f);
+    auto lightPos = std::make_shared<glm::vec3>(2.2f, 3.0f, 2.0f);
 
-    std::shared_ptr<Mesh> lampMesh = std::make_shared<Mesh>("../resources/models/sphere.obj");
-    lampMesh->shader = ShaderPool::Instance().colorShader;
-    lampMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-    };
+    auto lampMesh = std::make_shared<MeshComponent>();
+    auto lampMeshRenderer = std::make_shared<MeshRenderer>();
 
-    std::shared_ptr<Cube> cube = std::make_shared<Cube>();
-    cube->shader = ShaderPool::Instance().diffuseShader;
-    cube->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    auto cubeMesh= std::make_shared<MeshComponent>();
+    auto cubeMeshRenderer = std::make_shared<MeshRenderer>();
 
-    std::shared_ptr<Mesh> bunnyMesh = std::make_shared<Mesh>("../resources/models/bunny.obj");
-    bunnyMesh->shader = ShaderPool::Instance().diffuseShader;
-    bunnyMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    auto bunnyMesh = std::make_shared<MeshComponent>();
+    auto bunnyMeshRenderer = std::make_shared<MeshRenderer>();
 
-    std::shared_ptr<Mesh> suzanneMesh = std::make_shared<Mesh>("../resources/models/suzanne.obj");
-    suzanneMesh->shader = ShaderPool::Instance().diffuseShader;
-    suzanneMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    auto suzanneMesh = std::make_shared<MeshComponent>();
+    auto suzanneMeshRenderer = std::make_shared<MeshRenderer>();
 
-    std::shared_ptr<Mesh> teapotMesh = std::make_shared<Mesh>("../resources/models/teapot.obj");
-    teapotMesh->shader = ShaderPool::Instance().diffuseShader;
-    teapotMesh->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    auto teapotMesh = std::make_shared<MeshComponent>();
+    auto teapotMeshRenderer = std::make_shared<MeshRenderer>();
 
-    std::shared_ptr<Surface> surface = std::make_shared<Surface>(300, 300);
-    surface->shader = ShaderPool::Instance().diffuseShader;
-    surface->shaderInit = [lightPos](ShaderPtrRef shader) {
-        shader->setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-        shader->setVec3("lightPos", *lightPos.get());
-    };
+    auto coneMesh = std::make_shared<MeshComponent>();
+    auto coneMeshRenderer = std::make_shared<MeshRenderer>();
 
-    auto lampMeshObject = std::make_shared<GameObject>(lampMesh);
+    auto surfaceMesh = std::make_shared<MeshComponent>();
+    auto surfaceMeshRenderer = std::make_shared<MeshRenderer>();
+
+    cubeMesh->meshType = CUBE;
+    cubeMeshRenderer->shaderType = PHONG;
+    cubeMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    surfaceMesh->meshType = SURFACE;
+    surfaceMeshRenderer->shaderType = PHONG;
+    surfaceMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    bunnyMesh->meshType = RESOURCE;
+    bunnyMesh->path = "../resources/models/bunny.obj";
+    bunnyMeshRenderer->shaderType = PHONG;
+    bunnyMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    suzanneMesh->meshType = RESOURCE;
+    suzanneMesh->path = "../resources/models/suzanne.obj";
+    suzanneMeshRenderer->shaderType = PHONG;
+    suzanneMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    teapotMesh->meshType = RESOURCE;
+    teapotMesh->path = "../resources/models/teapot.obj";
+    teapotMeshRenderer->shaderType = PHONG;
+    teapotMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    lampMesh->meshType = RESOURCE;
+    lampMesh->path = "../resources/models/sphere.obj";
+    lampMeshRenderer->shaderType = AMBIENT;
+    lampMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+
+    auto rigidbody = std::make_shared<Rigidbody>();
+    rigidbody->mass = 1.0f;
+    rigidbody->restitution = 0.2f;
+
+    auto lampMeshObject = std::make_shared<GameObject>();
+    lampMeshObject->addComponent(lampMesh);
+    lampMeshObject->addComponent(lampMeshRenderer);
+
+    auto cubeObject = std::make_shared<GameObject>();
+    cubeObject->addComponent(cubeMesh);
+    cubeObject->addComponent(cubeMeshRenderer);
+    cubeObject->addComponent(rigidbody);
+
+    auto bunnyObject = std::make_shared<GameObject>();
+    bunnyObject->addComponent(bunnyMesh);
+    bunnyObject->addComponent(bunnyMeshRenderer);
+    bunnyObject->addComponent(rigidbody);
+
+    bunnyObject->transform.position = glm::vec3(0.0f, 10.0f, 0.0f);
+    bunnyObject->transform.rotation = glm::vec3(15.0f, 15.0f, 32.0f);
+
+    auto suzanneMeshObject = std::make_shared<GameObject>();
+    suzanneMeshObject->addComponent(suzanneMesh);
+    suzanneMeshObject->addComponent(suzanneMeshRenderer);
+    suzanneMeshObject->addComponent(rigidbody);
+
+    auto teapotMeshObject = std::make_shared<GameObject>();
+    teapotMeshObject->addComponent(teapotMesh);
+    teapotMeshObject->addComponent(teapotMeshRenderer);
+    teapotMeshObject->addComponent(rigidbody);
+
+    auto surfaceObject = std::make_shared<GameObject>();
+    surfaceObject->addComponent(surfaceMesh);
+    surfaceObject->addComponent(surfaceMeshRenderer);
+
     lampMeshObject->transform.scale = glm::vec3(0.1f);
     lampMeshObject->transform.position = *lightPos.get();
+    lampMeshObject->instanced = true;
 
-
-    auto cubeObject = std::make_shared<GameObject>(cube);
     cubeObject->transform.position = glm::vec3(2.0f, 0.5f, 0.0f);
+    cubeObject->instanced = true;
 
-    auto bunnyObject = std::make_shared<GameObject>(bunnyMesh);
-    bunnyObject->transform.scale = glm::vec3(10.0f);
+    bunnyObject->transform.scale = glm::vec3(20.0f);
+    bunnyObject->instanced = true;
 
-    auto suzanneMeshObject = std::make_shared<GameObject>(suzanneMesh);
     suzanneMeshObject->transform.position = glm::vec3(0.0f, 7.0f, 0.0f);
     suzanneMeshObject->transform.rotation = glm::vec3(0.0f, 30.0f, -10.0f);
+    suzanneMeshObject->instanced = true;
 
-    auto teapotMeshObject = std::make_shared<GameObject>(teapotMesh);
     teapotMeshObject->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMeshObject->transform.scale = glm::vec3(0.5f);
+    teapotMeshObject->instanced = true;
 
-    auto surfaceObject = std::make_shared<GameObject>(surface);
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
-    scene->addObject(surfaceObject);
-    scene->addObject(lampMeshObject);
-    scene->addObject(teapotMeshObject);
-    scene->addObject(suzanneMeshObject);
-    scene->addObject(bunnyObject);
-    scene->addObject(cubeObject);
-    scene->addObject(lampMeshObject);
+    //scene->addChild(surfaceObject);
+    //scene->addChild(lampMeshObject);
+    //scene->addChild(teapotMeshObject);
+    //scene->addChild(suzanneMeshObject);
+    scene->addChild(bunnyObject);
+    //scene->addChild(cubeObject);
 
     return scene;
 }
