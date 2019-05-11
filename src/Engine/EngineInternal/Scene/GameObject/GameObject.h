@@ -17,7 +17,7 @@ class GameObject {
 
         Transform transform;
 
-        int rb_idx;
+        int rb_idx = -1;
 
         std::shared_ptr<GameObject> boundingBox;
 
@@ -45,12 +45,26 @@ class GameObject {
 
                 auto c = std::dynamic_pointer_cast<T>(component);
 
-                if (c) {
+                if (c.get()) {
                     return c;
                 }
             }
 
             return nullptr;
+        }
+
+        template<typename T>
+        bool hasComponent() {
+            for (auto & component : components) {
+
+                auto c = getComponent<T>();
+
+                if (c.get()) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         template<typename T, typename std::enable_if<std::is_base_of<Component, T>::value>::type* = nullptr>

@@ -124,7 +124,6 @@ void MeshRenderer::CreateModelMatricesBuffer() {
     auto modelMatrices = mesh->modelMatrices;
 
     if (modelMatrices.empty())  {
-        std::cerr << "ERROR: Model matrices are empty" << std::endl;
         return;
     }
 
@@ -154,15 +153,20 @@ void MeshRenderer::UpdateModelMatrices() {
 
     auto modelMatrices = mesh->modelMatrices;
 
-    if (modelMatrices.empty()) {
-        std::cerr << "ERROR: model matrices are empty" << std::endl;
+    notCulledModelMatrices.clear();
+
+    for (int i = 0; i < not_culled_indexes.size(); i++) {
+        notCulledModelMatrices.push_back(modelMatrices[not_culled_indexes[i]]);
+    }
+
+    if (notCulledModelMatrices.empty()) {
         return;
     }
 
     glBindVertexArray(vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
-    glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() * sizeof(glm::mat4x4), modelMatrices.data(), GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, notCulledModelMatrices.size() * sizeof(glm::mat4x4), notCulledModelMatrices.data(), GL_STREAM_DRAW);
 
     glEnableVertexAttribArray(3);
     glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) nullptr);
@@ -205,14 +209,19 @@ void MeshRenderer::UpdateColorVectors() {
 
     auto colorVectors = mesh->colorVectors;
 
-    if (colorVectors.empty()) {
-        std::cerr << "ERROR: color vectors are empty" << std::endl;
+    notCulledColorVectors.clear();
+
+    for (int i = 0; i < not_culled_indexes.size(); i++) {
+        notCulledColorVectors.push_back(colorVectors[not_culled_indexes[i]]);
+    }
+
+    if (notCulledColorVectors.empty()) {
         return;
     }
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
-    glBufferData(GL_ARRAY_BUFFER, colorVectors.size() * sizeof(glm::vec4), colorVectors.data(), GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, notCulledColorVectors.size() * sizeof(glm::vec4), notCulledColorVectors.data(), GL_STREAM_DRAW);
 
     glEnableVertexAttribArray(7);
     glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);

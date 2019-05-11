@@ -24,7 +24,8 @@ class Editor {
 
     public:
         
-        std::shared_ptr<Observable<glm::vec2>> sceneWindowSizeProperty;
+        std::shared_ptr<Observable<glm::vec2>> sceneLeftSizeProperty;
+        std::shared_ptr<Observable<glm::vec2>> sceneRightSizeProperty;
 
         std::shared_ptr<BooleanProperty> enableBoundingBoxesProperty;
         std::shared_ptr<BooleanProperty> enableVsyncProperty;
@@ -44,17 +45,19 @@ class Editor {
         
         void renderInfoWindow();
 
-        void renderHierarchyWindow();
+        void renderSceneWindow(const std::string & name, float texWidth, float texHeight, GLuint texture, ImGuiSizeCallback custom_callback = NULL);
 
         void ToggleButton(const char * str_id, const std::shared_ptr<Observable<bool>> & property);
 
-        static void on_scene_window_resize(ImGuiSizeCallbackData * data);
+        static void on_scene_left_resize(ImGuiSizeCallbackData * data);
 
-        void OnSceneWindowResize(ImVec2 size);
+        static void on_scene_right_resize(ImGuiSizeCallbackData * data);
 
-        void renderSceneWindow(float texWidth, float texHeight, GLuint texture);
+        void OnSceneLeftResize(const ImVec2 & size);
 
-        void renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint texture);
+        void OnSceneRightResize(const ImVec2 & size);
+
+        void renderFrame(std::shared_ptr<Window> & window, double widths[], double heights[], GLuint textures[]);
 
         void terminate();
 };

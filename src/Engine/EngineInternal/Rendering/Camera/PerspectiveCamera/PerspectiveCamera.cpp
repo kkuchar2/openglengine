@@ -4,6 +4,7 @@ PerspectiveCamera::PerspectiveCamera(const glm::vec3 position) : BaseCamera() {
     positionProperty = std::make_shared<Vec3Property>(position);
     lookDirectionVector = normalize(lookAt - position);
     projection = PERSPECTIVE;
+    calculateFrustumPlanes();
 }
 
 void PerspectiveCamera::onMouseMove(const glm::vec2 & delta) {
@@ -47,6 +48,7 @@ void PerspectiveCamera::onMouseButtonPressed(const MouseButtonInfo & info) {
 }
 
 void PerspectiveCamera::onKeyInfoReceived(const KeyInfo & keyInfo) {
+    if (disableMovement) return;
 
     float speed = 0.5f;
 
@@ -62,13 +64,17 @@ void PerspectiveCamera::onKeyInfoReceived(const KeyInfo & keyInfo) {
 
     velocitySum += float(keyInfo.pressedKeys[GLFW_KEY_W]) * lookDirectionVector * speed;
     velocitySum -= float(keyInfo.pressedKeys[GLFW_KEY_S]) * lookDirectionVector * speed;
-    velocitySum += float(keyInfo.pressedKeys[GLFW_KEY_A]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
-    velocitySum -= float(keyInfo.pressedKeys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
+    velocitySum +=
+            float(keyInfo.pressedKeys[GLFW_KEY_A]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
+    velocitySum -=
+            float(keyInfo.pressedKeys[GLFW_KEY_D]) * glm::normalize(glm::cross(upVector, lookDirectionVector)) * speed;
 
     velocity = velocitySum;
 }
 
 void PerspectiveCamera::Update() {
+
+    calculateFrustumPlanes();
     currentFrame = static_cast<float>(glfwGetTime());
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
@@ -77,6 +83,7 @@ void PerspectiveCamera::Update() {
 
 void PerspectiveCamera::updateAspectRatio(const glm::vec2 & size) {
     aspectRatio = size.x / size.y;
+    calculateFrustumPlanes();
 }
 
 void PerspectiveCamera::setPosition(const glm::vec3 & pos) {
@@ -93,5 +100,68 @@ glm::mat4x4 PerspectiveCamera::getViewMatrix() {
 }
 
 glm::mat4x4 PerspectiveCamera::getProjectionMatrix() {
-    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 20000.0f);
+    return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 10000.0f);
+}
+
+bool PerspectiveCamera::testFrustum(const std::shared_ptr<GameObject> & child) {
+
+    glm::vec3 center = child->transform.position;
+
+    auto bBox = child->boundingBox;
+
+    if (!bBox.get()) {
+        return false;
+    }
+
+    float radius = std::max(std::max(bBox->transform.scale.x, bBox->transform.scale.y), bBox->transform.scale.z);
+
+    for (int i = 0; i < 6; i++) {
+        float dist = planes[i].x * center.x + planes[i].y * center.y + planes[i].z * center.z + planes[i].w - radius;
+
+        if (dist < - radius * 2.0f) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void PerspectiveCamera::calculateFrustumPlanes() {
+    glm::mat matrix = glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 50.0f) * getViewMatrix();
+
+    planes[Right] = glm::vec4(matrix[0][3] - matrix[0][0],
+                              matrix[1][3] - matrix[1][0],
+                              matrix[2][3] - matrix[2][0],
+                              matrix[3][3] - matrix[3][0]);
+
+    planes[Left] = glm::vec4(matrix[0][3] + matrix[0][0],
+                             matrix[1][3] + matrix[1][0],
+                             matrix[2][3] + matrix[2][0],
+                             matrix[3][3] + matrix[3][0]);
+
+    planes[Bottom] = glm::vec4(matrix[0][3] + matrix[0][1],
+                               matrix[1][3] + matrix[1][1],
+                               matrix[2][3] + matrix[2][1],
+                               matrix[3][3] + matrix[3][1]);
+
+    planes[Top] = glm::vec4(matrix[0][3] - matrix[0][1],
+                            matrix[1][3] - matrix[1][1],
+                            matrix[2][3] - matrix[2][1],
+                            matrix[3][3] - matrix[3][1]);
+
+    planes[Far] = glm::vec4(matrix[0][3] - matrix[0][2],
+                            matrix[1][3] - matrix[1][2],
+                            matrix[2][3] - matrix[2][2],
+                            matrix[3][3] - matrix[3][2]);
+
+    planes[Near] = glm::vec4(matrix[0][3] + matrix[0][2],
+                             matrix[1][3] + matrix[1][2],
+                             matrix[2][3] + matrix[2][2],
+                             matrix[3][3] + matrix[3][2]);
+    // Normalize them
+    for (int i = 0; i < 6; i++) {
+        float invl = sqrt(planes[i].x * planes[i].x +
+                          planes[i].y * planes[i].y +
+                          planes[i].z * planes[i].z);
+        planes[i] /= invl;
+    }
 }

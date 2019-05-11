@@ -14,19 +14,18 @@ class EngineRenderer {
 
         std::shared_ptr<RenderingManager> renderingManager;
 
-        std::shared_ptr<BaseCamera> getCamera(const Projection & projection);
+        std::shared_ptr<BaseCamera> getCamera(const Projection & projection, const int & idx);
 
     public:
+        double widths[2] = {1.0, 1.0};
+        double heights[2] = {1.0, 1.0};
 
-        double width = 1.0;
-        double height = 1.0;
-
-        GLuint mainTexture = 0;
-        GLuint dephRenderBuffer = 0;
-        GLuint framebufferName = 0;
+        GLuint textures[2];
+        GLuint framebuffers[2];
+        GLuint depthBuffers[2];
 
         std::shared_ptr<OrtographicCamera> ortographicCamera;
-        std::shared_ptr<PerspectiveCamera> perspectiveCamera;
+        std::shared_ptr<PerspectiveCamera> perspectiveCameras[2];
 
         explicit EngineRenderer(const std::shared_ptr<Window> & window, const std::shared_ptr<PhysicsEngine> & physicsEngine);
 
@@ -36,9 +35,9 @@ class EngineRenderer {
 
         void renderFrame();
 
-        void createFramebuffer();
+        void createFramebuffers();
 
-        void setTargetSize(const glm::vec2 & size);
+        void setTargetSize(const glm::vec2 & size, const int & idx);
 
         void setBoundingBoxesEnabled(const bool & enabled);
 };

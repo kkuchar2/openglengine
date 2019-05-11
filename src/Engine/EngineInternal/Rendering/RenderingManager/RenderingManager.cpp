@@ -88,8 +88,14 @@ void RenderingManager::preprocessScenes() {
         ///---------------------------------------------------------------------------------------
         /// If physics enabled, register bounding box to physics engine
         /// --------------------------------------------------------------------------------------
-        if (child->boundingBox.get() && physicsEnabled) {
-            child->rb_idx = physicsEngine->addCollisionBox(1.0f, child->boundingBox->transform.position, child->boundingBox->transform.scale);
+        if (child->boundingBox.get() && physicsEnabled && child->getComponent<Rigidbody>().get()) {
+
+            auto rigidbody = child->getComponent<Rigidbody>();
+
+            child->rb_idx = physicsEngine->addCollisionBox(
+                rigidbody->mass,
+                rigidbody->restitution,
+                child->boundingBox->transform);
         }
 
         child->update();
@@ -99,20 +105,7 @@ void RenderingManager::preprocessScenes() {
 }
 
 void RenderingManager::Update(const std::shared_ptr<PerspectiveCamera> & camera) {
-    for (const auto & child : children) {
 
-        float distance = glm::distance(camera->getPosition(), child->transform.position);
-
-        child->update();
-
-        auto boundingBox = child->boundingBox;
-
-        if (boundingBox.get() && physicsEnabled) {
-            std::shared_ptr<Transform> t = physicsEngine->getTransform(child->rb_idx - 1);
-            child->transform.position = t->position;
-            child->transform.init();
-        }
-    }
 }
 
 void RenderingManager::logRenderMap() {

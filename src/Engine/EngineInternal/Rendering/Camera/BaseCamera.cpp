@@ -17,7 +17,7 @@ void BaseCamera::renderInstanced(const std::shared_ptr<MeshInfo> & info) {
     info->renderer->shaderInit(shader);
     info->renderer->UpdateModelMatrices();
     info->renderer->UpdateColorVectors();
-    info->renderer->renderInstanced(info->objects.size());
+    info->renderer->renderInstanced(info->renderer->not_culled_indexes.size());
 }
 
 void BaseCamera::render(const std::shared_ptr<MeshInfo> & info) {

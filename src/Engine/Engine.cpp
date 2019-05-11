@@ -17,12 +17,17 @@ Engine::Engine() {
 
     editor = std::make_unique<Editor>(window);
 
-    onWindowSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { engineRenderer->setTargetSize(v); });
+    onSceneLeftSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { engineRenderer->setTargetSize(v, 0); });
+    onSceneRightSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { engineRenderer->setTargetSize(v, 1); });
     onBoundingBoxesEnablementChanged = createObserver<bool>([&](bool v) { engineRenderer->setBoundingBoxesEnabled(v); });
     onVSyncValueChange = createObserver<bool>([&](bool v) { window->setVSyncEnabled(v); });
-    onShowNormalsChange = createObserver<bool>([&](bool v) { engineRenderer->perspectiveCamera->showNormals = v; });
+    onShowNormalsChange = createObserver<bool>([&](bool v) {
+        engineRenderer->perspectiveCameras[0]->showNormals = v;
+        engineRenderer->perspectiveCameras[1]->showNormals = v;
+    });
 
-    SC.add(editor->sceneWindowSizeProperty->Subscribe(onWindowSizeChanged));
+    SC.add(editor->sceneLeftSizeProperty->Subscribe(onSceneLeftSizeChanged));
+    SC.add(editor->sceneRightSizeProperty->Subscribe(onSceneRightSizeChanged));
     SC.add(editor->enableBoundingBoxesProperty->Subscribe(onBoundingBoxesEnablementChanged));
     SC.add(editor->enableVsyncProperty->Subscribe(onVSyncValueChange));
     SC.add(editor->showNormalsProperty->Subscribe(onShowNormalsChange));
@@ -49,7 +54,8 @@ void Engine::start() {
 
         //physicsEngine->step(deltaTime);
         engineRenderer->renderFrame();
-        editor->renderFrame(window, engineRenderer->width, engineRenderer->height, engineRenderer->mainTexture);
+
+        editor->renderFrame(window, engineRenderer->widths, engineRenderer->heights, engineRenderer->textures);
         glfwSwapBuffers(window->window);
         glfwPollEvents();
     }

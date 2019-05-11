@@ -22,7 +22,12 @@ class MeshRenderer : public Component {
 
         GLuint textureId = 0;
 
+
+
     public:
+        std::vector<int> not_culled_indexes;
+        std::vector<glm::mat4> notCulledModelMatrices;
+        std::vector<glm::vec4> notCulledColorVectors;
 
         //////////////////////////////// Shader /////////////////////////////////
         std::shared_ptr<Shader> shader;
@@ -42,6 +47,7 @@ class MeshRenderer : public Component {
         bool disableNormals = false;
         bool cubeMap = false;
         bool enableBoundingBox = true;
+        bool frustumCulling = true;
 
         /// Base shader color
         glm::vec4 color = glm::vec4(1.0, 0.0, 1.0, 1.0);

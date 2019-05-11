@@ -1,14 +1,15 @@
 #pragma once
 
-#include <Engine/EngineInternal/Utils/Timer.h>
 #include "../BehaviourComponent.h"
 
-class Rotator : public BehaviourComponent {
-
-    private:
-        Timer timer;
+class Rigidbody : public BehaviourComponent {
 
     public:
+
+        float mass = 1.0f;
+        float restitution = 1.0f;
+
         void Start() override;
+
         void Update() override;
 };

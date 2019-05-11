@@ -57,6 +57,10 @@ std::shared_ptr<Scene> mainScene() {
     lampMeshRenderer->shaderType = AMBIENT;
     lampMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
 
+    auto rigidbody = std::make_shared<Rigidbody>();
+    rigidbody->mass = 1.0f;
+    rigidbody->restitution = 0.2f;
+
     auto lampMeshObject = std::make_shared<GameObject>();
     lampMeshObject->addComponent(lampMesh);
     lampMeshObject->addComponent(lampMeshRenderer);
@@ -64,18 +68,25 @@ std::shared_ptr<Scene> mainScene() {
     auto cubeObject = std::make_shared<GameObject>();
     cubeObject->addComponent(cubeMesh);
     cubeObject->addComponent(cubeMeshRenderer);
+    cubeObject->addComponent(rigidbody);
 
     auto bunnyObject = std::make_shared<GameObject>();
     bunnyObject->addComponent(bunnyMesh);
     bunnyObject->addComponent(bunnyMeshRenderer);
+    bunnyObject->addComponent(rigidbody);
+
+    bunnyObject->transform.position = glm::vec3(0.0f, 10.0f, 0.0f);
+    bunnyObject->transform.rotation = glm::vec3(15.0f, 15.0f, 32.0f);
 
     auto suzanneMeshObject = std::make_shared<GameObject>();
     suzanneMeshObject->addComponent(suzanneMesh);
     suzanneMeshObject->addComponent(suzanneMeshRenderer);
+    suzanneMeshObject->addComponent(rigidbody);
 
     auto teapotMeshObject = std::make_shared<GameObject>();
     teapotMeshObject->addComponent(teapotMesh);
     teapotMeshObject->addComponent(teapotMeshRenderer);
+    teapotMeshObject->addComponent(rigidbody);
 
     auto surfaceObject = std::make_shared<GameObject>();
     surfaceObject->addComponent(surfaceMesh);
@@ -102,11 +113,11 @@ std::shared_ptr<Scene> mainScene() {
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
     //scene->addChild(surfaceObject);
-    scene->addChild(lampMeshObject);
-    scene->addChild(teapotMeshObject);
-    scene->addChild(suzanneMeshObject);
+    //scene->addChild(lampMeshObject);
+    //scene->addChild(teapotMeshObject);
+    //scene->addChild(suzanneMeshObject);
     scene->addChild(bunnyObject);
-    scene->addChild(cubeObject);
+    //scene->addChild(cubeObject);
 
     return scene;
 }

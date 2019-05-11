@@ -17,6 +17,7 @@ Window::Window(const int & resX, const int & resY) {
 
     glfwMakeContextCurrent(window);
     glfwSetWindowCenter();
+    glfwMaximizeWindow(window);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         throw EngineException("Failed to initialize GLAD");

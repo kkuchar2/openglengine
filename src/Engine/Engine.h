@@ -24,7 +24,8 @@ class Engine {
         std::unique_ptr<Editor> editor;
         std::shared_ptr<PhysicsEngine> physicsEngine;
 
-        Observer<glm::vec2> onWindowSizeChanged;
+        Observer<glm::vec2> onSceneLeftSizeChanged;
+        Observer<glm::vec2> onSceneRightSizeChanged;
         Observer<bool> onBoundingBoxesEnablementChanged;
         Observer<bool> onVSyncValueChange;
         Observer<bool> onShowNormalsChange;

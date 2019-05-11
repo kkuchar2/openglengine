@@ -34,7 +34,14 @@ void GameObject::init() {
 }
 
 void GameObject::update() {
-    transform.calculateModelMatrix();
+
+    if (transform.dirty) {
+        transform.rotationMatrix = MatrixUtils::rotationMatrix(transform.rotation);
+        transform.scaleMatrix = MatrixUtils::scaleMatrix(transform.scale);
+        transform.positionMatrix = MatrixUtils::translationMatrix(transform.position);
+        transform.calculateModelMatrix();
+        transform.dirty = false;
+    }
 
     if (!boundingBox.get()) return;
 

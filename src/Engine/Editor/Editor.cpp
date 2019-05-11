@@ -22,8 +22,9 @@ Editor::Editor(const std::shared_ptr<Window> & window) {
 
     EditorStyle::Apply();
 
-    sceneWindowSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
-    enableBoundingBoxesProperty = std::make_shared<BooleanProperty>(true);
+    sceneLeftSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
+    sceneRightSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
+    enableBoundingBoxesProperty = std::make_shared<BooleanProperty>(false);
     enableVsyncProperty = std::make_shared<BooleanProperty>(window->vSyncEnabled);
     showNormalsProperty = std::make_shared<BooleanProperty>(false);
 }
@@ -64,24 +65,17 @@ void Editor::DockSpaceBegin() {
 
         auto dock_main_id = dockspace_id;
 
-        auto view_info = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Up, 0.1f, nullptr, &dock_main_id);
+        auto scenes_plus_settings = createView(dock_main_id, ImGuiDir_Left, 0.8f);
 
-        auto views_main = createView(dock_main_id, ImGuiDir_Down, 0.9f);
+        auto scenes = createView(scenes_plus_settings, ImGuiDir_Left, 0.85f);
+        auto settings = createView(scenes_plus_settings, ImGuiDir_Right, 0.15f);
 
-        auto view_console = createView(views_main, ImGuiDir_Down, 0.2f);
-        auto views_hierarchy_scene_settings = createView(views_main, ImGuiDir_Up, 0.8f);
+        auto scene1 = createView(scenes, ImGuiDir_Left, 0.5f);
+        auto scene2 = createView(scenes, ImGuiDir_Right, 0.5f);
 
-        auto views_hierarchy_scene = createView(views_hierarchy_scene_settings, ImGuiDir_Left, 0.75f);
-        auto view_settings = createView(views_hierarchy_scene_settings, ImGuiDir_Right, 0.3f);
-
-        auto view_hierarchy = createView(views_hierarchy_scene, ImGuiDir_Left, 0.2f);
-        auto view_scene = createView(views_hierarchy_scene, ImGuiDir_Right, 0.7f);
-
-        ImGui::DockBuilderDockWindow("Info", view_info);
-        ImGui::DockBuilderDockWindow("Hierarchy", view_hierarchy);
-        ImGui::DockBuilderDockWindow("Scenes", view_scene);
-        ImGui::DockBuilderDockWindow("Settings", view_settings);
-        ImGui::DockBuilderDockWindow("Console", view_console);
+        ImGui::DockBuilderDockWindow("Scene1", scene1);
+        ImGui::DockBuilderDockWindow("Scene2", scene2);
+        ImGui::DockBuilderDockWindow("Settings", settings);
 
         ImGui::DockBuilderFinish(dock_main_id);
     }
@@ -104,20 +98,23 @@ void Editor::renderConsoleWindow() {
 void Editor::renderSettingsWindow() {
     ImGui::Begin("Settings");
 
-    ImGui::Dummy(ImVec2(0.0f, 20.0f));
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
+    ImGui::Text("%.3f ms/frame", 1000.0f / ImGui::GetIO().Framerate);
 
-    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
+    ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
+
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ImGui::Text("Enable bounding boxes:");
     ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ToggleButton("id", enableBoundingBoxesProperty);
 
-    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ImGui::Text("Enable VSync:");
     ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ToggleButton("id2", enableVsyncProperty);
 
-    ImGui::Dummy(ImVec2(0.0f, 20.0f));
+    ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ImGui::Text("Show normals:");
     ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ToggleButton("id3", showNormalsProperty);
@@ -126,11 +123,6 @@ void Editor::renderSettingsWindow() {
 
 void Editor::renderInfoWindow() {
     ImGui::Begin("Info");
-    ImGui::End();
-}
-
-void Editor::renderHierarchyWindow() {
-    ImGui::Begin("Hierarchy");
     ImGui::End();
 }
 
@@ -164,18 +156,26 @@ void Editor::ToggleButton(const char * str_id, const std::shared_ptr<Observable<
     draw_list->AddCircleFilled(ImVec2(p.x + radius + t * (width - radius * 2.0f), p.y + radius), radius - 1.5f, col_circle, 24);
 }
 
-void Editor::on_scene_window_resize(ImGuiSizeCallbackData * data) {
-    static_cast<Editor *>(data->UserData)->OnSceneWindowResize(data->CurrentSize);
+void Editor::on_scene_left_resize(ImGuiSizeCallbackData * data) {
+    static_cast<Editor *>(data->UserData)->OnSceneLeftResize(data->CurrentSize);
 }
 
-void Editor::OnSceneWindowResize(ImVec2 size) {
-    sceneWindowSizeProperty->setValue(glm::vec2(size.x, size.y));
+void Editor::on_scene_right_resize(ImGuiSizeCallbackData * data) {
+    static_cast<Editor *>(data->UserData)->OnSceneRightResize(data->CurrentSize);
 }
 
-void Editor::renderSceneWindow(float texWidth, float texHeight, GLuint texture) {
-    ImGui::SetNextWindowSizeConstraints({texWidth, texHeight}, {10000.0, 10000.0}, Editor::on_scene_window_resize, this);
+void Editor::OnSceneLeftResize(const ImVec2 & size) {
+    sceneLeftSizeProperty->setValue(glm::vec2(size.x, size.y));
+}
 
-    ImGui::Begin("Scenes");
+void Editor::OnSceneRightResize(const ImVec2 & size) {
+    sceneRightSizeProperty->setValue(glm::vec2(size.x, size.y));
+}
+
+void Editor::renderSceneWindow(const std::string & name, float texWidth, float texHeight, GLuint texture, ImGuiSizeCallback callback) {
+    ImGui::SetNextWindowSizeConstraints({texWidth, texHeight}, {10000.0, 10000.0}, callback, this);
+
+    ImGui::Begin(name.c_str());
 
     ImGui::GetWindowDrawList()->AddImage(
             reinterpret_cast<ImTextureID>(texture),
@@ -186,7 +186,7 @@ void Editor::renderSceneWindow(float texWidth, float texHeight, GLuint texture) 
     ImGui::End();
 }
 
-void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float height, GLuint mainTexture) {
+void Editor::renderFrame(std::shared_ptr<Window> & window, double widths[], double heights[], GLuint textures[]) {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, window->size.x, window->size.y);
 
@@ -196,11 +196,9 @@ void Editor::renderFrame(std::shared_ptr<Window> & window, float width, float he
 
     Editor::DockSpaceBegin();
 
-    //Editor::renderInfoWindow();
-    //Editor::renderHierarchyWindow();
-    Editor::renderSceneWindow(width, height, mainTexture);
+    Editor::renderSceneWindow("Scene1", widths[0], heights[0], textures[0], Editor::on_scene_left_resize);
+    Editor::renderSceneWindow("Scene2", widths[1], heights[1], textures[1], Editor::on_scene_right_resize);
     Editor::renderSettingsWindow();
-    //Editor::renderConsoleWindow();
 
     Editor::DockSpaceEnd();
 
@@ -221,3 +219,5 @@ void Editor::terminate() {
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 }
+
+

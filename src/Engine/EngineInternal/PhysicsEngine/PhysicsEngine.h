@@ -42,9 +42,10 @@ class PhysicsEngine {
 
         void step(float timeStep);
 
-        int addCollisionBox(const float & mass, const glm::vec3 & position, const glm::vec3 & size);
-        int addCollisionSphere(const float & mass, const glm::vec3 & position, const glm::vec3 & size);
+        int addCollisionBox(const float & mass, const float & restitution, const Transform & transform);
+        int addCollisionSphere(const float & mass, const float & restitution, const Transform & transform);
         std::shared_ptr<Transform> getTransform(const int & idx);
         void runTestSimulation(const int & iterations);
         void test();
+        btVector3 quatToEuler(const btQuaternion & quat);
 };

@@ -14,6 +14,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     skyboxMesh->meshType = CUBE;
 
     std::shared_ptr<MeshRenderer> skyboxMeshRenderer = std::make_shared<MeshRenderer>();
+    skyboxMeshRenderer->frustumCulling = false;
     skyboxMeshRenderer->enableBoundingBox = false;
     skyboxMeshRenderer->shaderType = TEXTURE_CUBE;
     skyboxMeshRenderer->paths = {
@@ -37,6 +38,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     gridQuadRenderer->shaderType = GRID;
     gridQuadRenderer->texture = "../resources/textures/texture_white.bmp";
     gridQuadRenderer->enableBoundingBox = true;
+    gridQuadRenderer->frustumCulling = false;
 
     std::shared_ptr<GameObject> gridObject = std::make_shared<GameObject>();
     gridObject->addComponent(gridQuad);
@@ -53,6 +55,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisXRenderer->shaderType = AMBIENT;
     axisXRenderer->color = glm::vec4(0.0f, 1.0, 0.0, 1.0);
     axisXRenderer->enableBoundingBox = false;
+    axisXRenderer->frustumCulling = false;
 
     std::shared_ptr<GameObject> axisXObject = std::make_shared<GameObject>();
     axisXObject->addComponent(axisX);
@@ -66,6 +69,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisYRenderer->shaderType = AMBIENT;
     axisYRenderer->color = glm::vec4(1.0f, 0.0, 0.0, 1.0);
     axisYRenderer->enableBoundingBox = false;
+    axisYRenderer->frustumCulling = false;
 
     std::shared_ptr<GameObject> axisYObject = std::make_shared<GameObject>();
     axisYObject->addComponent(axisY);
@@ -79,6 +83,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisZRenderer->shaderType = AMBIENT;
     axisZRenderer->color = glm::vec4(0.0f, 0.0, 1.0, 1.0);
     axisZRenderer->enableBoundingBox = false;
+    axisZRenderer->frustumCulling = false;
 
     std::shared_ptr<GameObject> axisZObject = std::make_shared<GameObject>();
     axisZObject->addComponent(axisZ);

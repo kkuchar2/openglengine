@@ -6,12 +6,13 @@
 #include <Rendering/Camera/PerspectiveCamera/PerspectiveCamera.h>
 #include <PhysicsEngine/PhysicsEngine.h>
 #include <Utils/BoundingBoxGenerator/BoundingBoxGenerator.h>
+#include <Components/Behaviour/RigidbodyComponent/Rigidbody.h>
 
 class RenderingManager {
 
     public:
         bool physicsEnabled = false;
-        bool enableBoundingBoxes = true;
+        bool enableBoundingBoxes = false;
 
         std::vector<std::shared_ptr<GameObject>> children;
 
