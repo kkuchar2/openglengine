@@ -43,7 +43,6 @@ std::shared_ptr<Scene> mainScene() {
     bunnyMeshRenderer->shaderType = PHONG;
     bunnyMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
     bunnyMeshRenderer->instanced = true;
-    bunnyMeshRenderer->frustumCulling = true;
 
     suzanneMesh->meshType = RESOURCE;
     suzanneMesh->path = "../resources/models/suzanne.obj";
@@ -81,9 +80,6 @@ std::shared_ptr<Scene> mainScene() {
     bunnyObject->addComponent(bunnyMeshRenderer);
     bunnyObject->addComponent(rigidbody);
 
-    bunnyObject->transform.position = glm::vec3(0.0f, 10.0f, 0.0f);
-    bunnyObject->transform.rotation = glm::vec3(15.0f, 15.0f, 32.0f);
-
     auto suzanneMeshObject = std::make_shared<GameObject>();
     suzanneMeshObject->addComponent(suzanneMesh);
     suzanneMeshObject->addComponent(suzanneMeshRenderer);
@@ -101,25 +97,24 @@ std::shared_ptr<Scene> mainScene() {
     lampMeshObject->transform.scale = glm::vec3(0.1f);
     lampMeshObject->transform.position = *lightPos.get();
 
-
     cubeObject->transform.position = glm::vec3(2.0f, 0.5f, 0.0f);
 
     bunnyObject->transform.scale = glm::vec3(20.0f);
 
-    suzanneMeshObject->transform.position = glm::vec3(0.0f, 7.0f, 0.0f);
-    suzanneMeshObject->transform.rotation = glm::vec3(0.0f, 30.0f, -10.0f);
+    suzanneMeshObject->transform.position = glm::vec3(0.0f, 5.0f, 0.0f);
+    suzanneMeshObject->transform.rotation = glm::vec3(1.0f, 1.0f, 2.0f);
 
     teapotMeshObject->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMeshObject->transform.scale = glm::vec3(0.5f);
 
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 
-    //scene->addChild(surfaceObject);
-    //scene->addChild(lampMeshObject);
-    //scene->addChild(teapotMeshObject);
-    //scene->addChild(suzanneMeshObject);
+    scene->addChild(surfaceObject);
+    scene->addChild(lampMeshObject);
+    scene->addChild(teapotMeshObject);
+    scene->addChild(suzanneMeshObject);
     scene->addChild(bunnyObject);
-    //scene->addChild(cubeObject);
+    scene->addChild(cubeObject);
 
     return scene;
 }
