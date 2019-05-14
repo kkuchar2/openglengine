@@ -28,7 +28,6 @@ class Engine {
         Observer<glm::vec2> onSceneRightSizeChanged;
         Observer<bool> onBoundingBoxesEnablementChanged;
         Observer<bool> onVSyncValueChange;
-        Observer<bool> onShowNormalsChange;
 
         SubscriptionContainer SC;
 

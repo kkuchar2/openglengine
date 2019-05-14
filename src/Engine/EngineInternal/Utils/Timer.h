@@ -10,6 +10,8 @@ class Timer
         void reset() { beg_ = clock_::now(); }
         double elapsed() const {
             return std::chrono::duration_cast<milisecond_>(clock_::now() - beg_).count(); }
+        double total() const {
+            return std::chrono::duration_cast<milisecond_>(clock_::now() - beg_).count(); }
 
     private:
         typedef std::chrono::high_resolution_clock clock_;

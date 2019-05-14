@@ -6,6 +6,9 @@
 class Rotator : public BehaviourComponent {
 
     private:
+
+        int a = 0;
+
         Timer timer;
 
     public:

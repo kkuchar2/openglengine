@@ -56,5 +56,5 @@ class PerspectiveCamera : public BaseCamera {
 
         void calculateFrustumPlanes();
 
-        bool testFrustum(const std::shared_ptr<GameObject> & child);
+        bool testFrustum(const std::shared_ptr<GameObjectBase> & child);
 };

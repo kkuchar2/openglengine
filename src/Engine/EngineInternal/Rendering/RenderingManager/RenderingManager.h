@@ -2,7 +2,7 @@
 
 #include <Scene/GameObject/GameObject.h>
 #include <Rendering/Mesh/MeshBuilder.h>
-#include <Rendering/Mesh/MeshInfo.h>
+#include <Rendering/Mesh/RenderInfo.h>
 #include <Rendering/Camera/PerspectiveCamera/PerspectiveCamera.h>
 #include <PhysicsEngine/PhysicsEngine.h>
 #include <Utils/BoundingBoxGenerator/BoundingBoxGenerator.h>
@@ -10,25 +10,25 @@
 
 class RenderingManager {
 
+    private:
+
+        void addBoundingBox(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObjectBase> & parent);
+
     public:
         bool physicsEnabled = false;
         bool enableBoundingBoxes = false;
 
         std::vector<std::shared_ptr<GameObject>> children;
 
-        std::vector<std::shared_ptr<MeshInfo>> meshes;
+        std::vector<std::shared_ptr<RenderInfo>> renderInfos;
 
-        std::map<std::string, std::shared_ptr<MeshInfo>> instancedMeshes;
+        std::map<std::string, std::shared_ptr<RenderInfo>> instancedRenderInfos;
 
         std::shared_ptr<PhysicsEngine> physicsEngine;
 
         RenderingManager();
 
-        void addChild(const std::shared_ptr<GameObject> & child);
-
         void preprocessScenes();
-
-        void Update(const std::shared_ptr<PerspectiveCamera> & camera);
 
         void logRenderMap();
 };

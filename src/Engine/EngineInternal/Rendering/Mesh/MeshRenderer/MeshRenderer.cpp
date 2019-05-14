@@ -92,7 +92,6 @@ void MeshRenderer::CreateUVBuffer() {
     auto uvs = mesh->uvs;
 
     if (uvs.empty()) {
-        std::cerr << "ERROR: UV's are empty" << std::endl;
         return;
     }
 
@@ -108,7 +107,6 @@ void MeshRenderer::CreateNormalsBuffer() {
     auto normals = mesh->normals;
 
     if (normals.empty()) {
-        std::cerr << "ERROR: Normals are empty" << std::endl;
         return;
     }
 
@@ -153,20 +151,20 @@ void MeshRenderer::UpdateModelMatrices() {
 
     auto modelMatrices = mesh->modelMatrices;
 
-    notCulledModelMatrices.clear();
+    usedModelMatrices.clear();
 
-    for (int i = 0; i < not_culled_indexes.size(); i++) {
-        notCulledModelMatrices.push_back(modelMatrices[not_culled_indexes[i]]);
+    for (int usedMeshIndex : usedMeshIndexes) {
+        usedModelMatrices.push_back(modelMatrices[usedMeshIndex]);
     }
 
-    if (notCulledModelMatrices.empty()) {
+    if (usedModelMatrices.empty()) {
         return;
     }
 
     glBindVertexArray(vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, model_matrices_vbo);
-    glBufferData(GL_ARRAY_BUFFER, notCulledModelMatrices.size() * sizeof(glm::mat4x4), notCulledModelMatrices.data(), GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, usedModelMatrices.size() * sizeof(glm::mat4x4), usedModelMatrices.data(), GL_STREAM_DRAW);
 
     glEnableVertexAttribArray(3);
     glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4x4), (void *) nullptr);
@@ -209,19 +207,19 @@ void MeshRenderer::UpdateColorVectors() {
 
     auto colorVectors = mesh->colorVectors;
 
-    notCulledColorVectors.clear();
+    usedColorVectors.clear();
 
-    for (int i = 0; i < not_culled_indexes.size(); i++) {
-        notCulledColorVectors.push_back(colorVectors[not_culled_indexes[i]]);
+    for (int i = 0; i < usedMeshIndexes.size(); i++) {
+        usedColorVectors.push_back(colorVectors[usedMeshIndexes[i]]);
     }
 
-    if (notCulledColorVectors.empty()) {
+    if (usedColorVectors.empty()) {
         return;
     }
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, color_vectors_vbo);
-    glBufferData(GL_ARRAY_BUFFER, notCulledColorVectors.size() * sizeof(glm::vec4), notCulledColorVectors.data(), GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, usedColorVectors.size() * sizeof(glm::vec4), usedColorVectors.data(), GL_STREAM_DRAW);
 
     glEnableVertexAttribArray(7);
     glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void *) nullptr);
@@ -230,30 +228,34 @@ void MeshRenderer::UpdateColorVectors() {
 }
 
 void MeshRenderer::loadTexture(const char * path) {
-    std::cout << "Loading texture: " << path << std::endl;
     textureId = TextureLoader::generateAndBindTexture(TextureLoader::loadTextureData(path));
-    std::cout << "Texture id: " << textureId << std::endl;
 }
 
 void MeshRenderer::loadCubeMap(const std::vector<std::string> & paths) {
-    std::cout << "Loading cube map textures" << std::endl;
-
-
-    for (auto & path : paths) {
-        std::cout << "\tLoading texture: " << path << std::endl;
-    }
-
-    textureId = TextureLoader::loadCubeMap(paths);
-
-    std::cout << "Texture id: " << textureId << std::endl;
+     textureId = TextureLoader::loadCubeMap(paths);
 }
 
-void MeshRenderer::render() {
-    render(mesh->renderingMode, static_cast<int>(mesh->indices.size()));
+
+void MeshRenderer::render(const std::shared_ptr<BaseCamera> & camera) {
+    shader->use();
+    shader->setBool("showNormals", Settings::Instance().getShowNormals());
+    shader->setVec3("cameraPosition", camera->getPosition());
+    shader->setMat4("vp", camera->getProjectionMatrix() * camera->getViewMatrix());
+    shaderInit(shader);
+    UpdateModelMatrices();
+    UpdateColorVectors();
+    render(renderingMode, static_cast<int>(mesh->indices.size()));
 }
 
-void MeshRenderer::renderInstanced(int instancesCount) {
-    renderInstanced(mesh->renderingMode, static_cast<int>(mesh->indices.size()), instancesCount);
+void MeshRenderer::renderInstanced(const std::shared_ptr<BaseCamera> & camera) {
+    shader->use();
+    shader->setBool("showNormals", Settings::Instance().getShowNormals());
+    shader->setVec3("cameraPosition", camera->getPosition());
+    shader->setMat4("vp", camera->getProjectionMatrix() * camera->getViewMatrix());
+    shaderInit(shader);
+    UpdateModelMatrices();
+    UpdateColorVectors();
+    renderInstanced(renderingMode, static_cast<int>(mesh->indices.size()), usedMeshIndexes.size());
 }
 
 void MeshRenderer::render(GLenum renderMode, int indicesCount) {

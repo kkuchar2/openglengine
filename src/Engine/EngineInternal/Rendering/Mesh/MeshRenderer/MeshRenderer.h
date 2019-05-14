@@ -5,6 +5,8 @@
 
 #include <Components/Component.h>
 #include <Engine/EngineInternal/Rendering/Shading/ShaderType.h>
+#include <Engine/EngineInternal/Rendering/Camera/BaseCamera.h>
+#include <Engine/EngineInternal/Settings.h>
 
 class MeshRenderer : public Component {
 
@@ -22,20 +24,34 @@ class MeshRenderer : public Component {
 
         GLuint textureId = 0;
 
+        void CreateVertexAttributeObject();
+        void CreateIndexBuffer();
+        void CreateVertexBuffer();
+        void CreateUVBuffer();
+        void CreateNormalsBuffer();
+        void CreateModelMatricesBuffer();
+        void CreateColorBuffer();
 
+        void render(GLenum renderMode, int indicesCount);
+        void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
 
     public:
-        std::vector<int> not_culled_indexes;
-        std::vector<glm::mat4> notCulledModelMatrices;
-        std::vector<glm::vec4> notCulledColorVectors;
+
+        std::vector<int> usedMeshIndexes;
+        std::vector<glm::mat4> usedModelMatrices;
+        std::vector<glm::vec4> usedColorVectors;
 
         //////////////////////////////// Shader /////////////////////////////////
         std::shared_ptr<Shader> shader;
         /////////////////////////////////////////////////////////////////////////
 
         //////////////////////////////// Options ////////////////////////////////
+
         Projection projection = PERSPECTIVE;
         ShaderType shaderType = AMBIENT;
+
+        /// Rendering mode
+        GLenum renderingMode = GL_TRIANGLES;
 
         /// Single texture path
         const char * texture = nullptr;
@@ -48,6 +64,7 @@ class MeshRenderer : public Component {
         bool cubeMap = false;
         bool enableBoundingBox = true;
         bool frustumCulling = true;
+        bool instanced = false;
 
         /// Base shader color
         glm::vec4 color = glm::vec4(1.0, 0.0, 1.0, 1.0);
@@ -61,24 +78,14 @@ class MeshRenderer : public Component {
 
         void prepare();
 
-        void CreateVertexAttributeObject();
-        void CreateIndexBuffer();
-        void CreateVertexBuffer();
-        void CreateUVBuffer();
-        void CreateNormalsBuffer();
-        void CreateModelMatricesBuffer();
-        void CreateColorBuffer();
-
         void UpdateModelMatrices();
         void UpdateColorVectors();
 
         void loadTexture(const char * path);
         void loadCubeMap(const std::vector<std::string> & paths);
 
-        void render();
-        void renderInstanced(int instancesCount);
-        void renderInstanced(GLenum renderMode, int indicesCount, int instanceCount);
-        void render(GLenum renderMode, int indicesCount);
+        void render(const std::shared_ptr<BaseCamera> & camera);
+        void renderInstanced(const std::shared_ptr<BaseCamera> & camera);
 
         std::string getShaderTypeStr();
 

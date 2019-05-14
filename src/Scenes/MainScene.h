@@ -32,6 +32,7 @@ std::shared_ptr<Scene> mainScene() {
     cubeMesh->meshType = CUBE;
     cubeMeshRenderer->shaderType = PHONG;
     cubeMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+    cubeMeshRenderer->instanced = true;
 
     surfaceMesh->meshType = SURFACE;
     surfaceMeshRenderer->shaderType = PHONG;
@@ -41,21 +42,26 @@ std::shared_ptr<Scene> mainScene() {
     bunnyMesh->path = "../resources/models/bunny.obj";
     bunnyMeshRenderer->shaderType = PHONG;
     bunnyMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+    bunnyMeshRenderer->instanced = true;
+    bunnyMeshRenderer->frustumCulling = true;
 
     suzanneMesh->meshType = RESOURCE;
     suzanneMesh->path = "../resources/models/suzanne.obj";
     suzanneMeshRenderer->shaderType = PHONG;
     suzanneMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+    suzanneMeshRenderer->instanced = true;
 
     teapotMesh->meshType = RESOURCE;
     teapotMesh->path = "../resources/models/teapot.obj";
     teapotMeshRenderer->shaderType = PHONG;
     teapotMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+    teapotMeshRenderer->instanced = true;
 
     lampMesh->meshType = RESOURCE;
     lampMesh->path = "../resources/models/sphere.obj";
     lampMeshRenderer->shaderType = AMBIENT;
     lampMeshRenderer->color = glm::vec4(1.0, 1.0, 1.0f, 1.0f);
+    lampMeshRenderer->instanced = true;
 
     auto rigidbody = std::make_shared<Rigidbody>();
     rigidbody->mass = 1.0f;
@@ -94,21 +100,17 @@ std::shared_ptr<Scene> mainScene() {
 
     lampMeshObject->transform.scale = glm::vec3(0.1f);
     lampMeshObject->transform.position = *lightPos.get();
-    lampMeshObject->instanced = true;
+
 
     cubeObject->transform.position = glm::vec3(2.0f, 0.5f, 0.0f);
-    cubeObject->instanced = true;
 
     bunnyObject->transform.scale = glm::vec3(20.0f);
-    bunnyObject->instanced = true;
 
     suzanneMeshObject->transform.position = glm::vec3(0.0f, 7.0f, 0.0f);
     suzanneMeshObject->transform.rotation = glm::vec3(0.0f, 30.0f, -10.0f);
-    suzanneMeshObject->instanced = true;
 
     teapotMeshObject->transform.position = glm::vec3(-3.0f, 1.0f, 0.0f);
     teapotMeshObject->transform.scale = glm::vec3(0.5f);
-    teapotMeshObject->instanced = true;
 
     surfaceObject->transform.position = glm::vec3(0.0f, 0.1f, -10.0f);
 

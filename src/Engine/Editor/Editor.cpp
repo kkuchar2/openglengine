@@ -26,7 +26,6 @@ Editor::Editor(const std::shared_ptr<Window> & window) {
     sceneRightSizeProperty = std::make_shared<Observable<glm::vec2>>(glm::vec2(0.0, 0.0));
     enableBoundingBoxesProperty = std::make_shared<BooleanProperty>(false);
     enableVsyncProperty = std::make_shared<BooleanProperty>(window->vSyncEnabled);
-    showNormalsProperty = std::make_shared<BooleanProperty>(false);
 }
 
 void Editor::DockSpaceBegin() {
@@ -117,7 +116,7 @@ void Editor::renderSettingsWindow() {
     ImGui::Dummy(ImVec2(0.0f, 10.0f));
     ImGui::Text("Show normals:");
     ImGui::Dummy(ImVec2(0.0f, 10.0f));
-    ToggleButton("id3", showNormalsProperty);
+    ToggleButton("id3", Settings::Instance().showNormalsProperty);
     ImGui::End();
 }
 
@@ -126,25 +125,27 @@ void Editor::renderInfoWindow() {
     ImGui::End();
 }
 
-void Editor::ToggleButton(const char * str_id, const std::shared_ptr<Observable<bool>> & property)
-{
+void Editor::ToggleButton(const char * str_id, const std::shared_ptr<Observable<bool>> & property) {
     ImVec2 p = ImGui::GetCursorScreenPos();
-    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    ImDrawList * draw_list = ImGui::GetWindowDrawList();
 
     float height = ImGui::GetFrameHeight() * 1.1f;
     float width = height * 2.0f;
     float radius = height * 0.50f;
 
     ImGui::InvisibleButton(str_id, ImVec2(width, height));
-    if (ImGui::IsItemClicked())
+
+    if (ImGui::IsItemClicked()) {
         property->setValue(!property->getValue());
+    }
 
     float t = property->getValue() ? 1.0f : 0.0f;
 
-    ImGuiContext& g = *GImGui;
+    ImGuiContext & g = *GImGui;
+
     float ANIM_SPEED = 0.08f;
-    if (g.LastActiveId == g.CurrentWindow->GetID(str_id))// && g.LastActiveIdTimer < ANIM_SPEED)
-    {
+
+    if (g.LastActiveId == g.CurrentWindow->GetID(str_id)) {
         float t_anim = ImSaturate(g.LastActiveIdTimer / ANIM_SPEED);
         t = property->getValue() ? (t_anim) : (1.0f - t_anim);
     }
@@ -153,7 +154,8 @@ void Editor::ToggleButton(const char * str_id, const std::shared_ptr<Observable<
     ImU32 col_circle = property->getValue() ? IM_COL32(10, 213, 96, 255) : IM_COL32(255, 255, 255, 255);
 
     draw_list->AddRectFilled(p, ImVec2(p.x + width, p.y + height), col_bg, height * 0.5f);
-    draw_list->AddCircleFilled(ImVec2(p.x + radius + t * (width - radius * 2.0f), p.y + radius), radius - 1.5f, col_circle, 24);
+    draw_list->AddCircleFilled(ImVec2(p.x + radius + t * (width - radius * 2.0f), p.y + radius), radius - 1.5f,
+                               col_circle, 24);
 }
 
 void Editor::on_scene_left_resize(ImGuiSizeCallbackData * data) {
@@ -172,8 +174,9 @@ void Editor::OnSceneRightResize(const ImVec2 & size) {
     sceneRightSizeProperty->setValue(glm::vec2(size.x, size.y));
 }
 
-void Editor::renderSceneWindow(const std::string & name, float texWidth, float texHeight, GLuint texture, ImGuiSizeCallback callback) {
-    ImGui::SetNextWindowSizeConstraints({texWidth, texHeight}, {10000.0, 10000.0}, callback, this);
+void Editor::renderSceneWindow(const std::string & name, float texWidth, float texHeight, GLuint texture,
+                               ImGuiSizeCallback callback) {
+    ImGui::SetNextWindowSizeConstraints({ texWidth, texHeight }, { 10000.0, 10000.0 }, callback, this);
 
     ImGui::Begin(name.c_str());
 

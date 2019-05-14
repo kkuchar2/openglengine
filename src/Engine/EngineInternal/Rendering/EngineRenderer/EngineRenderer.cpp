@@ -2,15 +2,16 @@
 #include "EngineRenderer.h"
 #include <ctime>
 #include <thread>
+#include <Engine/EngineInternal/Settings.h>
 
 EngineRenderer::EngineRenderer(const std::shared_ptr<Window> & window,
                                const std::shared_ptr<PhysicsEngine> & physicsEngine) {
     createFramebuffers();
     ortographicCamera = std::make_shared<OrtographicCamera>(window->size);
     perspectiveCameras[0] = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 5.0, 10.0));
-    perspectiveCameras[1] = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 40.0, 0.1f));
+    perspectiveCameras[1] = std::make_shared<PerspectiveCamera>(glm::vec3(0.0, 80.0, 0.1f));
     perspectiveCameras[1]->disableMovement = true;
-    perspectiveCameras[1]->fovy = 90.0f;
+    perspectiveCameras[1]->fovy = 45.0f;
 
     renderingManager = std::make_shared<RenderingManager>();
     renderingManager->physicsEngine = physicsEngine;
@@ -18,82 +19,87 @@ EngineRenderer::EngineRenderer(const std::shared_ptr<Window> & window,
 
 void EngineRenderer::addScene(const std::shared_ptr<Scene> & scene) {
     for (auto & child : scene->children) {
-        renderingManager->addChild(child);
+        renderingManager->children.push_back(child);
     }
 }
 
 void EngineRenderer::prepare() {
     renderingManager->preprocessScenes();
 
-    for (auto & info : renderingManager->meshes) {
+    for (auto & info : renderingManager->renderInfos) {
         info->renderer->prepare();
     }
 
-    for (auto  &[id, info] : renderingManager->instancedMeshes) {
+    for (auto & [id, info] : renderingManager->instancedRenderInfos) {
         info->renderer->prepare();
     }
 }
 
+void EngineRenderer::testFrustrum(const std::shared_ptr<RenderInfo> & info) {
+
+    info->renderer->usedMeshIndexes.clear();
+
+    for (int i = 0; i < info->objects.size(); i++) {
+        if (info->renderer->frustumCulling) {
+            if (perspectiveCameras[0]->testFrustum(info->objects[i])) {
+                info->renderer->usedMeshIndexes.push_back(i);
+            }
+        }
+        else {
+            info->renderer->usedMeshIndexes.push_back(i);
+        }
+    }
+}
+
 void EngineRenderer::renderFrame() {
+
+    /// Update all cameras
     perspectiveCameras[0]->Update();
     perspectiveCameras[1]->Update();
     ortographicCamera->Update();
 
-    /////// Update children /////////
-    for (auto const & [id, info] : renderingManager->instancedMeshes) {
+    /// Update all instanced rendered children
+    for (auto const & [id, info] : renderingManager->instancedRenderInfos) {
+        testFrustrum(info);
 
-        if (id != "bbox") {
-            info->renderer->not_culled_indexes.clear();
+        if (id == "bbox") continue;
 
-            for (int i = 0; i < info->objects.size(); i++) {
-                bool notCulled = perspectiveCameras[0]->testFrustum(info->objects[i]);
-
-                if (notCulled || !info->renderer->frustumCulling) {
-                    info->renderer->not_culled_indexes.push_back(i);
-                    info->objects[i]->update();
-                }
-            }
-        }
-        else {
-            info->renderer->not_culled_indexes.clear();
-            for (int i = 0; i < info->objects.size(); i++) {
-                info->objects[i]->update();
-                info->renderer->not_culled_indexes.push_back(i);
-            }
+        for (auto & child : info->objects) {
+            child->update(!child->culled);
         }
     }
 
-    for (auto const & info : renderingManager->meshes) {
-        bool render = perspectiveCameras[0]->testFrustum(info->objects[0]);
-        if ((render && info->renderer->frustumCulling) || !info->renderer->frustumCulling) {
-            info->renderer->not_culled_indexes.clear();
-            info->renderer->not_culled_indexes.push_back(0);
+    /// Update all classic rendered children
+    for (auto const & info : renderingManager->renderInfos) {
+        testFrustrum(info);
+
+        for (auto & child : info->objects) {
+            child->update(!child->culled);
         }
-        info->objects[0]->update();
     }
-    /////////////////////////////////
 
-
-    ///////// Render children ///////
-
-    for (int i = 0; i < 2; i++) {
-        glBindFramebuffer(GL_FRAMEBUFFER, framebuffers[i]);
+    /// Clear all framebuffers
+    for (unsigned int framebuffer : framebuffers) {
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glClearColor(0.17f, 0.17f, 0.17f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
+    /// Render all children
     for (int i = 0; i < 2; i++) {
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffers[i]);
         glViewport(0, 0, widths[i], heights[i]);
 
-        for (auto const &[id, info] : renderingManager->instancedMeshes) {
+        /// Render all instanced children
+        for (auto const &[id, info] : renderingManager->instancedRenderInfos) {
             if (id == "bbox" && !renderingManager->enableBoundingBoxes) continue;
             glPolygonMode(GL_FRONT_AND_BACK, id == "bbox" ? GL_LINE : GL_FILL);
-            getCamera(info->renderer->projection, i)->renderInstanced(info);
+            info->renderer->renderInstanced(getCamera(info->renderer->projection, i));
         }
 
-        for (auto const & info : renderingManager->meshes) {
-            getCamera(info->renderer->projection, i)->render(info);
+        /// Render all classic children
+        for (auto const & info : renderingManager->renderInfos) {
+            info->renderer->render(getCamera(info->renderer->projection, i));
         }
     }
 }
@@ -118,7 +124,7 @@ void EngineRenderer::createFramebuffers() {
 
         glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textures[i], 0);
 
-        GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+        GLenum DrawBuffers[1] = { GL_COLOR_ATTACHMENT0 };
         glDrawBuffers(1, DrawBuffers);
 
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {

@@ -21,7 +21,7 @@ std::shared_ptr<Scene> shaderTestScene() {
         shader->setglm::glm::vec3("lightPos", *lightPos.get());
     };
 
-    std::shared_ptr<GameObject> sphereObject = GameObject::create();
+    std::shared_ptr<GameObject> sphereObject = std::make_shared<GameObject>();
     sphereObject->transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 
     sphereObject->addComponent(sphereMesh);

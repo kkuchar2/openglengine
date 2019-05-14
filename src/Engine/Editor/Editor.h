@@ -11,7 +11,7 @@
 
 #include <glm/glm/glm.hpp>
 #include <RoseCpp/src/Rose/Property/BooleanProperty.h>
-
+#include <Engine/EngineInternal/Settings.h>
 #include "EditorStyle.h"
 
 #include "../Window/Window.h"
@@ -29,7 +29,6 @@ class Editor {
 
         std::shared_ptr<BooleanProperty> enableBoundingBoxesProperty;
         std::shared_ptr<BooleanProperty> enableVsyncProperty;
-        std::shared_ptr<BooleanProperty> showNormalsProperty;
 
         Editor(const std::shared_ptr<Window> & window);
 

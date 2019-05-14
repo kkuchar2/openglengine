@@ -1,11 +1,11 @@
 #pragma once
 
-#include <Scene/GameObject/GameObject.h>
+#include <Scene/GameObject/GameObjectBase.h>
 
 class BehaviourComponent : public Component {
 
     public:
-        GameObject * gameObject = nullptr;
+        GameObjectBase * gameObject = nullptr;
 
         void Start() override {
 
@@ -15,5 +15,5 @@ class BehaviourComponent : public Component {
 
         }
 
-        void SetObject(GameObject * obj);
+        void SetObject(GameObjectBase * obj);
 };

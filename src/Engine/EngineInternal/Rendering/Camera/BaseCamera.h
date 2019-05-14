@@ -19,8 +19,6 @@
 #include <Scene/GameObject/GameObject.h>
 #include "Engine/EngineInternal/Rendering/Projection.h"
 
-#include <Engine/EngineInternal/Rendering/Mesh/MeshInfo.h>
-
 #include <Window/Input/InputSystem.h>
 
 class BaseCamera {
@@ -35,17 +33,9 @@ class BaseCamera {
 
     public:
 
-        bool showNormals = false;
-
         Projection projection = PERSPECTIVE;
 
         BaseCamera();
-
-        void renderInstanced(const std::shared_ptr<MeshInfo> & info);
-
-        void render(const std::shared_ptr<MeshInfo> & info);
-
-        void initShaderCommon(const std::shared_ptr<Shader> & shader);
 
         virtual glm::vec3 getPosition();
 

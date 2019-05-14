@@ -8,7 +8,6 @@ class Line : public Mesh {
         explicit Line() : Mesh() {
             vertices = { 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0 };
             indices = { 0, 1 };
-            renderingMode = GL_LINES;
         }
 
         void setCoords(const glm::vec3 & start, const glm::vec3 & end) {

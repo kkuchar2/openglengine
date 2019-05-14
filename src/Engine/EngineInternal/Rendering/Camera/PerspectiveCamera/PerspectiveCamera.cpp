@@ -103,30 +103,35 @@ glm::mat4x4 PerspectiveCamera::getProjectionMatrix() {
     return glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 10000.0f);
 }
 
-bool PerspectiveCamera::testFrustum(const std::shared_ptr<GameObject> & child) {
+bool PerspectiveCamera::testFrustum(const std::shared_ptr<GameObjectBase> & child) {
 
     glm::vec3 center = child->transform.position;
 
     auto bBox = child->boundingBox;
 
+    float radius;
+
     if (!bBox.get()) {
-        return false;
+        radius = std::max(std::max(child->transform.scale.x, child->transform.scale.y), child->transform.scale.z);
+    }
+    else {
+        radius = std::max(std::max(bBox->transform.scale.x, bBox->transform.scale.y), bBox->transform.scale.z);
     }
 
-    float radius = std::max(std::max(bBox->transform.scale.x, bBox->transform.scale.y), bBox->transform.scale.z);
-
-    for (int i = 0; i < 6; i++) {
+    for (int i = 5; i >= 0; i--) {
         float dist = planes[i].x * center.x + planes[i].y * center.y + planes[i].z * center.z + planes[i].w - radius;
 
         if (dist < - radius * 2.0f) {
+            child->culled = true;
             return false;
         }
     }
+    child->culled = false;
     return true;
 }
 
 void PerspectiveCamera::calculateFrustumPlanes() {
-    glm::mat matrix = glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 50.0f) * getViewMatrix();
+    glm::mat matrix = glm::perspective(glm::radians(fovy), aspectRatio, 0.1f, 100.0f) * getViewMatrix();
 
     planes[Right] = glm::vec4(matrix[0][3] - matrix[0][0],
                               matrix[1][3] - matrix[1][0],

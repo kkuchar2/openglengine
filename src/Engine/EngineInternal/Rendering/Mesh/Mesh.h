@@ -28,8 +28,6 @@ class Mesh {
         std::vector<glm::mat4x4> modelMatrices;
         std::vector<glm::vec4> colorVectors;
 
-        GLenum renderingMode = GL_TRIANGLES;
-
         bool prepared = false;
 
         Mesh();

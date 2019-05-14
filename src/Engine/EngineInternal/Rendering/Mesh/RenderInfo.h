@@ -3,7 +3,7 @@
 #include <Mesh/Mesh.h>
 #include <Mesh/MeshRenderer/MeshRenderer.h>
 
-class MeshInfo {
+class RenderInfo {
     public:
 
         /// Mesh that will be rendered
@@ -13,9 +13,9 @@ class MeshInfo {
         std::shared_ptr<MeshRenderer> renderer;
 
         /// Keep track of all game objects associated to current mesh
-        std::vector<std::shared_ptr<GameObject>> objects;
+        std::vector<std::shared_ptr<GameObjectBase>> objects;
 
-        MeshInfo(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObject> & child, const std::shared_ptr<MeshRenderer> & meshRenderer) {
+        RenderInfo(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObjectBase> & child, const std::shared_ptr<MeshRenderer> & meshRenderer) {
             this->mesh = mesh;
             this->renderer = meshRenderer;
             this->renderer->init(this->mesh);
@@ -27,7 +27,8 @@ class MeshInfo {
             mesh->colorVectors.push_back(meshRenderer->color);
         }
 
-        void addInstance(const std::shared_ptr<GameObject> & child, const glm::vec4 & color) {
+
+        void addInstance(const std::shared_ptr<GameObjectBase> & child, const glm::vec4 & color) {
             objects.push_back(child);
             child->transform.modelMatrixIndex = objects.size() - 1;
             child->transform.matricesRef = &mesh->modelMatrices;

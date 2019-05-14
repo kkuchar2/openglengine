@@ -20,9 +20,9 @@ void mainEngine() {
         std::cout << e.what() << std::endl;
     }
 
-    engine->addScene(testSphereScene());
+    //engine->addScene(testSphereScene());
     engine->addScene(instancedScene());
-    engine->addScene(mainScene());
+    //engine->addScene(mainScene());
 
     engine->start();
 

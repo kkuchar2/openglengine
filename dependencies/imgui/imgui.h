@@ -1,4 +1,4 @@
-// dear imgui, v1.70 WIP
+// dear imgui, v1.71 WIP
 // (headers)
 
 // See imgui.cpp file for documentation.
@@ -47,9 +47,9 @@ Index of this file:
 
 // Version
 // (Integer encoded as XYYZZ for use in #if preprocessor conditionals. Work in progress versions typically starts at XYY99 then bounce up to XYY00, XYY01 etc. when release tagging happens)
-#define IMGUI_VERSION               "1.70 WIP"
-#define IMGUI_VERSION_NUM           16991
-#define IMGUI_CHECKVERSION()        ImGui::DebugCheckVersionAndDataLayout(IMGUI_VERSION, sizeof(ImGuiIO), sizeof(ImGuiStyle), sizeof(ImVec2), sizeof(ImVec4), sizeof(ImDrawVert))
+#define IMGUI_VERSION               "1.71"
+#define IMGUI_VERSION_NUM           17001
+#define IMGUI_CHECKVERSION()        ImGui::DebugCheckVersionAndDataLayout(IMGUI_VERSION, sizeof(ImGuiIO), sizeof(ImGuiStyle), sizeof(ImVec2), sizeof(ImVec4), sizeof(ImDrawVert), sizeof(ImDrawIdx))
 #define IMGUI_HAS_VIEWPORT          1 // Viewport WIP branch
 #define IMGUI_HAS_DOCK              1 // Docking WIP branch
 
@@ -112,7 +112,7 @@ struct ImGuiInputTextCallbackData;  // Shared state of InputText() when using cu
 struct ImGuiListClipper;            // Helper to manually clip large list of items
 struct ImGuiOnceUponAFrame;         // Helper for running a block of code not more than once a frame, used by IMGUI_ONCE_UPON_A_FRAME macro
 struct ImGuiPayload;                // User data payload for drag and drop operations
-struct ImGuiPlatformIO;             // Multi-viewport support: interface for Platform/EngineRenderer back-ends + viewports to render
+struct ImGuiPlatformIO;             // Multi-viewport support: interface for Platform/Renderer back-ends + viewports to render
 struct ImGuiPlatformMonitor;        // Multi-viewport support: user-provided bounds for each connected monitor/display. Used when positioning popups and tooltips to avoid them straddling monitors
 struct ImGuiSizeCallbackData;       // Callback data when using SetNextWindowSizeConstraints() (rare/advanced use)
 struct ImGuiStorage;                // Helper for key->value storage
@@ -216,7 +216,7 @@ namespace ImGui
     IMGUI_API void          DestroyContext(ImGuiContext* ctx = NULL);   // NULL = destroy current context
     IMGUI_API ImGuiContext* GetCurrentContext();
     IMGUI_API void          SetCurrentContext(ImGuiContext* ctx);
-    IMGUI_API bool          DebugCheckVersionAndDataLayout(const char* version_str, size_t sz_io, size_t sz_style, size_t sz_vec2, size_t sz_vec4, size_t sz_drawvert);
+    IMGUI_API bool          DebugCheckVersionAndDataLayout(const char* version_str, size_t sz_io, size_t sz_style, size_t sz_vec2, size_t sz_vec4, size_t sz_drawvert, size_t sz_drawidx);
 
     // Main
     IMGUI_API ImGuiIO&      GetIO();                                    // access the IO structure (mouse/keyboard/gamepad inputs, time, various configuration options/flags)
@@ -280,7 +280,7 @@ namespace ImGui
     // Prefer using SetNextXXX functions (before Begin) rather that SetXXX functions (after Begin).
     IMGUI_API void          SetNextWindowPos(const ImVec2& pos, ImGuiCond cond = 0, const ImVec2& pivot = ImVec2(0,0)); // set next window position. call before Begin(). use pivot=(0.5f,0.5f) to center on given point, etc.
     IMGUI_API void          SetNextWindowSize(const ImVec2& size, ImGuiCond cond = 0);                  // set next window size. set axis to 0.0f to force an auto-fit on this axis. call before Begin()
-    IMGUI_API void          SetNextWindowSizeConstraints(const ImVec2& size_min, const ImVec2& size_max, ImGuiSizeCallback custom_callback = NULL, void* custom_callback_data = NULL); // set next window size limits. use -1,-1 on either X/Y axis to preserve the current size. Use callback to apply non-trivial programmatic constraints.
+    IMGUI_API void          SetNextWindowSizeConstraints(const ImVec2& size_min, const ImVec2& size_max, ImGuiSizeCallback custom_callback = NULL, void* custom_callback_data = NULL); // set next window size limits. use -1,-1 on either X/Y axis to preserve the current size. Sizes will be rounded down. Use callback to apply non-trivial programmatic constraints.
     IMGUI_API void          SetNextWindowContentSize(const ImVec2& size);                               // set next window content size (~ enforce the range of scrollbars). not including window decorations (title bar, menu bar, etc.). set an axis to 0.0f to leave it automatic. call before Begin()
     IMGUI_API void          SetNextWindowCollapsed(bool collapsed, ImGuiCond cond = 0);                 // set next window collapsed state. call before Begin()
     IMGUI_API void          SetNextWindowFocus();                                                       // set next window to be focused / front-most. call before Begin()
@@ -300,7 +300,6 @@ namespace ImGui
     // - Those functions are bound to be redesigned soon (they are confusing, incomplete and return values in local window coordinates which increases confusion)
     IMGUI_API ImVec2        GetContentRegionMax();                                          // current content boundaries (typically window boundaries including scrolling, or current column boundaries), in windows coordinates
     IMGUI_API ImVec2        GetContentRegionAvail();                                        // == GetContentRegionMax() - GetCursorPos()
-    IMGUI_API float         GetContentRegionAvailWidth();                                   // == GetContentRegionAvail().x
     IMGUI_API ImVec2        GetWindowContentRegionMin();                                    // content boundaries min (roughly (0,0)-Scroll), in window coordinates
     IMGUI_API ImVec2        GetWindowContentRegionMax();                                    // content boundaries max (roughly (0,0)+Size-Scroll) where Size can be override with SetNextWindowContentSize(), in window coordinates
     IMGUI_API float         GetWindowContentRegionWidth();                                  //
@@ -1074,7 +1073,7 @@ enum ImGuiBackendFlags_
     // [BETA] Viewports
     ImGuiBackendFlags_PlatformHasViewports  = 1 << 10,  // Back-end Platform supports multiple viewports.
     ImGuiBackendFlags_HasMouseHoveredViewport=1 << 11,  // Back-end Platform supports setting io.MouseHoveredViewport to the viewport directly under the mouse _IGNORING_ viewports with the ImGuiViewportFlags_NoInputs flag and _REGARDLESS_ of whether another viewport is focused and may be capturing the mouse. This information is _NOT EASY_ to provide correctly with most high-level engines! Don't set this without studying how the examples/ back-end handle it!
-    ImGuiBackendFlags_RendererHasViewports  = 1 << 12   // Back-end EngineRenderer supports multiple viewports.
+    ImGuiBackendFlags_RendererHasViewports  = 1 << 12   // Back-end Renderer supports multiple viewports.
 };
 
 // Enumeration for PushStyleColor() / PopStyleColor()
@@ -1365,7 +1364,7 @@ struct ImGuiStyle
     ImVec2      ItemInnerSpacing;           // Horizontal and vertical spacing between within elements of a composed widget (e.g. a slider and its label).
     ImVec2      TouchExtraPadding;          // Expand reactive bounding box for touch-based system where touch position is not accurate enough. Unfortunately we don't sort widgets so priority on overlap will always be given to the first widget. So don't grow this too much!
     float       IndentSpacing;              // Horizontal indentation when e.g. entering a tree node. Generally == (FontSize + FramePadding.x*2).
-    float       ColumnsMinSpacing;          // Minimum horizontal spacing between two columns.
+    float       ColumnsMinSpacing;          // Minimum horizontal spacing between two columns. Preferably > (FramePadding.x + 1).
     float       ScrollbarSize;              // Width of the vertical scrollbar, Height of the horizontal scrollbar.
     float       ScrollbarRounding;          // Radius of grab corners for scrollbar.
     float       GrabMinSize;                // Minimum width/height of a grab box for slider/scrollbar.
@@ -1443,7 +1442,7 @@ struct ImGuiIO
     // (the imgui_impl_xxxx back-end files are setting those up for you)
     //------------------------------------------------------------------
 
-    // Optional: Platform/EngineRenderer back-end name (informational only! will be displayed in About Window) + User data for back-end/wrappers to store their own stuff.
+    // Optional: Platform/Renderer back-end name (informational only! will be displayed in About Window) + User data for back-end/wrappers to store their own stuff.
     const char* BackendPlatformName;            // = NULL
     const char* BackendRendererName;            // = NULL
     void*       BackendPlatformUserData;        // = NULL
@@ -1515,7 +1514,8 @@ struct ImGuiIO
     bool        MouseClicked[5];                // Mouse button went from !Down to Down
     bool        MouseDoubleClicked[5];          // Has mouse button been double-clicked?
     bool        MouseReleased[5];               // Mouse button went from Down to !Down
-    bool        MouseDownOwned[5];              // Track if button was clicked inside a window. We don't request mouse capture from the application if click started outside ImGui bounds.
+    bool        MouseDownOwned[5];              // Track if button was clicked inside an imgui window. We don't request mouse capture from the application if click started outside ImGui bounds.
+    bool        MouseDownWasDoubleClick[5];     // Track if button down was a double-click
     float       MouseDownDuration[5];           // Duration the mouse button has been down (0.0f == just clicked)
     float       MouseDownDurationPrev[5];       // Previous time the mouse button has been down
     ImVec2      MouseDragMaxDistanceAbs[5];     // Maximum distance, absolute, on each axis, of how much mouse has traveled from the clicking point
@@ -1621,6 +1621,8 @@ struct ImGuiWindowClass
 #ifndef IMGUI_DISABLE_OBSOLETE_FUNCTIONS
 namespace ImGui
 {
+    // OBSOLETED in 1.70 (from May 2019)
+    static inline float GetContentRegionAvailWidth()          { return GetContentRegionAvail().x; }
     // OBSOLETED in 1.69 (from Mar 2019)
     static inline ImDrawList* GetOverlayDrawList()            { return GetForegroundDrawList(); }
     // OBSOLETED in 1.66 (from Sep 2018)
@@ -1850,10 +1852,17 @@ struct ImColor
 
 // Draw callbacks for advanced uses.
 // NB: You most likely do NOT need to use draw callbacks just to create your own widget or customized UI rendering,
-// you can poke into the draw list for that! Draw callback may be useful for example to: A) Change your GPU render state,
-// B) render a complex 3D scene inside a UI element without an intermediate texture/render target, etc.
+// you can poke into the draw list for that! Draw callback may be useful for example to: 
+//  A) Change your GPU render state,
+//  B) render a complex 3D scene inside a UI element without an intermediate texture/render target, etc.
 // The expected behavior from your rendering function is 'if (cmd.UserCallback != NULL) { cmd.UserCallback(parent_list, cmd); } else { RenderTriangles() }'
 typedef void (*ImDrawCallback)(const ImDrawList* parent_list, const ImDrawCmd* cmd);
+
+// Special Draw Callback value to request renderer back-end to reset the graphics/render state.
+// The renderer back-end needs to handle this special value, otherwise it will crash trying to call a function at this address.
+// This is useful for example if you submitted callbacks which you know have altered the render state and you want it to be restored.
+// It is not done by default because they are many perfectly useful way of altering render state for imgui contents (e.g. changing shader/blending settings before an Image call).
+#define ImDrawCallback_ResetRenderState     (ImDrawCallback)(-1)
 
 // Typically, 1 command = 1 GPU draw call (unless command is a callback)
 struct ImDrawCmd
@@ -2282,9 +2291,9 @@ struct ImGuiPlatformMonitor
 
 // (Optional) Setup required only if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) is enabled. 
 // Access via ImGui::GetPlatformIO(). This is designed so we can mix and match two imgui_impl_xxxx files,
-// one for the Platform (~window handling), one for EngineRenderer. Custom engine back-ends will often provide
-// both Platform and EngineRenderer interfaces and so may not need to use all functions.
-// Platform functions are typically called before their EngineRenderer counterpart,
+// one for the Platform (~window handling), one for Renderer. Custom engine back-ends will often provide 
+// both Platform and Renderer interfaces and so may not need to use all functions.
+// Platform functions are typically called before their Renderer counterpart, 
 // apart from Destroy which are called the other way. 
 // RenderPlatformWindowsDefault() is that helper that iterate secondary viewports and call, in this order:
 //   Platform_RenderWindow(), Renderer_RenderWindow(), Platform_SwapBuffers(), Renderer_SwapBuffers()
@@ -2316,9 +2325,9 @@ struct ImGuiPlatformIO
     float   (*Platform_GetWindowDpiScale)(ImGuiViewport* vp);               // (Optional) [BETA] (FIXME-DPI) DPI handling: Return DPI scale for this viewport. 1.0f = 96 DPI.
     void    (*Platform_OnChangedViewport)(ImGuiViewport* vp);               // (Optional) [BETA] (FIXME-DPI) DPI handling: Called during Begin() every time the viewport we are outputting into changes, so back-end has a chance to swap fonts to adjust style.
     void    (*Platform_SetImeInputPos)(ImGuiViewport* vp, ImVec2 pos);      // (Optional) Set IME (Input Method Editor, e.g. for Asian languages) input position, so text preview appears over the imgui input box.
-    int     (*Platform_CreateVkSurface)(ImGuiViewport* vp, ImU64 vk_inst, const void* vk_allocators, ImU64* out_vk_surface); // (Optional) For EngineRenderer to call into Platform code
+    int     (*Platform_CreateVkSurface)(ImGuiViewport* vp, ImU64 vk_inst, const void* vk_allocators, ImU64* out_vk_surface); // (Optional) For Renderer to call into Platform code
 
-    // (Optional) EngineRenderer functions (e.g. DirectX, OpenGL3, Vulkan)
+    // (Optional) Renderer functions (e.g. DirectX, OpenGL3, Vulkan)
     void    (*Renderer_CreateWindow)(ImGuiViewport* vp);                    // Create swap chains, frame buffers etc.
     void    (*Renderer_DestroyWindow)(ImGuiViewport* vp);
     void    (*Renderer_SetWindowSize)(ImGuiViewport* vp, ImVec2 size);      // Resize swap chain, frame buffers etc.
@@ -2347,9 +2356,10 @@ enum ImGuiViewportFlags_
     ImGuiViewportFlags_NoFocusOnAppearing       = 1 << 2,   // Platform Window: Don't take focus when created.
     ImGuiViewportFlags_NoFocusOnClick           = 1 << 3,   // Platform Window: Don't take focus when clicked on.
     ImGuiViewportFlags_NoInputs                 = 1 << 4,   // Platform Window: Make mouse pass through so we can drag this window while peaking behind it.
-    ImGuiViewportFlags_NoRendererClear          = 1 << 5,   // Platform Window: EngineRenderer doesn't need to clear the framebuffer ahead (because we will fill it entirely).
+    ImGuiViewportFlags_NoRendererClear          = 1 << 5,   // Platform Window: Renderer doesn't need to clear the framebuffer ahead (because we will fill it entirely).
     ImGuiViewportFlags_TopMost                  = 1 << 6,   // Platform Window: Display on top (for tooltips only)
-    ImGuiViewportFlags_Minimized                = 1 << 7    // Platform Window: Window is minimized, can skip render. When minimized we tend to avoid using the viewport pos/size for clipping window or testing if they are contained in the viewport.
+    ImGuiViewportFlags_Minimized                = 1 << 7,   // Platform Window: Window is minimized, can skip render. When minimized we tend to avoid using the viewport pos/size for clipping window or testing if they are contained in the viewport.
+    ImGuiViewportFlags_CanHostOtherWindows      = 1 << 8    // Main viewport: can host multiple imgui windows (secondary viewports are associated to a single window)
 };
 
 // The viewports created and managed by imgui. The role of the platform back-end is to create the platform/OS windows corresponding to each viewport.

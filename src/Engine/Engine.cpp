@@ -1,3 +1,4 @@
+#include <Engine/EngineInternal/Settings.h>
 #include "Engine.h"
 
 #include "Scene/BaseEngineScene.h"
@@ -21,16 +22,11 @@ Engine::Engine() {
     onSceneRightSizeChanged = createObserver<glm::vec2>([&](glm::vec2 v) { engineRenderer->setTargetSize(v, 1); });
     onBoundingBoxesEnablementChanged = createObserver<bool>([&](bool v) { engineRenderer->setBoundingBoxesEnabled(v); });
     onVSyncValueChange = createObserver<bool>([&](bool v) { window->setVSyncEnabled(v); });
-    onShowNormalsChange = createObserver<bool>([&](bool v) {
-        engineRenderer->perspectiveCameras[0]->showNormals = v;
-        engineRenderer->perspectiveCameras[1]->showNormals = v;
-    });
 
     SC.add(editor->sceneLeftSizeProperty->Subscribe(onSceneLeftSizeChanged));
     SC.add(editor->sceneRightSizeProperty->Subscribe(onSceneRightSizeChanged));
     SC.add(editor->enableBoundingBoxesProperty->Subscribe(onBoundingBoxesEnablementChanged));
     SC.add(editor->enableVsyncProperty->Subscribe(onVSyncValueChange));
-    SC.add(editor->showNormalsProperty->Subscribe(onShowNormalsChange));
 
     addScene(baseEngineScene());
 }

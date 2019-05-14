@@ -52,6 +52,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisX->end = glm::vec3(20.0f, 0.0f, 0.0f);
 
     std::shared_ptr<MeshRenderer> axisXRenderer = std::make_shared<MeshRenderer>();
+    axisXRenderer->renderingMode = GL_LINES;
     axisXRenderer->shaderType = AMBIENT;
     axisXRenderer->color = glm::vec4(0.0f, 1.0, 0.0, 1.0);
     axisXRenderer->enableBoundingBox = false;
@@ -66,6 +67,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisY->end = glm::vec3(0.0f, 20.0f, 0.0f);
 
     std::shared_ptr<MeshRenderer> axisYRenderer = std::make_shared<MeshRenderer>();
+    axisYRenderer->renderingMode = GL_LINES;
     axisYRenderer->shaderType = AMBIENT;
     axisYRenderer->color = glm::vec4(1.0f, 0.0, 0.0, 1.0);
     axisYRenderer->enableBoundingBox = false;
@@ -80,6 +82,7 @@ std::shared_ptr<Scene> baseEngineScene() {
     axisZ->end = glm::vec3(0.0f, 0.0f, 20.0f);
 
     std::shared_ptr<MeshRenderer> axisZRenderer = std::make_shared<MeshRenderer>();
+    axisZRenderer->renderingMode = GL_LINES;
     axisZRenderer->shaderType = AMBIENT;
     axisZRenderer->color = glm::vec4(0.0f, 0.0, 1.0, 1.0);
     axisZRenderer->enableBoundingBox = false;

@@ -2,124 +2,82 @@
 
 RenderingManager::RenderingManager() = default;
 
-void RenderingManager::addChild(const std::shared_ptr<GameObject> & child) {
-    children.push_back(child);
-}
-
 void RenderingManager::preprocessScenes() {
 
     ///--------------------------------------------------------------------------------------
-    ///Create real meshes for each GameObject
+    ///Create render infos for each GameObject
     ///--------------------------------------------------------------------------------------
+
+    std::cout << "Children size: " << children.size() << std::endl;
 
     for (auto & child : children) {
         auto meshComponent = child->getComponent<MeshComponent>();
         if (!meshComponent.get()) continue;
 
         auto meshRenderer = child->getComponentOrDefault<MeshRenderer>();
-        meshRenderer->projection = child->projection;
 
-        if (child->instanced) {
+        if (meshRenderer->instanced) {
             std::string id = meshRenderer->getShaderTypeStr() + "_" + meshComponent->getMeshIdText();
 
-            if (instancedMeshes.count(id) == 0) {
+
+            if (instancedRenderInfos.count(id) == 0) {
                 auto mesh = MeshBuilder::buildMesh(meshComponent);
-                auto meshInfo = std::make_shared<MeshInfo>(mesh, child, meshRenderer);
+                auto renderInfo = std::make_shared<RenderInfo>(mesh, child, meshRenderer);
 
                 if (meshRenderer->enableBoundingBox) {
-                    BoundingBoxGenerator::calculateBoundingBox(mesh, child);
+                    addBoundingBox(mesh, child);
                 }
 
-                instancedMeshes.insert(std::make_pair(id, meshInfo));
+                instancedRenderInfos.insert(std::make_pair(id, renderInfo));
             }
             else {
                 if (meshRenderer->enableBoundingBox) {
-                    BoundingBoxGenerator::calculateBoundingBox(instancedMeshes[id]->mesh, child);
+                    addBoundingBox(instancedRenderInfos[id]->mesh, child);
                 }
-                instancedMeshes[id]->addInstance(child, meshRenderer->color);
+                instancedRenderInfos[id]->addInstance(child, meshRenderer->color);
             }
         }
         else {
             auto mesh = MeshBuilder::buildMesh(meshComponent);
-            auto meshInfo = std::make_shared<MeshInfo>(mesh, child, meshRenderer);
+            auto renderInfo = std::make_shared<RenderInfo>(mesh, child, meshRenderer);
 
-            meshes.emplace_back(meshInfo);
+            renderInfos.emplace_back(renderInfo);
 
             if (meshRenderer->enableBoundingBox) {
-                BoundingBoxGenerator::calculateBoundingBox(mesh, child);
+                addBoundingBox(mesh, child);
             }
         }
-    }
-
-
-    ///---------------------------------------------------------------------------------------
-    /// Add bounding boxes
-    /// --------------------------------------------------------------------------------------
-
-    for (auto & child : children) {
-
-        auto boundingBox = child->boundingBox;
-
-        if (!boundingBox.get()) continue;
-
-        auto meshComponent = boundingBox->getComponent<MeshComponent>();
-
-        if (!meshComponent.get()) continue;
-
-        auto meshRenderer = boundingBox->getComponent<MeshRenderer>();
-
-        if (instancedMeshes.count("bbox") == 0) {
-            auto mesh = MeshBuilder::buildMesh(meshComponent);
-            auto meshInfo =  std::make_shared<MeshInfo>(mesh, boundingBox, meshRenderer);
-            instancedMeshes.insert(std::make_pair("bbox", meshInfo));
-        }
-        else {
-            instancedMeshes["bbox"]->addInstance(boundingBox, meshRenderer->color);
-        }
-    }
-
-    ///---------------------------------------------------------------------------------------
-    /// Init transform of each child
-    /// --------------------------------------------------------------------------------------
-
-    for (const auto & child : children) {
-        child->init();
-
-        ///---------------------------------------------------------------------------------------
-        /// If physics enabled, register bounding box to physics engine
-        /// --------------------------------------------------------------------------------------
-        if (child->boundingBox.get() && physicsEnabled && child->getComponent<Rigidbody>().get()) {
-
-            auto rigidbody = child->getComponent<Rigidbody>();
-
-            child->rb_idx = physicsEngine->addCollisionBox(
-                rigidbody->mass,
-                rigidbody->restitution,
-                child->boundingBox->transform);
-        }
-
-        child->update();
     }
 
     logRenderMap();
 }
 
-void RenderingManager::Update(const std::shared_ptr<PerspectiveCamera> & camera) {
-
-}
-
 void RenderingManager::logRenderMap() {
     std::cout << "INSTANCED RENDERING:" << std::endl;
 
-    for (auto  &[id, instancedMeshInfo] : instancedMeshes) {
-        std::cout << "\t* ID: [" << id << "]: " << instancedMeshInfo->objects.size() << std::endl;
+    for (auto  &[id, instancedRenderInfo] : instancedRenderInfos) {
+        std::cout << "\t* ID: [" << id << "]: " << instancedRenderInfo->objects.size() << std::endl;
     }
 
     std::cout << std::endl;
 
     std::cout << "CLASSIC RENDERING:" << std::endl;
-    for (auto const & info : meshes) {
+    for (auto const & info : renderInfos) {
         std::cout << "\t* Mesh type: [" << info->mesh->meshId << "]" << std::endl;
+    }
+}
+
+void RenderingManager::addBoundingBox(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObjectBase> & parent) {
+
+    auto bboxObj = BoundingBoxGenerator::calculateBoundingBox(mesh, parent);
+    auto renderer = bboxObj->getComponent<MeshRenderer>();
+    auto bboxMesh = MeshBuilder::buildMesh(bboxObj->getComponent<MeshComponent>());
+
+    if (instancedRenderInfos.count("bbox") == 0) {
+        instancedRenderInfos.insert(std::make_pair("bbox", std::make_shared<RenderInfo>(bboxMesh, bboxObj, renderer)));
+    }
+    else {
+        instancedRenderInfos["bbox"]->addInstance(bboxObj, renderer->color);
     }
 }
 

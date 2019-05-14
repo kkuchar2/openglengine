@@ -3,11 +3,11 @@
 #include <memory>
 #include <vector>
 
-#include <Scene/GameObject/GameObject.h>
+#include <Scene/BoundingBoxObject/BoundingBoxObject.h>
 #include <Rendering/Mesh/Primitives/LineMeshComponent.h>
 #include <Rendering/Mesh/MeshRenderer/MeshRenderer.h>
 
 class BoundingBoxGenerator {
     public:
-        static void calculateBoundingBox(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObject> & child);
+        static std::shared_ptr<BoundingBoxObject> calculateBoundingBox(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObjectBase> & child);
 };

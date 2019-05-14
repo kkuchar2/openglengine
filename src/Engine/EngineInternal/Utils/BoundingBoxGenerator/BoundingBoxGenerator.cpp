@@ -1,7 +1,7 @@
+
 #include "BoundingBoxGenerator.h"
 
-void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & mesh,
-                                                const std::shared_ptr<GameObject> & child) {
+std::shared_ptr<BoundingBoxObject> BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & mesh, const std::shared_ptr<GameObjectBase> & child) {
     float minFloat = std::numeric_limits<float>::min();
     float maxFloat = std::numeric_limits<float>::max();
 
@@ -60,11 +60,17 @@ void BoundingBoxGenerator::calculateBoundingBox(const std::shared_ptr<Mesh> & me
 
     meshRenderer->shaderType = AMBIENT;
     meshRenderer->color = glm::vec4(0.0, 1.0, 0.2f, 1.0f);
+    meshRenderer->frustumCulling = true;
+    meshRenderer->instanced = true;
 
     child->bbox.center = b.center;
     child->bbox.size = b.size;
-    child->boundingBox = std::make_shared<GameObject>();
-    child->boundingBox->instanced = true;
-    child->boundingBox->addComponent(cubeMesh);
-    child->boundingBox->addComponent(meshRenderer);
+
+    std::shared_ptr<BoundingBoxObject> boundingBox = std::make_shared<BoundingBoxObject>();
+    boundingBox->addComponent(cubeMesh);
+    boundingBox->addComponent(meshRenderer);
+    boundingBox->parent = child;
+    child->boundingBox = boundingBox;
+
+    return boundingBox;
 }

@@ -40,4 +40,6 @@ class EngineRenderer {
         void setTargetSize(const glm::vec2 & size, const int & idx);
 
         void setBoundingBoxesEnabled(const bool & enabled);
+
+        void testFrustrum(const std::shared_ptr<RenderInfo> & info);
 };
