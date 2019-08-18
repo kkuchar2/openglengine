@@ -40,7 +40,7 @@
 1. Clone the repo
 
   ```sh
-  git clone --recurse-submodules -j8 https://github.com/kkuchar2/openglengine
+    git clone --recurse-submodules -j8 https://github.com/kkuchar2/openglengine
   ```
 
 2. Build
