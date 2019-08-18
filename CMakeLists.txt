@@ -79,9 +79,9 @@ option(GLM_TEST_ENABLE "Build unit tests" OFF)
 
 add_subdirectory(dependencies/glm)
 
-message("${Cyan}Configuring RoseCpp${ColourReset}")
+message("${Cyan}Configuring rose${ColourReset}")
 
-add_subdirectory(dependencies/RoseCpp)
+add_subdirectory(dependencies/rose/cpp)
 
 message("${Cyan}Configuring bullet3${ColourReset}")
 
@@ -104,7 +104,7 @@ include_directories(dependencies/glfw/deps)
 include_directories(dependencies/glfw/include)
 include_directories(dependencies/glm)
 include_directories(dependencies/bullet3/src)
-include_directories(dependencies/RoseCpp/src)
+include_directories(dependencies/rose/cpp/src)
 include_directories(dependencies/freetype2/include)
 include_directories(dependencies/glad/include/glad)
 include_directories(dependencies/glad/include/KHR)

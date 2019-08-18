@@ -10,7 +10,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include <glm/glm/glm.hpp>
-#include <RoseCpp/src/Rose/Property/BooleanProperty.h>
+#include <rose/cpp/src/Rose/Property/BooleanProperty.h>
 #include <Engine/EngineInternal/Settings.h>
 #include "EditorStyle.h"
 
