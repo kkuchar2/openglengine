@@ -32,6 +32,7 @@
 
 * [Getting Started](#getting-started)
 * [Contributing](#contributing)
+* [Screenshots](#screenshots)
 * [License](#license)
 
 <!-- GETTING STARTED -->
