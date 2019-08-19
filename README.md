@@ -76,6 +76,13 @@ Any contributions you make are **greatly appreciated**.
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## Screenshots
+
+![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic1.png)
+![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic2.png)
+![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic3.png)
+![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic4.png)
+
 <!-- LICENSE -->
 ## License
 
