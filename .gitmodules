@@ -4,12 +4,12 @@
 [submodule "dependencies/freetype2"]
 	path = dependencies/freetype2
 	url = https://github.com/aseprite/freetype2
-[submodule "dependencies/glfw"]
-	path = dependencies/glfw
-	url = https://github.com/kkuchar2/glfw
 [submodule "dependencies/bullet3"]
 	path = dependencies/bullet3
 	url = https://github.com/bulletphysics/bullet3
 [submodule "dependencies/rose"]
 	path = dependencies/rose
 	url = https://github.com/kkuchar2/rose
+[submodule "dependencies/glfw"]
+	path = dependencies/glfw
+	url = https://github.com/glfw/glfw
