@@ -79,10 +79,11 @@ Any contributions you make are **greatly appreciated**.
 
 ## Screenshots
 
-![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic1.png)
-![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic2.png)
-![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic3.png)
-![alt text](https://github.com/kkuchar2/OpenGLEngine/blob/master/doc/img/pic4.png)
+![pic1](https://github.com/kkuchar2/openglengine/assets/23500051/b7634833-dac1-41de-b198-40da4d482870)
+![pic2](https://github.com/kkuchar2/openglengine/assets/23500051/ce589fb2-a8dd-4f2e-9a74-0600cf86c82e)
+![pic3](https://github.com/kkuchar2/openglengine/assets/23500051/0921c2af-16da-48bd-878b-4d5919ee4c13)
+![pic4](https://github.com/kkuchar2/openglengine/assets/23500051/7cfa9877-283f-43c1-8744-3ef8c40d3c33)
+
 
 <!-- LICENSE -->
 ## License
