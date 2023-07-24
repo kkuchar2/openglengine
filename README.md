@@ -59,7 +59,7 @@
 
 3. Run
 ```sh
-  ./openglengine
+  ./opengl
 
   # You should see split view of rotating colorful particles.
   # By pressing and holding right mouse button and moving mouse look around.
